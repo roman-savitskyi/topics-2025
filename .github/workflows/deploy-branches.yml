@@ -1,0 +1,199 @@
+name: Deploy Branches to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main
+      - 'feature/**'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout current branch
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build presentation
+        run: npm run build
+
+      - name: Prepare deployment
+        run: |
+          # Отримуємо назву гілки
+          BRANCH_NAME=${GITHUB_REF#refs/heads/}
+          echo "Branch name: $BRANCH_NAME"
+
+          # Конвертуємо назву гілки в URL-friendly формат (feature/1 -> feature-1)
+          CLEAN_BRANCH=$(echo "$BRANCH_NAME" | sed 's/\//-/g')
+          echo "Clean branch name: $CLEAN_BRANCH"
+
+          # Зберігаємо для наступних кроків
+          echo "BRANCH_NAME=$BRANCH_NAME" >> $GITHUB_ENV
+          echo "CLEAN_BRANCH=$CLEAN_BRANCH" >> $GITHUB_ENV
+
+      - name: Checkout gh-pages branch
+        run: |
+          # Клонуємо gh-pages гілку в окрему папку
+          git clone --branch gh-pages https://github.com/${{ github.repository }} gh-pages-repo 2>/dev/null || {
+            # Якщо gh-pages не існує, створюємо нову
+            mkdir gh-pages-repo
+            cd gh-pages-repo
+            git init
+            git checkout -b gh-pages
+            echo "# GitHub Pages Deployments" > README.md
+            git config user.name "GitHub Actions"
+            git config user.email "actions@github.com"
+            git add README.md
+            git commit -m "Initialize gh-pages"
+            git remote add origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}
+            git push -u origin gh-pages
+            cd ..
+          }
+
+      - name: Copy build to gh-pages
+        run: |
+          # Створюємо/оновлюємо папку для гілки
+          mkdir -p gh-pages-repo/${{ env.CLEAN_BRANCH }}
+
+          # Копіюємо всі файли презентації
+          cp -r *.html gh-pages-repo/${{ env.CLEAN_BRANCH }}/ 2>/dev/null || true
+          cp -r css gh-pages-repo/${{ env.CLEAN_BRANCH }}/ 2>/dev/null || true
+          cp -r js gh-pages-repo/${{ env.CLEAN_BRANCH }}/ 2>/dev/null || true
+          cp -r dist gh-pages-repo/${{ env.CLEAN_BRANCH }}/ 2>/dev/null || true
+          cp -r plugin gh-pages-repo/${{ env.CLEAN_BRANCH }}/ 2>/dev/null || true
+          cp -r examples gh-pages-repo/${{ env.CLEAN_BRANCH }}/ 2>/dev/null || true
+
+          # Якщо це main гілка, копіюємо також в root
+          if [ "${{ env.BRANCH_NAME }}" = "main" ]; then
+            cp -r *.html gh-pages-repo/ 2>/dev/null || true
+            cp -r css gh-pages-repo/ 2>/dev/null || true
+            cp -r js gh-pages-repo/ 2>/dev/null || true
+            cp -r dist gh-pages-repo/ 2>/dev/null || true
+            cp -r plugin gh-pages-repo/ 2>/dev/null || true
+            cp -r examples gh-pages-repo/ 2>/dev/null || true
+          fi
+
+      - name: Create index page
+        run: |
+          cd gh-pages-repo
+
+          # Створюємо простий index.html зі списком всіх гілок
+          cat > branches.html << 'EOF'
+          <!DOCTYPE html>
+          <html>
+          <head>
+              <meta charset="utf-8">
+              <title>Available Branches</title>
+              <style>
+                  body {
+                      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+                      max-width: 800px;
+                      margin: 50px auto;
+                      padding: 20px;
+                      line-height: 1.6;
+                  }
+                  h1 {
+                      border-bottom: 2px solid #333;
+                      padding-bottom: 10px;
+                  }
+                  ul {
+                      list-style: none;
+                      padding: 0;
+                  }
+                  li {
+                      margin: 10px 0;
+                      padding: 10px;
+                      background: #f5f5f5;
+                      border-radius: 5px;
+                  }
+                  a {
+                      color: #0366d6;
+                      text-decoration: none;
+                      font-weight: 500;
+                  }
+                  a:hover {
+                      text-decoration: underline;
+                  }
+                  .date {
+                      color: #666;
+                      font-size: 0.9em;
+                      margin-left: 10px;
+                  }
+              </style>
+          </head>
+          <body>
+              <h1>📊 Available Presentation Branches</h1>
+              <ul id="branches"></ul>
+              <script>
+                  // Список буде оновлюватися автоматично
+                  const branches = [];
+          EOF
+
+          # Додаємо поточну гілку до списку
+          echo "        branches.push({ name: '${{ env.CLEAN_BRANCH }}', original: '${{ env.BRANCH_NAME }}', date: new Date().toISOString() });" >> branches.html
+
+          cat >> branches.html << 'EOF'
+
+                  const ul = document.getElementById('branches');
+                  branches.forEach(branch => {
+                      const li = document.createElement('li');
+                      const date = new Date(branch.date).toLocaleString('uk-UA');
+                      li.innerHTML = `
+                          <a href="/${branch.name}/">🎯 ${branch.original}</a>
+                          <span class="date">Оновлено: ${date}</span>
+                      `;
+                      ul.appendChild(li);
+                  });
+
+                  if (branches.length === 0) {
+                      ul.innerHTML = '<li>Поки що немає доступних гілок</li>';
+                  }
+              </script>
+          </body>
+          </html>
+          EOF
+
+      - name: Deploy to gh-pages
+        run: |
+          cd gh-pages-repo
+
+          git config user.name "GitHub Actions"
+          git config user.email "actions@github.com"
+
+          git add .
+
+          # Перевіряємо чи є зміни
+          if git diff --staged --quiet; then
+            echo "No changes to deploy"
+            exit 0
+          fi
+
+          git commit -m "Deploy ${{ env.BRANCH_NAME }} branch
+
+          Deployed from commit: ${{ github.sha }}
+          Workflow run: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+
+          git push https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }} gh-pages
+
+      - name: Output deployment URL
+        run: |
+          REPO_NAME=$(echo "${{ github.repository }}" | cut -d'/' -f2)
+          if [ "${{ env.BRANCH_NAME }}" = "main" ]; then
+            echo "✅ Main branch deployed to: https://${{ github.repository_owner }}.github.io/$REPO_NAME/"
+          fi
+          echo "✅ Branch deployed to: https://${{ github.repository_owner }}.github.io/$REPO_NAME/${{ env.CLEAN_BRANCH }}/"
+          echo "📋 All branches: https://${{ github.repository_owner }}.github.io/$REPO_NAME/branches.html"
