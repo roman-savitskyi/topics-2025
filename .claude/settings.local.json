@@ -1,0 +1,15 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(mkdir:*)",
+      "Bash(git add:*)",
+      "Bash(git commit -m \"$(cat <<''EOF''\nfeat: add multi-branch GitHub Pages deployment\n\nДодано GitHub Actions workflow для автоматичного деплою різних гілок на GitHub Pages.\nКожна гілка буде доступна за окремим URL (наприклад, feature/1 -> /feature-1/).\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)\n\nCo-Authored-By: Claude <noreply@anthropic.com>\nEOF\n)\")",
+      "Bash(git push)",
+      "WebSearch",
+      "WebFetch(domain:developer.chrome.com)",
+      "WebFetch(domain:web.dev)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}
