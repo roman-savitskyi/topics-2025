@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Available Branches</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        h1 {
+            border-bottom: 2px solid #333;
+            padding-bottom: 10px;
+        }
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+        li {
+            margin: 10px 0;
+            padding: 10px;
+            background: #f5f5f5;
+            border-radius: 5px;
+        }
+        a {
+            color: #0366d6;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        .date {
+            color: #666;
+            font-size: 0.9em;
+            margin-left: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>📊 Available Presentation Branches</h1>
+    <ul id="branches"></ul>
+    <script>
+        // Список буде оновлюватися автоматично
+        const branches = [];
+        branches.push({ name: 'main', original: 'main', date: new Date().toISOString() });
+
+        const ul = document.getElementById('branches');
+        branches.forEach(branch => {
+            const li = document.createElement('li');
+            const date = new Date(branch.date).toLocaleString('uk-UA');
+            li.innerHTML = `
+                <a href="/${branch.name}/">🎯 ${branch.original}</a>
+                <span class="date">Оновлено: ${date}</span>
+            `;
+            ul.appendChild(li);
+        });
+
+        if (branches.length === 0) {
+            ul.innerHTML = '<li>Поки що немає доступних гілок</li>';
+        }
+    </script>
+</body>
+</html>
