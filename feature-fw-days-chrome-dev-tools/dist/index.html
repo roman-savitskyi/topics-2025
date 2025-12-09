@@ -1,0 +1,996 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>ШЛЯХ В ІТ</title>
+
+		<link rel="stylesheet" href="reveal.css">
+		<link rel="stylesheet" href="theme/ztu.css">
+
+		<!-- Theme used for syntax highlighted code -->
+		<link rel="stylesheet" href="plugin/highlight/high-contrast.css">
+
+		<!-- Custom compact styles for better fit -->
+		<style>
+			.reveal {
+				font-size: 28px; /* Зменшено з 32px */
+			}
+
+			.reveal h1 {
+				font-size: 1.6em; /* Зменшено з 1.8em */
+				margin-bottom: 15px;
+			}
+
+			.reveal h2 {
+				font-size: 1.3em; /* Зменшено з 1.5em */
+				margin-bottom: 15px;
+			}
+
+			.reveal h3 {
+				font-size: 1.1em; /* Зменшено з 1.2em */
+				margin-bottom: 10px;
+			}
+
+			.reveal p {
+				margin: 12px 0; /* Зменшено з 20px */
+			}
+
+			.reveal ul, .reveal ol {
+				margin: 10px 0; /* Зменшено */
+			}
+
+			.reveal li {
+				margin: 6px 0; /* Зменшено з 10px */
+			}
+
+			.reveal pre {
+				margin: 15px auto; /* Зменшено з 20px */
+				font-size: 0.55em; /* Зменшено з 0.65em */
+			}
+
+			.reveal section {
+				padding-bottom: 100px; /* Зменшено з 120px */
+			}
+
+			.reveal .ztu-list {
+				margin: 15px auto; /* Зменшено з 20px */
+			}
+
+			/* Компактніші grid layouts */
+			.reveal [style*="grid-template-columns"] {
+				gap: 15px !important; /* Зменшено з 20-30px */
+				font-size: 0.8em;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="footer-ztu-logo"></div>
+			<div class="footer-conference-logo"></div>
+			<div class="footer-beerjs-logo"></div>
+			<div class="slides">
+				<!-- Title Slide -->
+				<section>
+					<h1 class="ztu-blue">ШЛЯХ В ІТ</h1>
+					<p class="ztu-orange">Від новачка до професіонала</p>
+					<div style="display: flex; justify-content: space-around; align-items: center; margin-top: 50px;">
+						<img src="examples/assets/TIETO.HE_BIG.D.png" alt="Tieto Tech Consulting Logo" style="max-width: 300px; height: auto;">
+						<img src="examples/assets/ztu-logo-white.png" alt="ZTU Logo" style="max-width: 250px; height: auto;">
+					</div>
+				</section>
+
+				<!-- Про Tieto Tech Consulting -->
+				<section>
+					<h2 class="ztu-blue">TIETO TECH CONSULTING</h2>
+					<p class="fragment fade-in">Tieto Create Ukraine (formerly Infopulse)</p>
+
+					<div class="fragment fade-in" style="margin-top: 30px;">
+						<h3 class="ztu-orange">Чим займаємось?</h3>
+						<ul class="ztu-list">
+							<li class="fragment">🌐 Frontend & Backend розробка</li>
+							<li class="fragment">☁️ Cloud & Data solutions</li>
+							<li class="fragment">🔒 Cybersecurity</li>
+							<li class="fragment">📞 24/7 Tech Support</li>
+							<li class="fragment">📡 Telecom</li>
+						</ul>
+					</div>
+				</section>
+
+				<!-- Tieto - Індустрії та офіси -->
+				<section>
+					<h2 class="ztu-blue">TIETO В УКРАЇНІ</h2>
+
+					<div class="fragment fade-in">
+						<h3 class="ztu-orange">Індустрії</h3>
+						<p>Banking • Healthcare • Energy • Telecom • Public Sector</p>
+					</div>
+
+					<div class="fragment fade-in" style="margin-top: 30px;">
+						<h3 class="ztu-orange">Офіси в Україні</h3>
+						<p>Київ • Львів • Вінниця • Івано-Франківськ • <span class="ztu-blue">Житомир</span></p>
+					</div>
+				</section>
+
+
+
+				<!-- CHROME DEVTOOLS 2024-2025 PRESENTATION -->
+
+				<!-- Title Slide -->
+				<section>
+					<h1 class="ztu-blue">Chrome DevTools 2024-2025</h1>
+					<p class="ztu-orange">Новинки та AI Revolution</p>
+					<div style="margin-top: 50px;">
+						<img src="https://developer.chrome.com/static/blog/new-in-devtools-127/images/hero.png" alt="Chrome DevTools" style="max-width: 500px; height: auto; border-radius: 10px;">
+					</div>
+				</section>
+
+				<!-- РОЗДІЛ: ДЕ І ЯК ВИКОРИСТОВУВАТИ -->
+
+				<!-- Кейси використання -->
+				<section>
+					<h2 class="ztu-blue">ДЕ І ЯК ВИКОРИСТОВУВАТИ DEVTOOLS?</h2>
+					<p class="ztu-orange">Типові сценарії роботи розробника</p>
+
+					<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-top: 40px; font-size: 0.85em;">
+						<div class="fragment fade-in">
+							<h3 class="ztu-orange">🐛 JavaScript Debugging</h3>
+							<ul class="ztu-list">
+								<li>Breakpoints та step-by-step</li>
+								<li>Console logging</li>
+								<li>Watch expressions</li>
+								<li>Call stack аналіз</li>
+							</ul>
+						</div>
+
+						<div class="fragment fade-in">
+							<h3 class="ztu-orange">🎨 CSS Debugging</h3>
+							<ul class="ztu-list">
+								<li>Inspect Element</li>
+								<li>Live editing стилів</li>
+								<li>Layout та Box Model</li>
+								<li>Computed styles</li>
+							</ul>
+						</div>
+
+						<div class="fragment fade-in">
+							<h3 class="ztu-orange">🌐 Network Analysis</h3>
+							<ul class="ztu-list">
+								<li>HTTP requests моніторинг</li>
+								<li>Waterfall аналіз</li>
+								<li>Response preview</li>
+								<li>Network throttling</li>
+							</ul>
+						</div>
+
+						<div class="fragment fade-in">
+							<h3 class="ztu-orange">⚡ Performance Optimization</h3>
+							<ul class="ztu-list">
+								<li>Core Web Vitals</li>
+								<li>Memory leaks</li>
+								<li>Rendering bottlenecks</li>
+								<li>Lighthouse audits</li>
+							</ul>
+						</div>
+					</div>
+				</section>
+
+				<!-- Workflow розробника -->
+				<section>
+					<h2 class="ztu-blue">WORKFLOW РОЗРОБНИКА</h2>
+					<p class="ztu-orange">Як DevTools допомагає щодня</p>
+
+					<div style="margin-top: 40px;">
+						<div class="fragment fade-in" style="margin-bottom: 30px;">
+							<h3 class="ztu-orange">1️⃣ Розробка</h3>
+							<p>Live editing HTML/CSS → Швидке прототипування → Тестування на різних екранах</p>
+						</div>
+
+						<div class="fragment fade-in" style="margin-bottom: 30px;">
+							<h3 class="ztu-orange">2️⃣ Debugging</h3>
+							<p>Console errors → Breakpoints → Sources панель → Network issues</p>
+						</div>
+
+						<div class="fragment fade-in" style="margin-bottom: 30px;">
+							<h3 class="ztu-orange">3️⃣ Оптимізація</h3>
+							<p>Performance profiling → Memory analysis → Bundle size → Lighthouse recommendations</p>
+						</div>
+
+						<div class="fragment fade-in">
+							<h3 class="ztu-orange">4️⃣ Тестування</h3>
+							<p>Mobile emulation → Network conditions → Accessibility → Security</p>
+						</div>
+					</div>
+				</section>
+
+				<!-- РОЗДІЛ: НОВИНКИ 2024-2025 -->
+
+				<!-- Заголовок розділу -->
+				<section>
+					<h1 class="ztu-blue">ЩО НОВОГО В 2024-2025?</h1>
+					<p class="ztu-orange">AI Revolution та нові можливості</p>
+				</section>
+
+				<!-- ТОП-5 оновлень -->
+				<section>
+					<h2 class="ztu-blue">ТОП-5 НАЙВАЖЛИВІШИХ ОНОВЛЕНЬ</h2>
+
+					<div style="margin-top: 40px;">
+						<div class="fragment fade-in" style="background: rgba(34, 74, 152, 0.05); border-left: 5px solid var(--ztu-blue); margin: 20px 0; padding: 20px; border-radius: 8px;">
+							<h3 class="ztu-orange">✨ 1. AI-асистент з Gemini</h3>
+							<p>Інтеграція штучного інтелекту для пояснення помилок, аналізу performance та допомоги зі стилями</p>
+						</div>
+
+						<div class="fragment fade-in" style="background: rgba(34, 74, 152, 0.05); border-left: 5px solid var(--ztu-orange); margin: 20px 0; padding: 20px; border-radius: 8px;">
+							<h3 class="ztu-orange">🤖 2. Chrome DevTools MCP</h3>
+							<p>Model Context Protocol - AI "бачить" браузер та може автоматично дебажити код</p>
+						</div>
+
+						<div class="fragment fade-in" style="background: rgba(34, 74, 152, 0.05); border-left: 5px solid var(--ztu-green); margin: 20px 0; padding: 20px; border-radius: 8px;">
+							<h3 class="ztu-orange">🚀 3. Новий Performance Panel</h3>
+							<p>Інтеграція Lighthouse, real-time Core Web Vitals, Layout Shift debugging</p>
+						</div>
+
+						<div class="fragment fade-in" style="background: rgba(34, 74, 152, 0.05); border-left: 5px solid var(--ztu-red); margin: 20px 0; padding: 20px; border-radius: 8px;">
+							<h3 class="ztu-orange">🔒 4. Privacy & Security Panel</h3>
+							<p>Тестування без third-party cookies, Privacy Sandbox, Storage Partitioning</p>
+						</div>
+
+						<div class="fragment fade-in" style="background: rgba(34, 74, 152, 0.05); border-left: 5px solid var(--ztu-orange); margin: 20px 0; padding: 20px; border-radius: 8px;">
+							<h3 class="ztu-orange">⚡ 5. Individual Request Throttling</h3>
+							<p>Throttling окремих network запитів для точнішого тестування</p>
+						</div>
+					</div>
+				</section>
+
+				<!-- РОЗДІЛ: AI INTEGRATION -->
+
+				<!-- AI Assistance - що це -->
+				<section>
+					<h2 class="ztu-blue">AI ASSISTANCE В DEVTOOLS</h2>
+					<p class="ztu-orange">Gemini в браузері - ваш персональний помічник</p>
+
+					<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 20px;">
+						<div>
+							<div class="fragment fade-in">
+								<h3 class="ztu-orange">Що це таке?</h3>
+								<p style="font-size: 0.9em;">Інтеграція Google Gemini AI в Chrome DevTools:</p>
+								<ul class="ztu-list" style="font-size: 0.85em;">
+									<li>Пояснення помилок у Console</li>
+									<li>Аналіз Performance</li>
+									<li>Debugging CSS та стилів</li>
+									<li>Оптимізація Network</li>
+								</ul>
+							</div>
+
+							<div class="fragment fade-in" style="margin-top: 20px;">
+								<h3 class="ztu-orange">Як увімкнути?</h3>
+								<p style="font-size: 0.9em;"><strong>Settings</strong> → <strong>AI Innovations</strong> → <strong>Enable Console Insights</strong></p>
+								<p style="font-size: 0.75em; color: #666;">Доступно з Chrome 120+</p>
+							</div>
+						</div>
+
+						<div class="fragment fade-in">
+							<img src="https://developer.chrome.com/static/docs/devtools/ai-assistance/images/demo-hangar.png"
+								alt="AI Assistance Demo"
+								style="width: 100%; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.15);">
+							<p style="font-size: 0.75em; margin-top: 10px; color: #666;">
+								<a href="https://developer.chrome.com/docs/devtools/ai-assistance" target="_blank" style="color: var(--ztu-blue);">
+									Інтерактивне Demo →
+								</a>
+							</p>
+						</div>
+					</div>
+				</section>
+
+				<!-- AI можливості -->
+				<section>
+					<h2 class="ztu-blue">AI МОЖЛИВОСТІ</h2>
+					<p class="ztu-orange">Що вміє AI в DevTools?</p>
+
+					<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 20px; font-size: 0.8em;">
+						<div class="fragment fade-in" style="background: rgba(34, 74, 152, 0.05); padding: 15px; border-radius: 8px;">
+							<h3 class="ztu-orange">💡 Console Insights</h3>
+							<p><strong>Lightbulb icon</strong> біля помилок</p>
+							<ul class="ztu-list" style="font-size: 0.85em; margin: 8px 0;">
+								<li>Пояснення помилки людською мовою</li>
+								<li>Причини виникнення</li>
+								<li>Варіанти рішення</li>
+								<li>Приклади коду</li>
+							</ul>
+						</div>
+
+						<div class="fragment fade-in" style="background: rgba(34, 74, 152, 0.05); padding: 15px; border-radius: 8px;">
+							<h3 class="ztu-orange">🎨 Styling Assistant</h3>
+							<p><strong>Elements панель</strong></p>
+							<ul class="ztu-list" style="font-size: 0.85em; margin: 8px 0;">
+								<li>Допомога з CSS властивостями</li>
+								<li>Пояснення computed styles</li>
+								<li>Рекомендації з layout</li>
+								<li>Flexbox/Grid підказки</li>
+							</ul>
+						</div>
+
+						<div class="fragment fade-in" style="background: rgba(34, 74, 152, 0.05); padding: 15px; border-radius: 8px;">
+							<h3 class="ztu-orange">⚡ Performance Analysis</h3>
+							<p><strong>Performance панель</strong></p>
+							<ul class="ztu-list" style="font-size: 0.85em; margin: 8px 0;">
+								<li>Аналіз bottlenecks</li>
+								<li>Core Web Vitals insights</li>
+								<li>Рекомендації з оптимізації</li>
+								<li>Пояснення метрик</li>
+							</ul>
+						</div>
+
+						<div class="fragment fade-in" style="background: rgba(34, 74, 152, 0.05); padding: 15px; border-radius: 8px;">
+							<h3 class="ztu-orange">🌐 Network Debugging</h3>
+							<p><strong>Network панель</strong></p>
+							<ul class="ztu-list" style="font-size: 0.85em; margin: 8px 0;">
+								<li>Аналіз failed requests</li>
+								<li>Пояснення status codes</li>
+								<li>Headers troubleshooting</li>
+								<li>CORS та безпека</li>
+							</ul>
+						</div>
+					</div>
+				</section>
+
+				<!-- Console Insights приклад -->
+				<section>
+					<h2 class="ztu-blue">CONSOLE INSIGHTS - ПРИКЛАД</h2>
+					<p class="ztu-orange">Як працює AI з помилками</p>
+
+					<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 20px; align-items: start;">
+						<div>
+							<div class="fragment fade-in">
+								<h3 class="ztu-orange">❌ Помилка в Console:</h3>
+								<pre><code class="javascript" data-line-numbers>Uncaught TypeError: Cannot read property 'map' of undefined
+    at App.js:23</code></pre>
+							</div>
+
+							<div class="fragment fade-in" style="margin-top: 20px;">
+								<h3 class="ztu-orange">💡 AI пояснює:</h3>
+								<div style="background: rgba(34, 74, 152, 0.05); padding: 15px; border-radius: 8px; text-align: left; font-size: 0.85em;">
+									<p><strong class="ztu-blue">Проблема:</strong> Метод .map() на undefined</p>
+									<p><strong class="ztu-blue">Причина:</strong> Дані не завантажились</p>
+									<p><strong class="ztu-blue">Рішення:</strong></p>
+									<pre style="font-size: 0.75em;"><code class="javascript" data-line-numbers>const items = data?.items || [];
+items.map(item => ...)</code></pre>
+								</div>
+							</div>
+						</div>
+
+						<div class="fragment fade-in">
+							<img src="https://developer.chrome.com/static/docs/devtools/ai-assistance/images/demo-overflow.png"
+								alt="AI Console Insights Demo"
+								style="width: 100%; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.15);">
+							<p style="font-size: 0.75em; margin-top: 10px; color: #666;">
+								<a href="https://developer.chrome.com/docs/devtools/ai-assistance" target="_blank" style="color: var(--ztu-blue);">
+									Live Demo →
+								</a>
+							</p>
+						</div>
+					</div>
+				</section>
+
+				<!-- Chrome DevTools MCP -->
+				<section>
+					<h2 class="ztu-blue">CHROME DEVTOOLS MCP</h2>
+					<p class="ztu-orange">Model Context Protocol - AI з очима</p>
+
+					<div style="margin-top: 30px;">
+						<div class="fragment fade-in">
+							<h3 class="ztu-orange">🤖 Що це?</h3>
+							<p>Новий протокол, що дозволяє AI coding assistants <strong>бачити</strong> браузер і DevTools</p>
+							<blockquote style="margin-top: 20px;">
+								<em>"Give your AI eyes"</em> - AI більше не кодить наосліп
+							</blockquote>
+						</div>
+
+						<div class="fragment fade-in" style="margin-top: 30px;">
+							<h3 class="ztu-orange">🔌 Інтеграції:</h3>
+							<div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 15px; margin-top: 20px;">
+								<div style="background: rgba(34, 74, 152, 0.1); padding: 15px; border-radius: 8px;">
+									<strong>Cursor</strong>
+									<p style="font-size: 0.8em;">AI бачить DOM, Console, Network</p>
+								</div>
+								<div style="background: rgba(34, 74, 152, 0.1); padding: 15px; border-radius: 8px;">
+									<strong>Claude Code</strong>
+									<p style="font-size: 0.8em;">Автоматичний debugging</p>
+								</div>
+								<div style="background: rgba(34, 74, 152, 0.1); padding: 15px; border-radius: 8px;">
+									<strong>Gemini CLI</strong>
+									<p style="font-size: 0.8em;">Термінальний доступ</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</section>
+
+				<!-- MCP можливості -->
+				<section>
+					<h2 class="ztu-blue">MCP МОЖЛИВОСТІ</h2>
+					<p class="ztu-orange">Що може AI через MCP</p>
+
+					<div style="margin-top: 40px;">
+						<div class="fragment fade-in" style="margin-bottom: 25px;">
+							<h3 class="ztu-orange">👁️ Бачить браузер:</h3>
+							<ul class="ztu-list">
+								<li>DOM структуру сторінки</li>
+								<li>Console помилки та warnings</li>
+								<li>Network requests та responses</li>
+								<li>Performance metrics</li>
+							</ul>
+						</div>
+
+						<div class="fragment fade-in" style="margin-bottom: 25px;">
+							<h3 class="ztu-orange">🛠️ Автоматичні дії:</h3>
+							<ul class="ztu-list">
+								<li>Встановлення breakpoints</li>
+								<li>Інспекція елементів</li>
+								<li>Аналіз stack traces</li>
+								<li>Генерація labels та анотацій</li>
+							</ul>
+						</div>
+
+						<div class="fragment fade-in">
+							<h3 class="ztu-orange">🚀 Use Cases:</h3>
+							<p><strong class="ztu-blue">"AI, знайди чому не працює форма"</strong> → AI сам інспектує, знаходить помилку і пропонує фікс</p>
+						</div>
+					</div>
+				</section>
+
+				<!-- РОЗДІЛ: PERFORMANCE PANEL -->
+
+				<!-- Performance Panel - заголовок -->
+				<section>
+					<h1 class="ztu-blue">PERFORMANCE PANEL</h1>
+					<p class="ztu-orange">Повне оновлення в 2024</p>
+				</section>
+
+				<!-- Що змінилось -->
+				<section>
+					<h2 class="ztu-blue">ЩО ЗМІНИЛОСЬ У PERFORMANCE PANEL?</h2>
+					<p class="ztu-orange">Об'єднання кращих інструментів</p>
+
+					<div style="margin-top: 40px;">
+						<div class="fragment fade-in" style="margin-bottom: 30px;">
+							<h3 class="ztu-orange">🔄 Інтеграція Lighthouse</h3>
+							<p>Performance Insights та Lighthouse тепер <strong>всередині</strong> Performance панелі</p>
+							<ul class="ztu-list" style="font-size: 0.85em;">
+								<li>Не потрібно перемикатись між вкладками</li>
+								<li>Єдиний workflow для аналізу</li>
+								<li>Автоматичні рекомендації під час профілювання</li>
+							</ul>
+						</div>
+
+						<div class="fragment fade-in" style="margin-bottom: 30px;">
+							<h3 class="ztu-orange">📊 Real-time Core Web Vitals</h3>
+							<p>Моніторинг метрик <strong>в реальному часі</strong></p>
+							<ul class="ztu-list" style="font-size: 0.85em;">
+								<li><strong>LCP</strong> (Largest Contentful Paint)</li>
+								<li><strong>CLS</strong> (Cumulative Layout Shift)</li>
+								<li><strong>INP</strong> (Interaction to Next Paint) - замінив FID</li>
+							</ul>
+						</div>
+
+						<div class="fragment fade-in">
+							<h3 class="ztu-orange">📝 Annotations (Анотації)</h3>
+							<p>Додавайте мітки під час запису для зручного аналізу</p>
+						</div>
+					</div>
+				</section>
+
+				<!-- Core Web Vitals -->
+				<section>
+					<h2 class="ztu-blue">CORE WEB VITALS В DEVTOOLS</h2>
+					<p class="ztu-orange">Ключові метрики продуктивності</p>
+
+					<div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px; margin-top: 30px; font-size: 0.8em;">
+						<div class="fragment fade-in" style="background: rgba(76, 173, 59, 0.1); padding: 20px; border-radius: 8px; border-top: 4px solid var(--ztu-green);">
+							<h3 class="ztu-green">LCP</h3>
+							<p style="font-size: 0.9em;"><strong>Largest Contentful Paint</strong></p>
+							<p style="margin-top: 10px;">Час завантаження найбільшого елемента</p>
+							<p style="margin-top: 10px;"><strong class="ztu-green">✓ Good:</strong> &lt; 2.5s</p>
+						</div>
+
+						<div class="fragment fade-in" style="background: rgba(238, 120, 28, 0.1); padding: 20px; border-radius: 8px; border-top: 4px solid var(--ztu-orange);">
+							<h3 class="ztu-orange">INP</h3>
+							<p style="font-size: 0.9em;"><strong>Interaction to Next Paint</strong></p>
+							<p style="margin-top: 10px;">Швидкість відгуку на дії користувача</p>
+							<p style="margin-top: 10px;"><strong class="ztu-green">✓ Good:</strong> &lt; 200ms</p>
+						</div>
+
+						<div class="fragment fade-in" style="background: rgba(34, 74, 152, 0.1); padding: 20px; border-radius: 8px; border-top: 4px solid var(--ztu-blue);">
+							<h3 class="ztu-blue">CLS</h3>
+							<p style="font-size: 0.9em;"><strong>Cumulative Layout Shift</strong></p>
+							<p style="margin-top: 10px;">Несподівані зміщення контенту</p>
+							<p style="margin-top: 10px;"><strong class="ztu-green">✓ Good:</strong> &lt; 0.1</p>
+						</div>
+					</div>
+
+					<div class="fragment fade-in" style="margin-top: 30px; background: rgba(229, 62, 35, 0.05); padding: 20px; border-radius: 8px; border-left: 4px solid var(--ztu-red);">
+						<p><strong>⚠️ Важливо:</strong> Google використовує Core Web Vitals для ранжування в пошуку!</p>
+					</div>
+				</section>
+
+				<!-- Layout Shift Debugging -->
+				<section>
+					<h2 class="ztu-blue">LAYOUT SHIFT DEBUGGING</h2>
+					<p class="ztu-orange">Знайти "стрибки" стало простіше</p>
+
+					<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 20px;">
+						<div>
+							<div class="fragment fade-in" style="margin-bottom: 20px;">
+								<h3 class="ztu-orange">🎯 Layout Shift Culprits</h3>
+								<p style="font-size: 0.9em;">Нова фіча (Chrome 141+)</p>
+								<ul class="ztu-list" style="font-size: 0.85em;">
+									<li><strong>Знаходить елементи</strong> що викликали зсув</li>
+									<li><strong>Screenshot до/після</strong> зсуву</li>
+									<li><strong>Розмір зсуву</strong> в пікселях</li>
+									<li>Посилання на <strong>DOM елемент</strong></li>
+								</ul>
+							</div>
+
+							<div class="fragment fade-in">
+								<h3 class="ztu-orange">🔍 Як користуватись:</h3>
+								<ol class="ztu-list" style="font-size: 0.85em;">
+									<li>Записати Performance profile</li>
+									<li>Знайти червоні мітки "Layout Shift"</li>
+									<li>Клікнути → деталі + винуватець</li>
+									<li>Виправити CSS/HTML</li>
+								</ol>
+							</div>
+						</div>
+
+						<div class="fragment fade-in">
+							<img src="https://web.dev/static/articles/debug-layout-shifts/image/devtools-cls-debugging.png"
+								alt="Layout Shift Debugging in Performance Panel"
+								style="width: 100%; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.15);">
+							<p style="font-size: 0.75em; margin-top: 10px; color: #666;">
+								Performance панель з Layout Shift треком
+							</p>
+						</div>
+					</div>
+				</section>
+
+				<!-- Типові причини CLS -->
+				<section>
+					<h2 class="ztu-blue">ТИПОВІ ПРИЧИНИ LAYOUT SHIFT</h2>
+					<p class="ztu-orange">Що найчастіше викликає "стрибки"</p>
+
+					<div style="margin-top: 30px; font-size: 0.85em;">
+						<div class="fragment fade-in" style="background: rgba(34, 74, 152, 0.05); border-left: 5px solid var(--ztu-red); margin: 15px 0; padding: 20px; border-radius: 8px;">
+							<h3 class="ztu-orange">❌ 1. Зображення без розмірів</h3>
+							<pre><code class="html" data-line-numbers><!-- Погано -->
+<img src="image.jpg">
+
+<!-- Добре -->
+<img src="image.jpg" width="800" height="600">
+<!-- або CSS aspect-ratio --></code></pre>
+						</div>
+
+						<div class="fragment fade-in" style="background: rgba(34, 74, 152, 0.05); border-left: 5px solid var(--ztu-red); margin: 15px 0; padding: 20px; border-radius: 8px;">
+							<h3 class="ztu-orange">❌ 2. Веб-шрифти (FOUT/FOIT)</h3>
+							<pre><code class="css" data-line-numbers>/* Використовуйте font-display */
+@font-face {
+  font-family: 'MyFont';
+  font-display: swap; /* або optional */
+  src: url('font.woff2');
+}</code></pre>
+						</div>
+
+						<div class="fragment fade-in" style="background: rgba(34, 74, 152, 0.05); border-left: 5px solid var(--ztu-red); margin: 15px 0; padding: 20px; border-radius: 8px;">
+							<h3 class="ztu-orange">❌ 3. Динамічний контент без placeholder</h3>
+							<p>Реклама, банери, embeds → резервуйте місце з CSS</p>
+						</div>
+					</div>
+				</section>
+
+				<!-- Інші Performance оновлення -->
+				<section>
+					<h2 class="ztu-blue">ІНШІ PERFORMANCE ОНОВЛЕННЯ</h2>
+
+					<div style="margin-top: 40px;">
+						<div class="fragment fade-in" style="margin-bottom: 30px;">
+							<h3 class="ztu-orange">🎬 Scroll-Driven Animations</h3>
+							<p>Debugging анімацій на основі скролу</p>
+							<ul class="ztu-list" style="font-size: 0.85em;">
+								<li>Візуалізація animation timeline</li>
+								<li>Перевірка тригерів</li>
+								<li>Performance impact аналіз</li>
+							</ul>
+						</div>
+
+						<div class="fragment fade-in" style="margin-bottom: 30px;">
+							<h3 class="ztu-orange">📡 Network Throttling для WebRTC</h3>
+							<p>Тестування відео/аудіо дзвінків</p>
+							<ul class="ztu-list" style="font-size: 0.85em;">
+								<li>Емуляція поганого інтернету</li>
+								<li>Різні профілі (3G, 4G, LTE)</li>
+								<li>Перевірка якості стріму</li>
+							</ul>
+						</div>
+
+						<div class="fragment fade-in">
+							<h3 class="ztu-orange">🎨 CSS Nesting Підтримка</h3>
+							<p>Інспекція вкладених CSS правил</p>
+							<pre style="font-size: 0.65em;"><code class="css" data-line-numbers>.card {
+  padding: 20px;
+
+  & .title {
+    font-size: 24px;
+  }
+}</code></pre>
+						</div>
+					</div>
+				</section>
+
+				<!-- РОЗДІЛ: NETWORK ТА ІНШІ ПАНЕЛІ -->
+
+				<!-- Individual Request Throttling -->
+				<section>
+					<h2 class="ztu-blue">INDIVIDUAL REQUEST THROTTLING</h2>
+					<p class="ztu-orange">Chrome Canary - Throttling окремих запитів</p>
+
+					<div style="margin-top: 40px;">
+						<div class="fragment fade-in" style="margin-bottom: 30px;">
+							<h3 class="ztu-orange">🎯 Що це?</h3>
+							<p>Можливість <strong>throttle конкретний network request</strong> до певної швидкості</p>
+							<ul class="ztu-list">
+								<li>Раніше: throttling всієї сторінки</li>
+								<li>Тепер: throttling 1 запиту (API, зображення, шрифт...)</li>
+								<li>Точніше тестування edge cases</li>
+							</ul>
+						</div>
+
+						<div class="fragment fade-in" style="margin-bottom: 30px;">
+							<h3 class="ztu-orange">🔧 Як користуватись:</h3>
+							<ol class="ztu-list">
+								<li>Відкрити <strong>Network</strong> панель</li>
+								<li>Правий клік на request → <strong>Override connection speed</strong></li>
+								<li>Обрати швидкість (Slow 3G, Fast 3G, offline...)</li>
+								<li>Перезавантажити сторінку</li>
+							</ol>
+						</div>
+
+						<div class="fragment fade-in">
+							<h3 class="ztu-orange">💡 Use Cases:</h3>
+							<ul class="ztu-list" style="font-size: 0.85em;">
+								<li>Тестування lazy loading картинок</li>
+								<li>Перевірка loading states для API</li>
+								<li>Симуляція повільного CDN</li>
+								<li>Debugging timeouts</li>
+							</ul>
+						</div>
+					</div>
+				</section>
+
+				<!-- Privacy & Security Panel -->
+				<section>
+					<h2 class="ztu-blue">PRIVACY & SECURITY PANEL</h2>
+					<p class="ztu-orange">Chrome 133+ - Тестування без cookies</p>
+
+					<div style="margin-top: 40px;">
+						<div class="fragment fade-in" style="margin-bottom: 30px;">
+							<h3 class="ztu-orange">🔒 Нова панель для Privacy</h3>
+							<p>Спеціальна панель для тестування privacy-sensitive features</p>
+							<ul class="ztu-list">
+								<li><strong>Third-party cookies blocking</strong></li>
+								<li><strong>Privacy Sandbox</strong> APIs</li>
+								<li><strong>Storage Partitioning</strong></li>
+								<li><strong>Bounce Tracking</strong> protection</li>
+							</ul>
+						</div>
+
+						<div class="fragment fade-in" style="margin-top: 30px;">
+							<h3 class="ztu-orange">⚠️ Чому це важливо?</h3>
+							<div style="background: rgba(229, 62, 35, 0.05); padding: 20px; border-radius: 8px; border-left: 4px solid var(--ztu-red);">
+								<p><strong>Chrome прибирає third-party cookies в 2025!</strong></p>
+								<p style="margin-top: 10px; font-size: 0.9em;">Ваш сайт працює без cookies? Перевірте зараз!</p>
+							</div>
+						</div>
+					</div>
+				</section>
+
+				<!-- Privacy Sandbox -->
+				<section>
+					<h2 class="ztu-blue">PRIVACY SANDBOX</h2>
+					<p class="ztu-orange">Альтернативи third-party cookies</p>
+
+					<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 25px; margin-top: 30px; font-size: 0.8em;">
+						<div class="fragment fade-in" style="background: rgba(34, 74, 152, 0.05); padding: 20px; border-radius: 8px;">
+							<h3 class="ztu-orange">📊 Topics API</h3>
+							<p><strong>Interest-based ads</strong> без tracking</p>
+							<ul class="ztu-list" style="font-size: 0.9em; margin-top: 10px;">
+								<li>Браузер визначає інтереси</li>
+								<li>Без cross-site tracking</li>
+								<li>Privacy-preserving</li>
+							</ul>
+						</div>
+
+						<div class="fragment fade-in" style="background: rgba(34, 74, 152, 0.05); padding: 20px; border-radius: 8px;">
+							<h3 class="ztu-orange">🎯 FLEDGE / Protected Audience</h3>
+							<p><strong>Remarketing</strong> в браузері</p>
+							<ul class="ztu-list" style="font-size: 0.9em; margin-top: 10px;">
+								<li>On-device ad auctions</li>
+								<li>Без серверного tracking</li>
+								<li>Конфіденційність</li>
+							</ul>
+						</div>
+
+						<div class="fragment fade-in" style="background: rgba(34, 74, 152, 0.05); padding: 20px; border-radius: 8px;">
+							<h3 class="ztu-orange">📈 Attribution Reporting</h3>
+							<p><strong>Конверсії</strong> без cookies</p>
+							<ul class="ztu-list" style="font-size: 0.9em; margin-top: 10px;">
+								<li>Event-level reports</li>
+								<li>Aggregate reports</li>
+								<li>Privacy-first metrics</li>
+							</ul>
+						</div>
+
+						<div class="fragment fade-in" style="background: rgba(34, 74, 152, 0.05); padding: 20px; border-radius: 8px;">
+							<h3 class="ztu-orange">🔐 Storage Partitioning</h3>
+							<p><strong>Ізоляція</strong> storage</p>
+							<ul class="ztu-list" style="font-size: 0.9em; margin-top: 10px;">
+								<li>Окремий storage per site</li>
+								<li>Захист від fingerprinting</li>
+								<li>Cross-site isolation</li>
+							</ul>
+						</div>
+					</div>
+				</section>
+
+				<!-- Extension Storage -->
+				<section>
+					<h2 class="ztu-blue">EXTENSION STORAGE VIEWING</h2>
+					<p class="ztu-orange">Chrome 132+ - Debugging розширень</p>
+
+					<div style="margin-top: 40px;">
+						<div class="fragment fade-in" style="margin-bottom: 30px;">
+							<h3 class="ztu-orange">🧩 Що нового?</h3>
+							<p>Тепер можна <strong>переглядати та редагувати</strong> дані chrome.storage API</p>
+							<ul class="ztu-list">
+								<li>Application панель → Storage</li>
+								<li>Нова секція <strong>"Extension Storage"</strong></li>
+								<li>Перегляд sync/local/session storage</li>
+								<li>Live editing values</li>
+							</ul>
+						</div>
+
+						<div class="fragment fade-in">
+							<h3 class="ztu-orange">💼 Для кого?</h3>
+							<p>Для розробників <strong>Chrome Extensions</strong></p>
+							<ul class="ztu-list" style="font-size: 0.85em;">
+								<li>Debugging extension state</li>
+								<li>Перевірка sync між пристроями</li>
+								<li>Тестування storage limits</li>
+								<li>Clear/modify storage під час розробки</li>
+							</ul>
+						</div>
+					</div>
+				</section>
+
+				<!-- Masonry Layout -->
+				<section>
+					<h2 class="ztu-blue">MASONRY LAYOUT INSPECTION</h2>
+					<p class="ztu-orange">CSS Grid + Masonry = ❤️</p>
+
+					<div style="margin-top: 40px;">
+						<div class="fragment fade-in" style="margin-bottom: 30px;">
+							<h3 class="ztu-orange">🧱 Що таке Masonry?</h3>
+							<p>Новий тип grid layout (як Pinterest)</p>
+							<pre style="font-size: 0.65em;"><code class="css" data-line-numbers>.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: masonry; /* NEW! */
+  gap: 20px;
+}</code></pre>
+						</div>
+
+						<div class="fragment fade-in" style="margin-bottom: 30px;">
+							<h3 class="ztu-orange">🔍 Інспекція в DevTools</h3>
+							<p><strong>Elements → Styles</strong> панель</p>
+							<ul class="ztu-list" style="font-size: 0.85em;">
+								<li>Візуалізація masonry tracks</li>
+								<li>Overlay з grid lines</li>
+								<li>Debugging item placement</li>
+							</ul>
+						</div>
+
+						<div class="fragment fade-in">
+							<h3 class="ztu-orange">⚠️ Browser Support</h3>
+							<p style="font-size: 0.85em;">Поки що experimental feature (Chrome Canary з флагом)</p>
+						</div>
+					</div>
+				</section>
+
+				<!-- РОЗДІЛ: ПІДСУМКИ ТА РЕСУРСИ -->
+
+				<!-- Best Practices -->
+				<section>
+					<h2 class="ztu-blue">BEST PRACTICES 2025</h2>
+					<p class="ztu-orange">Як використовувати DevTools ефективно</p>
+
+					<div style="margin-top: 40px;">
+						<div class="fragment fade-in" style="margin-bottom: 25px;">
+							<h3 class="ztu-orange">🤖 Використовуйте AI розумно</h3>
+							<ul class="ztu-list" style="font-size: 0.85em;">
+								<li>AI пояснює <strong>чому</strong>, а не тільки <strong>що</strong></li>
+								<li>Не копіюйте код сліпо - розумійте рішення</li>
+								<li>AI не замінює розуміння fundamentals</li>
+							</ul>
+						</div>
+
+						<div class="fragment fade-in" style="margin-bottom: 25px;">
+							<h3 class="ztu-orange">📊 Performance - це пріоритет</h3>
+							<ul class="ztu-list" style="font-size: 0.85em;">
+								<li>Перевіряйте Core Web Vitals регулярно</li>
+								<li>Layout Shift debugging = must have</li>
+								<li>Real users metrics > synthetic tests</li>
+							</ul>
+						</div>
+
+						<div class="fragment fade-in">
+							<h3 class="ztu-orange">🔒 Privacy-first підхід</h3>
+							<ul class="ztu-list" style="font-size: 0.85em;">
+								<li>Тестуйте без third-party cookies вже зараз</li>
+								<li>Вивчайте Privacy Sandbox APIs</li>
+								<li>Готуйтесь до cookieless майбутнього</li>
+							</ul>
+						</div>
+					</div>
+				</section>
+
+				<!-- Корисні DevTools тріки -->
+				<section>
+					<h2 class="ztu-blue">КОРИСНІ DEVTOOLS ТРІКИ</h2>
+					<p class="ztu-orange">Фішки, які варто знати</p>
+
+					<div style="margin-top: 30px; font-size: 0.85em;">
+						<div class="fragment fade-in" style="background: rgba(34, 74, 152, 0.05); border-left: 5px solid var(--ztu-blue); margin: 15px 0; padding: 20px; border-radius: 8px;">
+							<h3 class="ztu-orange">⌨️ Cmd/Ctrl + Shift + P</h3>
+							<p>Command Palette - доступ до всіх команд DevTools</p>
+						</div>
+
+						<div class="fragment fade-in" style="background: rgba(34, 74, 152, 0.05); border-left: 5px solid var(--ztu-orange); margin: 15px 0; padding: 20px; border-radius: 8px;">
+							<h3 class="ztu-orange">💾 Local Overrides</h3>
+							<p>Sources → Overrides - редагуйте production код локально</p>
+						</div>
+
+						<div class="fragment fade-in" style="background: rgba(34, 74, 152, 0.05); border-left: 5px solid var(--ztu-green); margin: 15px 0; padding: 20px; border-radius: 8px;">
+							<h3 class="ztu-orange">📸 Full Page Screenshot</h3>
+							<p>Command Palette → "Capture full size screenshot"</p>
+						</div>
+
+						<div class="fragment fade-in" style="background: rgba(34, 74, 152, 0.05); border-left: 5px solid var(--ztu-red); margin: 15px 0; padding: 20px; border-radius: 8px;">
+							<h3 class="ztu-orange">🎭 Device Mode</h3>
+							<p>Cmd/Ctrl + Shift + M - швидке тестування mobile</p>
+						</div>
+					</div>
+				</section>
+
+				<!-- Корисні ресурси -->
+				<section>
+					<h2 class="ztu-blue">КОРИСНІ РЕСУРСИ</h2>
+					<p class="ztu-orange">Де дізнатись більше</p>
+
+					<div style="margin-top: 40px;">
+						<div class="fragment fade-in" style="margin-bottom: 30px;">
+							<h3 class="ztu-orange">📚 Офіційна документація</h3>
+							<ul class="ztu-list">
+								<li><strong>developer.chrome.com/docs/devtools</strong></li>
+								<li><strong>developer.chrome.com/blog</strong> - What's New</li>
+								<li><strong>developer.chrome.com/new</strong> - Release notes</li>
+							</ul>
+						</div>
+
+						<div class="fragment fade-in" style="margin-bottom: 30px;">
+							<h3 class="ztu-orange">🎓 Навчання та курси</h3>
+							<ul class="ztu-list">
+								<li><strong>web.dev</strong> - Performance patterns</li>
+								<li><strong>Chrome DevTools Tips</strong> (Twitter/X)</li>
+								<li>YouTube: Chrome Developers channel</li>
+							</ul>
+						</div>
+
+						<div class="fragment fade-in">
+							<h3 class="ztu-orange">👥 Community</h3>
+							<ul class="ztu-list">
+								<li>Chrome DevTools GitHub (issues, discussions)</li>
+								<li>Stack Overflow (#chrome-devtools)</li>
+								<li>Reddit: r/webdev, r/javascript</li>
+							</ul>
+						</div>
+					</div>
+				</section>
+
+				<!-- Підсумки -->
+				<section>
+					<h2 class="ztu-blue">ПІДСУМКИ</h2>
+					<p class="ztu-orange">Що запам'ятати з 2024-2025</p>
+
+					<div style="margin-top: 50px;">
+						<div class="fragment fade-in" style="background: rgba(34, 74, 152, 0.05); padding: 30px; border-radius: 10px; margin: 20px 0;">
+							<h3 class="ztu-blue">🤖 AI змінює DevTools</h3>
+							<p>Gemini та MCP - це не майбутнє, це вже реальність</p>
+						</div>
+
+						<div class="fragment fade-in" style="background: rgba(238, 120, 28, 0.05); padding: 30px; border-radius: 10px; margin: 20px 0;">
+							<h3 class="ztu-orange">⚡ Performance - критично</h3>
+							<p>Core Web Vitals впливають на SEO та UX</p>
+						</div>
+
+						<div class="fragment fade-in" style="background: rgba(229, 62, 35, 0.05); padding: 30px; border-radius: 10px; margin: 20px 0;">
+							<h3 class="ztu-red">🔒 Privacy-first era</h3>
+							<p>Third-party cookies йдуть - готуйтесь зараз</p>
+						</div>
+
+						<div class="fragment fade-in" style="background: rgba(76, 173, 59, 0.05); padding: 30px; border-radius: 10px; margin: 20px 0;">
+							<h3 class="ztu-green">🚀 DevTools стають потужнішими</h3>
+							<p>Більше інструментів, краща інтеграція, швидший workflow</p>
+						</div>
+					</div>
+				</section>
+
+				<!-- Заклик до дії -->
+				<section>
+					<h2 class="ztu-blue">ЩО РОБИТИ ДАЛІ?</h2>
+
+					<div style="margin-top: 50px;">
+						<div class="fragment fade-in" style="margin-bottom: 30px;">
+							<h3 class="ztu-orange">1️⃣ Увімкніть AI Assistance</h3>
+							<p>Settings → AI Innovations → Enable Console Insights</p>
+						</div>
+
+						<div class="fragment fade-in" style="margin-bottom: 30px;">
+							<h3 class="ztu-orange">2️⃣ Перевірте Core Web Vitals</h3>
+							<p>Performance панель → записати profile → аналіз метрик</p>
+						</div>
+
+						<div class="fragment fade-in" style="margin-bottom: 30px;">
+							<h3 class="ztu-orange">3️⃣ Тестуйте без cookies</h3>
+							<p>Privacy & Security панель → disable third-party cookies</p>
+						</div>
+
+						<div class="fragment fade-in">
+							<h3 class="ztu-orange">4️⃣ Вивчайте нові фічі</h3>
+							<p>developer.chrome.com/blog - підпишіться на оновлення</p>
+						</div>
+					</div>
+				</section>
+
+				<!-- Q&A -->
+				<section>
+					<h1 class="ztu-blue">ДЯКУЮ ЗА УВАГУ!</h1>
+					<p class="ztu-orange">Питання?</p>
+
+					<div style="margin-top: 80px; font-size: 1.2em;">
+						<p class="fragment fade-in">📧 Контакти</p>
+						<p class="fragment fade-in">🔗 Посилання на презентацію</p>
+						<p class="fragment fade-in">💬 Q&A</p>
+					</div>
+				</section>
+
+			</div>
+		</div>
+
+		<script src="reveal.js"></script>
+		<script src="plugin/notes/notes.js"></script>
+		<script src="plugin/markdown/markdown.js"></script>
+		<script src="plugin/highlight/highlight.js"></script>
+		<script>
+			// More info about initialization & config:
+			// - https://revealjs.com/initialization/
+			// - https://revealjs.com/config/
+			Reveal.initialize({
+				hash: true,
+				progress: true,
+
+				// Learn about plugins: https://revealjs.com/plugins/
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
+			});
+		</script>
+	</body>
+</html>
