@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Presentations — Roman Savitskyi</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: Montserrat, Arial, sans-serif;
+      background: #fff;
+      color: #222;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    main {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 60px 20px 140px;
+    }
+    .container {
+      width: 100%;
+      max-width: 680px;
+    }
+    h1 {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: #224A98;
+      border-bottom: 2px solid #224A98;
+      padding-bottom: 16px;
+      margin-bottom: 32px;
+    }
+    ul { list-style: none; }
+    li { margin-bottom: 12px; }
+    a {
+      display: block;
+      padding: 16px 22px;
+      border-left: 4px solid #224A98;
+      background: rgba(34, 74, 152, 0.04);
+      border-radius: 0 8px 8px 0;
+      color: #224A98;
+      text-decoration: none;
+      font-size: 1rem;
+      font-weight: 600;
+      transition: background 0.15s, border-color 0.15s, transform 0.15s, color 0.15s;
+    }
+    a:hover {
+      background: rgba(34, 74, 152, 0.1);
+      border-color: #EE781C;
+      color: #EE781C;
+      transform: translateX(4px);
+    }
+    footer {
+      position: fixed;
+      bottom: 0; left: 0; right: 0;
+      height: 100px;
+      background: linear-gradient(135deg, #224A98 0%, #1a3a7a 100%);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 24px;
+    }
+    footer img {
+      height: 62px;
+      width: auto;
+      object-fit: contain;
+    }
+    footer .logo-center {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      height: 72px;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <div class="container">
+      <h1>Presentations</h1>
+      <ul>
+        <!--BRANCH_LIST-->
+      </ul>
+    </div>
+  </main>
+  <footer>
+    <img src="assets/ztu-logo-white.png" alt="ZTU">
+    <img class="logo-center" src="assets/Tieto.png" alt="Tieto">
+    <img src="assets/beerjs.jpg" alt="BeerJS">
+  </footer>
+</body>
+</html>
