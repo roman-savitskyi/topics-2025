@@ -2,7 +2,9 @@
   "permissions": {
     "allow": [
       "WebFetch(domain:github.com)",
-      "WebFetch(domain:www.anthropic.com)"
+      "WebFetch(domain:www.anthropic.com)",
+      "WebFetch(domain:roman-savitskyi.github.io)",
+      "Bash(cat /Users/savitskyiroman/Documents/conf/topics-2025/.github/workflows/*.yml)"
     ]
   }
 }

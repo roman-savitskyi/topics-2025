@@ -69,7 +69,7 @@ jobs:
           # Створюємо/оновлюємо папку для гілки
           mkdir -p gh-pages-repo/${{ env.CLEAN_BRANCH }}
 
-          # Копіюємо всі файли презентації
+          # Копіюємо всі файли презентації в папку гілки
           cp -r *.html gh-pages-repo/${{ env.CLEAN_BRANCH }}/ 2>/dev/null || true
           cp -r css gh-pages-repo/${{ env.CLEAN_BRANCH }}/ 2>/dev/null || true
           cp -r js gh-pages-repo/${{ env.CLEAN_BRANCH }}/ 2>/dev/null || true
@@ -77,95 +77,98 @@ jobs:
           cp -r plugin gh-pages-repo/${{ env.CLEAN_BRANCH }}/ 2>/dev/null || true
           cp -r examples gh-pages-repo/${{ env.CLEAN_BRANCH }}/ 2>/dev/null || true
 
-          # Якщо це main гілка, копіюємо також в root
-          if [ "${{ env.BRANCH_NAME }}" = "main" ]; then
-            cp -r *.html gh-pages-repo/ 2>/dev/null || true
-            cp -r css gh-pages-repo/ 2>/dev/null || true
-            cp -r js gh-pages-repo/ 2>/dev/null || true
-            cp -r dist gh-pages-repo/ 2>/dev/null || true
-            cp -r plugin gh-pages-repo/ 2>/dev/null || true
-            cp -r examples gh-pages-repo/ 2>/dev/null || true
-          fi
-
-      - name: Create index page
+      - name: Generate index page
         run: |
           cd gh-pages-repo
 
-          # Створюємо простий index.html зі списком всіх гілок
-          cat > branches.html << 'EOF'
+          # Збираємо список всіх задеплоєних гілок (директорії, крім прихованих)
+          ITEMS=""
+          for dir in $(ls -d */ 2>/dev/null | sort); do
+            branch="${dir%/}"
+            # Конвертуємо назву директорії назад у читабельний вигляд (feature-km-ai → feature/km-ai)
+            display=$(echo "$branch" | sed 's/-/\//2')
+            ITEMS="${ITEMS}      <li><a href=\"${branch}/\">${display}</a></li>\n"
+          done
+
+          cat > index.html << HTMLEOF
           <!DOCTYPE html>
-          <html>
+          <html lang="uk">
           <head>
-              <meta charset="utf-8">
-              <title>Available Branches</title>
-              <style>
-                  body {
-                      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-                      max-width: 800px;
-                      margin: 50px auto;
-                      padding: 20px;
-                      line-height: 1.6;
-                  }
-                  h1 {
-                      border-bottom: 2px solid #333;
-                      padding-bottom: 10px;
-                  }
-                  ul {
-                      list-style: none;
-                      padding: 0;
-                  }
-                  li {
-                      margin: 10px 0;
-                      padding: 10px;
-                      background: #f5f5f5;
-                      border-radius: 5px;
-                  }
-                  a {
-                      color: #0366d6;
-                      text-decoration: none;
-                      font-weight: 500;
-                  }
-                  a:hover {
-                      text-decoration: underline;
-                  }
-                  .date {
-                      color: #666;
-                      font-size: 0.9em;
-                      margin-left: 10px;
-                  }
-              </style>
+            <meta charset="utf-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1">
+            <title>Presentations — Roman Savitskyi</title>
+            <style>
+              *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+              body {
+                font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+                min-height: 100vh;
+                background: linear-gradient(135deg, #0d1117 0%, #161b22 100%);
+                color: #c9d1d9;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                padding: 40px 20px;
+              }
+              .container {
+                width: 100%;
+                max-width: 680px;
+              }
+              h1 {
+                font-size: 1.6rem;
+                font-weight: 600;
+                color: #00d9ff;
+                border-bottom: 1px solid #30363d;
+                padding-bottom: 16px;
+                margin-bottom: 32px;
+                letter-spacing: -0.02em;
+              }
+              ul {
+                list-style: none;
+              }
+              li {
+                margin-bottom: 10px;
+              }
+              a {
+                display: block;
+                padding: 14px 20px;
+                background: rgba(255,255,255,0.04);
+                border: 1px solid #30363d;
+                border-radius: 8px;
+                color: #c9d1d9;
+                text-decoration: none;
+                font-size: 0.95rem;
+                transition: background 0.15s, border-color 0.15s, transform 0.15s;
+              }
+              a:hover {
+                background: rgba(0,217,255,0.08);
+                border-color: #00d9ff;
+                transform: translateX(4px);
+                color: #fff;
+              }
+              .empty {
+                color: #8b949e;
+                font-size: 0.9rem;
+                padding: 20px 0;
+              }
+              footer {
+                margin-top: 40px;
+                font-size: 0.8rem;
+                color: #484f58;
+                text-align: center;
+              }
+            </style>
           </head>
           <body>
-              <h1>📊 Available Presentation Branches</h1>
-              <ul id="branches"></ul>
-              <script>
-                  // Список буде оновлюватися автоматично
-                  const branches = [];
-          EOF
-
-          # Додаємо поточну гілку до списку
-          echo "        branches.push({ name: '${{ env.CLEAN_BRANCH }}', original: '${{ env.BRANCH_NAME }}', date: new Date().toISOString() });" >> branches.html
-
-          cat >> branches.html << 'EOF'
-
-                  const ul = document.getElementById('branches');
-                  branches.forEach(branch => {
-                      const li = document.createElement('li');
-                      const date = new Date(branch.date).toLocaleString('uk-UA');
-                      li.innerHTML = `
-                          <a href="/${branch.name}/">🎯 ${branch.original}</a>
-                          <span class="date">Оновлено: ${date}</span>
-                      `;
-                      ul.appendChild(li);
-                  });
-
-                  if (branches.length === 0) {
-                      ul.innerHTML = '<li>Поки що немає доступних гілок</li>';
-                  }
-              </script>
+            <div class="container">
+              <h1>Presentations</h1>
+              <ul>
+          $(printf "${ITEMS}")
+              </ul>
+              <footer>Roman Savitskyi · BeerJS Zhytomyr</footer>
+            </div>
           </body>
           </html>
-          EOF
+          HTMLEOF
 
       - name: Deploy to gh-pages
         run: |
@@ -192,8 +195,5 @@ jobs:
       - name: Output deployment URL
         run: |
           REPO_NAME=$(echo "${{ github.repository }}" | cut -d'/' -f2)
-          if [ "${{ env.BRANCH_NAME }}" = "main" ]; then
-            echo "✅ Main branch deployed to: https://${{ github.repository_owner }}.github.io/$REPO_NAME/"
-          fi
           echo "✅ Branch deployed to: https://${{ github.repository_owner }}.github.io/$REPO_NAME/${{ env.CLEAN_BRANCH }}/"
-          echo "📋 All branches: https://${{ github.repository_owner }}.github.io/$REPO_NAME/branches.html"
+          echo "📋 Index: https://${{ github.repository_owner }}.github.io/$REPO_NAME/"
