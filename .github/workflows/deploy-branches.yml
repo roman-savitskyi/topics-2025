@@ -83,6 +83,13 @@ jobs:
           cp examples/assets/Tieto.png gh-pages-repo/assets/ 2>/dev/null || true
           cp examples/assets/beerjs.jpg gh-pages-repo/assets/ 2>/dev/null || true
 
+          # Копіюємо assets у root examples/assets/ — CSS з підпапок шукає їх тут
+          # (dist/theme/ztu.css використовує ../../../examples/assets/)
+          mkdir -p gh-pages-repo/examples/assets
+          cp examples/assets/ztu-logo-white.png gh-pages-repo/examples/assets/ 2>/dev/null || true
+          cp examples/assets/Tieto.png gh-pages-repo/examples/assets/ 2>/dev/null || true
+          cp examples/assets/beerjs.jpg gh-pages-repo/examples/assets/ 2>/dev/null || true
+
       - name: Generate index page
         run: |
           cd gh-pages-repo
