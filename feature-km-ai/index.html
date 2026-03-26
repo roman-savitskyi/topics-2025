@@ -389,6 +389,66 @@ it('throws AuthError when token is expired', async () => {
 					</div>
 				</section>
 
+				<!-- ─── Do you have any questions ─── -->
+				<section>
+					<h2 class="ztu-blue">Pro tip: "Do you have any questions?"</h2>
+					<p class="ztu-orange">Дай AI можливість уточнити перед тим як починати</p>
+
+					<div style="margin-top: 20px;">
+						<div class="fragment fade-in prompt-good" style="font-size: 0.88em;">
+							<p>Refactor this Express middleware to handle auth errors properly. Stack: Node 20, TypeScript strict. No new dependencies.</p>
+							<p style="margin-top: 10px;"><strong>Before you start — do you have any clarifying questions?</strong></p>
+						</div>
+
+						<div class="fragment fade-in" style="margin-top: 20px; display: grid; grid-template-columns: 1fr 1fr; gap: 18px; font-size: 0.82em;">
+							<div style="background: rgba(229,62,35,0.06); border-radius: 8px; padding: 14px;">
+								<strong style="color:#e53e1f;">Без цього рядка:</strong>
+								<p style="margin-top: 8px;">AI одразу пише код, базуючись на припущеннях. Потім виявляється що не врахував edge case який ти мав на увазі.</p>
+							</div>
+							<div style="background: rgba(76,175,80,0.08); border-radius: 8px; padding: 14px;">
+								<strong style="color:#2e7d32;">З цим рядком:</strong>
+								<p style="margin-top: 8px;">AI питає: "Should expired tokens return 401 or redirect to login? What about malformed tokens?" — і ти вирішуєш це ДО написання коду.</p>
+							</div>
+						</div>
+
+						<div class="fragment fade-in" style="margin-top: 14px; font-size: 0.82em; text-align: center; color: #666;">
+							Особливо корисно для нетривіальних задач де є неочевидні рішення
+						</div>
+					</div>
+				</section>
+
+				<!-- ─── Devil's Advocate ─── -->
+				<section>
+					<h2 class="ztu-blue">Патерн 4: Devil's Advocate</h2>
+					<p class="ztu-orange">Попроси AI оскаржити твоє рішення</p>
+
+					<div style="margin-top: 20px;">
+						<div class="fragment fade-in prompt-good" style="font-size: 0.85em;">
+							<p>I'm planning to split our monolith into microservices. We have 3 devs, 10k DAU, single PostgreSQL DB, deployed on one VPS.</p>
+							<p style="margin-top: 10px;"><strong>Play devil's advocate: convince me this is a terrible idea right now. Be specific to our situation.</strong></p>
+						</div>
+
+						<div class="fragment fade-in" style="margin-top: 18px; display: grid; grid-template-columns: 1fr 1fr; gap: 18px; font-size: 0.82em;">
+							<div style="background: rgba(34,74,152,0.06); border-radius: 8px; padding: 14px;">
+								<strong class="ztu-orange">Інші формулювання:</strong>
+								<ul class="ztu-list" style="margin-top: 8px;">
+									<li>"What are the strongest arguments against this approach?"</li>
+									<li>"What would a skeptical staff engineer say about this?"</li>
+									<li>"What's the worst that can happen if we go this route?"</li>
+								</ul>
+							</div>
+							<div style="background: rgba(34,74,152,0.06); border-radius: 8px; padding: 14px;">
+								<strong class="ztu-orange">Коли застосовувати:</strong>
+								<ul class="ztu-list" style="margin-top: 8px;">
+									<li>Вибір архітектури</li>
+									<li>Вибір технологічного стеку</li>
+									<li>Будь-яке рішення з довгостроковими наслідками</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</section>
+
 				<!-- ═══════════════════════════════════════════════
 				     6. ТИПОВІ ПОМИЛКИ
 				     ═══════════════════════════════════════════════ -->
@@ -547,6 +607,53 @@ it('throws AuthError when token is expired', async () => {
 
 						<div class="fragment fade-in" style="margin-top: 14px; font-size: 0.82em; text-align: center; color: #666;">
 							Більше не повторюєш стек і преференції в кожному запиті
+						</div>
+					</div>
+				</section>
+
+				<!-- ─── Global vs Local + OpenRouter ─── -->
+				<section>
+					<h2 class="ztu-blue">Глобальні vs Локальні налаштування</h2>
+					<p class="ztu-orange">Два рівні кастомізації + вибір моделі</p>
+
+					<div style="margin-top: 18px;">
+						<div class="fragment fade-in" style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; font-size: 0.8em;">
+							<div style="background: rgba(34,74,152,0.06); border-radius: 10px; padding: 16px;">
+								<h3 class="ztu-blue" style="font-size:1em;">🌐 Глобальні (для всіх чатів)</h3>
+								<ul class="ztu-list" style="margin-top: 10px;">
+									<li><strong>ChatGPT</strong> → Settings → Personalization → Custom Instructions</li>
+									<li><strong>Claude</strong> → Settings → Custom Instructions</li>
+									<li><strong>Gemini</strong> → Settings → Extensions / Personalization</li>
+								</ul>
+								<p style="margin-top: 10px; color: #666; font-size: 0.9em;">Діють завжди. Хто ти, як відповідати, якою мовою.</p>
+							</div>
+							<div style="background: rgba(238,120,28,0.06); border-radius: 10px; padding: 16px;">
+								<h3 class="ztu-orange" style="font-size:1em;">📁 Локальні (під окрему тему)</h3>
+								<ul class="ztu-list" style="margin-top: 10px;">
+									<li><strong>ChatGPT</strong> → Explore GPTs → Create</li>
+									<li><strong>Claude</strong> → Projects → New Project</li>
+									<li><strong>Gemini</strong> → Gems → Create a Gem</li>
+								</ul>
+								<p style="margin-top: 10px; color: #666; font-size: 0.9em;">Окремий чат із своїм промтом, файлами, поведінкою.</p>
+							</div>
+						</div>
+
+						<div class="fragment fade-in" style="margin-top: 16px; background: rgba(156,39,176,0.06); border-radius: 10px; padding: 16px; font-size: 0.8em;">
+							<h3 style="color: #9c27b0; font-size:1em;">⚡ OpenRouter — одна точка входу до всіх моделей</h3>
+							<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 10px;">
+								<div>
+									<p>Єдиний інтерфейс для GPT-4o, Claude, Gemini, Llama, Mistral та ін.</p>
+									<p style="margin-top: 6px; color: #666;">openrouter.ai — платиш тільки за використання, без підписок</p>
+								</div>
+								<div>
+									<p><strong>Коли корисно:</strong></p>
+									<ul class="ztu-list" style="margin-top: 6px;">
+										<li>Порівняти відповіді різних моделей</li>
+										<li>Доступ до моделей без окремих підписок</li>
+										<li>API для своїх проектів</li>
+									</ul>
+								</div>
+							</div>
 						</div>
 					</div>
 				</section>
