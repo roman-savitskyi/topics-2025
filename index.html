@@ -1,377 +1,462 @@
 <!doctype html>
 <html lang="uk">
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<title>AI Prompting — як отримувати кращий результат</title>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<link rel="stylesheet" href="dist/reveal.css">
-		<link rel="stylesheet" href="dist/theme/ztu.css">
-		<link rel="stylesheet" href="plugin/highlight/high-contrast.css">
+	<title>AI Prompting — як отримувати кращий результат</title>
 
-		<style>
-			.reveal { font-size: 28px; }
-			.reveal h1 { font-size: 1.6em; margin-bottom: 15px; }
-			.reveal h2 { font-size: 1.3em; margin-bottom: 15px; }
-			.reveal h3 { font-size: 1.1em; margin-bottom: 10px; }
-			.reveal p { margin: 12px 0; }
-			.reveal ul, .reveal ol { margin: 10px 0; }
-			.reveal li { margin: 6px 0; }
-			.reveal pre { margin: 15px auto; font-size: 0.55em; }
-			.reveal section { padding-bottom: 100px; }
-			.reveal .ztu-list { margin: 15px auto; }
-			.reveal [style*="grid-template-columns"] { gap: 15px !important; font-size: 0.8em; }
+	<link rel="stylesheet" href="dist/reveal.css">
+	<link rel="stylesheet" href="dist/theme/ztu.css">
+	<link rel="stylesheet" href="plugin/highlight/high-contrast.css">
 
-			.prompt-bad {
-				background: rgba(229, 62, 35, 0.08);
-				border-left: 5px solid #e53e1f;
-				padding: 15px 20px;
-				border-radius: 8px;
-				font-size: 0.9em;
-			}
-			.prompt-good {
-				background: rgba(76, 175, 80, 0.08);
-				border-left: 5px solid #4caf50;
-				padding: 15px 20px;
-				border-radius: 8px;
-				font-size: 0.9em;
-			}
-			.badge {
-				display: inline-block;
-				padding: 3px 10px;
-				border-radius: 12px;
-				font-size: 0.75em;
-				font-weight: bold;
-				margin-bottom: 8px;
-			}
-			.badge-bad  { background: rgba(229, 62, 35, 0.15); color: #e53e1f; }
-			.badge-good { background: rgba(76, 175, 80, 0.15);  color: #2e7d32; }
-			.tool-card {
-				background: rgba(34, 74, 152, 0.06);
-				border-radius: 10px;
-				padding: 18px;
-				text-align: center;
-			}
-			.file-tree {
-				background: #1a1a2e;
-				color: #e0e0e0;
-				border-radius: 8px;
-				padding: 16px 20px;
-				font-family: monospace;
-				font-size: 0.78em;
-				line-height: 1.7;
-				text-align: left;
-			}
-			.file-tree .comment { color: #6a9f5e; }
-		</style>
-	</head>
-	<body>
-		<div class="reveal">
-			<div class="footer-ztu-logo"></div>
-			<div class="footer-conference-logo"></div>
-			<div class="footer-beerjs-logo"></div>
-			<div class="slides">
+	<style>
+		.reveal {
+			font-size: 28px;
+		}
 
-				<!-- ═══════════════════════════════════════════════
+		.reveal h1 {
+			font-size: 1.6em;
+			margin-bottom: 15px;
+		}
+
+		.reveal h2 {
+			font-size: 1.3em;
+			margin-bottom: 15px;
+		}
+
+		.reveal h3 {
+			font-size: 1.1em;
+			margin-bottom: 10px;
+		}
+
+		.reveal p {
+			margin: 12px 0;
+		}
+
+		.reveal ul,
+		.reveal ol {
+			margin: 10px 0;
+		}
+
+		.reveal li {
+			margin: 6px 0;
+		}
+
+		.reveal pre {
+			margin: 15px auto;
+			font-size: 0.55em;
+		}
+
+		.reveal section {
+			padding-bottom: 100px;
+		}
+
+		.reveal .ztu-list {
+			margin: 15px auto;
+		}
+
+		.reveal [style*="grid-template-columns"] {
+			gap: 15px !important;
+			font-size: 0.8em;
+		}
+
+		.prompt-bad {
+			background: rgba(229, 62, 35, 0.08);
+			border-left: 5px solid #e53e1f;
+			padding: 15px 20px;
+			border-radius: 8px;
+			font-size: 0.9em;
+		}
+
+		.prompt-good {
+			background: rgba(76, 175, 80, 0.08);
+			border-left: 5px solid #4caf50;
+			padding: 15px 20px;
+			border-radius: 8px;
+			font-size: 0.9em;
+		}
+
+		.badge {
+			display: inline-block;
+			padding: 3px 10px;
+			border-radius: 12px;
+			font-size: 0.75em;
+			font-weight: bold;
+			margin-bottom: 8px;
+		}
+
+		.badge-bad {
+			background: rgba(229, 62, 35, 0.15);
+			color: #e53e1f;
+		}
+
+		.badge-good {
+			background: rgba(76, 175, 80, 0.15);
+			color: #2e7d32;
+		}
+
+		.tool-card {
+			background: rgba(34, 74, 152, 0.06);
+			border-radius: 10px;
+			padding: 18px;
+			text-align: center;
+		}
+
+		.file-tree {
+			background: #1a1a2e;
+			color: #e0e0e0;
+			border-radius: 8px;
+			padding: 16px 20px;
+			font-family: monospace;
+			font-size: 0.78em;
+			line-height: 1.7;
+			text-align: left;
+		}
+
+		.file-tree .comment {
+			color: #6a9f5e;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="reveal">
+		<div class="footer-ztu-logo"></div>
+		<div class="footer-conference-logo"></div>
+		<div class="footer-beerjs-logo"></div>
+		<div class="slides">
+
+			<!-- ═══════════════════════════════════════════════
 				     1. TITLE
 				     ═══════════════════════════════════════════════ -->
-				<section>
-					<h1 class="ztu-blue">AI Prompting</h1>
-					<p class="ztu-orange" style="font-size:1.1em;">Як отримувати кращий результат від штучного інтелекту</p>
-					<p style="margin-top: 60px; font-size: 0.8em; color: #888;">40 хвилин практики</p>
-				</section>
+			<section>
+				<h1 class="ztu-blue">AI Prompting</h1>
+				<p class="ztu-orange" style="font-size:1.1em;">Як отримувати кращий результат від штучного інтелекту</p>
+			</section>
 
-				<section>
-					<h2 class="ztu-blue">Роман Савіцький</h2>
-					<div class="fragment fade-in" style="margin-top: 30px;">
-						<ul class="ztu-list">
-							<li class="fragment">Tieto Tech Consulting (Create Ukraine)</li>
-							<li class="fragment">Digital Experience L4</li>
-							<li class="fragment">Co-owner BeerJS Zhytomyr</li>
-							<li class="fragment">Викладач ДУ "Житомирська політехніка"</li>
-						</ul>
-					</div>
-				</section>
+			<section>
+				<h2 class="ztu-blue">Роман Савіцький</h2>
+				<div class="fragment fade-in" style="margin-top: 30px;">
+					<ul class="ztu-list">
+						<li class="fragment">Tieto Tech Consulting (Create Ukraine)</li>
+						<li class="fragment">Digital Experience L4</li>
+						<li class="fragment">Co-owner BeerJS Zhytomyr</li>
+						<li class="fragment">Викладач ДУ "Житомирська політехніка"</li>
+					</ul>
+				</div>
+			</section>
 
-				<!-- ═══════════════════════════════════════════════
+			<!-- ═══════════════════════════════════════════════
 				     2. ГАЧОК
 				     ═══════════════════════════════════════════════ -->
-				<section>
-					<h1 class="ztu-blue">Один запит.</h1>
-					<h1 class="ztu-orange fragment fade-in">Два результати.</h1>
-				</section>
+			<section>
+				<h1 class="ztu-blue">Один запит.</h1>
+				<h1 class="ztu-orange fragment fade-in">Два результати.</h1>
+			</section>
 
-				<section>
-					<h2 class="ztu-blue">Code review — той самий код, різний промт</h2>
+			<section>
+				<h2 class="ztu-blue">Code review — той самий код, різний промт</h2>
 
-					<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 25px; margin-top: 25px;">
-						<div class="fragment fade-in">
-							<div class="badge badge-bad">❌ Погано</div>
-							<div class="prompt-bad">
-								<p>Зроби code review</p>
-							</div>
-							<p style="font-size: 0.75em; color: #888; margin-top: 10px;">→ "Код виглядає добре. Можливо варто додати коментарі." Марно.</p>
+				<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 25px; margin-top: 25px;">
+					<div class="fragment fade-in">
+						<div class="badge badge-bad">❌ Погано</div>
+						<div class="prompt-bad">
+							<p>Зроби code review</p>
 						</div>
-
-						<div class="fragment fade-in">
-							<div class="badge badge-good">✅ Добре</div>
-							<div class="prompt-good" style="font-size: 0.82em;">
-								<p>You're a senior TypeScript engineer. Review this React hook below. Focus on: 1) potential memory leaks or stale closures, 2) missing edge cases, 3) performance issues with re-renders. Be specific — point to line numbers. Skip style nitpicks.</p>
-							</div>
-							<p style="font-size: 0.75em; color: #888; margin-top: 10px;">→ Конкретні проблеми з поясненням чому це баг.</p>
-						</div>
+						<p style="font-size: 0.75em; color: #888; margin-top: 10px;">→ "Код виглядає добре. Можливо
+							варто додати коментарі." Марно.</p>
 					</div>
 
-					<p class="fragment fade-in" style="margin-top: 25px; font-size: 1em; text-align: center;">
-						<strong class="ztu-blue">Різниця не в AI.</strong> Різниця — в запиті.
-					</p>
-				</section>
+					<div class="fragment fade-in">
+						<div class="badge badge-good">✅ Добре</div>
+						<div class="prompt-good" style="font-size: 0.82em;">
+							<p>You're a senior TypeScript engineer. Review this React hook below. Focus on: 1) potential
+								memory leaks or stale closures, 2) missing edge cases, 3) performance issues with
+								re-renders. Be specific — point to line numbers. Skip style nitpicks.</p>
+						</div>
+						<p style="font-size: 0.75em; color: #888; margin-top: 10px;">→ Конкретні проблеми з поясненням
+							чому це баг.</p>
+					</div>
+				</div>
 
-				<!-- ═══════════════════════════════════════════════
+				<p class="fragment fade-in" style="margin-top: 25px; font-size: 1em; text-align: center;">
+					<strong class="ztu-blue">Різниця не в AI.</strong> Різниця — в запиті.
+				</p>
+			</section>
+
+			<!-- ═══════════════════════════════════════════════
 				     3. МЕНТАЛЬНА МОДЕЛЬ
 				     ═══════════════════════════════════════════════ -->
-				<section>
-					<h1 class="ztu-blue">Ментальна модель</h1>
-					<p class="ztu-orange">Як правильно думати про AI</p>
-				</section>
+			<section>
+				<h1 class="ztu-blue">Ментальна модель</h1>
+				<p class="ztu-orange">Як правильно думати про AI</p>
+			</section>
 
-				<section>
-					<h2 class="ztu-blue">AI — це не автодоповнення в IDE</h2>
+			<section>
+				<h2 class="ztu-blue">AI — це не автодоповнення в IDE</h2>
 
-					<div style="margin-top: 30px;">
-						<div class="fragment fade-in" style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px; font-size: 0.85em;">
-							<div class="tool-card">
-								<p style="font-size: 1.5em;">🔍</p>
-								<h3 class="ztu-orange">Stack Overflow</h3>
-								<p>Знаходить готові рішення</p>
-							</div>
-							<div class="tool-card">
-								<p style="font-size: 1.5em;">⚡</p>
-								<h3 class="ztu-orange">Autocomplete</h3>
-								<p>Продовжує те що вже пишеш</p>
-							</div>
-							<div class="tool-card" style="border: 2px solid var(--ztu-blue);">
-								<p style="font-size: 1.5em;">🤝</p>
-								<h3 class="ztu-blue">Pair programmer</h3>
-								<p><strong>Думає разом з тобою якщо дати контекст</strong></p>
-							</div>
+				<div style="margin-top: 30px;">
+					<div class="fragment fade-in"
+						style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px; font-size: 0.85em;">
+						<div class="tool-card">
+							<p style="font-size: 1.5em;">🔍</p>
+							<h3 class="ztu-orange">Stack Overflow</h3>
+							<p>Знаходить готові рішення</p>
 						</div>
-
-						<div class="fragment fade-in" style="margin-top: 35px; background: rgba(34,74,152,0.06); border-radius: 10px; padding: 20px;">
-							<p style="font-size: 1.05em; text-align: center;">
-								<strong class="ztu-blue">Garbage in — garbage out.</strong>
-							</p>
-							<p style="font-size: 0.85em; text-align: center; color: #666; margin-top: 8px;">
-								Чим краще ти описуєш задачу — тим кращий код отримуєш
-							</p>
+						<div class="tool-card">
+							<p style="font-size: 1.5em;">⚡</p>
+							<h3 class="ztu-orange">Autocomplete</h3>
+							<p>Продовжує те що вже пишеш</p>
+						</div>
+						<div class="tool-card" style="border: 2px solid var(--ztu-blue);">
+							<p style="font-size: 1.5em;">🤝</p>
+							<h3 class="ztu-blue">Pair programmer</h3>
+							<p><strong>Думає разом з тобою якщо дати контекст</strong></p>
 						</div>
 					</div>
-				</section>
 
-				<section>
-					<h2 class="ztu-blue">4 елементи сильного промту</h2>
-
-					<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 25px; font-size: 0.85em;">
-						<div class="fragment fade-in" style="background: rgba(238,120,28,0.08); border-radius: 10px; padding: 18px;">
-							<h3 class="ztu-orange">👤 Роль</h3>
-							<p>"You're a senior backend engineer who specializes in Node.js"</p>
-						</div>
-						<div class="fragment fade-in" style="background: rgba(238,120,28,0.08); border-radius: 10px; padding: 18px;">
-							<h3 class="ztu-orange">🎯 Мета</h3>
-							<p>"Refactor this function to handle async errors properly"</p>
-						</div>
-						<div class="fragment fade-in" style="background: rgba(238,120,28,0.08); border-radius: 10px; padding: 18px;">
-							<h3 class="ztu-orange">📎 Контекст</h3>
-							<p>"This runs in AWS Lambda, cold starts matter, no external dependencies"</p>
-						</div>
-						<div class="fragment fade-in" style="background: rgba(238,120,28,0.08); border-radius: 10px; padding: 18px;">
-							<h3 class="ztu-orange">📋 Формат</h3>
-							<p>"Show only the changed function with inline comments explaining why"</p>
-						</div>
+					<div class="fragment fade-in"
+						style="margin-top: 35px; background: rgba(34,74,152,0.06); border-radius: 10px; padding: 20px;">
+						<p style="font-size: 1.05em; text-align: center;">
+							<strong class="ztu-blue">Garbage in — garbage out.</strong>
+						</p>
+						<p style="font-size: 0.85em; text-align: center; color: #666; margin-top: 8px;">
+							Чим краще ти описуєш задачу — тим кращий код отримуєш
+						</p>
 					</div>
-				</section>
+				</div>
+			</section>
 
-				<!-- ═══════════════════════════════════════════════
+			<section>
+				<h2 class="ztu-blue">4 елементи сильного промту</h2>
+
+				<div
+					style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 25px; font-size: 0.85em;">
+					<div class="fragment fade-in"
+						style="background: rgba(238,120,28,0.08); border-radius: 10px; padding: 18px;">
+						<h3 class="ztu-orange">👤 Роль</h3>
+						<p>"You're a senior backend engineer who specializes in Node.js"</p>
+					</div>
+					<div class="fragment fade-in"
+						style="background: rgba(238,120,28,0.08); border-radius: 10px; padding: 18px;">
+						<h3 class="ztu-orange">🎯 Мета</h3>
+						<p>"Refactor this function to handle async errors properly"</p>
+					</div>
+					<div class="fragment fade-in"
+						style="background: rgba(238,120,28,0.08); border-radius: 10px; padding: 18px;">
+						<h3 class="ztu-orange">📎 Контекст</h3>
+						<p>"This runs in AWS Lambda, cold starts matter, no external dependencies"</p>
+					</div>
+					<div class="fragment fade-in"
+						style="background: rgba(238,120,28,0.08); border-radius: 10px; padding: 18px;">
+						<h3 class="ztu-orange">📋 Формат</h3>
+						<p>"Show only the changed function with inline comments explaining why"</p>
+					</div>
+				</div>
+			</section>
+
+			<!-- ═══════════════════════════════════════════════
 				     4. КОНТЕКСТ ЯК ОСНОВА
 				     ═══════════════════════════════════════════════ -->
-				<section>
-					<h1 class="ztu-blue">Контекст як основа</h1>
-					<p class="ztu-orange">Розбираємо кожен елемент на реальних кейсах</p>
-				</section>
+			<section>
+				<h1 class="ztu-blue">Контекст як основа</h1>
+				<p class="ztu-orange">Розбираємо кожен елемент на реальних кейсах</p>
+			</section>
 
-				<section>
-					<h2 class="ztu-blue">Роль</h2>
-					<p class="ztu-orange">AI думає як той фахівець, ким ти його зробив</p>
+			<section>
+				<h2 class="ztu-blue">Роль</h2>
+				<p class="ztu-orange">AI думає як той фахівець, ким ти його зробив</p>
 
-					<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 25px; margin-top: 25px;">
-						<div class="fragment fade-in">
-							<div class="badge badge-bad">❌</div>
-							<div class="prompt-bad">
-								<p>Поясни мені що таке event loop</p>
-							</div>
-						</div>
-						<div class="fragment fade-in">
-							<div class="badge badge-good">✅</div>
-							<div class="prompt-good" style="font-size: 0.85em;">
-								<p><strong>You're a Node.js instructor.</strong> Explain the event loop to a developer who knows JavaScript basics but has never worked with async code. Use a real-world analogy, then show a code example with setTimeout and a Promise.</p>
-							</div>
+				<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 25px; margin-top: 25px;">
+					<div class="fragment fade-in">
+						<div class="badge badge-bad">❌</div>
+						<div class="prompt-bad">
+							<p>Поясни мені що таке event loop</p>
 						</div>
 					</div>
-
-					<div class="fragment fade-in" style="margin-top: 18px; font-size: 0.8em; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; text-align: center;">
-						<div style="background: rgba(34,74,152,0.06); border-radius: 8px; padding: 10px;">
-							"Security researcher"<br><span style="color:#888;">→ знайде вразливості</span>
-						</div>
-						<div style="background: rgba(34,74,152,0.06); border-radius: 8px; padding: 10px;">
-							"Staff engineer"<br><span style="color:#888;">→ архітектурне мислення</span>
-						</div>
-						<div style="background: rgba(34,74,152,0.06); border-radius: 8px; padding: 10px;">
-							"Tech lead at a startup"<br><span style="color:#888;">→ прагматичні рішення</span>
+					<div class="fragment fade-in">
+						<div class="badge badge-good">✅</div>
+						<div class="prompt-good" style="font-size: 0.85em;">
+							<p><strong>You're a Node.js instructor.</strong> Explain the event loop to a developer who
+								knows JavaScript basics but has never worked with async code. Use a real-world analogy,
+								then show a code example with setTimeout and a Promise.</p>
 						</div>
 					</div>
-				</section>
+				</div>
 
-				<section>
-					<h2 class="ztu-blue">Мета</h2>
-					<p class="ztu-orange">Чим конкретніша задача — тим точніша відповідь</p>
+				<div class="fragment fade-in"
+					style="margin-top: 18px; font-size: 0.8em; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; text-align: center;">
+					<div style="background: rgba(34,74,152,0.06); border-radius: 8px; padding: 10px;">
+						"Security researcher"<br><span style="color:#888;">→ знайде вразливості</span>
+					</div>
+					<div style="background: rgba(34,74,152,0.06); border-radius: 8px; padding: 10px;">
+						"Staff engineer"<br><span style="color:#888;">→ архітектурне мислення</span>
+					</div>
+					<div style="background: rgba(34,74,152,0.06); border-radius: 8px; padding: 10px;">
+						"Tech lead at a startup"<br><span style="color:#888;">→ прагматичні рішення</span>
+					</div>
+				</div>
+			</section>
 
-					<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 25px; margin-top: 25px;">
-						<div class="fragment fade-in">
-							<div class="badge badge-bad">❌</div>
-							<div class="prompt-bad">
-								<p>Допоможи оптимізувати цей запит</p>
-							</div>
-						</div>
-						<div class="fragment fade-in">
-							<div class="badge badge-good">✅</div>
-							<div class="prompt-good" style="font-size: 0.82em;">
-								<p>This PostgreSQL query takes 3s on 2M rows. <strong>Do three things:</strong> 1) Identify the bottleneck (use EXPLAIN output below); 2) Rewrite the query; 3) List what indexes to add with the exact CREATE INDEX statements.</p>
-							</div>
+			<section>
+				<h2 class="ztu-blue">Мета</h2>
+				<p class="ztu-orange">Чим конкретніша задача — тим точніша відповідь</p>
+
+				<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 25px; margin-top: 25px;">
+					<div class="fragment fade-in">
+						<div class="badge badge-bad">❌</div>
+						<div class="prompt-bad">
+							<p>Допоможи оптимізувати цей запит</p>
 						</div>
 					</div>
-
-					<div class="fragment fade-in" style="margin-top: 18px; font-size: 0.8em; color: #666; text-align: center;">
-						💡 Нумерований список завдань → структурована відповідь без "води"
-					</div>
-				</section>
-
-				<section>
-					<h2 class="ztu-blue">Контекст проекту</h2>
-					<p class="ztu-orange">AI не знає твій стек — розкажи йому</p>
-
-					<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 25px; margin-top: 25px;">
-						<div class="fragment fade-in">
-							<div class="badge badge-bad">❌</div>
-							<div class="prompt-bad">
-								<p>Як краще зберігати сесії користувачів?</p>
-							</div>
-							<p style="font-size: 0.75em; color: #888; margin-top: 8px;">→ Отримаєш загальну лекцію про cookies vs JWT vs Redis</p>
-						</div>
-						<div class="fragment fade-in">
-							<div class="badge badge-good">✅</div>
-							<div class="prompt-good" style="font-size: 0.82em;">
-								<p>Stack: Next.js 14 App Router, deployed on Vercel, ~10k DAU. <strong>Context:</strong> sessions now stored in JWT in cookies, users report being logged out randomly on mobile. Should we move to Redis sessions? What are the trade-offs in our specific setup?</p>
-							</div>
+					<div class="fragment fade-in">
+						<div class="badge badge-good">✅</div>
+						<div class="prompt-good" style="font-size: 0.82em;">
+							<p>This PostgreSQL query takes 3s on 2M rows. <strong>Do three things:</strong> 1) Identify
+								the bottleneck (use EXPLAIN output below); 2) Rewrite the query; 3) List what indexes to
+								add with the exact CREATE INDEX statements.</p>
 						</div>
 					</div>
-				</section>
+				</div>
 
-				<section>
-					<h2 class="ztu-blue">Формат</h2>
-					<p class="ztu-orange">Скажи як саме хочеш отримати відповідь</p>
+				<div class="fragment fade-in"
+					style="margin-top: 18px; font-size: 0.8em; color: #666; text-align: center;">
+					💡 Нумерований список завдань → структурована відповідь без "води"
+				</div>
+			</section>
 
-					<div style="margin-top: 20px; font-size: 0.85em;">
-						<div class="fragment fade-in" style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
-							<div style="background: rgba(34,74,152,0.06); border-radius: 8px; padding: 14px;">
-								<strong class="ztu-blue">Для коду:</strong>
-								<p>"Show only the diff, not the full file"<br>"Add JSDoc comments"<br>"TypeScript, strict mode"</p>
-							</div>
-							<div style="background: rgba(34,74,152,0.06); border-radius: 8px; padding: 14px;">
-								<strong class="ztu-blue">Для пояснень:</strong>
-								<p>"ELI5 — explain like I'm a junior"<br>"TL;DR at the top"<br>"Pros/cons table"</p>
-							</div>
-							<div style="background: rgba(34,74,152,0.06); border-radius: 8px; padding: 14px;">
-								<strong class="ztu-blue">Обмеження:</strong>
-								<p>"No external libraries"<br>"Must work in Node 18"<br>"Keep it under 20 lines"</p>
-							</div>
-							<div style="background: rgba(34,74,152,0.06); border-radius: 8px; padding: 14px;">
-								<strong class="ztu-blue">Мова відповіді:</strong>
-								<p>"Answer in Ukrainian"<br>"Code comments in English"<br>"Variable names in English"</p>
-							</div>
+			<section>
+				<h2 class="ztu-blue">Контекст проекту</h2>
+				<p class="ztu-orange">AI не знає твій стек — розкажи йому</p>
+
+				<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 25px; margin-top: 25px;">
+					<div class="fragment fade-in">
+						<div class="badge badge-bad">❌</div>
+						<div class="prompt-bad">
+							<p>Як краще зберігати сесії користувачів?</p>
+						</div>
+						<p style="font-size: 0.75em; color: #888; margin-top: 8px;">→ Отримаєш загальну лекцію про
+							cookies vs JWT vs Redis</p>
+					</div>
+					<div class="fragment fade-in">
+						<div class="badge badge-good">✅</div>
+						<div class="prompt-good" style="font-size: 0.82em;">
+							<p>Stack: Next.js 14 App Router, deployed on Vercel, ~10k DAU. <strong>Context:</strong>
+								sessions now stored in JWT in cookies, users report being logged out randomly on mobile.
+								Should we move to Redis sessions? What are the trade-offs in our specific setup?</p>
 						</div>
 					</div>
-				</section>
+				</div>
+			</section>
 
-				<!-- ═══════════════════════════════════════════════
+			<section>
+				<h2 class="ztu-blue">Формат</h2>
+				<p class="ztu-orange">Скажи як саме хочеш отримати відповідь</p>
+
+				<div style="margin-top: 20px; font-size: 0.85em;">
+					<div class="fragment fade-in" style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+						<div style="background: rgba(34,74,152,0.06); border-radius: 8px; padding: 14px;">
+							<strong class="ztu-blue">Для коду:</strong>
+							<p>"Show only the diff, not the full file"<br>"Add JSDoc comments"<br>"TypeScript, strict
+								mode"</p>
+						</div>
+						<div style="background: rgba(34,74,152,0.06); border-radius: 8px; padding: 14px;">
+							<strong class="ztu-blue">Для пояснень:</strong>
+							<p>"ELI5 — explain like I'm a junior"<br>"TL;DR at the top"<br>"Pros/cons table"</p>
+						</div>
+						<div style="background: rgba(34,74,152,0.06); border-radius: 8px; padding: 14px;">
+							<strong class="ztu-blue">Обмеження:</strong>
+							<p>"No external libraries"<br>"Must work in Node 18"<br>"Keep it under 20 lines"</p>
+						</div>
+						<div style="background: rgba(34,74,152,0.06); border-radius: 8px; padding: 14px;">
+							<strong class="ztu-blue">Мова відповіді:</strong>
+							<p>"Answer in Ukrainian"<br>"Code comments in English"<br>"Variable names in English"</p>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<!-- ═══════════════════════════════════════════════
 				     5. ПРОМТИ ЯКІ ПРАЦЮЮТЬ
 				     ═══════════════════════════════════════════════ -->
-				<section>
-					<h1 class="ztu-blue">Промти, які працюють</h1>
-					<p class="ztu-orange">3 патерни для розробника</p>
-				</section>
+			<section>
+				<h1 class="ztu-blue">Промти, які працюють</h1>
+				<p class="ztu-orange">3 патерни для розробника</p>
+			</section>
 
-				<section>
-					<h2 class="ztu-blue">Патерн 1: Role Prompting</h2>
-					<p class="ztu-orange">Senior on demand</p>
+			<section>
+				<h2 class="ztu-blue">Патерн 1: Role Prompting</h2>
+				<p class="ztu-orange">Senior on demand</p>
 
-					<div style="margin-top: 20px;">
-						<div class="fragment fade-in prompt-good" style="font-size: 0.85em;">
-							<p><strong>You're a staff engineer doing a pre-merge code review.</strong> I'm a mid-level dev. Review this PR diff below. Flag: 1) race conditions or concurrency issues; 2) missing error handling; 3) anything that would fail under load. For each issue — show the problematic line and a fix.</p>
+				<div style="margin-top: 20px;">
+					<div class="fragment fade-in prompt-good" style="font-size: 0.85em;">
+						<p><strong>You're a staff engineer doing a pre-merge code review.</strong> I'm a mid-level dev.
+							Review this PR diff below. Flag: 1) race conditions or concurrency issues; 2) missing error
+							handling; 3) anything that would fail under load. For each issue — show the problematic line
+							and a fix.</p>
+					</div>
+
+					<div class="fragment fade-in"
+						style="margin-top: 20px; display: grid; grid-template-columns: 1fr 1fr; gap: 15px; font-size: 0.8em;">
+						<div style="background: rgba(34,74,152,0.06); border-radius: 8px; padding: 14px;">
+							<strong class="ztu-orange">Рольові пресети для девів:</strong>
+							<ul class="ztu-list" style="margin-top: 8px;">
+								<li>"Security auditor"</li>
+								<li>"Performance engineer"</li>
+								<li>"Developer advocate writing docs"</li>
+								<li>"QA engineer writing test cases"</li>
+							</ul>
 						</div>
-
-						<div class="fragment fade-in" style="margin-top: 20px; display: grid; grid-template-columns: 1fr 1fr; gap: 15px; font-size: 0.8em;">
-							<div style="background: rgba(34,74,152,0.06); border-radius: 8px; padding: 14px;">
-								<strong class="ztu-orange">Рольові пресети для девів:</strong>
-								<ul class="ztu-list" style="margin-top: 8px;">
-									<li>"Security auditor"</li>
-									<li>"Performance engineer"</li>
-									<li>"Developer advocate writing docs"</li>
-									<li>"QA engineer writing test cases"</li>
-								</ul>
-							</div>
-							<div style="background: rgba(34,74,152,0.06); border-radius: 8px; padding: 14px;">
-								<strong class="ztu-orange">Чому це працює:</strong>
-								<p style="margin-top: 8px;">AI активує відповідний словниковий запас, пріоритети і підхід до проблеми. "Security auditor" знайде те, що "senior dev" пропустить.</p>
-							</div>
+						<div style="background: rgba(34,74,152,0.06); border-radius: 8px; padding: 14px;">
+							<strong class="ztu-orange">Чому це працює:</strong>
+							<p style="margin-top: 8px;">AI активує відповідний словниковий запас, пріоритети і підхід до
+								проблеми. "Security auditor" знайде те, що "senior dev" пропустить.</p>
 						</div>
 					</div>
-				</section>
+				</div>
+			</section>
 
-				<section>
-					<h2 class="ztu-blue">Патерн 2: Chain of Thought</h2>
-					<p class="ztu-orange">Змуси AI думати вголос</p>
+			<section>
+				<h2 class="ztu-blue">Патерн 2: Chain of Thought</h2>
+				<p class="ztu-orange">Змуси AI думати вголос</p>
 
-					<div style="margin-top: 20px;">
-						<div class="fragment fade-in prompt-good" style="font-size: 0.85em;">
-							<p>We have a race condition in our checkout flow: sometimes orders are created twice when users double-click. <strong>Think step by step:</strong> 1) What are the possible root causes? 2) Which is most likely given we use React + Node + PostgreSQL? 3) What's the fix with minimal changes to existing code?</p>
+				<div style="margin-top: 20px;">
+					<div class="fragment fade-in prompt-good" style="font-size: 0.85em;">
+						<p>We have a race condition in our checkout flow: sometimes orders are created twice when users
+							double-click. <strong>Think step by step:</strong> 1) What are the possible root causes? 2)
+							Which is most likely given we use React + Node + PostgreSQL? 3) What's the fix with minimal
+							changes to existing code?</p>
+					</div>
+
+					<div class="fragment fade-in"
+						style="margin-top: 18px; display: grid; grid-template-columns: 1fr 1fr; gap: 15px; font-size: 0.8em;">
+						<div style="background: rgba(34,74,152,0.06); border-radius: 8px; padding: 14px;">
+							<strong class="ztu-orange">Тригери:</strong>
+							<ul class="ztu-list" style="margin-top: 8px;">
+								<li>"Think step by step"</li>
+								<li>"Walk me through your reasoning"</li>
+								<li>"What could go wrong here?"</li>
+							</ul>
 						</div>
-
-						<div class="fragment fade-in" style="margin-top: 18px; display: grid; grid-template-columns: 1fr 1fr; gap: 15px; font-size: 0.8em;">
-							<div style="background: rgba(34,74,152,0.06); border-radius: 8px; padding: 14px;">
-								<strong class="ztu-orange">Тригери:</strong>
-								<ul class="ztu-list" style="margin-top: 8px;">
-									<li>"Think step by step"</li>
-									<li>"Walk me through your reasoning"</li>
-									<li>"What could go wrong here?"</li>
-								</ul>
-							</div>
-							<div style="background: rgba(34,74,152,0.06); border-radius: 8px; padding: 14px;">
-								<strong class="ztu-orange">Коли критично:</strong>
-								<p style="margin-top: 8px;">Debugging складних багів, архітектурні рішення, вибір між підходами — де важливо не просто "що", а "чому"</p>
-							</div>
+						<div style="background: rgba(34,74,152,0.06); border-radius: 8px; padding: 14px;">
+							<strong class="ztu-orange">Коли критично:</strong>
+							<p style="margin-top: 8px;">Debugging складних багів, архітектурні рішення, вибір між
+								підходами — де важливо не просто "що", а "чому"</p>
 						</div>
 					</div>
-				</section>
+				</div>
+			</section>
 
-				<section>
-					<h2 class="ztu-blue">Патерн 3: Few-Shot</h2>
-					<p class="ztu-orange">Один приклад вартий тисячі слів опису</p>
+			<section>
+				<h2 class="ztu-blue">Патерн 3: Few-Shot</h2>
+				<p class="ztu-orange">Один приклад вартий тисячі слів опису</p>
 
-					<div style="margin-top: 20px;">
-						<div class="fragment fade-in prompt-good" style="font-size: 0.82em;">
-							<p>Write unit tests in this style:</p>
-							<pre style="font-size:0.9em; margin: 8px 0;"><code class="typescript">// Example 1:
+				<div style="margin-top: 20px;">
+					<div class="fragment fade-in prompt-good" style="font-size: 0.82em;">
+						<p>Write unit tests in this style:</p>
+						<pre style="font-size:0.9em; margin: 8px 0;"><code class="typescript">// Example 1:
 it('returns null when user is not found', async () => {
   mockDb.findById.mockResolvedValue(null);
   expect(await getUser('123')).toBeNull();
@@ -380,535 +465,604 @@ it('returns null when user is not found', async () => {
 it('throws AuthError when token is expired', async () => {
   await expect(validateToken(expiredToken)).rejects.toThrow(AuthError);
 });</code></pre>
-							<p style="margin-top: 8px;"><strong>Now write tests for the cart.addItem() function below:</strong> [код функції]</p>
-						</div>
+						<p style="margin-top: 8px;"><strong>Now write tests for the cart.addItem() function
+								below:</strong> [код функції]</p>
+					</div>
 
-						<div class="fragment fade-in" style="margin-top: 12px; font-size: 0.8em; background: rgba(34,74,152,0.06); border-radius: 8px; padding: 12px; text-align: center;">
-							💡 AI відтворить стиль: назви тестів, структуру, моки — без зайвих пояснень що саме ти хочеш
+					<div class="fragment fade-in"
+						style="margin-top: 12px; font-size: 0.8em; background: rgba(34,74,152,0.06); border-radius: 8px; padding: 12px; text-align: center;">
+						💡 AI відтворить стиль: назви тестів, структуру, моки — без зайвих пояснень що саме ти хочеш
+					</div>
+				</div>
+			</section>
+
+			<!-- ─── Do you have any questions ─── -->
+			<section>
+				<h2 class="ztu-blue">Pro tip: "Do you have any questions?"</h2>
+				<p class="ztu-orange">Дай AI можливість уточнити перед тим як починати</p>
+
+				<div style="margin-top: 20px;">
+					<div class="fragment fade-in prompt-good" style="font-size: 0.88em;">
+						<p>Refactor this Express middleware to handle auth errors properly. Stack: Node 20, TypeScript
+							strict. No new dependencies.</p>
+						<p style="margin-top: 10px;"><strong>Before you start — do you have any clarifying
+								questions?</strong></p>
+					</div>
+
+					<div class="fragment fade-in"
+						style="margin-top: 20px; display: grid; grid-template-columns: 1fr 1fr; gap: 18px; font-size: 0.82em;">
+						<div style="background: rgba(229,62,35,0.06); border-radius: 8px; padding: 14px;">
+							<strong style="color:#e53e1f;">Без цього рядка:</strong>
+							<p style="margin-top: 8px;">AI одразу пише код, базуючись на припущеннях. Потім виявляється
+								що не врахував edge case який ти мав на увазі.</p>
+						</div>
+						<div style="background: rgba(76,175,80,0.08); border-radius: 8px; padding: 14px;">
+							<strong style="color:#2e7d32;">З цим рядком:</strong>
+							<p style="margin-top: 8px;">AI питає: "Should expired tokens return 401 or redirect to
+								login? What about malformed tokens?" — і ти вирішуєш це ДО написання коду.</p>
 						</div>
 					</div>
-				</section>
 
-				<!-- ─── Do you have any questions ─── -->
-				<section>
-					<h2 class="ztu-blue">Pro tip: "Do you have any questions?"</h2>
-					<p class="ztu-orange">Дай AI можливість уточнити перед тим як починати</p>
+					<div class="fragment fade-in"
+						style="margin-top: 14px; font-size: 0.82em; text-align: center; color: #666;">
+						Особливо корисно для нетривіальних задач де є неочевидні рішення
+					</div>
+				</div>
+			</section>
 
-					<div style="margin-top: 20px;">
-						<div class="fragment fade-in prompt-good" style="font-size: 0.88em;">
-							<p>Refactor this Express middleware to handle auth errors properly. Stack: Node 20, TypeScript strict. No new dependencies.</p>
-							<p style="margin-top: 10px;"><strong>Before you start — do you have any clarifying questions?</strong></p>
+			<!-- ─── Devil's Advocate ─── -->
+			<section>
+				<h2 class="ztu-blue">Патерн 4: Devil's Advocate</h2>
+				<p class="ztu-orange">Попроси AI оскаржити твоє рішення</p>
+
+				<div style="margin-top: 20px;">
+					<div class="fragment fade-in prompt-good" style="font-size: 0.85em;">
+						<p>I'm planning to split our monolith into microservices. We have 3 devs, 10k DAU, single
+							PostgreSQL DB, deployed on one VPS.</p>
+						<p style="margin-top: 10px;"><strong>Play devil's advocate: convince me this is a terrible idea
+								right now. Be specific to our situation.</strong></p>
+					</div>
+
+					<div class="fragment fade-in"
+						style="margin-top: 18px; display: grid; grid-template-columns: 1fr 1fr; gap: 18px; font-size: 0.82em;">
+						<div style="background: rgba(34,74,152,0.06); border-radius: 8px; padding: 14px;">
+							<strong class="ztu-orange">Інші формулювання:</strong>
+							<ul class="ztu-list" style="margin-top: 8px;">
+								<li>"What are the strongest arguments against this approach?"</li>
+								<li>"What would a skeptical staff engineer say about this?"</li>
+								<li>"What's the worst that can happen if we go this route?"</li>
+							</ul>
 						</div>
-
-						<div class="fragment fade-in" style="margin-top: 20px; display: grid; grid-template-columns: 1fr 1fr; gap: 18px; font-size: 0.82em;">
-							<div style="background: rgba(229,62,35,0.06); border-radius: 8px; padding: 14px;">
-								<strong style="color:#e53e1f;">Без цього рядка:</strong>
-								<p style="margin-top: 8px;">AI одразу пише код, базуючись на припущеннях. Потім виявляється що не врахував edge case який ти мав на увазі.</p>
-							</div>
-							<div style="background: rgba(76,175,80,0.08); border-radius: 8px; padding: 14px;">
-								<strong style="color:#2e7d32;">З цим рядком:</strong>
-								<p style="margin-top: 8px;">AI питає: "Should expired tokens return 401 or redirect to login? What about malformed tokens?" — і ти вирішуєш це ДО написання коду.</p>
-							</div>
-						</div>
-
-						<div class="fragment fade-in" style="margin-top: 14px; font-size: 0.82em; text-align: center; color: #666;">
-							Особливо корисно для нетривіальних задач де є неочевидні рішення
+						<div style="background: rgba(34,74,152,0.06); border-radius: 8px; padding: 14px;">
+							<strong class="ztu-orange">Коли застосовувати:</strong>
+							<ul class="ztu-list" style="margin-top: 8px;">
+								<li>Вибір архітектури</li>
+								<li>Вибір технологічного стеку</li>
+								<li>Будь-яке рішення з довгостроковими наслідками</li>
+							</ul>
 						</div>
 					</div>
-				</section>
+				</div>
+			</section>
 
-				<!-- ─── Devil's Advocate ─── -->
-				<section>
-					<h2 class="ztu-blue">Патерн 4: Devil's Advocate</h2>
-					<p class="ztu-orange">Попроси AI оскаржити твоє рішення</p>
-
-					<div style="margin-top: 20px;">
-						<div class="fragment fade-in prompt-good" style="font-size: 0.85em;">
-							<p>I'm planning to split our monolith into microservices. We have 3 devs, 10k DAU, single PostgreSQL DB, deployed on one VPS.</p>
-							<p style="margin-top: 10px;"><strong>Play devil's advocate: convince me this is a terrible idea right now. Be specific to our situation.</strong></p>
-						</div>
-
-						<div class="fragment fade-in" style="margin-top: 18px; display: grid; grid-template-columns: 1fr 1fr; gap: 18px; font-size: 0.82em;">
-							<div style="background: rgba(34,74,152,0.06); border-radius: 8px; padding: 14px;">
-								<strong class="ztu-orange">Інші формулювання:</strong>
-								<ul class="ztu-list" style="margin-top: 8px;">
-									<li>"What are the strongest arguments against this approach?"</li>
-									<li>"What would a skeptical staff engineer say about this?"</li>
-									<li>"What's the worst that can happen if we go this route?"</li>
-								</ul>
-							</div>
-							<div style="background: rgba(34,74,152,0.06); border-radius: 8px; padding: 14px;">
-								<strong class="ztu-orange">Коли застосовувати:</strong>
-								<ul class="ztu-list" style="margin-top: 8px;">
-									<li>Вибір архітектури</li>
-									<li>Вибір технологічного стеку</li>
-									<li>Будь-яке рішення з довгостроковими наслідками</li>
-								</ul>
-							</div>
-						</div>
-					</div>
-				</section>
-
-				<!-- ═══════════════════════════════════════════════
+			<!-- ═══════════════════════════════════════════════
 				     6. ТИПОВІ ПОМИЛКИ
 				     ═══════════════════════════════════════════════ -->
-				<section>
-					<h1 class="ztu-blue">Типові помилки</h1>
-					<p class="ztu-orange">Топ-3 чому AI "видає сміття"</p>
-				</section>
+			<section>
+				<h1 class="ztu-blue">Типові помилки</h1>
+				<p class="ztu-orange">Топ-3 чому AI "видає сміття"</p>
+			</section>
 
-				<section>
-					<h2 class="ztu-blue">Помилка #1: Занадто мало контексту</h2>
+			<section>
+				<h2 class="ztu-blue">Помилка #1: Занадто мало контексту</h2>
 
-					<div style="margin-top: 20px;">
-						<div class="fragment fade-in">
-							<div class="badge badge-bad">❌ Проблема</div>
-							<div class="prompt-bad">
-								<p>Напиши функцію для валідації</p>
-							</div>
+				<div style="margin-top: 20px;">
+					<div class="fragment fade-in">
+						<div class="badge badge-bad">❌ Проблема</div>
+						<div class="prompt-bad">
+							<p>Напиши функцію для валідації</p>
 						</div>
+					</div>
 
-						<div class="fragment fade-in" style="margin-top: 12px; font-size: 0.85em; color: #666;">
-							AI не знає: що валідувати, яка схема даних, яку бібліотеку використовуєш (Zod? Yup? Custom?), що повертати при помилці.
-						</div>
+					<div class="fragment fade-in" style="margin-top: 12px; font-size: 0.85em; color: #666;">
+						AI не знає: що валідувати, яка схема даних, яку бібліотеку використовуєш (Zod? Yup? Custom?), що
+						повертати при помилці.
+					</div>
 
-						<div class="fragment fade-in" style="margin-top: 12px;">
-							<div class="badge badge-good">✅ Рішення</div>
-							<div class="prompt-good" style="font-size: 0.82em;">
-								<p>Write a Zod schema to validate this incoming webhook payload: [JSON example]. Requirements: <br>
-								- <code>event</code> must be one of: "order.created", "order.paid", "order.cancelled"<br>
+					<div class="fragment fade-in" style="margin-top: 12px;">
+						<div class="badge badge-good">✅ Рішення</div>
+						<div class="prompt-good" style="font-size: 0.82em;">
+							<p>Write a Zod schema to validate this incoming webhook payload: [JSON example].
+								Requirements: <br>
+								- <code>event</code> must be one of: "order.created", "order.paid",
+								"order.cancelled"<br>
 								- <code>timestamp</code> must parse to a valid Date<br>
 								- Unknown fields should be stripped. Return typed result.</p>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<section>
+				<h2 class="ztu-blue">Помилка #2: Немає коду або помилки</h2>
+
+				<div style="margin-top: 20px;">
+					<div class="fragment fade-in">
+						<div class="badge badge-bad">❌ Проблема</div>
+						<div class="prompt-bad">
+							<p>Чому мій компонент ре-рендериться занадто часто?</p>
+						</div>
+					</div>
+
+					<div class="fragment fade-in" style="margin-top: 12px; font-size: 0.85em; color: #666;">
+						AI дасть лекцію про useCallback, useMemo, React.memo — без розуміння твоєї конкретної проблеми.
+					</div>
+
+					<div class="fragment fade-in" style="margin-top: 12px;">
+						<div class="badge badge-good">✅ Рішення</div>
+						<div class="prompt-good" style="font-size: 0.82em;">
+							<p>This React component re-renders on every parent render even though its props don't
+								change. <strong>Here's the component:</strong> [код]. <strong>React DevTools Profiler
+									shows:</strong> re-renders triggered by <code>onSave</code> prop. Find why and fix
+								with minimal changes.</p>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<section>
+				<h2 class="ztu-blue">Помилка #3: Прийняти першу відповідь як фінальну</h2>
+
+				<div style="margin-top: 20px;">
+					<div class="fragment fade-in">
+						<div class="badge badge-bad">❌ Проблема</div>
+						<div class="prompt-bad">
+							<p>Скопіював код → запушив у PR → ревʼювер знайшов 5 проблем</p>
+						</div>
+					</div>
+
+					<div class="fragment fade-in" style="margin-top: 18px;">
+						<div class="badge badge-good">✅ Ітеруй у діалозі</div>
+						<div
+							style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 12px; font-size: 0.8em;">
+							<div style="background: rgba(76,175,80,0.08); border-radius: 8px; padding: 12px;">
+								"Now add error handling for the case when DB is down"
+							</div>
+							<div style="background: rgba(76,175,80,0.08); border-radius: 8px; padding: 12px;">
+								"What are the edge cases you didn't handle?"
+							</div>
+							<div style="background: rgba(76,175,80,0.08); border-radius: 8px; padding: 12px;">
+								"Write tests for this implementation"
+							</div>
+							<div style="background: rgba(76,175,80,0.08); border-radius: 8px; padding: 12px;">
+								"Review your own code — what would you change?"
 							</div>
 						</div>
 					</div>
-				</section>
 
-				<section>
-					<h2 class="ztu-blue">Помилка #2: Немає коду або помилки</h2>
-
-					<div style="margin-top: 20px;">
-						<div class="fragment fade-in">
-							<div class="badge badge-bad">❌ Проблема</div>
-							<div class="prompt-bad">
-								<p>Чому мій компонент ре-рендериться занадто часто?</p>
-							</div>
-						</div>
-
-						<div class="fragment fade-in" style="margin-top: 12px; font-size: 0.85em; color: #666;">
-							AI дасть лекцію про useCallback, useMemo, React.memo — без розуміння твоєї конкретної проблеми.
-						</div>
-
-						<div class="fragment fade-in" style="margin-top: 12px;">
-							<div class="badge badge-good">✅ Рішення</div>
-							<div class="prompt-good" style="font-size: 0.82em;">
-								<p>This React component re-renders on every parent render even though its props don't change. <strong>Here's the component:</strong> [код]. <strong>React DevTools Profiler shows:</strong> re-renders triggered by <code>onSave</code> prop. Find why and fix with minimal changes.</p>
-							</div>
-						</div>
+					<div class="fragment fade-in" style="margin-top: 16px; font-size: 0.82em; text-align: center;">
+						<strong class="ztu-blue">"Review your own code"</strong> — один з найефективніших прийомів
 					</div>
-				</section>
+				</div>
+			</section>
 
-				<section>
-					<h2 class="ztu-blue">Помилка #3: Прийняти першу відповідь як фінальну</h2>
-
-					<div style="margin-top: 20px;">
-						<div class="fragment fade-in">
-							<div class="badge badge-bad">❌ Проблема</div>
-							<div class="prompt-bad">
-								<p>Скопіював код → запушив у PR → ревʼювер знайшов 5 проблем</p>
-							</div>
-						</div>
-
-						<div class="fragment fade-in" style="margin-top: 18px;">
-							<div class="badge badge-good">✅ Ітеруй у діалозі</div>
-							<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 12px; font-size: 0.8em;">
-								<div style="background: rgba(76,175,80,0.08); border-radius: 8px; padding: 12px;">
-									"Now add error handling for the case when DB is down"
-								</div>
-								<div style="background: rgba(76,175,80,0.08); border-radius: 8px; padding: 12px;">
-									"What are the edge cases you didn't handle?"
-								</div>
-								<div style="background: rgba(76,175,80,0.08); border-radius: 8px; padding: 12px;">
-									"Write tests for this implementation"
-								</div>
-								<div style="background: rgba(76,175,80,0.08); border-radius: 8px; padding: 12px;">
-									"Review your own code — what would you change?"
-								</div>
-							</div>
-						</div>
-
-						<div class="fragment fade-in" style="margin-top: 16px; font-size: 0.82em; text-align: center;">
-							<strong class="ztu-blue">"Review your own code"</strong> — один з найефективніших прийомів
-						</div>
-					</div>
-				</section>
-
-				<!-- ═══════════════════════════════════════════════
+			<!-- ═══════════════════════════════════════════════
 				     7. ОПТИМІЗАЦІЯ
 				     ═══════════════════════════════════════════════ -->
-				<section>
-					<h1 class="ztu-blue">Оптимізація</h1>
-					<p class="ztu-orange">Від промтів — до системи</p>
-				</section>
+			<section>
+				<h1 class="ztu-blue">Оптимізація</h1>
+				<p class="ztu-orange">Від промтів — до системи</p>
+			</section>
 
-				<section>
-					<h2 class="ztu-blue">Чому промти варто писати англійською?</h2>
-					<p class="ztu-orange">Токени — валюта AI</p>
+			<section>
+				<h2 class="ztu-blue">Чому промти варто писати англійською?</h2>
+				<p class="ztu-orange">Токени — валюта AI</p>
 
-					<div style="margin-top: 25px;">
-						<div class="fragment fade-in" style="display: grid; grid-template-columns: 1fr 1fr; gap: 25px; font-size: 0.85em;">
+				<div style="margin-top: 25px;">
+					<div class="fragment fade-in"
+						style="display: grid; grid-template-columns: 1fr 1fr; gap: 25px; font-size: 0.85em;">
+						<div>
+							<h3 class="ztu-orange">Що таке токен?</h3>
+							<p>Фрагмент тексту (~4 символи для латиниці, ~2 символи для кирилиці). AI обробляє і
+								оплачується саме в токенах.</p>
+						</div>
+						<div>
+							<h3 class="ztu-orange">Різниця на практиці:</h3>
+							<p>Кирилиця займає <strong>1.5–2x більше токенів</strong> — менше "пам'яті" залишається на
+								код і контекст.</p>
+						</div>
+					</div>
+
+					<div class="fragment fade-in"
+						style="margin-top: 20px; display: grid; grid-template-columns: 1fr 1fr; gap: 20px; font-size: 0.85em;">
+						<div class="prompt-bad">
+							<div class="badge badge-bad">🇺🇦 Ukrainian</div>
+							<p>"Напиши мені функцію для валідації"</p>
+							<p style="font-size: 0.8em; color: #888; margin-top: 6px;">~10 токенів</p>
+						</div>
+						<div class="prompt-good">
+							<div class="badge badge-good">🇬🇧 English</div>
+							<p>"Write me a validation function"</p>
+							<p style="font-size: 0.8em; color: #888; margin-top: 6px;">~6 токенів</p>
+						</div>
+					</div>
+
+					<div class="fragment fade-in"
+						style="margin-top: 16px; background: rgba(34,74,152,0.06); border-radius: 10px; padding: 14px; font-size: 0.82em; text-align: center;">
+						<strong>Live demo:</strong> platform.openai.com/tokenizer &nbsp;|&nbsp; tiktokenizer.vercel.app
+					</div>
+				</div>
+			</section>
+
+			<section>
+				<h2 class="ztu-blue">Правила — задай контекст один раз</h2>
+				<p class="ztu-orange">Custom Instructions / System Prompt</p>
+
+				<div style="margin-top: 20px;">
+					<div class="fragment fade-in"
+						style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; font-size: 0.82em;">
+						<div style="background: rgba(34,74,152,0.06); border-radius: 8px; padding: 14px;">
+							<strong class="ztu-blue">ChatGPT:</strong> Settings → Personalization → <strong>Custom
+								Instructions</strong>
+						</div>
+						<div style="background: rgba(34,74,152,0.06); border-radius: 8px; padding: 14px;">
+							<strong class="ztu-blue">Claude:</strong> Projects → <strong>Project Instructions</strong>
+						</div>
+					</div>
+
+					<div class="fragment fade-in prompt-good" style="margin-top: 16px; font-size: 0.78em;">
+						<p><strong>Приклад для розробника:</strong></p>
+						<p>I'm a mid-level fullstack developer. Stack: Next.js 14, TypeScript (strict), PostgreSQL,
+							Prisma, deployed on Vercel. I prefer functional patterns over OOP. When reviewing code, be
+							blunt — don't soften criticism. Always show the fixed code, not just describe the fix.
+							Default language for code comments: English. For explanations: Ukrainian.</p>
+					</div>
+
+					<div class="fragment fade-in"
+						style="margin-top: 14px; font-size: 0.82em; text-align: center; color: #666;">
+						Більше не повторюєш стек і преференції в кожному запиті
+					</div>
+				</div>
+			</section>
+
+			<!-- ─── Global vs Local + OpenRouter ─── -->
+			<section>
+				<h2 class="ztu-blue">Глобальні vs Локальні налаштування</h2>
+				<p class="ztu-orange">Два рівні кастомізації + вибір моделі</p>
+
+				<div style="margin-top: 18px;">
+					<div class="fragment fade-in"
+						style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; font-size: 0.8em;">
+						<div style="background: rgba(34,74,152,0.06); border-radius: 10px; padding: 16px;">
+							<h3 class="ztu-blue" style="font-size:1em;">🌐 Глобальні (для всіх чатів)</h3>
+							<ul class="ztu-list" style="margin-top: 10px;">
+								<li><strong>ChatGPT</strong> → Settings → Personalization → Custom Instructions</li>
+								<li><strong>Claude</strong> → Settings → Custom Instructions</li>
+								<li><strong>Gemini</strong> → Settings → Extensions / Personalization</li>
+							</ul>
+							<p style="margin-top: 10px; color: #666; font-size: 0.9em;">Діють завжди. Хто ти, як
+								відповідати, якою мовою.</p>
+						</div>
+						<div style="background: rgba(238,120,28,0.06); border-radius: 10px; padding: 16px;">
+							<h3 class="ztu-orange" style="font-size:1em;">📁 Локальні (під окрему тему)</h3>
+							<ul class="ztu-list" style="margin-top: 10px;">
+								<li><strong>ChatGPT</strong> → Explore GPTs → Create</li>
+								<li><strong>Claude</strong> → Projects → New Project</li>
+								<li><strong>Gemini</strong> → Gems → Create a Gem</li>
+							</ul>
+							<p style="margin-top: 10px; color: #666; font-size: 0.9em;">Окремий чат із своїм промтом,
+								файлами, поведінкою.</p>
+						</div>
+					</div>
+
+					<div class="fragment fade-in"
+						style="margin-top: 16px; background: rgba(156,39,176,0.06); border-radius: 10px; padding: 16px; font-size: 0.8em;">
+						<h3 style="color: #9c27b0; font-size:1em;">⚡ OpenRouter — одна точка входу до всіх моделей</h3>
+						<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 10px;">
 							<div>
-								<h3 class="ztu-orange">Що таке токен?</h3>
-								<p>Фрагмент тексту (~4 символи для латиниці, ~2 символи для кирилиці). AI обробляє і оплачується саме в токенах.</p>
+								<p>Єдиний інтерфейс для GPT-4o, Claude, Gemini, Llama, Mistral та ін.</p>
+								<p style="margin-top: 6px; color: #666;">openrouter.ai — платиш тільки за використання,
+									без підписок</p>
 							</div>
 							<div>
-								<h3 class="ztu-orange">Різниця на практиці:</h3>
-								<p>Кирилиця займає <strong>1.5–2x більше токенів</strong> — менше "пам'яті" залишається на код і контекст.</p>
-							</div>
-						</div>
-
-						<div class="fragment fade-in" style="margin-top: 20px; display: grid; grid-template-columns: 1fr 1fr; gap: 20px; font-size: 0.85em;">
-							<div class="prompt-bad">
-								<div class="badge badge-bad">🇺🇦 Ukrainian</div>
-								<p>"Напиши мені функцію для валідації"</p>
-								<p style="font-size: 0.8em; color: #888; margin-top: 6px;">~10 токенів</p>
-							</div>
-							<div class="prompt-good">
-								<div class="badge badge-good">🇬🇧 English</div>
-								<p>"Write me a validation function"</p>
-								<p style="font-size: 0.8em; color: #888; margin-top: 6px;">~6 токенів</p>
-							</div>
-						</div>
-
-						<div class="fragment fade-in" style="margin-top: 16px; background: rgba(34,74,152,0.06); border-radius: 10px; padding: 14px; font-size: 0.82em; text-align: center;">
-							<strong>Live demo:</strong> platform.openai.com/tokenizer &nbsp;|&nbsp; tiktokenizer.vercel.app
-						</div>
-					</div>
-				</section>
-
-				<section>
-					<h2 class="ztu-blue">Правила — задай контекст один раз</h2>
-					<p class="ztu-orange">Custom Instructions / System Prompt</p>
-
-					<div style="margin-top: 20px;">
-						<div class="fragment fade-in" style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; font-size: 0.82em;">
-							<div style="background: rgba(34,74,152,0.06); border-radius: 8px; padding: 14px;">
-								<strong class="ztu-blue">ChatGPT:</strong> Settings → Personalization → <strong>Custom Instructions</strong>
-							</div>
-							<div style="background: rgba(34,74,152,0.06); border-radius: 8px; padding: 14px;">
-								<strong class="ztu-blue">Claude:</strong> Projects → <strong>Project Instructions</strong>
-							</div>
-						</div>
-
-						<div class="fragment fade-in prompt-good" style="margin-top: 16px; font-size: 0.78em;">
-							<p><strong>Приклад для розробника:</strong></p>
-							<p>I'm a mid-level fullstack developer. Stack: Next.js 14, TypeScript (strict), PostgreSQL, Prisma, deployed on Vercel. I prefer functional patterns over OOP. When reviewing code, be blunt — don't soften criticism. Always show the fixed code, not just describe the fix. Default language for code comments: English. For explanations: Ukrainian.</p>
-						</div>
-
-						<div class="fragment fade-in" style="margin-top: 14px; font-size: 0.82em; text-align: center; color: #666;">
-							Більше не повторюєш стек і преференції в кожному запиті
-						</div>
-					</div>
-				</section>
-
-				<!-- ─── Global vs Local + OpenRouter ─── -->
-				<section>
-					<h2 class="ztu-blue">Глобальні vs Локальні налаштування</h2>
-					<p class="ztu-orange">Два рівні кастомізації + вибір моделі</p>
-
-					<div style="margin-top: 18px;">
-						<div class="fragment fade-in" style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; font-size: 0.8em;">
-							<div style="background: rgba(34,74,152,0.06); border-radius: 10px; padding: 16px;">
-								<h3 class="ztu-blue" style="font-size:1em;">🌐 Глобальні (для всіх чатів)</h3>
-								<ul class="ztu-list" style="margin-top: 10px;">
-									<li><strong>ChatGPT</strong> → Settings → Personalization → Custom Instructions</li>
-									<li><strong>Claude</strong> → Settings → Custom Instructions</li>
-									<li><strong>Gemini</strong> → Settings → Extensions / Personalization</li>
-								</ul>
-								<p style="margin-top: 10px; color: #666; font-size: 0.9em;">Діють завжди. Хто ти, як відповідати, якою мовою.</p>
-							</div>
-							<div style="background: rgba(238,120,28,0.06); border-radius: 10px; padding: 16px;">
-								<h3 class="ztu-orange" style="font-size:1em;">📁 Локальні (під окрему тему)</h3>
-								<ul class="ztu-list" style="margin-top: 10px;">
-									<li><strong>ChatGPT</strong> → Explore GPTs → Create</li>
-									<li><strong>Claude</strong> → Projects → New Project</li>
-									<li><strong>Gemini</strong> → Gems → Create a Gem</li>
-								</ul>
-								<p style="margin-top: 10px; color: #666; font-size: 0.9em;">Окремий чат із своїм промтом, файлами, поведінкою.</p>
-							</div>
-						</div>
-
-						<div class="fragment fade-in" style="margin-top: 16px; background: rgba(156,39,176,0.06); border-radius: 10px; padding: 16px; font-size: 0.8em;">
-							<h3 style="color: #9c27b0; font-size:1em;">⚡ OpenRouter — одна точка входу до всіх моделей</h3>
-							<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 10px;">
-								<div>
-									<p>Єдиний інтерфейс для GPT-4o, Claude, Gemini, Llama, Mistral та ін.</p>
-									<p style="margin-top: 6px; color: #666;">openrouter.ai — платиш тільки за використання, без підписок</p>
-								</div>
-								<div>
-									<p><strong>Коли корисно:</strong></p>
-									<ul class="ztu-list" style="margin-top: 6px;">
-										<li>Порівняти відповіді різних моделей</li>
-										<li>Доступ до моделей без окремих підписок</li>
-										<li>API для своїх проектів</li>
-									</ul>
-								</div>
-							</div>
-						</div>
-					</div>
-				</section>
-
-				<section>
-					<h2 class="ztu-blue">Скіли — спеціалізовані агенти під задачу</h2>
-					<p class="ztu-orange">GPTs (ChatGPT) / Projects (Claude)</p>
-
-					<div style="margin-top: 20px;">
-						<div class="fragment fade-in" style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 15px; font-size: 0.78em;">
-							<div class="tool-card">
-								<p style="font-size: 1.3em;">🔍</p>
-								<h3 class="ztu-orange" style="font-size:0.95em;">PR Reviewer</h3>
-								<p>Security + performance + style guide. Знає твій eslint config.</p>
-							</div>
-							<div class="tool-card">
-								<p style="font-size: 1.3em;">🧪</p>
-								<h3 class="ztu-orange" style="font-size:0.95em;">Test Writer</h3>
-								<p>Jest + Testing Library, твій стиль тестів, твої моки.</p>
-							</div>
-							<div class="tool-card">
-								<p style="font-size: 1.3em;">📄</p>
-								<h3 class="ztu-orange" style="font-size:0.95em;">Doc Writer</h3>
-								<p>JSDoc, README, ADR — в стилі твого проекту.</p>
-							</div>
-						</div>
-
-						<div class="fragment fade-in" style="margin-top: 18px; background: rgba(34,74,152,0.06); border-radius: 10px; padding: 14px; font-size: 0.82em;">
-							<strong class="ztu-blue">Суть:</strong> один раз налаштував системний промт → перемикаєш "режим" залежно від задачі. Код-рев'ю — один агент, написання тестів — інший.
-						</div>
-					</div>
-				</section>
-
-				<!-- ─── Memory Bank ─── -->
-				<section>
-					<h2 class="ztu-blue">Memory Bank</h2>
-					<p class="ztu-orange">Persistent context між сесіями</p>
-
-					<div style="margin-top: 20px;">
-						<div class="fragment fade-in" style="font-size: 0.85em;">
-							<p><strong>Проблема:</strong> AI не памʼятає контекст між розмовами. Щоразу пояснюєш архітектуру, рішення, конвенції.</p>
-							<p style="margin-top: 8px;"><strong class="ztu-blue">Memory Bank</strong> — набір markdown-файлів які ти підтримуєш і даєш AI на початку сесії.</p>
-						</div>
-
-						<div class="fragment fade-in" style="margin-top: 18px; display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
-							<div class="file-tree">
-								<span style="color:#7ec8e3;">memory/</span><br>
-								├── <span style="color:#f9c74f;">projectBrief.md</span>   <span class="comment"># що будуємо</span><br>
-								├── <span style="color:#f9c74f;">techContext.md</span>    <span class="comment"># стек, залежності</span><br>
-								├── <span style="color:#f9c74f;">systemPatterns.md</span> <span class="comment"># архітектура, патерни</span><br>
-								├── <span style="color:#f9c74f;">activeContext.md</span>  <span class="comment"># поточна задача</span><br>
-								└── <span style="color:#f9c74f;">decisions.md</span>      <span class="comment"># ADR — чому так</span>
-							</div>
-							<div style="font-size: 0.8em;">
-								<h3 class="ztu-orange" style="font-size:0.95em;">Як використовувати:</h3>
-								<ul class="ztu-list" style="margin-top: 8px;">
-									<li>На початку сесії: "Read all files in memory/"</li>
-									<li>AI отримує повний контекст проекту</li>
-									<li>Оновлюєш файли коли змінюється архітектура</li>
-									<li>Працює в Claude Code, Cursor, будь-якому агенті</li>
+								<p><strong>Коли корисно:</strong></p>
+								<ul class="ztu-list" style="margin-top: 6px;">
+									<li>Порівняти відповіді різних моделей</li>
+									<li>Доступ до моделей без окремих підписок</li>
+									<li>API для своїх проектів</li>
 								</ul>
 							</div>
 						</div>
 					</div>
-				</section>
+				</div>
+			</section>
 
-				<!-- ─── Spec-driven ─── -->
-				<section>
-					<h2 class="ztu-blue">Spec-driven Development</h2>
-					<p class="ztu-orange">Спочатку spec — потім код</p>
+			<section>
+				<h2 class="ztu-blue">Скіли — спеціалізовані агенти під задачу</h2>
+				<p class="ztu-orange">GPTs (ChatGPT) / Projects (Claude)</p>
 
-					<div style="margin-top: 18px;">
-						<div class="fragment fade-in" style="font-size: 0.85em;">
-							<p>Замість "напиши функцію X" — спочатку пишеш детальний <code>SPEC.md</code>, AI імплементує строго по ньому.</p>
-							<p style="margin-top: 6px; color: #666; font-size: 0.9em;">Результат передбачуваний. Edge cases обговорені до написання коду.</p>
+				<div style="margin-top: 20px;">
+					<div class="fragment fade-in"
+						style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 15px; font-size: 0.78em;">
+						<div class="tool-card">
+							<p style="font-size: 1.3em;">🔍</p>
+							<h3 class="ztu-orange" style="font-size:0.95em;">PR Reviewer</h3>
+							<p>Security + performance + style guide. Знає твій eslint config.</p>
 						</div>
-
-						<div class="fragment fade-in" style="margin-top: 14px; display: grid; grid-template-columns: 1fr 1fr; gap: 18px;">
-							<div class="file-tree" style="font-size: 0.72em;">
-								<span style="color:#7ec8e3;"># SPEC.md — Cart.addItem()</span><br><br>
-								<span style="color:#f9c74f;">## Goal</span><br>
-								Add item to cart, prevent duplicates<br><br>
-								<span style="color:#f9c74f;">## Inputs</span><br>
-								- productId: string (UUID)<br>
-								- quantity: number (1–99)<br><br>
-								<span style="color:#f9c74f;">## Edge cases</span><br>
-								- item already in cart → increment qty<br>
-								- out of stock → throw OutOfStockError<br>
-								- qty &gt; stock → clamp to available<br><br>
-								<span style="color:#f9c74f;">## Out of scope</span><br>
-								- Pricing, discounts<br><br>
-								<span style="color:#f9c74f;">## Definition of done</span><br>
-								- Unit tests cover all edge cases<br>
-								- No DB calls in unit tests
-							</div>
-							<div style="font-size: 0.8em;">
-								<h3 class="ztu-orange" style="font-size:0.95em;">Workflow:</h3>
-								<ol class="ztu-list" style="margin-top: 8px;">
-									<li>Пишеш SPEC.md разом з AI (brainstorm)</li>
-									<li>AI задає уточнюючі питання</li>
-									<li>Узгоджуєш spec</li>
-									<li>"Implement according to SPEC.md"</li>
-									<li>AI не вигадує — реалізує те що узгоджено</li>
-								</ol>
-							</div>
+						<div class="tool-card">
+							<p style="font-size: 1.3em;">🧪</p>
+							<h3 class="ztu-orange" style="font-size:0.95em;">Test Writer</h3>
+							<p>Jest + Testing Library, твій стиль тестів, твої моки.</p>
+						</div>
+						<div class="tool-card">
+							<p style="font-size: 1.3em;">📄</p>
+							<h3 class="ztu-orange" style="font-size:0.95em;">Doc Writer</h3>
+							<p>JSDoc, README, ADR — в стилі твого проекту.</p>
 						</div>
 					</div>
-				</section>
 
-				<!-- ═══════════════════════════════════════════════
+					<div class="fragment fade-in"
+						style="margin-top: 18px; background: rgba(34,74,152,0.06); border-radius: 10px; padding: 14px; font-size: 0.82em;">
+						<strong class="ztu-blue">Суть:</strong> один раз налаштував системний промт → перемикаєш "режим"
+						залежно від задачі. Код-рев'ю — один агент, написання тестів — інший.
+					</div>
+				</div>
+			</section>
+
+			<!-- ─── Memory Bank ─── -->
+			<section>
+				<h2 class="ztu-blue">Memory Bank</h2>
+				<p class="ztu-orange">Persistent context між сесіями</p>
+
+				<div style="margin-top: 20px;">
+					<div class="fragment fade-in" style="font-size: 0.85em;">
+						<p><strong>Проблема:</strong> AI не памʼятає контекст між розмовами. Щоразу пояснюєш
+							архітектуру, рішення, конвенції.</p>
+						<p style="margin-top: 8px;"><strong class="ztu-blue">Memory Bank</strong> — набір
+							markdown-файлів які ти підтримуєш і даєш AI на початку сесії.</p>
+					</div>
+
+					<div class="fragment fade-in"
+						style="margin-top: 18px; display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+						<div class="file-tree">
+							<span style="color:#7ec8e3;">memory/</span><br>
+							├── <span style="color:#f9c74f;">projectBrief.md</span> <span class="comment"># що
+								будуємо</span><br>
+							├── <span style="color:#f9c74f;">techContext.md</span> <span class="comment"># стек,
+								залежності</span><br>
+							├── <span style="color:#f9c74f;">systemPatterns.md</span> <span class="comment">#
+								архітектура, патерни</span><br>
+							├── <span style="color:#f9c74f;">activeContext.md</span> <span class="comment"># поточна
+								задача</span><br>
+							└── <span style="color:#f9c74f;">decisions.md</span> <span class="comment"># ADR — чому
+								так</span>
+						</div>
+						<div style="font-size: 0.8em;">
+							<h3 class="ztu-orange" style="font-size:0.95em;">Як використовувати:</h3>
+							<ul class="ztu-list" style="margin-top: 8px;">
+								<li>На початку сесії: "Read all files in memory/"</li>
+								<li>AI отримує повний контекст проекту</li>
+								<li>Оновлюєш файли коли змінюється архітектура</li>
+								<li>Працює в Claude Code, Cursor, будь-якому агенті</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<!-- ─── Spec-driven ─── -->
+			<section>
+				<h2 class="ztu-blue">Spec-driven Development</h2>
+				<p class="ztu-orange">Спочатку spec — потім код</p>
+
+				<div style="margin-top: 18px;">
+					<div class="fragment fade-in" style="font-size: 0.85em;">
+						<p>Замість "напиши функцію X" — спочатку пишеш детальний <code>SPEC.md</code>, AI імплементує
+							строго по ньому.</p>
+						<p style="margin-top: 6px; color: #666; font-size: 0.9em;">Результат передбачуваний. Edge cases
+							обговорені до написання коду.</p>
+					</div>
+
+					<div class="fragment fade-in"
+						style="margin-top: 14px; display: grid; grid-template-columns: 1fr 1fr; gap: 18px;">
+						<div class="file-tree" style="font-size: 0.72em;">
+							<span style="color:#7ec8e3;"># SPEC.md — Cart.addItem()</span><br><br>
+							<span style="color:#f9c74f;">## Goal</span><br>
+							Add item to cart, prevent duplicates<br><br>
+							<span style="color:#f9c74f;">## Inputs</span><br>
+							- productId: string (UUID)<br>
+							- quantity: number (1–99)<br><br>
+							<span style="color:#f9c74f;">## Edge cases</span><br>
+							- item already in cart → increment qty<br>
+							- out of stock → throw OutOfStockError<br>
+							- qty &gt; stock → clamp to available<br><br>
+							<span style="color:#f9c74f;">## Out of scope</span><br>
+							- Pricing, discounts<br><br>
+							<span style="color:#f9c74f;">## Definition of done</span><br>
+							- Unit tests cover all edge cases<br>
+							- No DB calls in unit tests
+						</div>
+						<div style="font-size: 0.8em;">
+							<h3 class="ztu-orange" style="font-size:0.95em;">Workflow:</h3>
+							<ol class="ztu-list" style="margin-top: 8px;">
+								<li>Пишеш SPEC.md разом з AI (brainstorm)</li>
+								<li>AI задає уточнюючі питання</li>
+								<li>Узгоджуєш spec</li>
+								<li>"Implement according to SPEC.md"</li>
+								<li>AI не вигадує — реалізує те що узгоджено</li>
+							</ol>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<!-- ═══════════════════════════════════════════════
 				     8. ІНСТРУМЕНТИ
 				     ═══════════════════════════════════════════════ -->
-				<section>
-					<h2 class="ztu-blue">ChatGPT vs Claude vs Gemini</h2>
-					<p class="ztu-orange">Коротко про вибір інструменту</p>
+			<section>
+				<h2 class="ztu-blue">ChatGPT vs Claude vs Gemini</h2>
+				<p class="ztu-orange">Коротко про вибір інструменту</p>
 
-					<div style="margin-top: 20px; font-size: 0.82em;">
-						<div class="fragment fade-in" style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 18px;">
-							<div class="tool-card">
-								<p style="font-size: 1.5em;">🤖</p>
-								<h3 class="ztu-blue">ChatGPT</h3>
-								<p style="margin-top: 8px;">Найширша екосистема. GPTs, Code Interpreter, Plugins. Найлегший старт.</p>
-								<p style="margin-top: 10px; color: #888; font-size: 0.85em;">Custom Instructions + GPTs</p>
-							</div>
-							<div class="tool-card">
-								<p style="font-size: 1.5em;">🌟</p>
-								<h3 class="ztu-blue">Claude</h3>
-								<p style="margin-top: 8px;">200k токенів контексту. Кращий для великих кодових баз. Сильніший у довгих задачах.</p>
-								<p style="margin-top: 10px; color: #888; font-size: 0.85em;">Projects + Instructions</p>
-							</div>
-							<div class="tool-card">
-								<p style="font-size: 1.5em;">💎</p>
-								<h3 class="ztu-blue">Gemini</h3>
-								<p style="margin-top: 8px;">Реальний час + пошук. Інтегрований з Google Workspace. 1M токен контекст.</p>
-								<p style="margin-top: 10px; color: #888; font-size: 0.85em;">Gemini в Google Docs/Gmail</p>
-							</div>
+				<div style="margin-top: 20px; font-size: 0.82em;">
+					<div class="fragment fade-in" style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 18px;">
+						<div class="tool-card">
+							<p style="font-size: 1.5em;">🤖</p>
+							<h3 class="ztu-blue">ChatGPT</h3>
+							<p style="margin-top: 8px;">Найширша екосистема. GPTs, Code Interpreter, Plugins. Найлегший
+								старт.</p>
+							<p style="margin-top: 10px; color: #888; font-size: 0.85em;">Custom Instructions + GPTs</p>
 						</div>
-
-						<div class="fragment fade-in" style="margin-top: 18px; background: rgba(34,74,152,0.06); border-radius: 10px; padding: 14px; text-align: center;">
-							Навчись писати промти — і перенесеш на будь-який інструмент. Концепція однакова.
+						<div class="tool-card">
+							<p style="font-size: 1.5em;">🌟</p>
+							<h3 class="ztu-blue">Claude</h3>
+							<p style="margin-top: 8px;">200k токенів контексту. Кращий для великих кодових баз.
+								Сильніший у довгих задачах.</p>
+							<p style="margin-top: 10px; color: #888; font-size: 0.85em;">Projects + Instructions</p>
+						</div>
+						<div class="tool-card">
+							<p style="font-size: 1.5em;">💎</p>
+							<h3 class="ztu-blue">Gemini</h3>
+							<p style="margin-top: 8px;">Реальний час + пошук. Інтегрований з Google Workspace. 1M токен
+								контекст.</p>
+							<p style="margin-top: 10px; color: #888; font-size: 0.85em;">Gemini в Google Docs/Gmail</p>
 						</div>
 					</div>
-				</section>
 
-				<!-- ═══════════════════════════════════════════════
+					<div class="fragment fade-in"
+						style="margin-top: 18px; background: rgba(34,74,152,0.06); border-radius: 10px; padding: 14px; text-align: center;">
+						Навчись писати промти — і перенесеш на будь-який інструмент. Концепція однакова.
+					</div>
+				</div>
+			</section>
+
+			<!-- ═══════════════════════════════════════════════
 				     9. SUPERPOWERS — NEXT LEVEL
 				     ═══════════════════════════════════════════════ -->
-				<section>
-					<h1 class="ztu-blue">Наступний рівень</h1>
-					<p class="ztu-orange">Коли промти стають системою</p>
-				</section>
+			<section>
+				<h1 class="ztu-blue">Наступний рівень</h1>
+				<p class="ztu-orange">Коли промти стають системою</p>
+			</section>
 
-				<section>
-					<h2 class="ztu-blue">Superpowers — структурований AI workflow</h2>
-					<p class="ztu-orange">github.com/obra/superpowers</p>
+			<section>
+				<h2 class="ztu-blue">Superpowers — структурований AI workflow</h2>
+				<p class="ztu-orange">github.com/obra/superpowers</p>
 
-					<div style="margin-top: 18px;">
-						<div class="fragment fade-in" style="font-size: 0.85em;">
-							<p>Фреймворк від Jesse Vincent — набір скілів для AI-агентів (Claude Code, Cursor) які реалізують повний dev workflow.</p>
+				<div style="margin-top: 18px;">
+					<div class="fragment fade-in" style="font-size: 0.85em;">
+						<p>Фреймворк від Jesse Vincent — набір скілів для AI-агентів (Claude Code, Cursor) які
+							реалізують повний dev workflow.</p>
+					</div>
+
+					<div class="fragment fade-in"
+						style="margin-top: 16px; display: grid; grid-template-columns: 1fr 1fr; gap: 15px; font-size: 0.78em;">
+						<div style="background: rgba(34,74,152,0.06); border-radius: 8px; padding: 14px;">
+							<strong class="ztu-orange">7 скілів:</strong>
+							<ol class="ztu-list" style="margin-top: 6px;">
+								<li>Brainstorm — уточнює вимоги</li>
+								<li>Write Plan — розбиває на задачі</li>
+								<li>Git Worktrees — ізольоване середовище</li>
+								<li>TDD — red-green-refactor</li>
+								<li>Subagents — паралельна реалізація</li>
+								<li>Code Review — перевірка по spec</li>
+								<li>Finish Branch — merge і cleanup</li>
+							</ol>
 						</div>
-
-						<div class="fragment fade-in" style="margin-top: 16px; display: grid; grid-template-columns: 1fr 1fr; gap: 15px; font-size: 0.78em;">
-							<div style="background: rgba(34,74,152,0.06); border-radius: 8px; padding: 14px;">
-								<strong class="ztu-orange">7 скілів:</strong>
-								<ol class="ztu-list" style="margin-top: 6px;">
-									<li>Brainstorm — уточнює вимоги</li>
-									<li>Write Plan — розбиває на задачі</li>
-									<li>Git Worktrees — ізольоване середовище</li>
-									<li>TDD — red-green-refactor</li>
-									<li>Subagents — паралельна реалізація</li>
-									<li>Code Review — перевірка по spec</li>
-									<li>Finish Branch — merge і cleanup</li>
-								</ol>
-							</div>
-							<div style="font-size: 0.95em;">
-								<h3 class="ztu-orange" style="font-size:0.95em;">Принцип:</h3>
-								<p style="margin-top: 8px;">AI не одразу пише код. Спочатку <strong>розуміє → планує → реалізує → перевіряє</strong>.</p>
-								<p style="margin-top: 12px; color: #666;">Це наступний рівень після Memory Bank + Spec-driven — коли весь workflow автоматизований.</p>
-							</div>
+						<div style="font-size: 0.95em;">
+							<h3 class="ztu-orange" style="font-size:0.95em;">Принцип:</h3>
+							<p style="margin-top: 8px;">AI не одразу пише код. Спочатку <strong>розуміє → планує →
+									реалізує → перевіряє</strong>.</p>
+							<p style="margin-top: 12px; color: #666;">Це наступний рівень після Memory Bank +
+								Spec-driven — коли весь workflow автоматизований.</p>
 						</div>
 					</div>
-				</section>
+				</div>
+			</section>
 
-				<!-- ═══════════════════════════════════════════════
+			<!-- ═══════════════════════════════════════════════
 				     10. TAKEAWAY
 				     ═══════════════════════════════════════════════ -->
-				<section>
-					<h1 class="ztu-blue">Takeaway</h1>
-					<p class="ztu-orange">Що забрати з собою</p>
-				</section>
+			<section>
+				<h1 class="ztu-blue">Takeaway</h1>
+				<p class="ztu-orange">Що забрати з собою</p>
+			</section>
 
-				<section>
-					<h2 class="ztu-blue">Шаблон промту для розробника</h2>
+			<section>
+				<h2 class="ztu-blue">Шаблон промту для розробника</h2>
 
-					<div style="margin-top: 18px;">
-						<div class="fragment fade-in prompt-good" style="font-size: 0.85em; line-height: 1.8;">
-							<p><strong class="ztu-blue">[Role]</strong> You're a [senior/staff/security] engineer.</p>
-							<p><strong class="ztu-blue">[Task]</strong> [Що конкретно зробити — дієслово + обʼєкт].</p>
-							<p><strong class="ztu-blue">[Context]</strong> Stack: [стек]. Constraints: [обмеження].</p>
-							<p><strong class="ztu-blue">[Focus]</strong> Pay attention to: [edge cases / performance / security].</p>
-							<p><strong class="ztu-blue">[Format]</strong> Show [diff only / full file / just the fix] with [inline comments / test coverage].</p>
-						</div>
-
-						<div class="fragment fade-in" style="margin-top: 16px; font-size: 0.78em; background: rgba(34,74,152,0.06); border-radius: 8px; padding: 14px;">
-							<strong class="ztu-orange">Приклад:</strong> You're a staff engineer. Refactor this Express middleware to handle auth errors properly. Stack: Node 20, TypeScript strict. Constraints: no new dependencies. Focus on: token expiry, missing headers, malformed JWTs. Show only changed files with inline comments explaining each change.
-						</div>
+				<div style="margin-top: 18px;">
+					<div class="fragment fade-in prompt-good" style="font-size: 0.85em; line-height: 1.8;">
+						<p><strong class="ztu-blue">[Role]</strong> You're a [senior/staff/security] engineer.</p>
+						<p><strong class="ztu-blue">[Task]</strong> [Що конкретно зробити — дієслово + обʼєкт].</p>
+						<p><strong class="ztu-blue">[Context]</strong> Stack: [стек]. Constraints: [обмеження].</p>
+						<p><strong class="ztu-blue">[Focus]</strong> Pay attention to: [edge cases / performance /
+							security].</p>
+						<p><strong class="ztu-blue">[Format]</strong> Show [diff only / full file / just the fix] with
+							[inline comments / test coverage].</p>
 					</div>
-				</section>
 
-				<section>
-					<h2 class="ztu-blue">Рівні зрілості роботи з AI</h2>
-
-					<div style="margin-top: 20px; font-size: 0.82em;">
-						<div class="fragment fade-in" style="background: rgba(34,74,152,0.05); border-left: 5px solid #aaa; padding: 12px 16px; border-radius: 8px; margin: 8px 0;">
-							<strong>Рівень 1 — Новачок:</strong> "Напиши мені код" → копіює без розуміння
-						</div>
-						<div class="fragment fade-in" style="background: rgba(238,120,28,0.08); border-left: 5px solid var(--ztu-orange); padding: 12px 16px; border-radius: 8px; margin: 8px 0;">
-							<strong>Рівень 2 — Джун:</strong> Дає контекст → отримує корисний результат → ітерує
-						</div>
-						<div class="fragment fade-in" style="background: rgba(34,74,152,0.08); border-left: 5px solid var(--ztu-blue); padding: 12px 16px; border-radius: 8px; margin: 8px 0;">
-							<strong>Рівень 3 — Мід:</strong> Правила + скіли + шаблони → системна робота з AI
-						</div>
-						<div class="fragment fade-in" style="background: rgba(76,175,80,0.08); border-left: 5px solid #4caf50; padding: 12px 16px; border-radius: 8px; margin: 8px 0;">
-							<strong>Рівень 4 — Сеніор:</strong> Memory Bank + Spec-driven → AI як pair programmer
-						</div>
-						<div class="fragment fade-in" style="background: rgba(156,39,176,0.08); border-left: 5px solid #9c27b0; padding: 12px 16px; border-radius: 8px; margin: 8px 0;">
-							<strong>Рівень 5 — Staff:</strong> Superpowers workflow → повністю автоматизований dev process
-						</div>
+					<div class="fragment fade-in"
+						style="margin-top: 16px; font-size: 0.78em; background: rgba(34,74,152,0.06); border-radius: 8px; padding: 14px;">
+						<strong class="ztu-orange">Приклад:</strong> You're a staff engineer. Refactor this Express
+						middleware to handle auth errors properly. Stack: Node 20, TypeScript strict. Constraints: no
+						new dependencies. Focus on: token expiry, missing headers, malformed JWTs. Show only changed
+						files with inline comments explaining each change.
 					</div>
-				</section>
+				</div>
+			</section>
 
-				<!-- Q&A -->
-				<section>
-					<h1 class="ztu-blue">Дякую!</h1>
-					<p class="ztu-orange" style="font-size: 1.1em;">Питання?</p>
+			<section>
+				<h2 class="ztu-blue">Рівні зрілості роботи з AI</h2>
 
-					<div style="margin-top: 50px; font-size: 0.85em;">
-						<p class="fragment fade-in">🔗 Роман Савіцький — BeerJS Zhytomyr</p>
-						<p class="fragment fade-in ztu-orange" style="margin-top: 25px;">Шаблон промту + Memory Bank структура — в чаті після виступу</p>
+				<div style="margin-top: 20px; font-size: 0.82em;">
+					<div class="fragment fade-in"
+						style="background: rgba(34,74,152,0.05); border-left: 5px solid #aaa; padding: 12px 16px; border-radius: 8px; margin: 8px 0;">
+						<strong>Рівень 1 — Новачок:</strong> "Напиши мені код" → копіює без розуміння
 					</div>
-				</section>
+					<div class="fragment fade-in"
+						style="background: rgba(238,120,28,0.08); border-left: 5px solid var(--ztu-orange); padding: 12px 16px; border-radius: 8px; margin: 8px 0;">
+						<strong>Рівень 2 — Джун:</strong> Дає контекст → отримує корисний результат → ітерує
+					</div>
+					<div class="fragment fade-in"
+						style="background: rgba(34,74,152,0.08); border-left: 5px solid var(--ztu-blue); padding: 12px 16px; border-radius: 8px; margin: 8px 0;">
+						<strong>Рівень 3 — Мід:</strong> Правила + скіли + шаблони → системна робота з AI
+					</div>
+					<div class="fragment fade-in"
+						style="background: rgba(76,175,80,0.08); border-left: 5px solid #4caf50; padding: 12px 16px; border-radius: 8px; margin: 8px 0;">
+						<strong>Рівень 4 — Сеніор:</strong> Memory Bank + Spec-driven → AI як pair programmer
+					</div>
+					<div class="fragment fade-in"
+						style="background: rgba(156,39,176,0.08); border-left: 5px solid #9c27b0; padding: 12px 16px; border-radius: 8px; margin: 8px 0;">
+						<strong>Рівень 5 — Staff:</strong> Superpowers workflow → повністю автоматизований dev process
+					</div>
+				</div>
+			</section>
 
-			</div>
+			<!-- Q&A -->
+			<section>
+				<h1 class="ztu-blue">Дякую!</h1>
+				<p class="ztu-orange" style="font-size: 1.1em;">Питання?</p>
+
+				<div style="margin-top: 50px; font-size: 0.85em;">
+					<p class="fragment fade-in">🔗 Роман Савіцький — BeerJS Zhytomyr</p>
+					<p class="fragment fade-in ztu-orange" style="margin-top: 25px;">Шаблон промту + Memory Bank
+						структура — в чаті після виступу</p>
+				</div>
+			</section>
+
 		</div>
+	</div>
 
-		<script src="dist/reveal.js"></script>
-		<script src="plugin/notes/notes.js"></script>
-		<script src="plugin/markdown/markdown.js"></script>
-		<script src="plugin/highlight/highlight.js"></script>
-		<script>
-			Reveal.initialize({
-				hash: true,
-				progress: true,
-				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
-			});
-		</script>
-	</body>
+	<script src="dist/reveal.js"></script>
+	<script src="plugin/notes/notes.js"></script>
+	<script src="plugin/markdown/markdown.js"></script>
+	<script src="plugin/highlight/highlight.js"></script>
+	<script>
+		Reveal.initialize({
+			hash: true,
+			progress: true,
+			plugins: [RevealMarkdown, RevealHighlight, RevealNotes]
+		});
+	</script>
+</body>
+
 </html>
