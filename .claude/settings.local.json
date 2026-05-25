@@ -1,7 +1,10 @@
 {
   "permissions": {
     "allow": [
-      "Bash(pandoc \"ДОПОВІДЬ_ПЕРЕДЗАХИСТ.md\" -o \"ДОПОВІДЬ_ПЕРЕДЗАХИСТ.docx\")"
+      "Bash(pandoc \"ДОПОВІДЬ_ПЕРЕДЗАХИСТ.md\" -o \"ДОПОВІДЬ_ПЕРЕДЗАХИСТ.docx\")",
+      "Bash(pandoc \"ДОПОВІДЬ_ПЕРЕДЗАХИСТ.docx\" -t plain --wrap=none)",
+      "Bash(pandoc \"tmp_source/Дисертація_Савіцький.docx\" -t plain --wrap=none)",
+      "WebFetch(domain:roman-savitskyi.github.io)"
     ]
   }
 }
