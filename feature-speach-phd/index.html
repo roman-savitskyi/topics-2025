@@ -722,7 +722,7 @@
 				<div style="display: flex; gap: 24px; font-size: 0.65em; padding: 0 30px;">
 					<div style="flex: 3; display: flex; align-items: center; justify-content: center;">
 						<img src="examples/assets/2_3_stable.png"
-							style="max-height: 520px; max-width: 95%; border-radius: 8px; margin-top: -20px;">
+							style="max-height: 520px; max-width: 95%; border-radius: 8px; margin-top: -10px;">
 					</div>
 					<div style="flex: 2; display: flex; flex-direction: column; justify-content: center;">
 						<div class="formula-box" style="font-size: 0.95em; padding: 10px 14px;">
@@ -752,22 +752,24 @@
 			<!-- Слайд 12: Словники синонімічних замін -->
 			<section>
 				<h2>Лексичні ресурси і потік замін</h2>
-				<div style="text-align: center;">
-					<img src="examples/assets/2_5_synon.png"
-						style="max-height: 340px; max-width: 100%; border-radius: 8px;">
-				</div>
-				<div style="display: flex; gap: 10px; font-size: 0.63em; margin-top: 12px;">
-					<div class="highlight-box" style="flex: 1; padding: 8px 12px;">
-						<strong>7 категорій:</strong> ненормативна, абревіатури, сленг, терміни, застаріла, складна,
-						рідковживана лексика
+				<div style="display: flex; gap: 24px; align-items: center; padding: 0 20px;">
+					<div style="flex: 3; display: flex; align-items: center; justify-content: center;">
+						<img src="examples/assets/2_5_synon.png"
+							style="max-height: 440px; max-width: 100%; border-radius: 8px;">
 					</div>
-					<div class="highlight-box" style="flex: 1; padding: 8px 12px;">
-						<strong>Морфологічне узгодження:</strong> пошук за лемою, автоматичне узгодження відмінка,
-						числа, роду
-					</div>
-					<div class="highlight-box-green" style="flex: 1; padding: 8px 12px;">
-						<strong>Детермінованість</strong> результату, незалежність від зовнішніх сервісів, прозорий
-						аудит
+					<div style="flex: 2; display: flex; flex-direction: column; gap: 10px; font-size: 0.63em;">
+						<div class="highlight-box" style="padding: 8px 12px; margin: 0;">
+							<strong>7 категорій:</strong> ненормативна, абревіатури, сленг, терміни, застаріла, складна,
+							рідковживана лексика
+						</div>
+						<div class="highlight-box" style="padding: 8px 12px; margin: 0;">
+							<strong>Морфологічне узгодження:</strong> пошук за лемою, автоматичне узгодження відмінка,
+							числа, роду
+						</div>
+						<div class="highlight-box-green" style="padding: 8px 12px; margin: 0;">
+							<strong>Детермінованість</strong> результату, незалежність від зовнішніх сервісів, прозорий
+							аудит
+						</div>
 					</div>
 				</div>
 				<aside class="notes">
@@ -781,8 +783,8 @@
 				<!-- Горизонтальний потік -->
 				<div style="display: flex; align-items: stretch; gap: 0; font-size: 0.54em; margin-bottom: 10px;">
 					<div
-						style="flex: 1; background: rgba(34,74,152,0.12); border: 2px solid var(--ztu-blue); padding: 10px 12px; border-radius: 8px 0 0 8px; display: flex; flex-direction: column; justify-content: center; text-align: center;">
-						<strong style="font-size: 1.15em; color: var(--ztu-blue);">① Детекція</strong>
+						style="flex: 1; background: rgba(34,74,152,0.12); border: 2px solid var(--ztu-blue); padding: 10px 12px; border-radius: 8px 0 0 8px; display: flex; flex-direction: column; justify-content: flex-start; text-align: center;">
+						<strong style="font-size: 1.15em; color: var(--ztu-blue);">Детекція</strong>
 						<p style="margin: 6px 0 0 0;">7 словникових детекторів<br>+ NER RoBERTa (терміни)<br>+ нечіткий
 							пошук (profanity)</p>
 					</div>
@@ -790,8 +792,8 @@
 						style="display: flex; align-items: center; font-size: 1.8em; color: var(--ztu-blue); padding: 0 2px;">
 						→</div>
 					<div
-						style="flex: 1; background: rgba(238,120,28,0.12); border: 2px solid var(--ztu-orange); padding: 10px 12px; display: flex; flex-direction: column; justify-content: center; text-align: center;">
-						<strong style="font-size: 1.15em; color: var(--ztu-orange);">② Пошук заміни</strong>
+						style="flex: 1; background: rgba(238,120,28,0.12); border: 2px solid var(--ztu-orange); padding: 10px 12px; display: flex; flex-direction: column; justify-content: flex-start; text-align: center;">
+						<strong style="font-size: 1.15em; color: var(--ztu-orange);">Пошук заміни</strong>
 						<p style="margin: 6px 0 0 0;">4-рівнева ієрархія словників<br>(467K форм · 54K лем)<br>+ кеш
 							результатів</p>
 					</div>
@@ -799,8 +801,8 @@
 						style="display: flex; align-items: center; font-size: 1.8em; color: var(--ztu-orange); padding: 0 2px;">
 						→</div>
 					<div
-						style="flex: 1; background: rgba(229,62,35,0.12); border: 2px solid var(--ztu-red); padding: 10px 12px; display: flex; flex-direction: column; justify-content: center; text-align: center;">
-						<strong style="font-size: 1.15em; color: var(--ztu-red);">③ LLM-резерв</strong>
+						style="flex: 1; background: rgba(229,62,35,0.12); border: 2px solid var(--ztu-red); padding: 10px 12px; display: flex; flex-direction: column; justify-content: flex-start; text-align: center;">
+						<strong style="font-size: 1.15em; color: var(--ztu-red);">LLM-резерв</strong>
 						<p style="margin: 6px 0 0 0;">Лише якщо словник ∅<br>MamayLLM / LapaLLM<br>fallback: Gemma ·
 							Gemini</p>
 					</div>
@@ -808,8 +810,8 @@
 						style="display: flex; align-items: center; font-size: 1.8em; color: var(--ztu-red); padding: 0 2px;">
 						→</div>
 					<div
-						style="flex: 1; background: rgba(76,173,59,0.12); border: 2px solid var(--ztu-green); padding: 10px 12px; border-radius: 0 8px 8px 0; display: flex; flex-direction: column; justify-content: center; text-align: center;">
-						<strong style="font-size: 1.15em; color: var(--ztu-green);">④ Валідація</strong>
+						style="flex: 1; background: rgba(76,173,59,0.12); border: 2px solid var(--ztu-green); padding: 10px 12px; border-radius: 0 8px 8px 0; display: flex; flex-direction: column; justify-content: flex-start; text-align: center;">
+						<strong style="font-size: 1.15em; color: var(--ztu-green);">Валідація</strong>
 						<p style="margin: 6px 0 0 0;">Морфоузгодження (pymorphy2)<br>POS-фільтр · довжина<br>→
 							застосування справа-наліво</p>
 					</div>
@@ -817,11 +819,12 @@
 				<!-- Деталізація нижче -->
 				<div style="display: flex; gap: 8px; font-size: 0.54em;">
 					<!-- NER блок -->
-					<div class="highlight-box-orange" style="flex: 1; padding: 8px 10px;">
-						<strong>NER-модель (терміни)</strong><br>
-						<code style="font-size: 0.9em;">ukr-term-detection</code> (RoBERTa)<br>
-						Навчена на укр. фахових текстах · BIO-анотація<br>
-						Поріг: 0.55 / 0.85 · fallback: <code style="font-size: 0.9em;">ukr-roberta-base</code>
+					<div class="highlight-box-orange"
+						style="flex: 1; padding: 8px 10px; display: flex; flex-direction: column; justify-content: space-between; gap: 6px; font-size: 1.08em;">
+						<strong>NER-модель (терміни)</strong>
+						<div><code style="font-size: 0.9em;">ukr-term-detection</code> (RoBERTa)</div>
+						<div>Навчена на укр. фахових текстах · BIO-анотація</div>
+						<div>Поріг: 0.55 / 0.85<br>fallback: <code style="font-size: 0.9em;">ukr-roberta-base</code></div>
 					</div>
 					<!-- LLM конфігурації -->
 					<div class="highlight-box" style="flex: 1.3; padding: 8px 10px;">
@@ -845,12 +848,18 @@
 						</table>
 					</div>
 					<!-- Валідація -->
-					<div class="highlight-box-green" style="flex: 1; padding: 8px 10px;">
-						<strong>8 критеріїв валідації LLM</strong><br>
-						дублювання · довжина · морфологія ·<br>
-						POS-сумісність · min 2 варіанти ·<br>
-						нормалізація · фільтр підрядків ·<br>
-						фіксація temperature/top_p
+					<div class="highlight-box-green" style="flex: 1.1; padding: 8px 10px; display: flex; flex-direction: column;">
+						<strong>8 критеріїв валідації LLM</strong>
+						<div style="flex: 1; display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: repeat(4, 1fr); gap: 5px; margin-top: 6px;">
+							<div style="display: flex; align-items: center; justify-content: center; text-align: center; background: rgba(76,173,59,0.12); border-radius: 4px; padding: 5px 6px;">дублювання</div>
+							<div style="display: flex; align-items: center; justify-content: center; text-align: center; background: rgba(76,173,59,0.12); border-radius: 4px; padding: 5px 6px;">довжина</div>
+							<div style="display: flex; align-items: center; justify-content: center; text-align: center; background: rgba(76,173,59,0.12); border-radius: 4px; padding: 5px 6px;">морфологія</div>
+							<div style="display: flex; align-items: center; justify-content: center; text-align: center; background: rgba(76,173,59,0.12); border-radius: 4px; padding: 5px 6px;">POS-сумісність</div>
+							<div style="display: flex; align-items: center; justify-content: center; text-align: center; background: rgba(76,173,59,0.12); border-radius: 4px; padding: 5px 6px;">min 2 варіанти</div>
+							<div style="display: flex; align-items: center; justify-content: center; text-align: center; background: rgba(76,173,59,0.12); border-radius: 4px; padding: 5px 6px;">нормалізація</div>
+							<div style="display: flex; align-items: center; justify-content: center; text-align: center; background: rgba(76,173,59,0.12); border-radius: 4px; padding: 5px 6px;">фільтр підрядків</div>
+							<div style="display: flex; align-items: center; justify-content: center; text-align: center; background: rgba(76,173,59,0.12); border-radius: 4px; padding: 5px 6px;">temperature/top_p</div>
+						</div>
 					</div>
 				</div>
 				<!-- Кешування -->
@@ -867,7 +876,7 @@
 
 			<!-- Слайд 13: Узагальнений метод -->
 			<section>
-				<h2 style="white-space: nowrap;">Узагальнений метод забезпечення вебдоступності</h2>
+				<h2 style="white-space: nowrap; font-size: 1.1em;">Узагальнений метод забезпечення вебдоступності</h2>
 				<div style="display: flex; gap: 20px; font-size: 0.58em;">
 					<div style="flex: 3; display: flex; align-items: center;">
 						<img src="examples/assets/2_9.png"
@@ -892,7 +901,7 @@
 								змін
 							</div>
 							<div class="highlight-box" style="padding: 6px 10px;">
-								<strong>3 режими</strong><br>Документний · сторінковий · курсорний
+								<strong>3 режими</strong><br>Документний<br>Сторінковий<br>Курсорний
 							</div>
 						</div>
 						<div class="highlight-box-orange" style="padding: 6px 10px;">
@@ -915,7 +924,7 @@
 							style="max-height: 525px; max-width: 100%; border-radius: 8px;">
 					</div>
 					<div
-						style="flex: 2; display: flex; flex-direction: column; gap: 8px; justify-content: space-evenly;">
+						style="flex: 2; display: flex; flex-direction: column; gap: 4px; justify-content: center; font-size: 1.25em;">
 						<div class="impl-card" style="border-left: 4px solid var(--ztu-blue); padding: 20px 14px;">
 							<strong class="ztu-blue">Клієнтський рівень</strong>
 							<p style="margin: 4px 0 0 0;">Редактор · пагінація · підсвітка бар'єрів · вибір режиму · TTS
@@ -949,13 +958,13 @@
 
 			<!-- Слайд 15: Алгоритм ітераційного спрощення -->
 			<section>
-				<h2 style="margin-bottom: 5px;">Алгоритм ітераційного спрощення</h2>
+				<h2 style="margin-bottom: 5px; font-size: 32px;">Алгоритм ітераційного спрощення</h2>
 				<div style="display: flex; gap: 24px; font-size: 0.6em; align-items: center; margin-top: -20px;">
 					<div style="flex: 3; display: flex; align-items: center; justify-content: center;">
 						<img src="examples/assets/2_8.png"
 							style="max-height: 580px; max-width: 95%; border-radius: 8px;">
 					</div>
-					<div style="flex: 2; display: flex; flex-direction: column; gap: 5px;">
+					<div style="flex: 2; display: flex; flex-direction: column; gap: 8px; justify-content: space-between; font-size: 1.35em;">
 						<div class="impl-card" style="border-left: 4px solid var(--ztu-blue); padding: 8px 10px;">
 							<strong class="ztu-blue">Три точки входу</strong>
 							<p style="margin: 3px 0 0 0;">document — весь текст; page — видима сторінка; cursor — вікно
@@ -996,7 +1005,7 @@
 						<img src="examples/assets/3_3.png"
 							style="max-height: 560px; max-width: 95%; border-radius: 8px;">
 					</div>
-					<div style="flex: 2; display: flex; flex-direction: column; gap: 8px;">
+					<div style="flex: 2; display: flex; flex-direction: column; gap: 8px; justify-content: space-between; font-size: 1.35em;">
 						<div class="impl-card" style="border-left: 4px solid var(--ztu-blue); padding: 8px 10px;">
 							<strong class="ztu-blue">Документний режим</strong>
 							<p style="margin: 3px 0 0 0;">Весь текст · steps 5 · max 20 замін · повторна детекція кожні
@@ -1218,9 +1227,9 @@
 				<div style="font-size: 0.58em;">
 					<div style="text-align: center; margin-bottom: 6px;">
 						<img src="examples/assets/exp05_sensitivity_chart.png"
-							style="max-height: 280px; max-width: 100%; border-radius: 8px;">
+							style="max-height: 330px; max-width: 100%; border-radius: 8px;">
 					</div>
-					<div style="display: flex; gap: 10px; align-items: start;">
+					<div style="display: flex; gap: 10px; align-items: start; font-size: 1.2em;">
 						<div style="flex: 1; display: flex; flex-direction: column; gap: 3px;">
 							<div class="impl-card" style="border-left: 4px solid var(--ztu-blue); padding: 6px 10px;">
 								<strong class="ztu-blue">Поріг впевненості (0,3–1,0)</strong> — результат
@@ -1455,9 +1464,9 @@
 
 			<!-- Слайд 25: Висновки -->
 			<section>
-				<h2>Висновки</h2>
-				<div style="font-size: 0.66em;">
-					<div style="display: flex; flex-direction: column; gap: 2px;">
+				<h2>Висновки <span style="font-size: 0.6em; color: #999;">(1/2)</span></h2>
+				<div style="font-size: 0.82em;">
+					<div style="display: flex; flex-direction: column; gap: 8px;">
 						<div class="conclusion-item"
 							style="border-left: 4px solid var(--ztu-blue); padding: 5px 12px; background: rgba(34,74,152,0.05); border-radius: 6px; margin: 0;">
 							<strong class="ztu-blue">Проведений</strong> комплексний аналіз наявних методів оцінювання
@@ -1491,6 +1500,18 @@
 							корпусу з трьох серій з аналітичним виведенням коефіцієнтів під обмеження часу реакції та
 							ефективної пам'яті фільтра.
 						</div>
+					</div>
+				</div>
+				<aside class="notes">
+					На підставі проведеного дослідження сформульовано висновки, що представлені на слайді та у авторефераті, тому дозвольте їх не зачитувати.
+				</aside>
+			</section>
+
+			<!-- Слайд 25б: Висновки (2/2) -->
+			<section>
+				<h2>Висновки <span style="font-size: 0.6em; color: #999;">(2/2)</span></h2>
+				<div style="font-size: 1em;">
+					<div style="display: flex; flex-direction: column; gap: 8px;">
 						<div class="conclusion-item"
 							style="border-left: 4px solid var(--ztu-green); padding: 5px 12px; background: rgba(76,173,59,0.05); border-radius: 6px; margin: 0;">
 							<strong class="ztu-green">Розроблено</strong> метод забезпечення вебдоступності тексту як
@@ -1515,32 +1536,25 @@
 				</aside>
 			</section>
 
-			<!-- Слайд 27: Дякую за увагу -->
-			<section>
-				<div
-					style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%;">
-					<h2 style="font-size: 2em; margin-bottom: 20px;">Дякую за увагу!</h2>
-					<div style="font-size: 0.75em; text-align: center; color: #555;">
-						<p style="margin: 0 0 16px 0; font-size: 1.1em;">
-							<strong>Савіцький Роман Святославович</strong>
-						</p>
-						<p style="margin: 0 0 8px 0;">
-							Методи і алгоритми забезпечення вебдоступності тексту<br>
-							для людей з когнітивними та інтелектуальними порушеннями
-						</p>
-						<p style="margin: 0 0 20px 0; font-size: 0.9em; color: #777;">
-							121 — Інженерія програмного забезпечення
-						</p>
-						<div style="display: flex; gap: 30px; justify-content: center; font-size: 0.9em;">
-							<div>
-								<strong>Науковий керівник:</strong><br>
-								д.т.н., проф. Вакалюк Т. А.
-							</div>
-						</div>
-					</div>
+			<!-- Слайд 27: Титулка (копія слайда 1) -->
+			<section style="margin-top: -25px;">
+				<p style="font-size: 0.45em; color: #777; text-align: center; margin: 0 0 120px 0;">
+				</p>
+				<h2 style="font-size: 1.3em; line-height: 1.3; text-align: center; margin: 0 0 30px 0;">Методи і
+					алгоритми забезпечення вебдоступності тексту для людей з когнітивними та інтелектуальними
+					порушеннями</h2>
+				<div class="title-meta" style="text-align: center; margin: 0 0 80px 0; font-size: 0.7em;">
+					<span>Дисертація на здобуття наукового ступеня <strong>доктора філософії</strong></span>
+					<span>Спеціальність: <em>121 Інженерія програмного забезпечення</em></span>
 				</div>
+				<div style="text-align: right; font-size: 0.6em; margin: 0 40px 0 0;">
+					<p style="margin: 5px 0;">Виконав: <strong>Савіцький Роман Святославович</strong></p>
+					<p style="margin: 5px 0;">Науковий керівник: <strong>д.п.н., проф. Вакалюк Тетяна
+							Анатоліївна</strong></p>
+				</div>
+				<p style="font-size: 0.65em; color: #999; text-align: center; margin: 100px 0 0 0;">Житомир – 2026</p>
 				<aside class="notes">
-					Дякую за увагу! Готовий відповісти на Ваші запитання.
+					Шановний голово, шановні члени спеціалізованої вченої ради, шановні колеги! Дозвольте представити дисертаційне дослідження на тему «Методи і алгоритми забезпечення вебдоступності тексту для людей з когнітивними та інтелектуальними порушеннями», виконане на здобуття наукового ступеня доктора філософії за спеціальністю 121 — Інженерія програмного забезпечення у Державному університеті «Житомирська політехніка» під керівництвом доктора педагогічних наук, професора Вакалюк Тетяни Анатоліївни. Актуальність дослідження зумовлена тим, що когнітивні та інтелектуальні порушення охоплюють широкий спектр станів — від синдрому дефіциту уваги та гіперактивності до розладів аутистичного спектра. За даними Всесвітньої організації охорони здоров'я, понад мільярд людей у світі мають ту чи іншу форму інвалідності. Для цієї категорії осіб складність текстового контенту є системним бар'єром, що обмежує можливості в повноцінній участі в суспільному житті. Наявні системи спрощення тексту переважно реалізують статичний підхід без урахування індивідуального когнітивного стану конкретного читача в момент взаємодії. Натомість поєднання автоматизованого аналізу тексту з неінвазивним моніторингом емоційного стану через вбудовану відеокамеру відкриває можливість реалізувати адаптивне спрощення, що орієнтується на реальний стан конкретного користувача.
 				</aside>
 			</section>
 
