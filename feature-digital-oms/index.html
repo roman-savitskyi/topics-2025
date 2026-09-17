@@ -318,6 +318,55 @@
 			/* один клік/потрійний клік виділяє весь промпт */
 			cursor: text;
 		}
+
+		/* ---- Result card (real AI output / fallback) ---- */
+		.result-wrap {
+			max-width: 960px;
+			margin: 8px auto 0;
+			text-align: left;
+		}
+
+		.result-wrap .rlabel {
+			font-size: 0.42em;
+			font-weight: 700;
+			color: var(--ztu-green);
+			text-transform: uppercase;
+			letter-spacing: 0.06em;
+			margin-bottom: 4px;
+		}
+
+		.result-card {
+			background: #fff;
+			border: 1px solid #cfe0cf;
+			border-left: 4px solid var(--ztu-green);
+			border-radius: 8px;
+			padding: 10px 14px;
+			font-size: 0.44em;
+			line-height: 1.5;
+			color: #2f333a;
+			white-space: pre-wrap;
+			box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+		}
+
+		/* Prompt anatomy chips */
+		.anatomy {
+			display: flex;
+			flex-wrap: wrap;
+			gap: 6px;
+			justify-content: center;
+			margin: 6px auto 0;
+			max-width: 960px;
+		}
+
+		.anatomy span {
+			background: rgba(34, 74, 152, 0.08);
+			border: 1px solid #d3dcec;
+			border-radius: 999px;
+			padding: 3px 10px;
+			font-size: 0.4em;
+			color: var(--ztu-blue);
+			font-weight: 600;
+		}
 	</style>
 </head>
 
@@ -498,21 +547,34 @@
 				<h2 style="text-align: center; margin-bottom: 6px;">Звернення громадянина → відповідь</h2>
 				<p class="demo-lead">Мешканець скаржиться на несправне вуличне освітлення. Один і той самий
 					запит даємо ChatGPT і Gemini поруч — порівнюємо стиль, повноту й тон відповіді.</p>
-				<div class="two-columns vs-cols" style="align-items:stretch;">
-					<div>
-						<p class="lbl">ChatGPT</p>
-						<div class="demo-shot" style="min-height:120px;">Скриншот / демо відповіді ChatGPT
-							<span class="fallback">резервний запис</span></div>
-					</div>
-					<div>
-						<p class="lbl">Gemini</p>
-						<div class="demo-shot" style="min-height:120px;">Скриншот / демо відповіді Gemini
-							<span class="fallback">резервний запис</span></div>
-					</div>
-				</div>
 				<div class="prompt-wrap">
 					<div class="plabel">📋 Промпт — виділити й скопіювати</div>
 					<div class="prompt-box">Ти — діловод органу місцевого самоврядування. Склади офіційну, ввічливу відповідь на звернення мешканця в діловому стилі, без канцеляриту. Звернення: «На вул. Шевченка два тижні не працює вуличне освітлення, ввечері темно й небезпечно. Прошу відремонтувати.» Подякуй за звернення, зазнач, що його зареєстровано, назви відповідальний підрозділ і строк розгляду. Не вигадуй конкретних дат і номерів документів.</div>
+				</div>
+				<div class="anatomy">
+					<span>🎭 роль</span><span>📄 контекст</span><span>✅ завдання</span><span>⛔ обмеження</span><span>📐 формат</span>
+				</div>
+				<div class="two-columns" style="align-items:stretch; margin-top:8px;">
+					<div>
+						<div class="rlabel" style="font-size:0.42em; font-weight:700; color:var(--ztu-blue); margin-bottom:4px;">Результат ChatGPT</div>
+						<div class="result-card" style="border-left-color:var(--ztu-blue); border-color:#cdd8ee;">Шановний мешканцю!
+
+Дякуємо за звернення щодо несправного вуличного освітлення на вул. Шевченка. Повідомляємо, що його зареєстровано та передано до відділу житлово-комунального господарства для вжиття заходів.
+
+Про результати розгляду Вас буде поінформовано у встановлений законодавством строк.
+
+З повагою, [посада, підпис]</div>
+					</div>
+					<div>
+						<div class="rlabel" style="font-size:0.42em; font-weight:700; color:var(--ztu-blue); margin-bottom:4px;">Результат Gemini</div>
+						<div class="result-card" style="border-left-color:var(--ztu-blue); border-color:#cdd8ee;">Доброго дня!
+
+Дякуємо, що повідомили про проблему з освітленням на вул. Шевченка. Ваше звернення зареєстроване й передане у відділ ЖКГ.
+
+Щойно роботи заплановано — ми Вас поінформуємо про строки та результат.
+
+З повагою, [підпис]</div>
+					</div>
 				</div>
 				<p class="small-text" style="text-align:center; margin-top:8px; font-size:0.42em;">⚠️ Навчальний
 					момент: якщо AI напише строк — перевірте його. За ЗУ «Про звернення громадян» (ст. 20):
@@ -540,16 +602,24 @@
 				<h2 style="text-align: center; margin-bottom: 6px;">Чернетка розпорядження з кількох тез</h2>
 				<p class="demo-lead">Даємо кілька тез — отримуємо структурований проєкт розпорядження чи
 					протоколу в діловому стилі за секунди.</p>
-				<div class="demo-shot" style="min-height:120px;">Скриншот / демо генерації документа
-					<span class="fallback">резервний запис демо</span></div>
 				<div class="prompt-wrap">
 					<div class="plabel">📋 Промпт — виділити й скопіювати</div>
 					<div class="prompt-box">Склади проєкт розпорядження голови громади на основі тез: 1) організувати ремонт вуличного освітлення на вул. Шевченка; 2) відповідальний — відділ ЖКГ; 3) термін виконання — 30 днів; 4) контроль залишити за собою. Дай офіційну структуру: преамбула, пункти, відповідальні, контроль. Місця для номера й дати познач як [___].</div>
 				</div>
-				<ul class="demo-points">
-					<li>AI дає чернетку й структуру; вручну лишається перевірити факти, реквізити та посилання на
-						норми.</li>
-				</ul>
+				<div class="result-wrap">
+					<div class="rlabel">✅ Результат (згенеровано)</div>
+					<div class="result-card" style="font-size:0.4em;">РОЗПОРЯДЖЕННЯ голови Соснівської громади № [___] від [___]
+Про організацію ремонту вуличного освітлення на вул. Шевченка
+
+З метою забезпечення безпеки мешканців та належного функціонування вуличного освітлення:
+1. Відділу житлово-комунального господарства організувати ремонт вуличного освітлення на вул. Шевченка у строк до 30 днів.
+2. Відповідальним за виконання призначити начальника відділу ЖКГ.
+3. Контроль за виконанням цього розпорядження залишаю за собою.
+
+Голова громади    [підпис]    [ПІБ]</div>
+				</div>
+				<p class="small-text" style="text-align:center; margin-top:6px; font-size:0.4em;">AI дає структуру за
+					секунди; реквізити, строки та відповідність нормам перевіряє людина.</p>
 				<aside class="notes">
 					<p><strong>Промпт:</strong> «Склади проєкт розпорядження голови громади на основі тез:
 						1) організувати ремонт вуличного освітлення на вул. Шевченка; 2) визначити відповідальним
@@ -595,8 +665,27 @@ Gmail: «Підсумуй це листування: ключові домовл
 				<h2 style="text-align: center; margin-bottom: 6px;">Аналіз бюджету громади</h2>
 				<p class="demo-lead">Таблицю бюджету громади перетворюємо на зведення, графік і пояснення
 					простою мовою для мешканців — без ручної аналітики. Крок до реальної прозорості.</p>
-				<div class="demo-shot" style="min-height:120px;">Скриншот / демо аналізу таблиці
-					<span class="fallback">резервний запис демо</span></div>
+				<div class="two-columns" style="align-items:stretch;">
+					<div>
+						<div class="rlabel" style="font-size:0.42em; font-weight:700; color:#8a5a12; margin-bottom:4px;">Умовна таблиця видатків</div>
+						<table class="info-table" style="font-size:0.42em;">
+							<tr><th>Напрям</th><th>млн грн</th></tr>
+							<tr><td>Освіта</td><td>12,4</td></tr>
+							<tr><td>ЖКГ</td><td>6,1</td></tr>
+							<tr><td>Управління</td><td>3,2</td></tr>
+							<tr><td>Соцзахист</td><td>2,8</td></tr>
+							<tr><td>Культура</td><td>1,5</td></tr>
+						</table>
+					</div>
+					<div>
+						<div class="rlabel">✅ Результат (згенеровано)</div>
+						<div class="result-card" style="font-size:0.4em;">Найбільші статті: <strong>Освіта — 47%</strong>, ЖКГ — 23%, Управління — 12%. Разом ці три — понад 80% бюджету.
+
+Простими словами: майже половина грошей громади йде на школи й садочки, чверть — на воду, дороги та благоустрій.
+
+Графік: стовпчикова діаграма за напрямами.</div>
+					</div>
+				</div>
 				<div class="prompt-wrap">
 					<div class="plabel">📋 Промпт — виділити й скопіювати</div>
 					<div class="prompt-box">Ось таблиця видатків громади за рік. 1) Зроби коротке зведення за напрямами; 2) познач три найбільші статті; 3) поясни простою мовою для мешканців, куди пішли гроші; 4) запропонуй, який графік це найкраще покаже.</div>
@@ -614,21 +703,38 @@ Gmail: «Підсумуй це листування: ключові домовл
 			<section>
 				<span class="demo-badge quick">⏩ швидко / за потреби</span>
 				<h2 style="text-align: center; margin-bottom: 6px;">Excel / Sheets без болю</h2>
-				<p class="demo-lead"><strong>Проблема:</strong> формули важко згадати, а чужі таблиці — зрозуміти.
-					Три щоденні рятівники:</p>
-				<div class="two-columns" style="font-size:0.54em;">
-					<div class="highlight-box">🧮 <strong>Формула на замовлення</strong> — опиши словами, отримай
-						готову формулу</div>
-					<div class="highlight-box">🔍 <strong>Пояснити чужу формулу</strong> — «що робить ця
-						комірка?»</div>
-					<div class="highlight-box">🧹 <strong>Прибрати безлад</strong> — розділити ПІБ, уніфікувати
-						дати, знайти дублікати</div>
+				<p class="demo-lead">Спершу — вбудовані можливості таблиць (без жодного AI), і лише потім AI як
+					помічник.</p>
+				<div class="two-columns" style="font-size:0.52em; align-items:stretch;">
+					<div>
+						<div class="highlight-box" style="height:100%;">
+							<p style="font-weight:700; color:var(--ztu-blue); margin-bottom:6px;">📊 Вбудоване в
+								Excel/Sheets</p>
+							<ul style="line-height:1.55; margin:0; padding-left:18px;">
+								<li><strong>Зведена таблиця (pivot)</strong> — видатки по напрямах/місяцях за
+									секунди, без формул;</li>
+								<li><strong>«Аналізувати дані»</strong> (Sheets) / <strong>«Аналіз даних»</strong>
+									(Excel) — підсумки й графіки одним кліком;</li>
+								<li>3 формули, що варто знати: <code>СУМЕСЛИ/SUMIF</code>, <code>ВПР/XLOOKUP</code>,
+									<code>FILTER</code>.</li>
+							</ul>
+						</div>
+					</div>
+					<div>
+						<div class="highlight-box-orange" style="height:100%;">
+							<p style="font-weight:700; margin-bottom:6px;">🤖 AI як помічник</p>
+							Формула на замовлення · пояснити чужу формулу · прибрати безлад (розділити ПІБ,
+							уніфікувати дати, знайти дублікати).
+						</div>
+					</div>
 				</div>
 				<div class="prompt-wrap">
-					<div class="plabel">📋 Промпти — виділити й скопіювати</div>
-					<div class="prompt-box">Формула: «Напиши формулу для Google Sheets/Excel, яка підсумує суму з колонки C, якщо в колонці B стоїть "Оплачено".»
-Пояснити: «Поясни простими словами, що робить ця формула: =ЕСЛИ(И(A2>0;B2<>"");"так";"ні")»
-Прибрати безлад: «Ось стовпець із ПІБ одним рядком. Запропонуй, як розділити його на прізвище, ім'я та по батькові в окремі колонки.»</div>
+					<div class="plabel">📋 Промпт (якщо не знаєш формулу) — скопіювати</div>
+					<div class="prompt-box">Напиши формулу для Google Sheets/Excel, яка підсумує суму з колонки C, якщо в колонці B стоїть «Оплачено».</div>
+				</div>
+				<div class="result-wrap">
+					<div class="rlabel">✅ Результат</div>
+					<div class="result-card" style="font-size:0.42em;">=SUMIF(B:B; "Оплачено"; C:C)     (укр. локаль: =СУМЕСЛИ(B:B;"Оплачено";C:C))</div>
 				</div>
 			</section>
 
@@ -736,12 +842,23 @@ Gmail: «Підсумуй це листування: ключові домовл
 				<h2 style="text-align: center; margin-bottom: 6px;">«З чиновницької на людську»</h2>
 				<p class="demo-lead">Офіційне рішення чи оголошення → зрозуміло для мешканців. І навпаки: сумбурне
 					звернення → структурований запит на розгляд.</p>
-				<div class="demo-shot" style="min-height:120px;">Скриншот / демо спрощення тексту
-					<span class="fallback">резервний запис демо</span></div>
 				<div class="prompt-wrap">
-					<div class="plabel">📋 Промпти — виділити й скопіювати</div>
-					<div class="prompt-box">Спростити: «Перепиши це рішення виконкому простою мовою для оголошення мешканцям: що змінюється, з якої дати, що робити людині.»
-Навпаки: «Ось сумбурне усне звернення мешканця. Сформулюй структурований запит: суть, адреса, чого просить заявник.»</div>
+					<div class="plabel">📋 Промпт — виділити й скопіювати</div>
+					<div class="prompt-box">Перепиши це рішення виконкому простою мовою для оголошення мешканцям: що змінюється, з якої дати, що робити людині.</div>
+				</div>
+				<div class="two-columns" style="align-items:stretch; margin-top:8px; font-size:0.98em;">
+					<div>
+						<div class="rlabel" style="font-size:0.42em; font-weight:700; color:#8a5a12; margin-bottom:4px;">Було (офіційно)</div>
+						<div class="result-card" style="border-left-color:var(--ztu-orange); border-color:#e3d3b6; font-size:0.4em;">Відповідно до рішення виконавчого комітету, у зв'язку з проведенням планово-профілактичних робіт на мережах централізованого водопостачання, тимчасово припиняється надання послуги з водопостачання по вул. Центральній.</div>
+					</div>
+					<div>
+						<div class="rlabel">✅ Стало (людською)</div>
+						<div class="result-card" style="font-size:0.4em;">🚰 Увага, мешканці вул. Центральної!
+
+25 числа з 09:00 до 15:00 не буде води — планові ремонтні роботи.
+
+Порада: наберіть воду заздалегідь. Питання: [телефон].</div>
+					</div>
 				</div>
 				<aside class="notes">
 					<p><strong>Промпт 1 (спростити):</strong> «Перепиши це рішення виконкому простою, зрозумілою
