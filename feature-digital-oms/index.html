@@ -281,6 +281,38 @@
 			margin-bottom: 4px;
 			font-size: 1.08em;
 		}
+
+		/* ---- Copyable prompt box (for live demos) ---- */
+		.prompt-wrap {
+			max-width: 960px;
+			margin: 10px auto 0;
+			text-align: left;
+		}
+
+		.prompt-wrap .plabel {
+			font-size: 0.42em;
+			font-weight: 700;
+			color: var(--ztu-orange);
+			text-transform: uppercase;
+			letter-spacing: 0.06em;
+			margin-bottom: 4px;
+		}
+
+		.prompt-box {
+			background: #f5f2ea;
+			border: 1px solid #dccfb2;
+			border-left: 4px solid var(--ztu-orange);
+			border-radius: 8px;
+			padding: 10px 14px;
+			font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+			font-size: 0.4em;
+			line-height: 1.5;
+			color: #2f333a;
+			white-space: pre-wrap;
+			user-select: all;
+			/* один клік/потрійний клік виділяє весь промпт */
+			cursor: text;
+		}
 	</style>
 </head>
 
@@ -458,14 +490,18 @@
 				<div class="two-columns vs-cols" style="align-items:stretch;">
 					<div>
 						<p class="lbl">ChatGPT</p>
-						<div class="demo-shot" style="min-height:180px;">Скриншот / демо відповіді ChatGPT
-							<span class="fallback">резервний запис на випадок збою мережі</span></div>
+						<div class="demo-shot" style="min-height:120px;">Скриншот / демо відповіді ChatGPT
+							<span class="fallback">резервний запис</span></div>
 					</div>
 					<div>
 						<p class="lbl">Gemini</p>
-						<div class="demo-shot" style="min-height:180px;">Скриншот / демо відповіді Gemini
-							<span class="fallback">резервний запис на випадок збою мережі</span></div>
+						<div class="demo-shot" style="min-height:120px;">Скриншот / демо відповіді Gemini
+							<span class="fallback">резервний запис</span></div>
 					</div>
+				</div>
+				<div class="prompt-wrap">
+					<div class="plabel">📋 Промпт — виділити й скопіювати</div>
+					<div class="prompt-box">Ти — діловод органу місцевого самоврядування. Склади офіційну, ввічливу відповідь на звернення мешканця в діловому стилі, без канцеляриту. Звернення: «На вул. Шевченка два тижні не працює вуличне освітлення, ввечері темно й небезпечно. Прошу відремонтувати.» Подякуй за звернення, зазнач, що його зареєстровано, назви відповідальний підрозділ і строк розгляду до 30 днів. Не вигадуй конкретних дат і номерів документів.</div>
 				</div>
 				<aside class="notes">
 					<p><strong>Промпт (вставити в обидва сервіси):</strong></p>
@@ -486,8 +522,12 @@
 				<h2 style="text-align: center; margin-bottom: 6px;">Чернетка розпорядження з кількох тез</h2>
 				<p class="demo-lead">Даємо кілька тез — отримуємо структурований проєкт розпорядження чи
 					протоколу в діловому стилі за секунди.</p>
-				<div class="demo-shot">Скриншот / демо генерації документа
+				<div class="demo-shot" style="min-height:120px;">Скриншот / демо генерації документа
 					<span class="fallback">резервний запис демо</span></div>
+				<div class="prompt-wrap">
+					<div class="plabel">📋 Промпт — виділити й скопіювати</div>
+					<div class="prompt-box">Склади проєкт розпорядження голови громади на основі тез: 1) організувати ремонт вуличного освітлення на вул. Шевченка; 2) відповідальний — відділ ЖКГ; 3) термін виконання — 30 днів; 4) контроль залишити за собою. Дай офіційну структуру: преамбула, пункти, відповідальні, контроль. Місця для номера й дати познач як [___].</div>
+				</div>
 				<ul class="demo-points">
 					<li>AI дає чернетку й структуру; вручну лишається перевірити факти, реквізити та посилання на
 						норми.</li>
@@ -512,8 +552,13 @@
 				<p class="demo-lead"><strong>Проблема:</strong> рутина з листами й довгими ланцюжками з'їдає час.
 					Gemini у Google Workspace — безкоштовно у вашому акаунті: переписати чи скоротити лист, зробити
 					зведення листування прямо в Docs і Gmail. Copilot у MS Office — платна альтернатива.</p>
-				<div class="demo-shot">Скриншот / демо Docs + Gmail
+				<div class="demo-shot" style="min-height:120px;">Скриншот / демо Docs + Gmail
 					<span class="fallback">резервний запис демо</span></div>
+				<div class="prompt-wrap">
+					<div class="plabel">📋 Промпти — виділити й скопіювати</div>
+					<div class="prompt-box">Docs: «Перепиши цей абзац офіційно, коротше і зрозуміліше.»
+Gmail: «Підсумуй це листування: ключові домовленості й відкриті питання списком.»</div>
+				</div>
 				<aside class="notes">
 					<p><strong>Docs:</strong> виділити абзац → «Help me write / Gemini» → «переписати офіційно й
 						коротше».</p>
@@ -530,8 +575,12 @@
 				<h2 style="text-align: center; margin-bottom: 6px;">Аналіз бюджету громади</h2>
 				<p class="demo-lead">Таблицю бюджету громади перетворюємо на зведення, графік і пояснення
 					простою мовою для мешканців — без ручної аналітики. Крок до реальної прозорості.</p>
-				<div class="demo-shot">Скриншот / демо аналізу таблиці
+				<div class="demo-shot" style="min-height:120px;">Скриншот / демо аналізу таблиці
 					<span class="fallback">резервний запис демо</span></div>
+				<div class="prompt-wrap">
+					<div class="plabel">📋 Промпт — виділити й скопіювати</div>
+					<div class="prompt-box">Ось таблиця видатків громади за рік. 1) Зроби коротке зведення за напрямами; 2) познач три найбільші статті; 3) поясни простою мовою для мешканців, куди пішли гроші; 4) запропонуй, який графік це найкраще покаже.</div>
+				</div>
 				<aside class="notes">
 					<p><strong>Промпт (з таблицею бюджету):</strong> «Ось таблиця видатків громади за рік.
 						1) Зроби коротке зведення за напрямами; 2) познач три найбільші статті; 3) поясни простою
@@ -550,8 +599,12 @@
 				<p class="demo-lead"><strong>Проблема:</strong> знання розкидані, ніхто не пам'ятає всіх
 					регламентів. Заливаємо статут і регламенти → питаємо й отримуємо відповіді з посиланнями на
 					джерело (без вигадок). Бонус — аудіоогляд документів.</p>
-				<div class="demo-shot">Скриншот / демо NotebookLM
+				<div class="demo-shot" style="min-height:120px;">Скриншот / демо NotebookLM
 					<span class="fallback">резервний запис демо</span></div>
+				<div class="prompt-wrap">
+					<div class="plabel">📋 Питання до бази — виділити й скопіювати</div>
+					<div class="prompt-box">Який порядок скликання позачергової сесії ради? Дай відповідь із посиланням на конкретний пункт документа.</div>
+				</div>
 				<aside class="notes">
 					<p><strong>Підготовка:</strong> заздалегідь завантажити кілька документів громади (статут,
 						регламент ради, положення).</p>
@@ -570,8 +623,12 @@
 				<p class="demo-lead"><strong>Проблема:</strong> кожен пише по-своєму, якість плаває, є ризик
 					помилок. Rules / custom instructions: задаємо стиль, реквізити та заборони один раз — і вони
 					діють у кожному запиті. «До / після» на тому ж зверненні. Безкоштовно в ChatGPT і Gemini.</p>
-				<div class="demo-shot">Скриншот / демо правил
+				<div class="demo-shot" style="min-height:120px;">Скриншот / демо правил
 					<span class="fallback">резервний запис демо</span></div>
+				<div class="prompt-wrap">
+					<div class="plabel">📋 Правила (custom instructions) — скопіювати в налаштування</div>
+					<div class="prompt-box">Завжди відповідай українською в офіційно-діловому стилі. Дотримуйся структури ділового листа. Ніколи не вигадуй номери законів, дати та ПІБ. Якщо даних бракує — постав уточнювальні питання. Ніколи не проси персональних даних громадян.</div>
+				</div>
 				<aside class="notes">
 					<p><strong>Приклад правил (custom instructions):</strong> «Завжди відповідай українською в
 						офіційно-діловому стилі. Дотримуйся структури ділового листа. Ніколи не вигадуй номери
@@ -589,8 +646,12 @@
 				<p class="demo-lead"><strong>Проблема:</strong> щоразу пояснювати AI контекст — марнування часу.
 					«Помічник діловодства громади» на Gemini Gem — налаштували раз, користується весь відділ. Одна
 					кнопка замість щоразового промпту. (Custom GPT — платна альтернатива.)</p>
-				<div class="demo-shot">Скриншот / демо Gemini Gem
+				<div class="demo-shot" style="min-height:120px;">Скриншот / демо Gemini Gem
 					<span class="fallback">резервний запис демо</span></div>
+				<div class="prompt-wrap">
+					<div class="plabel">📋 Інструкція для Gem — скопіювати при створенні</div>
+					<div class="prompt-box">Ти — «Помічник діловодства Соснівської громади». Допомагаєш готувати офіційні листи, відповіді на звернення та проєкти розпоряджень. Стиль — офіційно-діловий, українською. Дотримуйся правил: не вигадуй номерів законів і дат, не проси персональних даних, за браку інформації — уточнюй.</div>
+				</div>
 				<aside class="notes">
 					<p><strong>Ідея:</strong> Gem = збережені правила + роль + приклади в одному асистенті. Не
 						треба щоразу пояснювати контекст.</p>
@@ -609,8 +670,12 @@
 				<h2 style="text-align: center; margin-bottom: 6px;">Запис засідання → протокол</h2>
 				<p class="demo-lead">Аудіо наради виконкому → автоматична транскрипція → готовий проєкт протоколу
 					чи витяг рішень. Години ручної роботи → хвилини.</p>
-				<div class="demo-shot">Скриншот / демо транскрипції
+				<div class="demo-shot" style="min-height:120px;">Скриншот / демо транскрипції
 					<span class="fallback">резервний запис демо</span></div>
+				<div class="prompt-wrap">
+					<div class="plabel">📋 Промпт до стенограми — виділити й скопіювати</div>
+					<div class="prompt-box">Ось стенограма засідання виконкому. Склади проєкт протоколу: присутні, порядок денний, ухвалені рішення, відповідальні. Окремо виділи всі доручення зі строками.</div>
+				</div>
 				<aside class="notes">
 					<p><strong>Демо:</strong> короткий аудіозапис (30–60 сек) → транскрипція (напр. вбудована в
 						Google Recorder / Docs voice typing / окремий сервіс).</p>
@@ -627,8 +692,13 @@
 				<h2 style="text-align: center; margin-bottom: 6px;">«З чиновницької на людську»</h2>
 				<p class="demo-lead">Офіційне рішення чи оголошення → зрозуміло для мешканців. І навпаки: сумбурне
 					звернення → структурований запит на розгляд.</p>
-				<div class="demo-shot">Скриншот / демо спрощення тексту
+				<div class="demo-shot" style="min-height:120px;">Скриншот / демо спрощення тексту
 					<span class="fallback">резервний запис демо</span></div>
+				<div class="prompt-wrap">
+					<div class="plabel">📋 Промпти — виділити й скопіювати</div>
+					<div class="prompt-box">Спростити: «Перепиши це рішення виконкому простою мовою для оголошення мешканцям: що змінюється, з якої дати, що робити людині.»
+Навпаки: «Ось сумбурне усне звернення мешканця. Сформулюй структурований запит: суть, адреса, чого просить заявник.»</div>
+				</div>
 				<aside class="notes">
 					<p><strong>Промпт 1 (спростити):</strong> «Перепиши це рішення виконкому простою, зрозумілою
 						мовою для оголошення мешканцям у соцмережах. Коротко: що змінюється, з якої дати, що робити
@@ -646,8 +716,12 @@
 				<h2 style="text-align: center; margin-bottom: 6px;">Візуал і презентації</h2>
 				<p class="demo-lead">Gamma / Canva AI: з тексту → оголошення для мешканців, банер для соцмереж або
 					коротка презентація за хвилини.</p>
-				<div class="demo-shot">Скриншот / демо Gamma / Canva
+				<div class="demo-shot" style="min-height:120px;">Скриншот / демо Gamma / Canva
 					<span class="fallback">резервний запис демо</span></div>
+				<div class="prompt-wrap">
+					<div class="plabel">📋 Текст для Gamma/Canva — виділити й скопіювати</div>
+					<div class="prompt-box">Зроби коротке оголошення для мешканців: 25 числа з 09:00 до 15:00 не буде водопостачання на вул. Центральній через планові роботи. Додай заголовок, дату, час і контакт для питань.</div>
+				</div>
 				<aside class="notes">
 					<p><strong>Демо:</strong> у Gamma вставити текст оголошення (напр. про відключення води) →
 						отримати готовий візуальний слайд/пост.</p>
@@ -655,33 +729,6 @@
 					<p><strong>Ця презентація</strong> — теж приклад: зроблена швидко на безкоштовних
 						інструментах.</p>
 				</aside>
-			</section>
-
-			<!-- ============ КУДИ ВСЕ РУХАЄТЬСЯ ============ -->
-
-			<!-- 14. Агенти -->
-			<section>
-				<h2 style="text-align: center; margin-bottom: 8px;">Куди все рухається: агенти</h2>
-				<p class="demo-lead">Багатокроковий сценарій, де AI сам проходить ланцюжок дій:</p>
-				<ul class="esc">
-					<li>класифікувати вхідне звернення;</li>
-					<li>знайти релевантний регламент у базі знань;</li>
-					<li>скласти чернетку відповіді на погодження людині.</li>
-				</ul>
-				<div class="highlight-box" style="font-size:0.56em; margin-top:16px; max-width:900px; margin-left:auto; margin-right:auto;">
-					Це напрям найближчого майбутнього. Ключове — <strong>людина лишається на погодженні</strong>,
-					AI бере на себе рутину між кроками.
-				</div>
-			</section>
-
-			<!-- 15. OpenRouter -->
-			<section>
-				<h2 style="text-align: center; margin-bottom: 10px;">Не залежати від одного вендора</h2>
-				<div class="highlight-box" style="font-size:0.62em;">
-					<strong>OpenRouter</strong> — один доступ до десятків моделей (є безкоштовні). Можна
-					порівнювати й обирати найкращу чи найдешевшу під задачу, не прив'язуючись до одного вендора.
-					Корисно, коли громада робить власний бот або інтеграцію.
-				</div>
 			</section>
 
 			<!-- ============ РАМКА ВІДПОВІДАЛЬНОСТІ ============ -->
