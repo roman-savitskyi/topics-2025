@@ -1,0 +1,662 @@
+<!doctype html>
+<html lang="uk">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+	<title>Впровадження цифрових технологій у діяльність органів місцевого самоврядування</title>
+
+	<link rel="stylesheet" href="dist/reveal.css">
+	<link rel="stylesheet" href="dist/theme/ztu.css">
+
+	<style>
+		.reveal .slides section {
+			display: flex !important;
+			flex-direction: column;
+			justify-content: flex-start;
+			padding-top: 20px;
+		}
+
+		.reveal .footer-conference-logo,
+		.reveal .footer-beerjs-logo {
+			display: none !important;
+		}
+
+		/* ---- Reusable helpers ---- */
+		.small-text {
+			font-size: 0.6em;
+			color: #555;
+			line-height: 1.5;
+		}
+
+		.highlight-box {
+			background: rgba(34, 74, 152, 0.08);
+			padding: 14px 20px;
+			border-radius: 10px;
+			border-left: 4px solid var(--ztu-blue);
+			margin: 6px 0;
+			text-align: left;
+		}
+
+		.highlight-box-orange {
+			background: rgba(238, 120, 28, 0.08);
+			padding: 14px 20px;
+			border-radius: 10px;
+			border-left: 4px solid var(--ztu-orange);
+			margin: 6px 0;
+			text-align: left;
+		}
+
+		.highlight-box-green {
+			background: rgba(76, 173, 59, 0.08);
+			padding: 14px 20px;
+			border-radius: 10px;
+			border-left: 4px solid var(--ztu-green);
+			margin: 6px 0;
+			text-align: left;
+		}
+
+		.two-columns {
+			display: flex;
+			gap: 26px;
+			margin-top: 16px;
+		}
+
+		.two-columns>div {
+			flex: 1;
+		}
+
+		/* ---- Placeholder marker (draft only) ---- */
+		.ph {
+			background: rgba(238, 120, 28, 0.16);
+			border-radius: 4px;
+			padding: 0 4px;
+			color: #b45710;
+			font-style: italic;
+		}
+
+		/* ---- Agenda list ---- */
+		.agenda {
+			text-align: left;
+			font-size: 0.68em;
+			line-height: 1.55;
+			max-width: 860px;
+			margin: 0 auto;
+			counter-reset: ag;
+			list-style: none;
+			padding: 0;
+		}
+
+		.agenda li {
+			position: relative;
+			padding: 6px 0 6px 44px;
+			border-bottom: 1px solid #edeef2;
+		}
+
+		.agenda li::before {
+			counter-increment: ag;
+			content: counter(ag);
+			position: absolute;
+			left: 0;
+			top: 6px;
+			width: 28px;
+			height: 28px;
+			background: var(--ztu-blue);
+			color: #fff;
+			border-radius: 50%;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			font-size: 0.85em;
+			font-weight: 700;
+		}
+
+		/* ---- Escalation / steps list ---- */
+		.esc {
+			list-style: none;
+			max-width: 700px;
+			margin: 4px auto 0;
+			padding: 0;
+			counter-reset: st;
+		}
+
+		.esc li {
+			display: flex;
+			align-items: center;
+			gap: 12px;
+			padding: 6px 0;
+			font-size: 0.62em;
+			text-align: left;
+		}
+
+		.esc li::before {
+			counter-increment: st;
+			content: counter(st);
+			flex: 0 0 auto;
+			width: 26px;
+			height: 26px;
+			background: var(--ztu-blue);
+			color: #fff;
+			border-radius: 50%;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			font-weight: 700;
+			font-size: 0.9em;
+		}
+
+		/* ---- Info table ---- */
+		.info-table {
+			width: 100%;
+			border-collapse: collapse;
+			font-size: 0.5em;
+			line-height: 1.3;
+		}
+
+		.info-table th {
+			background: var(--ztu-blue);
+			color: #fff;
+			text-align: left;
+			padding: 6px 10px;
+			font-weight: 700;
+		}
+
+		.info-table td {
+			padding: 5px 10px;
+			border-bottom: 1px solid #e2e2e2;
+			vertical-align: top;
+		}
+
+		.info-table tr:nth-child(even) td {
+			background: rgba(34, 74, 152, 0.04);
+		}
+
+		/* ---- Demo slides ---- */
+		.demo-badge {
+			align-self: center;
+			background: var(--ztu-orange);
+			color: #fff;
+			font-size: 0.4em;
+			font-weight: 700;
+			letter-spacing: 0.08em;
+			text-transform: uppercase;
+			padding: 4px 14px;
+			border-radius: 999px;
+			margin-bottom: 8px;
+		}
+
+		.demo-lead {
+			font-size: 0.58em;
+			color: #555;
+			text-align: center;
+			margin: 0 auto 12px;
+			max-width: 940px;
+			line-height: 1.5;
+		}
+
+		/* Placeholder for a live-demo screenshot / recorded fallback */
+		.demo-shot {
+			border: 2px dashed #c3b18f;
+			background: rgba(238, 120, 28, 0.06);
+			border-radius: 12px;
+			min-height: 220px;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+			color: #b45710;
+			font-style: italic;
+			font-size: 0.62em;
+			max-width: 940px;
+			width: 100%;
+			margin: 0 auto;
+			text-align: center;
+			padding: 20px;
+			box-sizing: border-box;
+		}
+
+		.demo-shot .fallback {
+			font-size: 0.8em;
+			opacity: 0.75;
+			font-style: normal;
+			margin-top: 6px;
+		}
+
+		.demo-points {
+			font-size: 0.56em;
+			text-align: left;
+			max-width: 940px;
+			margin: 12px auto 0;
+			line-height: 1.55;
+		}
+
+		/* Side-by-side tool comparison (ChatGPT vs Gemini) */
+		.vs-cols .lbl {
+			font-weight: 700;
+			color: var(--ztu-blue);
+			text-align: center;
+			margin-bottom: 6px;
+			font-size: 0.62em;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="reveal">
+		<div class="footer-ztu-logo"></div>
+		<div class="footer-conference-logo"></div>
+		<div class="footer-beerjs-logo"></div>
+		<div class="slides">
+
+			<!-- ============ ВСТУП ============ -->
+
+			<!-- 1. Титулка -->
+			<section>
+				<p style="font-size: 0.5em; color: #777; text-align: center; margin: 30px 0 0 0;">Державний
+					університет «Житомирська політехніка»</p>
+				<p style="font-size: 0.5em; color: #777; text-align: center; margin: 6px 0 40px 0;">Факультет
+					інформаційно-комп'ютерних технологій</p>
+				<h1 style="font-size: 1.3em; line-height: 1.28; text-align: center; margin: 0;">Впровадження
+					<span class="ztu-blue">цифрових технологій</span> у діяльність органів місцевого
+					самоврядування
+				</h1>
+				<p
+					style="font-size: 0.5em; color: var(--ztu-blue); font-weight: 700; text-align: center; margin: 26px 0 0 0;">
+					Практична лекція для співробітників ОМС · погляд програміста</p>
+				<p style="font-size: 0.5em; color: #333; text-align: center; margin: 10px 0 0;">
+					Савіцький Роман Святославович — програміст, викладач</p>
+			</section>
+
+			<!-- 2. Про мене -->
+			<section>
+				<h2 style="text-align: center; margin-bottom: 18px;">Про мене</h2>
+				<div
+					style="display:flex; gap:30px; align-items:center; max-width:860px; margin:0 auto; background:rgba(34,74,152,0.05); border-left:5px solid var(--ztu-blue); border-radius:14px; padding:22px 28px; text-align:left;">
+					<img src="examples/assets/kaf_savitsky.png" alt="Савіцький Роман Святославович"
+						style="width:150px; height:200px; object-fit:cover; object-position:top center; border-radius:10px; box-shadow:0 4px 14px rgba(0,0,0,0.18); flex:0 0 auto; margin:0;">
+					<div>
+						<p style="font-weight:700; font-size:0.9em; color:var(--ztu-blue); line-height:1.2;">Савіцький
+							Роман Святославович</p>
+						<p style="font-size:0.62em; color:#555; margin-top:6px;">Digital Experience Practice Lead ·
+							<strong>TietoEVRY Create</strong></p>
+						<ul style="font-size:0.58em; line-height:1.6; margin:14px 0 0; padding-left:18px;">
+							<li>15+ років досвіду в ІТ</li>
+							<li>Викладач ДУ «Житомирська політехніка»</li>
+							<li>Співзасновник BeerJS Zhytomyr</li>
+						</ul>
+					</div>
+				</div>
+			</section>
+
+			<!-- 3. Наскрізний приклад -->
+			<section>
+				<h2 style="text-align: center; margin-bottom: 12px;">Наш приклад на сьогодні</h2>
+				<div class="highlight-box-green" style="font-size:0.6em; max-width:920px; margin:0 auto;">
+					<strong>Умовна «Соснівська громада».</strong> Усі демо крутяться навколо одного робочого дня,
+					знайомого кожному в залі:
+				</div>
+				<ul class="esc" style="margin-top:14px;">
+					<li>звернення мешканця про несправне вуличне освітлення;</li>
+					<li>таблиця бюджету громади;</li>
+					<li>запис засідання виконкому;</li>
+					<li>статут і регламенти;</li>
+					<li>оголошення для мешканців.</li>
+				</ul>
+			</section>
+
+			<!-- 3. Демістифікація -->
+			<section>
+				<h2 style="text-align: center; margin-bottom: 10px;">Цифровізація ≠ цифрова трансформація</h2>
+				<div class="two-columns" style="font-size:0.6em;">
+					<div>
+						<div class="highlight-box">
+							<p style="font-weight:700; color:var(--ztu-blue); margin-bottom:6px;">Цифровізація</p>
+							Заява громадянина стала PDF-файлом — але її все одно роздруковують, підписують ручкою
+							і сканують назад. Кроків не поменшало.
+						</div>
+					</div>
+					<div>
+						<div class="highlight-box-orange">
+							<p style="font-weight:700; margin-bottom:6px;">Цифрова трансформація</p>
+							Мешканець заповнює онлайн-форму → заявка сама реєструється й потрапляє виконавцю →
+							людина бачить статус звернення. Ручна рутина зникає.
+						</div>
+					</div>
+				</div>
+				<p class="demo-lead" style="margin-top:16px;">Далі — не теорія, а конкретні безкоштовні
+					інструменти, які можна взяти в роботу вже завтра.</p>
+			</section>
+
+			<!-- ============ ДРАФТИНГ ДОКУМЕНТІВ ============ -->
+
+			<!-- 4. ДЕМО: звернення → відповідь, ChatGPT vs Gemini -->
+			<section>
+				<span class="demo-badge">🖥️ живе демо</span>
+				<h2 style="text-align: center; margin-bottom: 6px;">Звернення громадянина → відповідь</h2>
+				<p class="demo-lead">Мешканець скаржиться на несправне вуличне освітлення. Один і той самий
+					запит даємо ChatGPT і Gemini поруч — порівнюємо стиль, повноту й тон відповіді.</p>
+				<div class="two-columns vs-cols" style="align-items:stretch;">
+					<div>
+						<p class="lbl">ChatGPT</p>
+						<div class="demo-shot" style="min-height:180px;">Скриншот / демо відповіді ChatGPT
+							<span class="fallback">резервний запис на випадок збою мережі</span></div>
+					</div>
+					<div>
+						<p class="lbl">Gemini</p>
+						<div class="demo-shot" style="min-height:180px;">Скриншот / демо відповіді Gemini
+							<span class="fallback">резервний запис на випадок збою мережі</span></div>
+					</div>
+				</div>
+				<aside class="notes">
+					<p><strong>Промпт (вставити в обидва сервіси):</strong></p>
+					<p>«Ти — діловод органу місцевого самоврядування. Склади офіційну, ввічливу відповідь на
+						звернення мешканця в діловому стилі, без канцеляриту. Звернення: "На вул. Шевченка два
+						тижні не працює вуличне освітлення, ввечері темно й небезпечно. Прошу відремонтувати."
+						Подякуй за звернення, зазнач, що його зареєстровано, назви відповідальний підрозділ і строк
+						розгляду до 30 днів. Не вигадуй конкретних дат і номерів документів.»</p>
+					<p><strong>Кроки:</strong> вставити промпт у ChatGPT → показати відповідь → те саме в Gemini →
+						порівняти тон, повноту, структуру. Наголосити: жодних персональних даних у промпті.</p>
+					<p><strong>Fallback:</strong> якщо немає мережі — показати заздалегідь збережений скриншот.</p>
+				</aside>
+			</section>
+
+			<!-- 5. ДЕМО: проєкт розпорядження / протоколу -->
+			<section>
+				<span class="demo-badge">🖥️ живе демо</span>
+				<h2 style="text-align: center; margin-bottom: 6px;">Чернетка розпорядження з кількох тез</h2>
+				<p class="demo-lead">Даємо кілька тез — отримуємо структурований проєкт розпорядження чи
+					протоколу в діловому стилі за секунди.</p>
+				<div class="demo-shot">Скриншот / демо генерації документа
+					<span class="fallback">резервний запис демо</span></div>
+				<ul class="demo-points">
+					<li>AI дає чернетку й структуру; вручну лишається перевірити факти, реквізити та посилання на
+						норми.</li>
+				</ul>
+				<aside class="notes">
+					<p><strong>Промпт:</strong> «Склади проєкт розпорядження голови громади на основі тез:
+						1) організувати ремонт вуличного освітлення на вул. Шевченка; 2) визначити відповідальним
+						відділ ЖКГ; 3) термін виконання — 30 днів; 4) контроль залишити за собою. Дай офіційну
+						структуру: преамбула, пункти, відповідальні, контроль. Місця для номера й дати познач як
+						[___].»</p>
+					<p><strong>Наголос:</strong> AI структурує за секунди, але юридичну точність і реквізити
+						перевіряє людина.</p>
+				</aside>
+			</section>
+
+			<!-- ============ AI В ОФІСІ ============ -->
+
+			<!-- 6. ДЕМО: Docs + Gmail -->
+			<section>
+				<span class="demo-badge">🖥️ живе демо</span>
+				<h2 style="text-align: center; margin-bottom: 6px;">AI в офісі: Docs та Gmail</h2>
+				<p class="demo-lead">Gemini у Google Workspace — безкоштовно у вашому акаунті: переписати чи
+					скоротити лист, зробити зведення довгого листування прямо в Docs і Gmail. Copilot у MS
+					Office — платна альтернатива.</p>
+				<div class="demo-shot">Скриншот / демо Docs + Gmail
+					<span class="fallback">резервний запис демо</span></div>
+				<aside class="notes">
+					<p><strong>Docs:</strong> виділити абзац → «Help me write / Gemini» → «переписати офіційно й
+						коротше».</p>
+					<p><strong>Gmail:</strong> відкрити довгий ланцюжок листів → «Підсумуй ключові домовленості й
+						відкриті питання».</p>
+					<p><strong>Наголос:</strong> це вбудовано у звичний робочий інструмент — не треба нічого
+						встановлювати.</p>
+				</aside>
+			</section>
+
+			<!-- 7. ДЕМО: аналіз бюджету в Sheets -->
+			<section>
+				<span class="demo-badge">🖥️ живе демо</span>
+				<h2 style="text-align: center; margin-bottom: 6px;">Аналіз бюджету громади</h2>
+				<p class="demo-lead">Таблицю бюджету громади перетворюємо на зведення, графік і пояснення
+					простою мовою для мешканців — без ручної аналітики. Крок до реальної прозорості.</p>
+				<div class="demo-shot">Скриншот / демо аналізу таблиці
+					<span class="fallback">резервний запис демо</span></div>
+				<aside class="notes">
+					<p><strong>Промпт (з таблицею бюджету):</strong> «Ось таблиця видатків громади за рік.
+						1) Зроби коротке зведення за напрямами; 2) познач три найбільші статті; 3) поясни простою
+						мовою для мешканців, куди пішли гроші; 4) запропонуй, який графік це найкраще покаже.»</p>
+					<p><strong>Наголос:</strong> дані бюджету відкриті, тож персональних даних тут немає — заливати
+						безпечно.</p>
+				</aside>
+			</section>
+
+			<!-- ============ БАЗА ЗНАНЬ ============ -->
+
+			<!-- 8. ДЕМО: NotebookLM -->
+			<section>
+				<span class="demo-badge">🖥️ живе демо</span>
+				<h2 style="text-align: center; margin-bottom: 6px;">NotebookLM — база знань громади</h2>
+				<p class="demo-lead">Заливаємо статут і регламенти → питаємо й отримуємо відповіді з посиланнями
+					на джерело (без вигадок). Бонус — аудіоогляд документів.</p>
+				<div class="demo-shot">Скриншот / демо NotebookLM
+					<span class="fallback">резервний запис демо</span></div>
+				<aside class="notes">
+					<p><strong>Підготовка:</strong> заздалегідь завантажити кілька документів громади (статут,
+						регламент ради, положення).</p>
+					<p><strong>Питання наживо:</strong> «Який порядок скликання позачергової сесії ради?» →
+						показати відповідь <em>із клікабельними посиланнями на конкретний пункт</em>.</p>
+					<p><strong>Родзинка:</strong> увімкнути Audio Overview — двоголосий аудіоогляд документів.</p>
+				</aside>
+			</section>
+
+			<!-- ============ НЕ ПРОСТО ПРОМПТ ============ -->
+
+			<!-- 9. ДЕМО: rules / custom instructions -->
+			<section>
+				<span class="demo-badge">🖥️ живе демо</span>
+				<h2 style="text-align: center; margin-bottom: 6px;">Правила один раз — результат завжди</h2>
+				<p class="demo-lead">Rules / custom instructions: задаємо стиль, реквізити та заборони один раз —
+					і вони діють у кожному запиті. «До / після» на тому ж зверненні. Безкоштовно в ChatGPT і
+					Gemini.</p>
+				<div class="demo-shot">Скриншот / демо правил
+					<span class="fallback">резервний запис демо</span></div>
+				<aside class="notes">
+					<p><strong>Приклад правил (custom instructions):</strong> «Завжди відповідай українською в
+						офіційно-діловому стилі. Дотримуйся структури ділового листа. Ніколи не вигадуй номери
+						законів, дати та ПІБ. Якщо даних бракує — постав уточнювальні питання. Ніколи не проси
+						персональних даних громадян.»</p>
+					<p><strong>Демо:</strong> той самий запит без правил і з правилами — показати різницю в
+						стабільності результату.</p>
+				</aside>
+			</section>
+
+			<!-- 10. ДЕМО: кастомний асистент (Gemini Gem) -->
+			<section>
+				<span class="demo-badge">🖥️ живе демо</span>
+				<h2 style="text-align: center; margin-bottom: 6px;">Власний асистент громади</h2>
+				<p class="demo-lead">«Помічник діловодства громади» на Gemini Gem — налаштували раз, користується
+					весь відділ. Одна кнопка замість щоразового промпту. (Custom GPT — платна альтернатива.)</p>
+				<div class="demo-shot">Скриншот / демо Gemini Gem
+					<span class="fallback">резервний запис демо</span></div>
+				<aside class="notes">
+					<p><strong>Ідея:</strong> Gem = збережені правила + роль + приклади в одному асистенті. Не
+						треба щоразу пояснювати контекст.</p>
+					<p><strong>Демо:</strong> відкрити готовий Gem «Помічник діловодства» → одразу дати звернення →
+						отримати відповідь у потрібному форматі.</p>
+					<p><strong>Меседж:</strong> це і є «цифрова трансформація» на рівні відділу — процес, а не
+						разовий фокус.</p>
+				</aside>
+			</section>
+
+			<!-- ============ ЦІКАВІ СЦЕНАРІЇ ============ -->
+
+			<!-- 11. ДЕМО: транскрипція → протокол -->
+			<section>
+				<span class="demo-badge">🖥️ живе демо</span>
+				<h2 style="text-align: center; margin-bottom: 6px;">Запис засідання → протокол</h2>
+				<p class="demo-lead">Аудіо наради виконкому → автоматична транскрипція → готовий проєкт протоколу
+					чи витяг рішень. Години ручної роботи → хвилини.</p>
+				<div class="demo-shot">Скриншот / демо транскрипції
+					<span class="fallback">резервний запис демо</span></div>
+				<aside class="notes">
+					<p><strong>Демо:</strong> короткий аудіозапис (30–60 сек) → транскрипція (напр. вбудована в
+						Google Recorder / Docs voice typing / окремий сервіс).</p>
+					<p><strong>Промпт до тексту:</strong> «Ось стенограма засідання виконкому. Склади проєкт
+						протоколу: присутні, порядок денний, ухвалені рішення, відповідальні. Виділи окремо всі
+						доручення зі строками.»</p>
+					<p><strong>Обережно:</strong> у записі можуть бути персональні дані — попередити про це.</p>
+				</aside>
+			</section>
+
+			<!-- 12. ДЕМО: «з чиновницької на людську» -->
+			<section>
+				<span class="demo-badge">🖥️ живе демо</span>
+				<h2 style="text-align: center; margin-bottom: 6px;">«З чиновницької на людську»</h2>
+				<p class="demo-lead">Офіційне рішення чи оголошення → зрозуміло для мешканців. І навпаки: сумбурне
+					звернення → структурований запит на розгляд.</p>
+				<div class="demo-shot">Скриншот / демо спрощення тексту
+					<span class="fallback">резервний запис демо</span></div>
+				<aside class="notes">
+					<p><strong>Промпт 1 (спростити):</strong> «Перепиши це рішення виконкому простою, зрозумілою
+						мовою для оголошення мешканцям у соцмережах. Коротко: що змінюється, з якої дати, що робити
+						людині.»</p>
+					<p><strong>Промпт 2 (навпаки):</strong> «Ось сумбурне усне звернення мешканця. Сформулюй його
+						як структурований запит: суть, адреса, чого просить заявник.»</p>
+				</aside>
+			</section>
+
+			<!-- ============ ВІЗУАЛ ============ -->
+
+			<!-- 13. ДЕМО: Gamma / Canva -->
+			<section>
+				<span class="demo-badge">🖥️ живе демо</span>
+				<h2 style="text-align: center; margin-bottom: 6px;">Візуал і презентації</h2>
+				<p class="demo-lead">Gamma / Canva AI: з тексту → оголошення для мешканців, банер для соцмереж або
+					коротка презентація за хвилини.</p>
+				<div class="demo-shot">Скриншот / демо Gamma / Canva
+					<span class="fallback">резервний запис демо</span></div>
+				<aside class="notes">
+					<p><strong>Демо:</strong> у Gamma вставити текст оголошення (напр. про відключення води) →
+						отримати готовий візуальний слайд/пост.</p>
+					<p><strong>Меседж:</strong> комунікація з мешканцями стає швидкою і охайною без дизайнера.</p>
+					<p><strong>Ця презентація</strong> — теж приклад: зроблена швидко на безкоштовних
+						інструментах.</p>
+				</aside>
+			</section>
+
+			<!-- ============ КУДИ ВСЕ РУХАЄТЬСЯ ============ -->
+
+			<!-- 14. Агенти -->
+			<section>
+				<h2 style="text-align: center; margin-bottom: 8px;">Куди все рухається: агенти</h2>
+				<p class="demo-lead">Багатокроковий сценарій, де AI сам проходить ланцюжок дій:</p>
+				<ul class="esc">
+					<li>класифікувати вхідне звернення;</li>
+					<li>знайти релевантний регламент у базі знань;</li>
+					<li>скласти чернетку відповіді на погодження людині.</li>
+				</ul>
+				<div class="highlight-box" style="font-size:0.56em; margin-top:16px; max-width:900px; margin-left:auto; margin-right:auto;">
+					Це напрям найближчого майбутнього. Ключове — <strong>людина лишається на погодженні</strong>,
+					AI бере на себе рутину між кроками.
+				</div>
+			</section>
+
+			<!-- 15. OpenRouter -->
+			<section>
+				<h2 style="text-align: center; margin-bottom: 10px;">Не залежати від одного вендора</h2>
+				<div class="highlight-box" style="font-size:0.62em;">
+					<strong>OpenRouter</strong> — один доступ до десятків моделей (є безкоштовні). Можна
+					порівнювати й обирати найкращу чи найдешевшу під задачу, не прив'язуючись до одного вендора.
+					Корисно, коли громада робить власний бот або інтеграцію.
+				</div>
+			</section>
+
+			<!-- ============ РАМКА ВІДПОВІДАЛЬНОСТІ ============ -->
+
+			<!-- 16. Приватність і персональні дані -->
+			<section>
+				<h2 style="text-align: center; margin-bottom: 10px;">Приватність і персональні дані</h2>
+				<div class="highlight-box-orange" style="font-size:0.6em;">
+					<p style="font-weight:700; margin-bottom:6px;">Що НЕ можна заливати в публічні LLM</p>
+					Персональні дані громадян (ПІБ, адреси, номери), службову та конфіденційну інформацію.
+				</div>
+				<div class="two-columns" style="font-size:0.58em;">
+					<div>
+						<div class="highlight-box-green">
+							<p style="font-weight:700; margin-bottom:6px;">Як працювати безпечно</p>
+							Знеособлювати дані перед вставкою; вимкнути навчання на ваших даних у налаштуваннях;
+							для чутливих задач — enterprise-акаунти з відповідними угодами.
+						</div>
+					</div>
+					<div>
+						<div class="highlight-box">
+							<p style="font-weight:700; color:var(--ztu-blue); margin-bottom:6px;">Пам'ятати</p>
+							Відповідальність за дані — на вас, а не на інструменті. AI — помічник, а не приймач
+							рішень.
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<!-- 17. Галюцинації + як замовляти IT -->
+			<section>
+				<h2 style="text-align: center; margin-bottom: 10px;">Галюцинації та як замовляти IT</h2>
+				<div class="two-columns" style="font-size:0.58em;">
+					<div>
+						<div class="highlight-box-orange">
+							<p style="font-weight:700; margin-bottom:6px;">Галюцинації</p>
+							AI може впевнено вигадати номер закону чи факт. Завжди перевіряйте критичні дані та
+							вимагайте посилань на джерела (тут виручає NotebookLM).
+						</div>
+					</div>
+					<div>
+						<div class="highlight-box">
+							<p style="font-weight:700; color:var(--ztu-blue); margin-bottom:6px;">Як замовляти
+								IT</p>
+							Пишіть ТЗ конкретно: яку проблему вирішуємо, хто користувач, що на виході. Просіть демо
+							до оплати — щоб не купити «мертву» систему.
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<!-- ============ ФІНАЛ ============ -->
+
+			<!-- 18. Дорожня карта перших кроків -->
+			<section>
+				<h2 style="text-align: center; margin-bottom: 10px;">З чого почати вже завтра</h2>
+				<ul class="esc">
+					<li>обрати один рутинний процес і зробити його «до / після»;</li>
+					<li>завести робочий акаунт ChatGPT або Gemini й прописати правила;</li>
+					<li>зібрати базу знань громади в NotebookLM;</li>
+					<li>домовитись у команді, що НЕ заливаємо в публічні сервіси.</li>
+				</ul>
+				<div class="highlight-box-green" style="font-size:0.58em; margin-top:16px; max-width:900px; margin-left:auto; margin-right:auto;">
+					<strong>Домашнє завдання:</strong> оберіть один процес вашої громади й опишіть, як він
+					виглядатиме «до / після» з AI. Це вже перший крок трансформації.
+				</div>
+			</section>
+
+			<!-- 19. Дякую + Q&A -->
+			<section>
+				<p style="font-size: 0.5em; color: #777; text-align: center; margin: 50px 0 0 0;">Запитання та
+					відповіді</p>
+				<h1 style="font-size: 1.6em; line-height: 1.25; text-align: center; margin: 18px 0 0;">
+					<span class="ztu-blue">Дякую за увагу!</span>
+				</h1>
+				<p style="font-size: 0.5em; color: #333; text-align: center; margin: 30px 0 0;">
+					Савіцький Роман Святославович</p>
+			</section>
+
+		</div>
+	</div>
+
+	<script src="dist/reveal.js"></script>
+	<script src="plugin/highlight/highlight.js"></script>
+	<script src="plugin/notes/notes.js"></script>
+	<script src="plugin/zoom/zoom.js"></script>
+	<script>
+		Reveal.initialize({
+			hash: true,
+			slideNumber: 'c',
+			center: false,
+			width: 1200,
+			height: 700,
+			plugins: [RevealHighlight, RevealNotes, RevealZoom]
+		});
+	</script>
+</body>
+
+</html>
