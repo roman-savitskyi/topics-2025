@@ -239,6 +239,48 @@
 			margin-bottom: 6px;
 			font-size: 0.62em;
 		}
+
+		/* ---- Pain cards (problem block) ---- */
+		.pain-grid {
+			display: flex;
+			flex-wrap: wrap;
+			gap: 12px;
+			justify-content: center;
+			max-width: 980px;
+			margin: 6px auto 0;
+		}
+
+		.pain-card {
+			flex: 1 1 280px;
+			max-width: 320px;
+			background: rgba(238, 120, 28, 0.08);
+			border-left: 4px solid var(--ztu-orange);
+			border-radius: 10px;
+			padding: 12px 16px;
+			text-align: left;
+			font-size: 0.56em;
+			line-height: 1.35;
+		}
+
+		/* ---- Landscape cards (big picture) ---- */
+		.land-card {
+			flex: 1 1 220px;
+			max-width: 240px;
+			background: rgba(34, 74, 152, 0.06);
+			border-top: 3px solid var(--ztu-blue);
+			border-radius: 10px;
+			padding: 12px 14px;
+			text-align: center;
+			font-size: 0.54em;
+			line-height: 1.4;
+		}
+
+		.land-card b {
+			color: var(--ztu-blue);
+			display: block;
+			margin-bottom: 4px;
+			font-size: 1.08em;
+		}
 	</style>
 </head>
 
@@ -289,23 +331,45 @@
 				</div>
 			</section>
 
-			<!-- 3. Наскрізний приклад -->
+			<!-- 3. Проблема: болі щоденної роботи -->
 			<section>
-				<h2 style="text-align: center; margin-bottom: 12px;">Наш приклад на сьогодні</h2>
-				<div class="highlight-box-green" style="font-size:0.6em; max-width:920px; margin:0 auto;">
-					<strong>Умовна «Соснівська громада».</strong> Усі демо крутяться навколо одного робочого дня,
-					знайомого кожному в залі:
+				<h2 style="text-align: center; margin-bottom: 6px;">Впізнаєте? Один день у громаді</h2>
+				<p class="demo-lead">Перш ніж про технології — про болі, які знає кожен у цьому залі:</p>
+				<div class="pain-grid">
+					<div class="pain-card">📄 <strong>Гори паперу</strong> і ручна рутина: передрук, підписи,
+						реєстрація</div>
+					<div class="pain-card">⏳ <strong>Черги і повільний сервіс</strong>, повторні звернення
+						мешканців</div>
+					<div class="pain-card">👥 <strong>Брак кадрів</strong> і перевантаження — одна людина за
+						кількох</div>
+					<div class="pain-card">🧠 <strong>Знання розкидані</strong> — «спитай Марію Іванівну»</div>
+					<div class="pain-card">📊 <strong>Звітність</strong> зʼїдає час</div>
+					<div class="pain-card">🔍 <strong>Непрозорість</strong> → недовіра мешканців</div>
+					<div class="pain-card">🌍 <strong>Робота з будь-де</strong> під час війни</div>
 				</div>
-				<ul class="esc" style="margin-top:14px;">
-					<li>звернення мешканця про несправне вуличне освітлення;</li>
-					<li>таблиця бюджету громади;</li>
-					<li>запис засідання виконкому;</li>
-					<li>статут і регламенти;</li>
-					<li>оголошення для мешканців.</li>
-				</ul>
+				<aside class="notes">
+					<p><strong>Інтерактив:</strong> запитати зал — «Який ваш найбільший біль з цього списку? Чого
+						тут бракує?». Кілька відповідей уголос — це втягує аудиторію й задає тон усій лекції.</p>
+				</aside>
 			</section>
 
-			<!-- 3. Демістифікація -->
+			<!-- 4. Велика картина -->
+			<section>
+				<h2 style="text-align: center; margin-bottom: 6px;">Велика картина: цифрові технології в ОМС</h2>
+				<p class="demo-lead">Цифрові технології — це ширше за AI. Чесно про весь ландшафт:</p>
+				<div class="pain-grid">
+					<div class="land-card"><b>Е-послуги</b>ЦНАП, Дія, онлайн-звернення</div>
+					<div class="land-card"><b>Реєстри та дані</b>відкриті дані, прозорість</div>
+					<div class="land-card"><b>Е-документообіг</b>підписи, маршрути документів</div>
+					<div class="land-card"><b>Комунікація</b>сайт, соцмережі, е-демократія</div>
+				</div>
+				<div class="highlight-box-orange" style="font-size:0.6em; max-width:920px; margin:18px auto 0;">
+					🚀 <strong>AI — новий прискорювач</strong> поверх усього цього. Саме на ньому фокус
+					сьогодні — але памʼятаймо, що це частина ширшої картини.
+				</div>
+			</section>
+
+			<!-- 5. Демістифікація -->
 			<section>
 				<h2 style="text-align: center; margin-bottom: 10px;">Цифровізація ≠ цифрова трансформація</h2>
 				<div class="two-columns" style="font-size:0.6em;">
@@ -326,6 +390,61 @@
 				</div>
 				<p class="demo-lead" style="margin-top:16px;">Далі — не теорія, а конкретні безкоштовні
 					інструменти, які можна взяти в роботу вже завтра.</p>
+			</section>
+
+			<!-- 6. Міст: біль → чим лікуємо -->
+			<section>
+				<h2 style="text-align: center; margin-bottom: 8px;">Що з цих болів лікуємо сьогодні</h2>
+				<table class="info-table" style="font-size:0.6em; max-width:920px; margin:0 auto;">
+					<thead>
+						<tr>
+							<th>Біль</th>
+							<th>Чим лікуємо (демо)</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>Ручна рутина з документами</td>
+							<td>ChatGPT / Gemini · AI в офісі (Docs, Gmail)</td>
+						</tr>
+						<tr>
+							<td>Знання розкидані</td>
+							<td>NotebookLM — база знань громади</td>
+						</tr>
+						<tr>
+							<td>Нестабільна якість, ризик помилок</td>
+							<td>Правила та власні асистенти</td>
+						</tr>
+						<tr>
+							<td>Протоколи засідань вручну</td>
+							<td>Транскрипція → протокол</td>
+						</tr>
+						<tr>
+							<td>Незрозуміло мешканцям</td>
+							<td>«З чиновницької на людську» · візуал</td>
+						</tr>
+						<tr>
+							<td>Непрозорість бюджету</td>
+							<td>Аналіз даних у Sheets</td>
+						</tr>
+					</tbody>
+				</table>
+			</section>
+
+			<!-- 7. Наскрізний приклад -->
+			<section>
+				<h2 style="text-align: center; margin-bottom: 12px;">Наш приклад на сьогодні</h2>
+				<div class="highlight-box-green" style="font-size:0.6em; max-width:920px; margin:0 auto;">
+					<strong>Умовна «Соснівська громада».</strong> Усі демо крутяться навколо одного робочого дня,
+					знайомого кожному в залі:
+				</div>
+				<ul class="esc" style="margin-top:14px;">
+					<li>звернення мешканця про несправне вуличне освітлення;</li>
+					<li>таблиця бюджету громади;</li>
+					<li>запис засідання виконкому;</li>
+					<li>статут і регламенти;</li>
+					<li>оголошення для мешканців.</li>
+				</ul>
 			</section>
 
 			<!-- ============ ДРАФТИНГ ДОКУМЕНТІВ ============ -->
@@ -390,9 +509,9 @@
 			<section>
 				<span class="demo-badge">🖥️ живе демо</span>
 				<h2 style="text-align: center; margin-bottom: 6px;">AI в офісі: Docs та Gmail</h2>
-				<p class="demo-lead">Gemini у Google Workspace — безкоштовно у вашому акаунті: переписати чи
-					скоротити лист, зробити зведення довгого листування прямо в Docs і Gmail. Copilot у MS
-					Office — платна альтернатива.</p>
+				<p class="demo-lead"><strong>Проблема:</strong> рутина з листами й довгими ланцюжками з'їдає час.
+					Gemini у Google Workspace — безкоштовно у вашому акаунті: переписати чи скоротити лист, зробити
+					зведення листування прямо в Docs і Gmail. Copilot у MS Office — платна альтернатива.</p>
 				<div class="demo-shot">Скриншот / демо Docs + Gmail
 					<span class="fallback">резервний запис демо</span></div>
 				<aside class="notes">
@@ -428,8 +547,9 @@
 			<section>
 				<span class="demo-badge">🖥️ живе демо</span>
 				<h2 style="text-align: center; margin-bottom: 6px;">NotebookLM — база знань громади</h2>
-				<p class="demo-lead">Заливаємо статут і регламенти → питаємо й отримуємо відповіді з посиланнями
-					на джерело (без вигадок). Бонус — аудіоогляд документів.</p>
+				<p class="demo-lead"><strong>Проблема:</strong> знання розкидані, ніхто не пам'ятає всіх
+					регламентів. Заливаємо статут і регламенти → питаємо й отримуємо відповіді з посиланнями на
+					джерело (без вигадок). Бонус — аудіоогляд документів.</p>
 				<div class="demo-shot">Скриншот / демо NotebookLM
 					<span class="fallback">резервний запис демо</span></div>
 				<aside class="notes">
@@ -447,9 +567,9 @@
 			<section>
 				<span class="demo-badge">🖥️ живе демо</span>
 				<h2 style="text-align: center; margin-bottom: 6px;">Правила один раз — результат завжди</h2>
-				<p class="demo-lead">Rules / custom instructions: задаємо стиль, реквізити та заборони один раз —
-					і вони діють у кожному запиті. «До / після» на тому ж зверненні. Безкоштовно в ChatGPT і
-					Gemini.</p>
+				<p class="demo-lead"><strong>Проблема:</strong> кожен пише по-своєму, якість плаває, є ризик
+					помилок. Rules / custom instructions: задаємо стиль, реквізити та заборони один раз — і вони
+					діють у кожному запиті. «До / після» на тому ж зверненні. Безкоштовно в ChatGPT і Gemini.</p>
 				<div class="demo-shot">Скриншот / демо правил
 					<span class="fallback">резервний запис демо</span></div>
 				<aside class="notes">
@@ -466,8 +586,9 @@
 			<section>
 				<span class="demo-badge">🖥️ живе демо</span>
 				<h2 style="text-align: center; margin-bottom: 6px;">Власний асистент громади</h2>
-				<p class="demo-lead">«Помічник діловодства громади» на Gemini Gem — налаштували раз, користується
-					весь відділ. Одна кнопка замість щоразового промпту. (Custom GPT — платна альтернатива.)</p>
+				<p class="demo-lead"><strong>Проблема:</strong> щоразу пояснювати AI контекст — марнування часу.
+					«Помічник діловодства громади» на Gemini Gem — налаштували раз, користується весь відділ. Одна
+					кнопка замість щоразового промпту. (Custom GPT — платна альтернатива.)</p>
 				<div class="demo-shot">Скриншот / демо Gemini Gem
 					<span class="fallback">резервний запис демо</span></div>
 				<aside class="notes">
