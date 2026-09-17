@@ -5,7 +5,7 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-	<title>Зустріч з гарантом ОП «Інженерія програмного забезпечення»</title>
+	<title>Впровадження цифрових технологій у діяльність органів місцевого самоврядування</title>
 
 	<link rel="stylesheet" href="dist/reveal.css">
 	<link rel="stylesheet" href="dist/theme/ztu.css">
@@ -112,103 +112,11 @@
 			font-weight: 700;
 		}
 
-		/* ---- Schedule (academic year) ---- */
-		.tl {
-			list-style: none;
-			max-width: 980px;
-			margin: 10px auto 0;
-			padding: 0;
-			border: 1px solid #e2e6ef;
-			border-radius: 12px;
-			overflow: hidden;
-			box-shadow: 0 6px 20px rgba(34, 74, 152, 0.06);
-		}
-
-		.tl li {
-			display: grid;
-			grid-template-columns: 280px 1fr;
-			gap: 22px;
-			align-items: center;
-			padding: 11px 22px;
-		}
-
-		.tl li:not(:last-child) {
-			border-bottom: 1px solid #edf0f6;
-		}
-
-		.tl li:nth-child(even) {
-			background: rgba(34, 74, 152, 0.045);
-		}
-
-		.tl .when {
-			font-weight: 700;
-			color: var(--ztu-blue);
-			font-size: 0.68em;
-			white-space: nowrap;
-		}
-
-		.tl .what {
-			font-size: 0.68em;
-			color: #2b2f36;
-		}
-
-		/* ---- Org chart ---- */
-		.org {
-			display: flex;
-			flex-direction: column;
-			align-items: center;
-			gap: 8px;
-			margin-top: 10px;
-		}
-
-		.org .lvl {
-			display: flex;
-			gap: 10px;
-			justify-content: center;
-			flex-wrap: wrap;
-		}
-
-		.org .box {
-			background: rgba(34, 74, 152, 0.06);
-			border: 1px solid #dce2ee;
-			border-top: 3px solid var(--ztu-blue);
-			border-radius: 8px;
-			padding: 7px 12px;
-			text-align: center;
-			min-width: 118px;
-			font-size: 0.52em;
-			line-height: 1.3;
-		}
-
-		.org .box b {
-			color: var(--ztu-blue);
-		}
-
-		.org .box.top {
-			background: var(--ztu-blue);
-			border-top-color: var(--ztu-orange);
-			min-width: 150px;
-		}
-
-		.org .box.top b {
-			color: #fff;
-		}
-
-		.org .box.unit {
-			border-top-color: var(--ztu-orange);
-		}
-
-		.org .conn {
-			width: 2px;
-			height: 12px;
-			background: #cdd5e6;
-		}
-
-		/* ---- Escalation steps ---- */
+		/* ---- Escalation / steps list ---- */
 		.esc {
 			list-style: none;
-			max-width: 560px;
-			margin: 4px 0 0;
+			max-width: 700px;
+			margin: 4px auto 0;
 			padding: 0;
 			counter-reset: st;
 		}
@@ -217,16 +125,17 @@
 			display: flex;
 			align-items: center;
 			gap: 12px;
-			padding: 5px 0;
-			font-size: 0.66em;
+			padding: 6px 0;
+			font-size: 0.62em;
+			text-align: left;
 		}
 
 		.esc li::before {
 			counter-increment: st;
 			content: counter(st);
 			flex: 0 0 auto;
-			width: 24px;
-			height: 24px;
+			width: 26px;
+			height: 26px;
 			background: var(--ztu-blue);
 			color: #fff;
 			border-radius: 50%;
@@ -263,202 +172,72 @@
 			background: rgba(34, 74, 152, 0.04);
 		}
 
-		/* ---- Country chips (Erasmus+) ---- */
-		.countries {
-			display: flex;
-			flex-wrap: wrap;
-			gap: 8px 10px;
-			justify-content: center;
-			margin: 14px auto 0;
-			max-width: 980px;
-		}
-
-		.countries .c {
-			background: rgba(34, 74, 152, 0.06);
-			border: 1px solid #dce2ee;
-			border-radius: 999px;
-			padding: 5px 12px;
-			font-size: 0.54em;
-			display: inline-flex;
-			align-items: center;
-			gap: 8px;
-			line-height: 1;
-		}
-
-		.countries .c b {
-			color: var(--ztu-blue);
-		}
-
-		.countries .c .n {
-			background: var(--ztu-blue);
+		/* ---- Demo slides ---- */
+		.demo-badge {
+			align-self: center;
+			background: var(--ztu-orange);
 			color: #fff;
-			border-radius: 999px;
-			font-size: 0.9em;
-			min-width: 18px;
-			height: 18px;
-			display: inline-flex;
-			align-items: center;
-			justify-content: center;
-			padding: 0 5px;
+			font-size: 0.4em;
 			font-weight: 700;
+			letter-spacing: 0.08em;
+			text-transform: uppercase;
+			padding: 4px 14px;
+			border-radius: 999px;
+			margin-bottom: 8px;
 		}
 
-		/* ---- People cards (faculty / kafedra) ---- */
-		.people {
-			display: flex;
-			gap: 16px;
-			justify-content: center;
-			align-items: stretch;
-			margin-top: 20px;
+		.demo-lead {
+			font-size: 0.58em;
+			color: #555;
+			text-align: center;
+			margin: 0 auto 12px;
+			max-width: 940px;
+			line-height: 1.5;
 		}
 
-		.people .pc {
-			flex: 1;
-			max-width: 210px;
-			background: rgba(34, 74, 152, 0.05);
+		/* Placeholder for a live-demo screenshot / recorded fallback */
+		.demo-shot {
+			border: 2px dashed #c3b18f;
+			background: rgba(238, 120, 28, 0.06);
 			border-radius: 12px;
-			border-top: 4px solid var(--ztu-blue);
-			padding: 14px 10px 16px;
+			min-height: 220px;
 			display: flex;
 			flex-direction: column;
 			align-items: center;
-			text-align: center;
-		}
-
-		.people .pc img {
+			justify-content: center;
+			color: #b45710;
+			font-style: italic;
+			font-size: 0.62em;
+			max-width: 940px;
 			width: 100%;
-			max-width: 132px;
-			aspect-ratio: 3 / 4;
-			object-fit: cover;
-			object-position: top center;
-			border-radius: 8px;
-			box-shadow: 0 4px 12px rgba(0, 0, 0, 0.16);
-			margin: 0;
+			margin: 0 auto;
+			text-align: center;
+			padding: 20px;
+			box-sizing: border-box;
 		}
 
-		.people .pc .nm {
-			font-weight: 700;
+		.demo-shot .fallback {
+			font-size: 0.8em;
+			opacity: 0.75;
+			font-style: normal;
+			margin-top: 6px;
+		}
+
+		.demo-points {
 			font-size: 0.56em;
-			color: var(--ztu-blue);
-			margin-top: 10px;
-			line-height: 1.25;
-		}
-
-		.people .pc .rl {
-			font-size: 0.46em;
-			color: #555;
-			margin-top: 5px;
-			line-height: 1.3;
-		}
-
-		.people.two {
-			gap: 40px;
-			margin-top: 26px;
-		}
-
-		.people.two .pc {
-			max-width: 260px;
-			padding: 20px 18px 22px;
-		}
-
-		.people.two .pc img {
-			max-width: 176px;
-		}
-
-		.people.two .pc .nm {
-			font-size: 0.72em;
-		}
-
-		.people.two .pc .rl {
-			font-size: 0.56em;
-		}
-
-		/* ---- Ombudsman card ---- */
-		.omb {
-			display: flex;
-			gap: 26px;
-			align-items: center;
-			max-width: 900px;
-			margin: 14px auto 0;
-			background: rgba(34, 74, 152, 0.05);
-			border-left: 5px solid var(--ztu-blue);
-			border-radius: 14px;
-			padding: 20px 26px;
 			text-align: left;
-		}
-
-		.omb img {
-			width: 150px;
-			height: 200px;
-			object-fit: cover;
-			object-position: top center;
-			border-radius: 10px;
-			box-shadow: 0 4px 14px rgba(0, 0, 0, 0.18);
-			flex: 0 0 auto;
-			margin: 0;
-		}
-
-		.omb .p-name {
-			font-weight: 700;
-			font-size: 0.82em;
-			color: var(--ztu-blue);
-		}
-
-		.omb .p-role {
-			font-size: 0.58em;
-			color: #555;
-			margin-top: 4px;
-		}
-
-		.omb .p-contact {
-			font-size: 0.6em;
-			margin-top: 8px;
-		}
-
-		.omb ul {
-			font-size: 0.56em;
+			max-width: 940px;
+			margin: 12px auto 0;
 			line-height: 1.55;
-			margin: 10px 0 0;
-			padding-left: 18px;
 		}
 
-		/* ---- Alarm slide ---- */
-		.sits {
-			display: flex;
-			gap: 14px;
-			margin-top: 16px;
-		}
-
-		.sit {
-			flex: 1;
-			background: rgba(34, 74, 152, 0.05);
-			border-top: 3px solid var(--ztu-blue);
-			border-radius: 10px;
-			padding: 12px 14px;
-			text-align: left;
-		}
-
-		.sit h4 {
-			font-size: 0.56em;
-			color: var(--ztu-blue);
+		/* Side-by-side tool comparison (ChatGPT vs Gemini) */
+		.vs-cols .lbl {
 			font-weight: 700;
-			line-height: 1.25;
+			color: var(--ztu-blue);
+			text-align: center;
 			margin-bottom: 6px;
-		}
-
-		.sit p {
-			font-size: 0.52em;
-			line-height: 1.4;
-			color: #333;
-		}
-
-		.alarm-banner {
-			background: rgba(229, 52, 31, 0.1);
-			border-left: 5px solid var(--ztu-red, #e5341f);
-			border-radius: 10px;
-			padding: 14px 20px;
-			text-align: left;
-			font-size: 0.72em;
+			font-size: 0.62em;
 		}
 	</style>
 </head>
@@ -470,522 +249,395 @@
 		<div class="footer-beerjs-logo"></div>
 		<div class="slides">
 
+			<!-- ============ ВСТУП ============ -->
+
 			<!-- 1. Титулка -->
 			<section>
 				<p style="font-size: 0.5em; color: #777; text-align: center; margin: 30px 0 0 0;">Державний
 					університет «Житомирська політехніка»</p>
 				<p style="font-size: 0.5em; color: #777; text-align: center; margin: 6px 0 40px 0;">Факультет
 					інформаційно-комп'ютерних технологій</p>
-				<h1 style="font-size: 1.6em; line-height: 1.25; text-align: center; margin: 0;">Зустріч з
-					<span class="ztu-blue">гарантами освітніх програм</span>
+				<h1 style="font-size: 1.3em; line-height: 1.28; text-align: center; margin: 0;">Впровадження
+					<span class="ztu-blue">цифрових технологій</span> у діяльність органів місцевого
+					самоврядування
 				</h1>
 				<p
-					style="font-size: 0.5em; color: var(--ztu-blue); font-weight: 700; text-align: center; margin: 22px 0 0 0;">
-					Гаранти освітніх програм · спеціальність 121</p>
+					style="font-size: 0.5em; color: var(--ztu-blue); font-weight: 700; text-align: center; margin: 26px 0 0 0;">
+					Практична лекція для співробітників ОМС · погляд програміста</p>
+				<p style="font-size: 0.5em; color: #333; text-align: center; margin: 10px 0 0;">
+					Савіцький Роман Святославович — програміст, викладач</p>
+			</section>
+
+			<!-- 2. Про мене -->
+			<section>
+				<h2 style="text-align: center; margin-bottom: 18px;">Про мене</h2>
 				<div
-					style="font-size: 0.5em; color: #333; text-align: center; margin: 8px auto 0; line-height: 1.65; max-width: 960px;">
-					<p><strong>ІПЗ, бакалавр:</strong> Морозов Андрій Васильович</p>
-					<p><strong>Веб-технології, бакалавр:</strong> Савіцький Роман Святославович</p>
-					<p><strong>ІПЗ, магістр:</strong> Фант Микола Олександрович</p>
-					<p><strong>ІПЗ, доктор філософії:</strong> Вакалюк Тетяна Анатоліївна</p>
+					style="display:flex; gap:30px; align-items:center; max-width:860px; margin:0 auto; background:rgba(34,74,152,0.05); border-left:5px solid var(--ztu-blue); border-radius:14px; padding:22px 28px; text-align:left;">
+					<img src="examples/assets/kaf_savitsky.png" alt="Савіцький Роман Святославович"
+						style="width:150px; height:200px; object-fit:cover; object-position:top center; border-radius:10px; box-shadow:0 4px 14px rgba(0,0,0,0.18); flex:0 0 auto; margin:0;">
+					<div>
+						<p style="font-weight:700; font-size:0.9em; color:var(--ztu-blue); line-height:1.2;">Савіцький
+							Роман Святославович</p>
+						<p style="font-size:0.62em; color:#555; margin-top:6px;">Digital Experience Practice Lead ·
+							<strong>TietoEVRY Create</strong></p>
+						<ul style="font-size:0.58em; line-height:1.6; margin:14px 0 0; padding-left:18px;">
+							<li>15+ років досвіду в ІТ</li>
+							<li>Викладач ДУ «Житомирська політехніка»</li>
+							<li>Співзасновник BeerJS Zhytomyr</li>
+						</ul>
+					</div>
 				</div>
-				<img src="examples/assets/kafedra_ipz_logo_full.png" alt="Кафедра інженерії програмного забезпечення"
-					style="max-width: 200px; width: 100%; height: auto; display: block; margin: 22px auto 0;">
 			</section>
 
-			<!-- 2. Порядок денний -->
+			<!-- 3. Наскрізний приклад -->
 			<section>
-				<h2 style="text-align: center; margin-bottom: 18px;">Порядок денний</h2>
-				<ul class="agenda">
-					<li>Керівництво факультету та кафедри</li>
-					<li>Особливості навчання цього року: графік, сесії, канікули, практики</li>
-					<li>Академічна доброчесність</li>
-					<li>Академічна мобільність</li>
-					<li>Неформальна освіта та перезарахування</li>
-					<li>Дії під час повітряної тривоги</li>
-					<li>Запитання та відповіді</li>
+				<h2 style="text-align: center; margin-bottom: 12px;">Наш приклад на сьогодні</h2>
+				<div class="highlight-box-green" style="font-size:0.6em; max-width:920px; margin:0 auto;">
+					<strong>Умовна «Соснівська громада».</strong> Усі демо крутяться навколо одного робочого дня,
+					знайомого кожному в залі:
+				</div>
+				<ul class="esc" style="margin-top:14px;">
+					<li>звернення мешканця про несправне вуличне освітлення;</li>
+					<li>таблиця бюджету громади;</li>
+					<li>запис засідання виконкому;</li>
+					<li>статут і регламенти;</li>
+					<li>оголошення для мешканців.</li>
 				</ul>
 			</section>
 
-			<!-- 3. Гаранти освітніх програм -->
+			<!-- 3. Демістифікація -->
 			<section>
-				<h2 style="text-align: center; margin-bottom: 4px;">Гаранти освітніх програм</h2>
-				<div class="people">
-					<div class="pc">
-						<img src="examples/assets/kaf_morozov.png" alt="Морозов Андрій Васильович">
-						<p class="nm">Морозов Андрій Васильович</p>
-						<p class="rl">ІПЗ · бакалавр</p>
-					</div>
-					<div class="pc">
-						<img src="examples/assets/kaf_savitsky.png" alt="Савіцький Роман Святославович">
-						<p class="nm">Савіцький Роман Святославович</p>
-						<p class="rl">Веб-технології · бакалавр</p>
-					</div>
-					<div class="pc">
-						<img src="examples/assets/fac_fant.png" alt="Фант Микола Олександрович">
-						<p class="nm">Фант Микола Олександрович</p>
-						<p class="rl">ІПЗ · магістр</p>
-					</div>
-					<div class="pc">
-						<img src="examples/assets/kaf_vakaliuk.png" alt="Вакалюк Тетяна Анатоліївна">
-						<p class="nm">Вакалюк Тетяна Анатоліївна</p>
-						<p class="rl">ІПЗ · доктор філософії</p>
-					</div>
-				</div>
-			</section>
-
-			<!-- Керівництво факультету -->
-			<section>
-				<h2 style="text-align: center; margin-bottom: 4px;">Керівництво факультету (ФІКТ)</h2>
-				<div class="people">
-					<div class="pc">
-						<img src="examples/assets/fac_nikitchuk.png" alt="Нікітчук Тетяна Миколаївна">
-						<p class="nm">Нікітчук Тетяна Миколаївна</p>
-						<p class="rl">Декан факультету</p>
-					</div>
-					<div class="pc">
-						<img src="examples/assets/fac_fant.png" alt="Фант Микола Олександрович">
-						<p class="nm">Фант Микола Олександрович</p>
-						<p class="rl">Перший заступник декана</p>
-					</div>
-					<div class="pc">
-						<img src="examples/assets/fac_bolotina.jpg" alt="Болотіна Вікторія Василівна">
-						<p class="nm">Болотіна Вікторія Василівна</p>
-						<p class="rl">Заступник із міжнародної політики та проєктів</p>
-					</div>
-					<div class="pc">
-						<img src="examples/assets/fac_furihata.png" alt="Фуріхата Денис Вікторович">
-						<p class="nm">Фуріхата Денис Вікторович</p>
-						<p class="rl">Заступник із молодіжної політики</p>
-					</div>
-				</div>
-			</section>
-
-			<!-- Кафедра ІПЗ -->
-			<section>
-				<h2 style="text-align: center; margin-bottom: 4px;">Кафедра інженерії програмного забезпечення</h2>
-				<div class="people two">
-					<div class="pc">
-						<img src="examples/assets/kaf_vakaliuk.png" alt="Вакалюк Тетяна Анатоліївна">
-						<p class="nm">Вакалюк Тетяна Анатоліївна</p>
-						<p class="rl">Завідувач кафедри</p>
-					</div>
-					<div class="pc">
-						<img src="examples/assets/kaf_savitsky.png" alt="Савіцький Роман Святославович">
-						<p class="nm">Савіцький Роман Святославович</p>
-						<p class="rl">Заступник завідувача кафедри</p>
-					</div>
-				</div>
-			</section>
-
-			<!-- 3. Особливості навчального року -->
-			<section>
-				<h2 style="text-align: center; margin-bottom: 6px;">Особливості 2026/2027 навчального року</h2>
-				<p style="font-size:0.58em; color:#555; text-align:center; margin:0 0 12px;">Графік освітнього
-					процесу · бакалавр, денна форма</p>
-				<ul class="tl">
-					<li><span class="when">01.09 – 05.09.2026</span><span class="what">Лекційний тиждень</span></li>
-					<li><span class="when">07.09 – 26.12.2026</span><span class="what">Осінній семестр —
-							теоретичне навчання (16 тижнів)</span></li>
-					<li><span class="when">28.12.2026 – 10.01.2027</span><span class="what">Зимові канікули</span>
-					</li>
-					<li><span class="when">11.01 – 24.01.2027</span><span class="what">Зимова
-							заліково-екзаменаційна сесія</span></li>
-					<li><span class="when">25.01 – 30.01.2027</span><span class="what">Лекційний тиждень (2
-							семестр)</span></li>
-					<li><span class="when">01.02 – 22.05.2027</span><span class="what">Весняний семестр —
-							теоретичне навчання (16 тижнів)</span></li>
-					<li><span class="when">24.05 – 05.06.2027</span><span class="what">Літня заліково-екзаменаційна
-							сесія</span></li>
-					<li><span class="when">07.06 – 04.07.2027</span><span class="what">Практика (2–4 тижні)</span>
-					</li>
-					<li><span class="when">з 05.07.2027</span><span class="what">Літні канікули</span></li>
-				</ul>
-				<p class="small-text" style="text-align:center; margin-top:10px;">За наказом ЖП № 187/од від
-					05.06.2026</p>
-			</section>
-
-			<!-- 4. Практики -->
-			<section>
-				<h2 style="text-align: center; margin-bottom: 8px;">Практична підготовка</h2>
-				<p style="font-size:0.6em; color:#555; text-align:center; margin:0 0 16px;">Строки:
-					<strong>07.06 – 04.07.2027</strong> · тривалість 2–4 тижні</p>
-				<table class="info-table" style="font-size:0.6em;">
-					<thead>
-						<tr>
-							<th>Курс</th>
-							<th>Практика</th>
-							<th>Керівник практики</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr>
-							<td>1 курс</td>
-							<td>Навчальна</td>
-							<td>Вакалюк Тетяна Анатоліївна</td>
-						</tr>
-						<tr>
-							<td>2 курс</td>
-							<td>Технологічна</td>
-							<td>Чижмотря Олена Геннадіївна</td>
-						</tr>
-						<tr>
-							<td>3 курс</td>
-							<td>Виробнича</td>
-							<td>Локтікова Тамара Миколаївна</td>
-						</tr>
-						<tr>
-							<td>4 курс</td>
-							<td>Переддипломна<span style="color:var(--ztu-orange);">*</span></td>
-							<td>Єфремов Юрій Миколайович</td>
-						</tr>
-					</tbody>
-				</table>
-				<p class="small-text" style="text-align:center; margin-top:12px;">
-					<span style="color:var(--ztu-orange);">*</span> Терміни будуть змінені</p>
-			</section>
-
-			<!-- 5.1 Доброчесність: визначення + цінності -->
-			<section>
-				<h2 style="text-align: center; margin-bottom: 10px;">Академічна доброчесність</h2>
-				<div class="highlight-box" style="font-size:0.64em;">
-					Частина загальної доброчесності — <strong>цілісний розвиток і виховання чесності</strong>, що
-					згодом проявляється як особиста та соціальна відповідальність упродовж життя.
-				</div>
+				<h2 style="text-align: center; margin-bottom: 10px;">Цифровізація ≠ цифрова трансформація</h2>
 				<div class="two-columns" style="font-size:0.6em;">
 					<div>
-						<p style="font-weight:700; color:var(--ztu-blue); margin-bottom:6px;">Цінності
-							доброчесності</p>
-						<ul style="line-height:1.55;">
-							<li>свідомо діяти правильно та чесно;</li>
-							<li>свобода думки й повага до думок інших;</li>
-							<li>відповідальність за свої дії;</li>
-							<li>компетентність і розвиток знань.</li>
-						</ul>
+						<div class="highlight-box">
+							<p style="font-weight:700; color:var(--ztu-blue); margin-bottom:6px;">Цифровізація</p>
+							Заява громадянина стала PDF-файлом — але її все одно роздруковують, підписують ручкою
+							і сканують назад. Кроків не поменшало.
+						</div>
 					</div>
 					<div>
 						<div class="highlight-box-orange">
-							<p style="font-weight:700; margin-bottom:6px;">Документи</p>
-							<ul style="line-height:1.6; list-style:none; padding:0; margin:0;">
-								<li><a href="https://docs.ztu.edu.ua/?mdocs-file=1203" target="_blank"
-										rel="noopener">Положення про академічну доброчесність</a></li>
-								<li><a href="https://docs.ztu.edu.ua/?mdocs-file=1199" target="_blank"
-										rel="noopener">Кодекс академічної доброчесності</a></li>
-								<li><a href="https://docs.ztu.edu.ua/?mdocs-file=1201" target="_blank"
-										rel="noopener">Положення про Комісії</a></li>
-							</ul>
+							<p style="font-weight:700; margin-bottom:6px;">Цифрова трансформація</p>
+							Мешканець заповнює онлайн-форму → заявка сама реєструється й потрапляє виконавцю →
+							людина бачить статус звернення. Ручна рутина зникає.
 						</div>
 					</div>
 				</div>
+				<p class="demo-lead" style="margin-top:16px;">Далі — не теорія, а конкретні безкоштовні
+					інструменти, які можна взяти в роботу вже завтра.</p>
 			</section>
 
-			<!-- 5.2 Види порушень -->
+			<!-- ============ ДРАФТИНГ ДОКУМЕНТІВ ============ -->
+
+			<!-- 4. ДЕМО: звернення → відповідь, ChatGPT vs Gemini -->
 			<section>
-				<h2 style="text-align: center; margin-bottom: 6px;">Види порушень</h2>
-				<p style="font-size:0.56em; color:#555; text-align:center; margin:0 0 12px;">Плагіат —
-					оприлюднення чужих результатів чи текстів без зазначення авторства</p>
-				<div class="two-columns" style="font-size:0.58em;">
+				<span class="demo-badge">🖥️ живе демо</span>
+				<h2 style="text-align: center; margin-bottom: 6px;">Звернення громадянина → відповідь</h2>
+				<p class="demo-lead">Мешканець скаржиться на несправне вуличне освітлення. Один і той самий
+					запит даємо ChatGPT і Gemini поруч — порівнюємо стиль, повноту й тон відповіді.</p>
+				<div class="two-columns vs-cols" style="align-items:stretch;">
 					<div>
-						<p style="font-weight:700; color:var(--ztu-blue); margin-bottom:6px;">Види плагіату</p>
-						<ul style="line-height:1.55;">
-							<li><strong>Copy &amp; paste</strong> — чужий текст без змін і без цитування;</li>
-							<li><strong>Shake &amp; paste</strong> — компіляція чужих фрагментів;</li>
-							<li><strong>Idea</strong> — чужі ідеї своїми словами без джерела;</li>
-							<li><strong>Translation</strong> — переклад без посилання.</li>
-						</ul>
+						<p class="lbl">ChatGPT</p>
+						<div class="demo-shot" style="min-height:180px;">Скриншот / демо відповіді ChatGPT
+							<span class="fallback">резервний запис на випадок збою мережі</span></div>
 					</div>
 					<div>
-						<p style="font-weight:700; color:var(--ztu-blue); margin-bottom:6px;">Інші порушення</p>
-						<ul style="line-height:1.55;">
-							<li><strong>фабрикація</strong> — вигадування даних;</li>
-							<li><strong>фальсифікація</strong> — зміна наявних даних;</li>
-							<li><strong>списування</strong> — недозволені джерела;</li>
-							<li><strong>несанкціонована допомога</strong> — без дозволу викладача.</li>
-						</ul>
+						<p class="lbl">Gemini</p>
+						<div class="demo-shot" style="min-height:180px;">Скриншот / демо відповіді Gemini
+							<span class="fallback">резервний запис на випадок збою мережі</span></div>
 					</div>
+				</div>
+				<aside class="notes">
+					<p><strong>Промпт (вставити в обидва сервіси):</strong></p>
+					<p>«Ти — діловод органу місцевого самоврядування. Склади офіційну, ввічливу відповідь на
+						звернення мешканця в діловому стилі, без канцеляриту. Звернення: "На вул. Шевченка два
+						тижні не працює вуличне освітлення, ввечері темно й небезпечно. Прошу відремонтувати."
+						Подякуй за звернення, зазнач, що його зареєстровано, назви відповідальний підрозділ і строк
+						розгляду до 30 днів. Не вигадуй конкретних дат і номерів документів.»</p>
+					<p><strong>Кроки:</strong> вставити промпт у ChatGPT → показати відповідь → те саме в Gemini →
+						порівняти тон, повноту, структуру. Наголосити: жодних персональних даних у промпті.</p>
+					<p><strong>Fallback:</strong> якщо немає мережі — показати заздалегідь збережений скриншот.</p>
+				</aside>
+			</section>
+
+			<!-- 5. ДЕМО: проєкт розпорядження / протоколу -->
+			<section>
+				<span class="demo-badge">🖥️ живе демо</span>
+				<h2 style="text-align: center; margin-bottom: 6px;">Чернетка розпорядження з кількох тез</h2>
+				<p class="demo-lead">Даємо кілька тез — отримуємо структурований проєкт розпорядження чи
+					протоколу в діловому стилі за секунди.</p>
+				<div class="demo-shot">Скриншот / демо генерації документа
+					<span class="fallback">резервний запис демо</span></div>
+				<ul class="demo-points">
+					<li>AI дає чернетку й структуру; вручну лишається перевірити факти, реквізити та посилання на
+						норми.</li>
+				</ul>
+				<aside class="notes">
+					<p><strong>Промпт:</strong> «Склади проєкт розпорядження голови громади на основі тез:
+						1) організувати ремонт вуличного освітлення на вул. Шевченка; 2) визначити відповідальним
+						відділ ЖКГ; 3) термін виконання — 30 днів; 4) контроль залишити за собою. Дай офіційну
+						структуру: преамбула, пункти, відповідальні, контроль. Місця для номера й дати познач як
+						[___].»</p>
+					<p><strong>Наголос:</strong> AI структурує за секунди, але юридичну точність і реквізити
+						перевіряє людина.</p>
+				</aside>
+			</section>
+
+			<!-- ============ AI В ОФІСІ ============ -->
+
+			<!-- 6. ДЕМО: Docs + Gmail -->
+			<section>
+				<span class="demo-badge">🖥️ живе демо</span>
+				<h2 style="text-align: center; margin-bottom: 6px;">AI в офісі: Docs та Gmail</h2>
+				<p class="demo-lead">Gemini у Google Workspace — безкоштовно у вашому акаунті: переписати чи
+					скоротити лист, зробити зведення довгого листування прямо в Docs і Gmail. Copilot у MS
+					Office — платна альтернатива.</p>
+				<div class="demo-shot">Скриншот / демо Docs + Gmail
+					<span class="fallback">резервний запис демо</span></div>
+				<aside class="notes">
+					<p><strong>Docs:</strong> виділити абзац → «Help me write / Gemini» → «переписати офіційно й
+						коротше».</p>
+					<p><strong>Gmail:</strong> відкрити довгий ланцюжок листів → «Підсумуй ключові домовленості й
+						відкриті питання».</p>
+					<p><strong>Наголос:</strong> це вбудовано у звичний робочий інструмент — не треба нічого
+						встановлювати.</p>
+				</aside>
+			</section>
+
+			<!-- 7. ДЕМО: аналіз бюджету в Sheets -->
+			<section>
+				<span class="demo-badge">🖥️ живе демо</span>
+				<h2 style="text-align: center; margin-bottom: 6px;">Аналіз бюджету громади</h2>
+				<p class="demo-lead">Таблицю бюджету громади перетворюємо на зведення, графік і пояснення
+					простою мовою для мешканців — без ручної аналітики. Крок до реальної прозорості.</p>
+				<div class="demo-shot">Скриншот / демо аналізу таблиці
+					<span class="fallback">резервний запис демо</span></div>
+				<aside class="notes">
+					<p><strong>Промпт (з таблицею бюджету):</strong> «Ось таблиця видатків громади за рік.
+						1) Зроби коротке зведення за напрямами; 2) познач три найбільші статті; 3) поясни простою
+						мовою для мешканців, куди пішли гроші; 4) запропонуй, який графік це найкраще покаже.»</p>
+					<p><strong>Наголос:</strong> дані бюджету відкриті, тож персональних даних тут немає — заливати
+						безпечно.</p>
+				</aside>
+			</section>
+
+			<!-- ============ БАЗА ЗНАНЬ ============ -->
+
+			<!-- 8. ДЕМО: NotebookLM -->
+			<section>
+				<span class="demo-badge">🖥️ живе демо</span>
+				<h2 style="text-align: center; margin-bottom: 6px;">NotebookLM — база знань громади</h2>
+				<p class="demo-lead">Заливаємо статут і регламенти → питаємо й отримуємо відповіді з посиланнями
+					на джерело (без вигадок). Бонус — аудіоогляд документів.</p>
+				<div class="demo-shot">Скриншот / демо NotebookLM
+					<span class="fallback">резервний запис демо</span></div>
+				<aside class="notes">
+					<p><strong>Підготовка:</strong> заздалегідь завантажити кілька документів громади (статут,
+						регламент ради, положення).</p>
+					<p><strong>Питання наживо:</strong> «Який порядок скликання позачергової сесії ради?» →
+						показати відповідь <em>із клікабельними посиланнями на конкретний пункт</em>.</p>
+					<p><strong>Родзинка:</strong> увімкнути Audio Overview — двоголосий аудіоогляд документів.</p>
+				</aside>
+			</section>
+
+			<!-- ============ НЕ ПРОСТО ПРОМПТ ============ -->
+
+			<!-- 9. ДЕМО: rules / custom instructions -->
+			<section>
+				<span class="demo-badge">🖥️ живе демо</span>
+				<h2 style="text-align: center; margin-bottom: 6px;">Правила один раз — результат завжди</h2>
+				<p class="demo-lead">Rules / custom instructions: задаємо стиль, реквізити та заборони один раз —
+					і вони діють у кожному запиті. «До / після» на тому ж зверненні. Безкоштовно в ChatGPT і
+					Gemini.</p>
+				<div class="demo-shot">Скриншот / демо правил
+					<span class="fallback">резервний запис демо</span></div>
+				<aside class="notes">
+					<p><strong>Приклад правил (custom instructions):</strong> «Завжди відповідай українською в
+						офіційно-діловому стилі. Дотримуйся структури ділового листа. Ніколи не вигадуй номери
+						законів, дати та ПІБ. Якщо даних бракує — постав уточнювальні питання. Ніколи не проси
+						персональних даних громадян.»</p>
+					<p><strong>Демо:</strong> той самий запит без правил і з правилами — показати різницю в
+						стабільності результату.</p>
+				</aside>
+			</section>
+
+			<!-- 10. ДЕМО: кастомний асистент (Gemini Gem) -->
+			<section>
+				<span class="demo-badge">🖥️ живе демо</span>
+				<h2 style="text-align: center; margin-bottom: 6px;">Власний асистент громади</h2>
+				<p class="demo-lead">«Помічник діловодства громади» на Gemini Gem — налаштували раз, користується
+					весь відділ. Одна кнопка замість щоразового промпту. (Custom GPT — платна альтернатива.)</p>
+				<div class="demo-shot">Скриншот / демо Gemini Gem
+					<span class="fallback">резервний запис демо</span></div>
+				<aside class="notes">
+					<p><strong>Ідея:</strong> Gem = збережені правила + роль + приклади в одному асистенті. Не
+						треба щоразу пояснювати контекст.</p>
+					<p><strong>Демо:</strong> відкрити готовий Gem «Помічник діловодства» → одразу дати звернення →
+						отримати відповідь у потрібному форматі.</p>
+					<p><strong>Меседж:</strong> це і є «цифрова трансформація» на рівні відділу — процес, а не
+						разовий фокус.</p>
+				</aside>
+			</section>
+
+			<!-- ============ ЦІКАВІ СЦЕНАРІЇ ============ -->
+
+			<!-- 11. ДЕМО: транскрипція → протокол -->
+			<section>
+				<span class="demo-badge">🖥️ живе демо</span>
+				<h2 style="text-align: center; margin-bottom: 6px;">Запис засідання → протокол</h2>
+				<p class="demo-lead">Аудіо наради виконкому → автоматична транскрипція → готовий проєкт протоколу
+					чи витяг рішень. Години ручної роботи → хвилини.</p>
+				<div class="demo-shot">Скриншот / демо транскрипції
+					<span class="fallback">резервний запис демо</span></div>
+				<aside class="notes">
+					<p><strong>Демо:</strong> короткий аудіозапис (30–60 сек) → транскрипція (напр. вбудована в
+						Google Recorder / Docs voice typing / окремий сервіс).</p>
+					<p><strong>Промпт до тексту:</strong> «Ось стенограма засідання виконкому. Склади проєкт
+						протоколу: присутні, порядок денний, ухвалені рішення, відповідальні. Виділи окремо всі
+						доручення зі строками.»</p>
+					<p><strong>Обережно:</strong> у записі можуть бути персональні дані — попередити про це.</p>
+				</aside>
+			</section>
+
+			<!-- 12. ДЕМО: «з чиновницької на людську» -->
+			<section>
+				<span class="demo-badge">🖥️ живе демо</span>
+				<h2 style="text-align: center; margin-bottom: 6px;">«З чиновницької на людську»</h2>
+				<p class="demo-lead">Офіційне рішення чи оголошення → зрозуміло для мешканців. І навпаки: сумбурне
+					звернення → структурований запит на розгляд.</p>
+				<div class="demo-shot">Скриншот / демо спрощення тексту
+					<span class="fallback">резервний запис демо</span></div>
+				<aside class="notes">
+					<p><strong>Промпт 1 (спростити):</strong> «Перепиши це рішення виконкому простою, зрозумілою
+						мовою для оголошення мешканцям у соцмережах. Коротко: що змінюється, з якої дати, що робити
+						людині.»</p>
+					<p><strong>Промпт 2 (навпаки):</strong> «Ось сумбурне усне звернення мешканця. Сформулюй його
+						як структурований запит: суть, адреса, чого просить заявник.»</p>
+				</aside>
+			</section>
+
+			<!-- ============ ВІЗУАЛ ============ -->
+
+			<!-- 13. ДЕМО: Gamma / Canva -->
+			<section>
+				<span class="demo-badge">🖥️ живе демо</span>
+				<h2 style="text-align: center; margin-bottom: 6px;">Візуал і презентації</h2>
+				<p class="demo-lead">Gamma / Canva AI: з тексту → оголошення для мешканців, банер для соцмереж або
+					коротка презентація за хвилини.</p>
+				<div class="demo-shot">Скриншот / демо Gamma / Canva
+					<span class="fallback">резервний запис демо</span></div>
+				<aside class="notes">
+					<p><strong>Демо:</strong> у Gamma вставити текст оголошення (напр. про відключення води) →
+						отримати готовий візуальний слайд/пост.</p>
+					<p><strong>Меседж:</strong> комунікація з мешканцями стає швидкою і охайною без дизайнера.</p>
+					<p><strong>Ця презентація</strong> — теж приклад: зроблена швидко на безкоштовних
+						інструментах.</p>
+				</aside>
+			</section>
+
+			<!-- ============ КУДИ ВСЕ РУХАЄТЬСЯ ============ -->
+
+			<!-- 14. Агенти -->
+			<section>
+				<h2 style="text-align: center; margin-bottom: 8px;">Куди все рухається: агенти</h2>
+				<p class="demo-lead">Багатокроковий сценарій, де AI сам проходить ланцюжок дій:</p>
+				<ul class="esc">
+					<li>класифікувати вхідне звернення;</li>
+					<li>знайти релевантний регламент у базі знань;</li>
+					<li>скласти чернетку відповіді на погодження людині.</li>
+				</ul>
+				<div class="highlight-box" style="font-size:0.56em; margin-top:16px; max-width:900px; margin-left:auto; margin-right:auto;">
+					Це напрям найближчого майбутнього. Ключове — <strong>людина лишається на погодженні</strong>,
+					AI бере на себе рутину між кроками.
 				</div>
 			</section>
 
-			<!-- 5.3 Відповідальність здобувачів -->
+			<!-- 15. OpenRouter -->
 			<section>
-				<h2 style="text-align: center; margin-bottom: 10px;">Відповідальність здобувачів</h2>
-				<p style="font-size:0.58em; color:#555; text-align:center; margin:0 0 14px;">За порушення
-					академічної доброчесності здобувач може отримати:</p>
-				<div class="highlight-box-orange" style="font-size:0.64em; max-width:840px; margin:0 auto;">
-					<ul style="line-height:1.7; padding-left:20px;">
-						<li>повторне проходження оцінювання (контрольна, іспит, залік);</li>
-						<li>повторне проходження освітнього компонента ОП;</li>
-						<li>відрахування із закладу освіти;</li>
-						<li>позбавлення академічної стипендії;</li>
-						<li>позбавлення наданих закладом пільг з оплати навчання.</li>
-					</ul>
-				</div>
-			</section>
-
-			<!-- 5.4 Хто відповідає — Комісії -->
-			<section>
-				<h2 style="text-align: center; margin-bottom: 10px;">Хто відповідає за доброчесність</h2>
-				<div class="highlight-box" style="font-size:0.66em;">
-					<strong>Комісії з академічної доброчесності, етики та управління конфліктами</strong> —
-					розглядають звернення про порушення, питання етики та конфліктні ситуації.
-				</div>
-				<div class="two-columns" style="font-size:0.6em;">
-					<div>
-						<p style="font-weight:700; color:var(--ztu-blue); margin-bottom:6px;">Функції комісії</p>
-						<ul style="line-height:1.5;">
-							<li>розгляд звернень і доказів;</li>
-							<li>висновки щодо порушень;</li>
-							<li>урегулювання конфліктів та етики.</li>
-						</ul>
-					</div>
-					<div>
-						<p style="font-weight:700; color:var(--ztu-blue); margin-bottom:6px;">Омбудсмен — куди
-							звертатися</p>
-						<div
-							style="display:flex; gap:14px; align-items:center; background:rgba(34,74,152,0.05); border-left:4px solid var(--ztu-blue); border-radius:10px; padding:12px 14px;">
-							<img src="examples/assets/karpunets.jpg" alt="Карпунець Володимир Дмитрович"
-								style="width:84px; height:108px; object-fit:cover; object-position:top center; border-radius:8px; box-shadow:0 3px 10px rgba(0,0,0,0.16); margin:0; flex:0 0 auto;">
-							<div style="text-align:left;">
-								<p style="font-weight:700; font-size:1.05em; color:var(--ztu-blue); line-height:1.2;">
-									Карпунець Володимир Дмитрович</p>
-								<p style="font-size:0.82em; color:#555; margin-top:4px;">Антикорупційний уповноважений
-								</p>
-								<p style="font-size:0.9em; margin-top:8px;">✉ kppd_kvd@ztu.edu.ua<br>Кабінет 231</p>
-							</div>
-						</div>
-					</div>
-				</div>
-			</section>
-
-			<!-- 6. Академічна мобільність -->
-			<section>
-				<h2 style="text-align: center; margin-bottom: 10px;">Академічна мобільність</h2>
-				<div class="highlight-box" style="font-size:0.66em;">
-					Можливість частину навчання пройти в <strong>іншому ЗВО в Україні чи за кордоном</strong>
-					із перезарахуванням результатів.
-				</div>
-				<div class="two-columns" style="font-size:0.6em;">
-					<div>
-						<p style="font-weight:700; color:var(--ztu-blue); margin-bottom:6px;">Програми для
-							студентів</p>
-						<ul style="line-height:1.7; list-style:none; padding:0; margin:0;">
-							<li><a href="https://ztu.edu.ua/ua/international/opportunities/programs-academic-mobility/erasmus-icm/"
-									target="_blank" rel="noopener">Erasmus+ ICM</a> — кредитна мобільність</li>
-							<li><a href="https://ztu.edu.ua/ua/international/opportunities/programs-academic-mobility/daad/"
-									target="_blank" rel="noopener">DAAD</a> — Німеччина</li>
-							<li><a href="https://ztu.edu.ua/ua/international/opportunities/programs-academic-mobility/oead/"
-									target="_blank" rel="noopener">OeAD</a> — Австрія</li>
-							<li><a href="https://ztu.edu.ua/ua/international/opportunities/programs-academic-mobility/nawa/"
-									target="_blank" rel="noopener">NAWA</a> — Польща</li>
-						</ul>
-					</div>
-					<div>
-						<div class="highlight-box-green">
-							<p style="font-weight:700; margin-bottom:8px;">До кого звертатися</p>
-							<ul style="list-style:none; padding:0; margin:0; line-height:1.4;">
-								<li>🔹 <strong>Відділ міжнародних зв'язків</strong></li>
-								<li style="margin-top:10px;">🔹 <strong>Деканат</strong> — Болотіна Вікторія
-									Василівна<br>
-									<span style="color:#555; margin-left:18px; display:inline-block;">заступник декана з
-										міжнародної політики та проєктів</span></li>
-							</ul>
-						</div>
-						<p class="small-text" style="margin-top:8px;">Актуальні конкурси:
-							<a href="https://ztu.edu.ua/ua/international/general-information/current-projects/"
-								target="_blank" rel="noopener">діючі міжнародні проєкти</a></p>
-					</div>
-				</div>
-			</section>
-
-			<!-- 6б. Erasmus+ ICM -->
-			<section>
-				<h2 style="text-align: center; margin-bottom: 6px;">Erasmus+ ICM — навчання за кордоном</h2>
-				<p style="font-size:0.56em; color:#555; text-align:center; margin:0 0 4px;">Міжнародна кредитна
-					мобільність: семестр навчання або практика в університеті-партнері з перезарахуванням
-					кредитів</p>
-				<p
-					style="font-size:0.6em; text-align:center; margin:8px 0 0; font-weight:700; color:var(--ztu-blue);">
-					14 країн · 37 університетів-партнерів</p>
-				<div class="countries">
-					<span class="c"><b>🇵🇱 Польща</b><span class="n">8</span></span>
-					<span class="c"><b>🇹🇷 Туреччина</b><span class="n">7</span></span>
-					<span class="c"><b>🇮🇹 Італія</b><span class="n">5</span></span>
-					<span class="c"><b>🇭🇷 Хорватія</b><span class="n">3</span></span>
-					<span class="c"><b>🇪🇸 Іспанія</b><span class="n">2</span></span>
-					<span class="c"><b>🇨🇾 Кіпр</b><span class="n">2</span></span>
-					<span class="c"><b>🇷🇴 Румунія</b><span class="n">2</span></span>
-					<span class="c"><b>🇨🇿 Чехія</b><span class="n">2</span></span>
-					<span class="c"><b>🇬🇧 Великобританія</b><span class="n">1</span></span>
-					<span class="c"><b>🇬🇷 Греція</b><span class="n">1</span></span>
-					<span class="c"><b>🇩🇪 Німеччина</b><span class="n">1</span></span>
-					<span class="c"><b>🇷🇸 Сербія</b><span class="n">1</span></span>
-					<span class="c"><b>🇸🇮 Словенія</b><span class="n">1</span></span>
-					<span class="c"><b>🇫🇷 Франція</b><span class="n">1</span></span>
-				</div>
-				<div class="two-columns" style="font-size:0.58em; margin-top:18px;">
-					<div>
-						<p style="font-weight:700; color:var(--ztu-blue); margin-bottom:6px;">Види мобільності</p>
-						<ul style="line-height:1.55;">
-							<li>семестр навчання за кордоном;</li>
-							<li>практика / стажування;</li>
-							<li>перезарахування здобутих кредитів.</li>
-						</ul>
-					</div>
-					<div>
-						<div class="highlight-box-green">
-							<p style="font-weight:700; margin-bottom:6px;">Як податися</p>
-							Відділ міжнародних зв'язків · ☎ +38 (0412) 24-14-22<br>
-							<a href="https://ztu.edu.ua/page/406.html" target="_blank" rel="noopener">Перелік програм
-								і університетів-партнерів</a>
-						</div>
-					</div>
-				</div>
-			</section>
-
-<!-- 9. Неформальна освіта -->
-			<section>
-				<h2 style="text-align: center; margin-bottom: 8px;">Неформальна та інформальна освіта</h2>
+				<h2 style="text-align: center; margin-bottom: 10px;">Не залежати від одного вендора</h2>
 				<div class="highlight-box" style="font-size:0.62em;">
-					Результати <strong>онлайн-курсів, сертифікатів і тренінгів</strong> можна зарахувати як
-					результати навчання за освітньою програмою.
+					<strong>OpenRouter</strong> — один доступ до десятків моделей (є безкоштовні). Можна
+					порівнювати й обирати найкращу чи найдешевшу під задачу, не прив'язуючись до одного вендора.
+					Корисно, коли громада робить власний бот або інтеграцію.
+				</div>
+			</section>
+
+			<!-- ============ РАМКА ВІДПОВІДАЛЬНОСТІ ============ -->
+
+			<!-- 16. Приватність і персональні дані -->
+			<section>
+				<h2 style="text-align: center; margin-bottom: 10px;">Приватність і персональні дані</h2>
+				<div class="highlight-box-orange" style="font-size:0.6em;">
+					<p style="font-weight:700; margin-bottom:6px;">Що НЕ можна заливати в публічні LLM</p>
+					Персональні дані громадян (ПІБ, адреси, номери), службову та конфіденційну інформацію.
 				</div>
 				<div class="two-columns" style="font-size:0.58em;">
 					<div>
-						<p style="font-weight:700; color:var(--ztu-blue); margin-bottom:6px;">Що можна
-							зарахувати</p>
-						<ul style="line-height:1.55;">
-							<li>онлайн-курси: Prometheus, Coursera, Udemy, EdEra;</li>
-							<li>сертифікати та свідоцтва;</li>
-							<li>тренінги, професійні курси.</li>
-						</ul>
+						<div class="highlight-box-green">
+							<p style="font-weight:700; margin-bottom:6px;">Як працювати безпечно</p>
+							Знеособлювати дані перед вставкою; вимкнути навчання на ваших даних у налаштуваннях;
+							для чутливих задач — enterprise-акаунти з відповідними угодами.
+						</div>
 					</div>
 					<div>
-						<div class="highlight-box-green">
-							<p style="font-weight:700; margin-bottom:6px;">Ліміт кредитів ЄКТС</p>
-							Бакалавр — <strong>до 30</strong> кредитів<br>
-							Магістр / PhD — <strong>до 6</strong> кредитів<br>
-							<span style="color:#555;">Визнання — впродовж семестру вивчення дисципліни</span>
+						<div class="highlight-box">
+							<p style="font-weight:700; color:var(--ztu-blue); margin-bottom:6px;">Пам'ятати</p>
+							Відповідальність за дані — на вас, а не на інструменті. AI — помічник, а не приймач
+							рішень.
 						</div>
 					</div>
 				</div>
-				<div class="highlight-box-orange" style="font-size:0.56em; margin-top:14px;">
-					<strong>Процедура:</strong> заява + декларація про попереднє навчання → оцінювання комісією
-					(можлива апеляція). За окремі теми — звернення до викладача з документами та співбесіда.
-				</div>
-				<p class="small-text" style="text-align:center; margin-top:10px;">
-					<a href="https://docs.ztu.edu.ua/?mdocs-file=269" target="_blank" rel="noopener">Положення про
-						організацію освітнього процесу</a> ·
-					<a href="https://ztu.edu.ua/page/543.html" target="_blank" rel="noopener">детальніше</a>
-				</p>
 			</section>
 
-			<!-- 10. Тривога -->
+			<!-- 17. Галюцинації + як замовляти IT -->
 			<section>
-				<h2 style="text-align: center; margin-bottom: 8px;">Дії під час повітряної тривоги</h2>
-				<div class="alarm-banner" style="font-size:0.56em;">
-					<strong>За сигналом тривоги — усі в укриття</strong> (сигнал: 3 довгі дзвінки та гучномовець):
-					<div style="display:flex; gap:16px; margin-top:8px;">
-						<div style="flex:1;"><strong class="ztu-blue">1 курс</strong> → підвал Навчального корпусу
-							№5 · вул. Чуднівська, 103</div>
-						<div style="flex:1;"><strong class="ztu-blue">2 курс і старші</strong> → ФОК «Динамо» · вул.
-							Чуднівська, 113</div>
+				<h2 style="text-align: center; margin-bottom: 10px;">Галюцинації та як замовляти IT</h2>
+				<div class="two-columns" style="font-size:0.58em;">
+					<div>
+						<div class="highlight-box-orange">
+							<p style="font-weight:700; margin-bottom:6px;">Галюцинації</p>
+							AI може впевнено вигадати номер закону чи факт. Завжди перевіряйте критичні дані та
+							вимагайте посилань на джерела (тут виручає NotebookLM).
+						</div>
+					</div>
+					<div>
+						<div class="highlight-box">
+							<p style="font-weight:700; color:var(--ztu-blue); margin-bottom:6px;">Як замовляти
+								IT</p>
+							Пишіть ТЗ конкретно: яку проблему вирішуємо, хто користувач, що на виході. Просіть демо
+							до оплати — щоб не купити «мертву» систему.
+						</div>
 					</div>
 				</div>
-				<div class="sits">
-					<div class="sit">
-						<h4>Ситуація 1. Триває з ночі</h4>
-						<p>Немає відбою за 10–60 хв до пар → перше заняття <strong>асинхронно</strong>. Наступне —
-							<strong>очно</strong>, якщо відбій за годину до початку.</p>
-					</div>
-					<div class="sit">
-						<h4>Ситуація 2. Перед / під час / між заняттями</h4>
-						<p>Оголошено менше ніж за 10 хв до початку, під час або між заняттями → всі в укриття,
-							заняття <strong>через 15 хв після відбою</strong>.</p>
-					</div>
-					<div class="sit">
-						<h4>Ситуація 3. Триває станом на 15:00</h4>
-						<p>Усі заняття після відбою проводяться <strong>дистанційно</strong>.</p>
-					</div>
-				</div>
-				<div class="highlight-box-green" style="font-size:0.6em; margin-top:16px;">
-					<strong>Асинхронний режим:</strong> викладач розміщує завдання на <strong>Освітньому
-						порталі</strong>, студент виконує їх і надсилає викладачу.
-				</div>
-				<p class="small-text" style="text-align:center; margin-top:10px;">За наказом ЖП № 325/од від
-					28.08.2026</p>
 			</section>
 
-			<!-- 10б. Евакуаційні виходи -->
-			<section>
-				<h2 style="text-align: center; margin-bottom: 8px;">Евакуаційні виходи — корпус №1</h2>
-				<table class="info-table" style="font-size:0.5em;">
-					<thead>
-						<tr>
-							<th>Вихід</th>
-							<th>Відповідальний</th>
-							<th>Аудиторії</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr>
-							<td>Центральний</td>
-							<td>черговий охоронець</td>
-							<td>1-й пов. (100–138), 315–334, 415а–436, архів, їдальня, музей, медпункт</td>
-						</tr>
-						<tr>
-							<td>Актовий зал</td>
-							<td>Саннікова С. Б.</td>
-							<td>201–250, 301–315а, 401–422, актова та конференц зали</td>
-						</tr>
-						<tr style="background:rgba(238,120,28,0.12);">
-							<td><strong>№2</strong> (обчислювальний центр)</td>
-							<td><strong>декан ФІКТ Нікітчук Т. М.</strong></td>
-							<td>101а–108а</td>
-						</tr>
-						<tr>
-							<td>№3 (спортзала)</td>
-							<td>Одноворченко І. В.</td>
-							<td>спортзала, копіцентр</td>
-						</tr>
-						<tr>
-							<td>№4 (бібліотека)</td>
-							<td>Могиленко О. М.</td>
-							<td>бібліотека, музей</td>
-						</tr>
-						<tr>
-							<td>№5 (цокольний поверх)</td>
-							<td>Новосьолов І. В.</td>
-							<td>02–013</td>
-						</tr>
-					</tbody>
-				</table>
-				<p class="small-text" style="text-align:center; margin-top:12px;">Маршрути — за планами евакуації
-					(вказівники «УКРИТТЯ»). Час до укриття з корпусу №1 — 3–4 хв.</p>
-			</section>
+			<!-- ============ ФІНАЛ ============ -->
 
-			<!-- 11. Запитання -->
+			<!-- 18. Дорожня карта перших кроків -->
 			<section>
-				<h2 style="text-align: center; margin-bottom: 18px;">Запитання та відповіді</h2>
-				<div class="highlight-box" style="font-size:0.62em; text-align:center; line-height:1.7;">
-					Питання будь-якого характеру — запитуйте зараз або пишіть гарантам ОП:
-					<br>Морозов А. В. — <a href="mailto:morozov@ztu.edu.ua">morozov@ztu.edu.ua</a> ·
-					Савіцький Р. С. — <a href="mailto:kkik_srs@ztu.edu.ua">kkik_srs@ztu.edu.ua</a>
-					<br>Вакалюк Т. А. — <a href="mailto:tetianavakaliuk@ztu.edu.ua">tetianavakaliuk@ztu.edu.ua</a> ·
-					Фант М. О. — <a href="mailto:fantkolja@gmail.com">fantkolja@gmail.com</a>
+				<h2 style="text-align: center; margin-bottom: 10px;">З чого почати вже завтра</h2>
+				<ul class="esc">
+					<li>обрати один рутинний процес і зробити його «до / після»;</li>
+					<li>завести робочий акаунт ChatGPT або Gemini й прописати правила;</li>
+					<li>зібрати базу знань громади в NotebookLM;</li>
+					<li>домовитись у команді, що НЕ заливаємо в публічні сервіси.</li>
+				</ul>
+				<div class="highlight-box-green" style="font-size:0.58em; margin-top:16px; max-width:900px; margin-left:auto; margin-right:auto;">
+					<strong>Домашнє завдання:</strong> оберіть один процес вашої громади й опишіть, як він
+					виглядатиме «до / після» з AI. Це вже перший крок трансформації.
 				</div>
-				<img src="examples/assets/kafedra_ipz_logo_full.png" alt="Кафедра інженерії програмного забезпечення"
-					style="max-width: 210px; width: 100%; height: auto; display: block; margin: 30px auto 0;">
 			</section>
 
-			<!-- 12. Дякуємо -->
+			<!-- 19. Дякую + Q&A -->
 			<section>
-				<p style="font-size: 0.5em; color: #777; text-align: center; margin: 60px 0 0 0;">Кафедра інженерії
-					програмного забезпечення</p>
-				<h1 style="font-size: 1.7em; line-height: 1.25; text-align: center; margin: 18px 0 0;">
-					<span class="ztu-blue">Дякуємо за увагу!</span>
+				<p style="font-size: 0.5em; color: #777; text-align: center; margin: 50px 0 0 0;">Запитання та
+					відповіді</p>
+				<h1 style="font-size: 1.6em; line-height: 1.25; text-align: center; margin: 18px 0 0;">
+					<span class="ztu-blue">Дякую за увагу!</span>
 				</h1>
-				<img src="examples/assets/kafedra_ipz_logo_full.png" alt="Кафедра інженерії програмного забезпечення"
-					style="max-width: 260px; width: 100%; height: auto; display: block; margin: 54px auto 0;">
+				<p style="font-size: 0.5em; color: #333; text-align: center; margin: 30px 0 0;">
+					Савіцький Роман Святославович</p>
 			</section>
 
 		</div>
