@@ -186,6 +186,11 @@
 			margin-bottom: 8px;
 		}
 
+		/* Secondary demos — show quickly or just mention (time management) */
+		.demo-badge.quick {
+			background: #6b7280;
+		}
+
 		.demo-lead {
 			font-size: 0.58em;
 			color: #555;
@@ -342,30 +347,7 @@
 					Савіцький Роман Святославович — програміст, викладач</p>
 			</section>
 
-			<!-- 2. Проблема: болі щоденної роботи (інтерактив на старті) -->
-			<section>
-				<h2 style="text-align: center; margin-bottom: 6px;">Впізнаєте? Один день у громаді</h2>
-				<p class="demo-lead">Перш ніж про технології — про болі, які знає кожен у цьому залі:</p>
-				<div class="pain-grid">
-					<div class="pain-card">📄 <strong>Гори паперу</strong> і ручна рутина: передрук, підписи,
-						реєстрація</div>
-					<div class="pain-card">⏳ <strong>Черги і повільний сервіс</strong>, повторні звернення
-						мешканців</div>
-					<div class="pain-card">👥 <strong>Брак кадрів</strong> і перевантаження — одна людина за
-						кількох</div>
-					<div class="pain-card">🧠 <strong>Знання розкидані</strong> — «спитай Марію Іванівну»</div>
-					<div class="pain-card">📊 <strong>Звітність</strong> зʼїдає час</div>
-					<div class="pain-card">🔍 <strong>Непрозорість</strong> → недовіра мешканців</div>
-					<div class="pain-card">🌍 <strong>Робота з будь-де</strong> під час війни</div>
-				</div>
-				<aside class="notes">
-					<p><strong>Інтерактив на самому старті:</strong> запитати зал — «Який ваш найбільший біль з
-						цього списку? Чого тут бракує?». Кілька відповідей уголос — зал уже ваш, перш ніж ви
-						представитесь.</p>
-				</aside>
-			</section>
-
-			<!-- 3. Про мене -->
+			<!-- 2. Про мене -->
 			<section>
 				<h2 style="text-align: center; margin-bottom: 18px;">Про мене</h2>
 				<div
@@ -384,6 +366,29 @@
 						</ul>
 					</div>
 				</div>
+			</section>
+
+			<!-- 3. Проблема: болі щоденної роботи (інтерактив) -->
+			<section>
+				<h2 style="text-align: center; margin-bottom: 6px;">Впізнаєте? Один день у громаді</h2>
+				<p class="demo-lead">Перш ніж про технології — про болі, які знає кожен у цьому залі:</p>
+				<div class="pain-grid">
+					<div class="pain-card">📄 <strong>Гори паперу</strong> і ручна рутина: передрук, підписи,
+						реєстрація</div>
+					<div class="pain-card">⏳ <strong>Черги і повільний сервіс</strong>, повторні звернення
+						мешканців</div>
+					<div class="pain-card">👥 <strong>Брак кадрів</strong> і перевантаження — одна людина за
+						кількох</div>
+					<div class="pain-card">🧠 <strong>Знання розкидані</strong> — «спитай Марію Іванівну»</div>
+					<div class="pain-card">📊 <strong>Звітність</strong> зʼїдає час</div>
+					<div class="pain-card">🔍 <strong>Непрозорість</strong> → недовіра мешканців</div>
+					<div class="pain-card">🌍 <strong>Робота з будь-де</strong> під час війни</div>
+				</div>
+				<aside class="notes">
+					<p><strong>Інтерактив:</strong> запитати зал — «Який ваш найбільший біль з цього списку? Чого
+						тут бракує?». Кілька відповідей уголос — це втягує аудиторію перед основною частиною.</p>
+				</aside>
+			</section>
 			</section>
 
 			<!-- 4. Велика картина -->
@@ -489,7 +494,7 @@
 
 			<!-- 4. ДЕМО: звернення → відповідь, ChatGPT vs Gemini -->
 			<section>
-				<span class="demo-badge">🖥️ живе демо</span>
+				<span class="demo-badge">🖥️ наживо</span>
 				<h2 style="text-align: center; margin-bottom: 6px;">Звернення громадянина → відповідь</h2>
 				<p class="demo-lead">Мешканець скаржиться на несправне вуличне освітлення. Один і той самий
 					запит даємо ChatGPT і Gemini поруч — порівнюємо стиль, повноту й тон відповіді.</p>
@@ -531,7 +536,7 @@
 
 			<!-- 5. ДЕМО: проєкт розпорядження / протоколу -->
 			<section>
-				<span class="demo-badge">🖥️ живе демо</span>
+				<span class="demo-badge quick">⏩ швидко / за потреби</span>
 				<h2 style="text-align: center; margin-bottom: 6px;">Чернетка розпорядження з кількох тез</h2>
 				<p class="demo-lead">Даємо кілька тез — отримуємо структурований проєкт розпорядження чи
 					протоколу в діловому стилі за секунди.</p>
@@ -560,7 +565,7 @@
 
 			<!-- 6. ДЕМО: Docs + Gmail -->
 			<section>
-				<span class="demo-badge">🖥️ живе демо</span>
+				<span class="demo-badge quick">⏩ швидко / за потреби</span>
 				<h2 style="text-align: center; margin-bottom: 6px;">AI в офісі: Docs та Gmail</h2>
 				<p class="demo-lead"><strong>Проблема:</strong> рутина з листами й довгими ланцюжками з'їдає час.
 					Gemini у Google Workspace (залежно від тарифу й акаунта): переписати чи скоротити лист, зробити
@@ -586,7 +591,7 @@ Gmail: «Підсумуй це листування: ключові домовл
 
 			<!-- 7. ДЕМО: аналіз бюджету в Sheets -->
 			<section>
-				<span class="demo-badge">🖥️ живе демо</span>
+				<span class="demo-badge">🖥️ наживо</span>
 				<h2 style="text-align: center; margin-bottom: 6px;">Аналіз бюджету громади</h2>
 				<p class="demo-lead">Таблицю бюджету громади перетворюємо на зведення, графік і пояснення
 					простою мовою для мешканців — без ручної аналітики. Крок до реальної прозорості.</p>
@@ -607,7 +612,7 @@ Gmail: «Підсумуй це листування: ключові домовл
 
 			<!-- ДЕМО: Excel/Sheets без болю -->
 			<section>
-				<span class="demo-badge">🖥️ живе демо</span>
+				<span class="demo-badge quick">⏩ швидко / за потреби</span>
 				<h2 style="text-align: center; margin-bottom: 6px;">Excel / Sheets без болю</h2>
 				<p class="demo-lead"><strong>Проблема:</strong> формули важко згадати, а чужі таблиці — зрозуміти.
 					Три щоденні рятівники:</p>
@@ -631,7 +636,7 @@ Gmail: «Підсумуй це листування: ключові домовл
 
 			<!-- 8. ДЕМО: NotebookLM -->
 			<section>
-				<span class="demo-badge">🖥️ живе демо</span>
+				<span class="demo-badge">🖥️ наживо</span>
 				<h2 style="text-align: center; margin-bottom: 6px;">NotebookLM — база знань громади</h2>
 				<p class="demo-lead"><strong>Проблема:</strong> знання розкидані, ніхто не пам'ятає всіх
 					регламентів. Заливаємо статут і регламенти → отримуємо відповіді з посиланням на конкретний
@@ -655,7 +660,7 @@ Gmail: «Підсумуй це листування: ключові домовл
 
 			<!-- 9. ДЕМО: rules / custom instructions -->
 			<section>
-				<span class="demo-badge">🖥️ живе демо</span>
+				<span class="demo-badge quick">⏩ швидко / за потреби</span>
 				<h2 style="text-align: center; margin-bottom: 6px;">Правила один раз — результат завжди</h2>
 				<p class="demo-lead"><strong>Проблема:</strong> кожен пише по-своєму, якість плаває, є ризик
 					помилок. Rules / custom instructions: задаємо стиль, реквізити та заборони один раз — і вони
@@ -679,7 +684,7 @@ Gmail: «Підсумуй це листування: ключові домовл
 
 			<!-- 10. ДЕМО: кастомний асистент (Gemini Gem) -->
 			<section>
-				<span class="demo-badge">🖥️ живе демо</span>
+				<span class="demo-badge quick">⏩ швидко / за потреби</span>
 				<h2 style="text-align: center; margin-bottom: 6px;">Власний асистент громади</h2>
 				<p class="demo-lead"><strong>Проблема:</strong> щоразу пояснювати AI контекст — марнування часу.
 					«Помічник діловодства громади» на Gemini Gem — налаштували раз, користується весь відділ. Одна
@@ -704,7 +709,7 @@ Gmail: «Підсумуй це листування: ключові домовл
 
 			<!-- 11. ДЕМО: транскрипція → протокол -->
 			<section>
-				<span class="demo-badge">🖥️ живе демо</span>
+				<span class="demo-badge quick">⏩ швидко / за потреби</span>
 				<h2 style="text-align: center; margin-bottom: 6px;">Запис засідання → протокол</h2>
 				<p class="demo-lead">Аудіо наради виконкому → автоматична транскрипція → готовий проєкт протоколу
 					чи витяг рішень. Години ручної роботи → хвилини.</p>
@@ -727,7 +732,7 @@ Gmail: «Підсумуй це листування: ключові домовл
 
 			<!-- 12. ДЕМО: «з чиновницької на людську» -->
 			<section>
-				<span class="demo-badge">🖥️ живе демо</span>
+				<span class="demo-badge">🖥️ наживо</span>
 				<h2 style="text-align: center; margin-bottom: 6px;">«З чиновницької на людську»</h2>
 				<p class="demo-lead">Офіційне рішення чи оголошення → зрозуміло для мешканців. І навпаки: сумбурне
 					звернення → структурований запит на розгляд.</p>
@@ -751,7 +756,7 @@ Gmail: «Підсумуй це листування: ключові домовл
 
 			<!-- 13. ДЕМО: Gamma / Canva -->
 			<section>
-				<span class="demo-badge">🖥️ живе демо</span>
+				<span class="demo-badge quick">⏩ швидко / за потреби</span>
 				<h2 style="text-align: center; margin-bottom: 6px;">Візуал і презентації</h2>
 				<p class="demo-lead">Gamma / Canva AI: з тексту → оголошення для мешканців, банер для соцмереж або
 					коротка презентація за хвилини.</p>
