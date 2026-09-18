@@ -11,8 +11,8 @@
 | 1 | Звернення → відповідь | `01-zvernennia.md` | ChatGPT + Gemini |
 | 2 | Розпорядження | `02-rozporyadzhennia.md` | ChatGPT / Gemini |
 | 3 | Docs / Gmail | `03-docs-gmail.md` | Google Docs / Gmail |
-| 4 | Аналіз бюджету | `04-byudzhet.csv`, `04-byudzhet.md` | Sheets + Gemini |
-| 5 | Excel / Sheets | `05-excel-oplata.csv`, `05-excel-pib.csv`, `05-excel.md` | Sheets / Excel |
+| 4 | Аналіз бюджету | `04-byudzhet.xlsx`, `04-byudzhet.md` | Sheets + Gemini |
+| 5 | Excel / Sheets | `05-excel-oplata.xlsx`, `05-excel-pib.xlsx`, `05-excel.md` | Sheets / Excel |
 | 6 | NotebookLM | `06-statut-hromady.md`, `06-notebooklm.md` | NotebookLM |
 | 7 | Правила (custom instructions) | `07-pravyla.md` | ChatGPT / Gemini |
 | 8 | Власний асистент (Gem) | `08-gem.md` | Gemini Gems |
