@@ -15,7 +15,7 @@
 | 5 | Excel / Sheets | `05-excel-oplata.xlsx`, `05-excel-pib.xlsx`, `05-excel.md` | Sheets / Excel |
 | 6 | NotebookLM | `06-statut-hromady.md`, `06-notebooklm.md` | NotebookLM |
 | 7 | Правила (custom instructions) | `07-pravyla.md` | ChatGPT / Gemini |
-| 8 | Власний асистент (Gem) | `08-gem.md` | Gemini Gems |
+| 8 | Власний асистент (Spark) | `08-spark.md` | Gemini Spark |
 | 9 | Запис засідання → протокол | `09-transkript-vykonkom.md` | NotebookLM / Gemini |
 | 10 | «З чиновницької на людську» | `10-sproshchennia.md` | ChatGPT / Gemini |
 | 11 | Візуал (Gamma / Canva) | `11-gamma.md` | Gamma / Canva |
