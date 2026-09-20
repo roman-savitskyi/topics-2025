@@ -4,18 +4,14 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title data-ua="Кафедра інженерії програмного забезпечення — засідання та матеріали"
-        data-en="Department of Software Engineering — meetings and materials">Кафедра інженерії програмного
-        забезпечення — засідання та матеріали</title>
+    <title>Роман Савіцький — презентації та виступи</title>
     <meta name="description"
-        content="Матеріали засідань кафедри інженерії програмного забезпечення Державного університету «Житомирська політехніка».">
+        content="Презентації та публічні виступи Романа Савіцького: AI, вебдоступність, DevTools, кар'єра в ІТ.">
 
     <style>
         :root {
             --ztu-blue: #224a98;
             --ztu-orange: #ee781c;
-            --ztu-green: #4cad3b;
-            --ztu-red: #e5341f;
             --ink: #1f2733;
             --muted: #667085;
             --line: #e6e9f0;
@@ -38,45 +34,7 @@
         .wrap {
             max-width: 900px;
             margin: 0 auto;
-            padding: 28px 20px 72px;
-        }
-
-        /* ---- Language switch ---- */
-        .topbar {
-            display: flex;
-            justify-content: flex-end;
-            margin-bottom: 18px;
-        }
-
-        .lang {
-            display: inline-flex;
-            border: 1px solid var(--line);
-            background: #fff;
-            border-radius: 999px;
-            overflow: hidden;
-            box-shadow: 0 1px 2px rgba(16, 24, 40, 0.04);
-        }
-
-        .lang button {
-            border: 0;
-            background: transparent;
-            color: var(--muted);
-            font: inherit;
-            font-size: 0.82em;
-            font-weight: 600;
-            letter-spacing: .03em;
-            padding: 6px 14px;
-            cursor: pointer;
-            transition: background .15s, color .15s;
-        }
-
-        .lang button.active {
-            background: var(--ztu-blue);
-            color: #fff;
-        }
-
-        .lang button:not(.active):hover {
-            color: var(--ztu-blue);
+            padding: 40px 20px 72px;
         }
 
         /* ---- Logo row ---- */
@@ -86,33 +44,34 @@
             align-items: center;
             justify-content: center;
             gap: 26px;
-            padding: 8px 0 26px;
+            padding: 4px 0 30px;
         }
 
         .logos img {
-            height: 54px;
+            height: 46px;
             width: auto;
             display: block;
+            object-fit: contain;
         }
 
         .logos .sep {
             width: 1px;
             align-self: stretch;
-            min-height: 44px;
+            min-height: 40px;
             background: var(--line);
         }
 
-        /* ---- Header title ---- */
+        /* ---- Header ---- */
         header {
             text-align: center;
             border-bottom: 1px solid var(--line);
-            padding-bottom: 26px;
+            padding-bottom: 28px;
             margin-bottom: 34px;
         }
 
         header h1 {
-            font-size: 1.5em;
-            line-height: 1.25;
+            font-size: 1.7em;
+            line-height: 1.2;
             color: var(--ink);
             font-weight: 700;
         }
@@ -123,11 +82,11 @@
 
         header .tagline {
             color: var(--muted);
-            font-size: 0.95em;
-            margin-top: 8px;
+            font-size: 0.98em;
+            margin-top: 10px;
         }
 
-        /* ---- Section ---- */
+        /* ---- Section title ---- */
         .section-title {
             display: flex;
             align-items: center;
@@ -145,7 +104,7 @@
             background: linear-gradient(90deg, rgba(34, 74, 152, 0.22), transparent);
         }
 
-        /* ---- Meeting cards ---- */
+        /* ---- Cards ---- */
         .cards {
             list-style: none;
             display: grid;
@@ -189,8 +148,8 @@
             font-size: 0.72em;
             font-weight: 700;
             letter-spacing: .02em;
-            color: var(--muted);
-            background: rgba(102, 112, 133, 0.1);
+            color: var(--ztu-blue);
+            background: rgba(34, 74, 152, 0.1);
             padding: 3px 10px;
             border-radius: 999px;
         }
@@ -215,74 +174,14 @@
             color: var(--ztu-orange);
         }
 
-        /* ---- Audience tabs ---- */
-        .tabs {
-            display: flex;
-            justify-content: center;
-            gap: 8px;
-            margin-bottom: 28px;
-        }
-
-        .tab-btn {
-            border: 1px solid var(--line);
-            background: #fff;
-            color: var(--muted);
-            font: inherit;
-            font-weight: 600;
-            font-size: 0.95em;
-            padding: 10px 24px;
-            border-radius: 10px;
-            cursor: pointer;
-            transition: background .18s, color .18s, border-color .18s, box-shadow .18s;
-        }
-
-        .tab-btn.active {
-            background: var(--ztu-blue);
-            color: #fff;
-            border-color: var(--ztu-blue);
-            box-shadow: 0 6px 16px rgba(34, 74, 152, 0.18);
-        }
-
-        .tab-btn:not(.active):hover {
-            border-color: var(--ztu-blue);
-            color: var(--ztu-blue);
-        }
-
-        .tab-panel {
-            display: none;
-        }
-
-        .tab-panel.active {
-            display: block;
-            animation: tabfade .25s ease;
-        }
-
-        @keyframes tabfade {
-            from {
-                opacity: 0;
-                transform: translateY(4px);
-            }
-
-            to {
-                opacity: 1;
-                transform: none;
-            }
-        }
-
-        .panel-sub {
-            color: var(--muted);
-            font-size: 0.9em;
-            margin: -8px 0 18px;
-        }
-
         /* ---- Footer ---- */
         footer {
-            margin-top: 52px;
+            margin-top: 44px;
+            padding-top: 22px;
+            border-top: 1px solid var(--line);
             text-align: center;
             color: var(--muted);
-            font-size: 0.82em;
-            border-top: 1px solid var(--line);
-            padding-top: 22px;
+            font-size: 0.86em;
         }
 
         footer a {
@@ -293,205 +192,106 @@
         footer a:hover {
             text-decoration: underline;
         }
-
-        @media (max-width: 560px) {
-            .logos {
-                gap: 16px;
-            }
-
-            .logos img {
-                height: 38px;
-            }
-
-            .logos .sep {
-                display: none;
-            }
-
-            header h1 {
-                font-size: 1.25em;
-            }
-
-            .tab-btn {
-                padding: 9px 16px;
-                font-size: 0.86em;
-            }
-
-            .card {
-                padding: 18px 44px 18px 18px;
-            }
-        }
     </style>
 </head>
 
 <body>
     <div class="wrap">
-        <div class="topbar">
-            <div class="lang" role="group" aria-label="Мова / Language">
-                <button type="button" data-lang="ua">УКР</button>
-                <button type="button" data-lang="en">ENG</button>
-            </div>
+
+        <div class="logos">
+            <img src="examples/assets/ztu_logo_ua.png"
+                alt="Державний університет «Житомирська політехніка»">
+            <span class="sep"></span>
+            <img src="examples/assets/TIETO.HE_BIG.D.png" alt="TietoEVRY">
+            <span class="sep"></span>
+            <img src="examples/assets/beerjs.jpg" alt="BeerJS Zhytomyr">
         </div>
 
         <header>
-            <div class="logos">
-                <img data-src-ua="examples/assets/ztu_logo_ua.png" data-src-en="examples/assets/ztu_logo_en.png"
-                    src="examples/assets/ztu_logo_ua.png"
-                    alt="Державний університет «Житомирська політехніка»">
-                <span class="sep" aria-hidden="true"></span>
-                <img data-src-ua="examples/assets/fikt_logo_ua.png" data-src-en="examples/assets/fikt_logo_en.png"
-                    src="examples/assets/fikt_logo_ua.png"
-                    alt="Факультет інформаційно-комп'ютерних технологій">
-                <span class="sep" aria-hidden="true"></span>
-                <img src="examples/assets/kafedra_ipz_logo_full.png"
-                    alt="Кафедра інженерії програмного забезпечення — Державний університет «Житомирська політехніка»">
-            </div>
-
-            <h1 data-ua-html="Кафедра <span class='accent'>інженерії програмного забезпечення</span>"
-                data-en-html="Department of <span class='accent'>Software Engineering</span>">
-                Кафедра <span class="accent">інженерії програмного забезпечення</span>
-            </h1>
-            <p class="tagline" data-ua="Матеріали кафедри для викладачів і здобувачів"
-                data-en="Department materials for faculty and students">Матеріали кафедри для викладачів і
-                здобувачів</p>
+            <h1>Роман <span class="accent">Савіцький</span></h1>
+            <p class="tagline">Презентації та публічні виступи — AI, вебтехнології, кар'єра в ІТ</p>
         </header>
 
-        <div class="tabs" role="tablist" aria-label="Аудиторія / Audience">
-            <button type="button" class="tab-btn" data-tab="teacher" data-ua="Для викладачів"
-                data-en="For faculty">Для викладачів</button>
-            <button type="button" class="tab-btn" data-tab="student" data-ua="Для студентів"
-                data-en="For students">Для студентів</button>
-        </div>
+        <h2 class="section-title">Презентації та виступи</h2>
+        <ul class="cards">
 
-        <main>
-            <section class="tab-panel" data-panel="teacher">
-                <h2 class="section-title" data-ua="Засідання кафедри" data-en="Department meetings">Засідання
-                    кафедри</h2>
-                <ul class="cards">
-                    <li>
-                        <a class="card" href="feature-info-kafedra-2/">
-                            <div class="card-head">
-                                <h3 data-ua="26 серпня 2026" data-en="26 August 2026">26 серпня 2026</h3>
-                                <span class="badge" data-ua="Протокол № 3" data-en="Minutes No. 3">Протокол №
-                                    3</span>
-                            </div>
-                            <p data-ua="Конкурс на заміщення вакантних посад, затвердження робочих програм і методичного забезпечення на 2026/2027 навчальний рік, різне."
-                                data-en="Competitive selection for vacant positions, approval of syllabi and teaching materials for the 2026/2027 academic year, miscellaneous.">
-                                Конкурс на заміщення вакантних посад, затвердження робочих програм і методичного
-                                забезпечення на 2026/2027 навчальний рік, різне.</p>
-                            <span class="arrow" aria-hidden="true">→</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a class="card" href="feature-info-kafedra/">
-                            <div class="card-head">
-                                <h3 data-ua="12 серпня 2026" data-en="12 August 2026">12 серпня 2026</h3>
-                            </div>
-                            <p data-ua="Кадрові призначення, нова освітня програма, оновлення робочих програм, розподіл обов'язків, нормування наукової діяльності."
-                                data-en="Staff appointments, a new degree programme, syllabi updates, distribution of duties, and research workload standards.">
-                                Кадрові призначення, нова освітня програма, оновлення робочих програм, розподіл
-                                обов'язків, нормування наукової діяльності.</p>
-                            <span class="arrow" aria-hidden="true">→</span>
-                        </a>
-                    </li>
-                </ul>
-            </section>
+            <li>
+                <a class="card" href="feature-digital-oms/">
+                    <div class="card-head">
+                        <h3>Цифрові технології в органах місцевого самоврядування</h3>
+                        <span class="badge">2026 · AI</span>
+                    </div>
+                    <p>Практичні AI-інструменти для співробітників ОМС: ChatGPT, Gemini, NotebookLM — від проблеми
+                        до готового результату.</p>
+                    <span class="arrow">→</span>
+                </a>
+            </li>
 
-            <section class="tab-panel" data-panel="student">
-                <h2 class="section-title" data-ua="Зустріч з гарантом"
-                    data-en="Meeting with the guarantor">Зустріч з гарантом</h2>
-                <ul class="cards">
-                    <li>
-                        <a class="card" href="feature-zustrich-garant/">
-                            <div class="card-head">
-                                <h3 data-ua="Зустріч з гарантом ОП" data-en="Meeting with the programme guarantor">
-                                    Зустріч з гарантом ОП</h3>
-                                <span class="badge" data-ua="2026/2027" data-en="2026/2027">2026/2027</span>
-                            </div>
-                            <p data-ua="Орієнтаційна зустріч зі здобувачами: графік навчання, практики, академічна доброчесність, мобільність, куди звертатися та дії під час тривоги."
-                                data-en="Orientation meeting for students: academic calendar, internships, academic integrity, mobility, where to seek help, and air-raid procedures.">
-                                Орієнтаційна зустріч зі здобувачами: графік навчання, практики, академічна
-                                доброчесність, мобільність, куди звертатися та дії під час тривоги.</p>
-                            <span class="arrow" aria-hidden="true">→</span>
-                        </a>
-                    </li>
-                </ul>
-            </section>
-        </main>
+            <li>
+                <a class="card" href="feature-km-ai/">
+                    <div class="card-head">
+                        <h3>AI Prompting — як отримувати кращий результат</h3>
+                        <span class="badge">AI</span>
+                    </div>
+                    <p>Як формулювати запити до штучного інтелекту, щоб відповіді були точними й корисними.</p>
+                    <span class="arrow">→</span>
+                </a>
+            </li>
+
+            <li>
+                <a class="card" href="feature-cognitive-webaccessibility/">
+                    <div class="card-head">
+                        <h3>Когнітивна вебдоступність</h3>
+                        <span class="badge">A11y</span>
+                    </div>
+                    <p>Від проблеми до рішення: як робити вебпродукти зрозумілими для всіх користувачів.</p>
+                    <span class="arrow">→</span>
+                </a>
+            </li>
+
+            <li>
+                <a class="card" href="feature-fw-days-chrome-dev-tools/">
+                    <div class="card-head">
+                        <h3>Chrome DevTools 2024–2025</h3>
+                        <span class="badge">fwdays · DevTools</span>
+                    </div>
+                    <p>Що нового в інструментах розробника Chrome і як це прискорює роботу.</p>
+                    <span class="arrow">→</span>
+                </a>
+            </li>
+
+            <li>
+                <a class="card" href="feature-path-to-it/">
+                    <div class="card-head">
+                        <h3>Шлях в ІТ</h3>
+                        <span class="badge">Кар'єра</span>
+                    </div>
+                    <p>З чого почати кар'єру в ІТ: орієнтири, ролі та перші кроки.</p>
+                    <span class="arrow">→</span>
+                </a>
+            </li>
+
+            <li>
+                <a class="card" href="feature-speach-phd/">
+                    <div class="card-head">
+                        <h3>Передзахист дисертації</h3>
+                        <span class="badge">Наука</span>
+                    </div>
+                    <p>Доповідь за результатами дисертаційного дослідження.</p>
+                    <span class="arrow">→</span>
+                </a>
+            </li>
+
+        </ul>
 
         <footer>
-            <span data-ua="© 2026 Кафедра інженерії програмного забезпечення"
-                data-en="© 2026 Department of Software Engineering">© 2026 Кафедра інженерії програмного
-                забезпечення</span>
-            · <a href="https://ztu.edu.ua" target="_blank" rel="noopener">ztu.edu.ua</a>
+            © 2026 Роман Савіцький ·
+            <a href="https://ztu.edu.ua" target="_blank" rel="noopener">Житомирська політехніка</a> ·
+            <a href="https://tietoevry.com" target="_blank" rel="noopener">TietoEVRY</a> ·
+            BeerJS Zhytomyr
         </footer>
+
     </div>
-
-    <script>
-        (function () {
-            var STORE = 'ipz-lang';
-            function get() {
-                try { return localStorage.getItem(STORE) || 'ua'; } catch (e) { return 'ua'; }
-            }
-            function save(v) {
-                try { localStorage.setItem(STORE, v); } catch (e) { }
-            }
-            function apply(lang) {
-                document.documentElement.lang = (lang === 'ua') ? 'uk' : 'en';
-                // Plain-text nodes
-                document.querySelectorAll('[data-ua]').forEach(function (el) {
-                    var v = el.getAttribute('data-' + lang);
-                    if (v !== null) el.textContent = v;
-                });
-                // Rich (HTML) nodes — headings with inline accent markup
-                document.querySelectorAll('[data-ua-html]').forEach(function (el) {
-                    var v = el.getAttribute('data-' + lang + '-html');
-                    if (v !== null) el.innerHTML = v;
-                });
-                // Language-specific logo variants
-                document.querySelectorAll('img[data-src-ua]').forEach(function (el) {
-                    var v = el.getAttribute('data-src-' + lang);
-                    if (v) el.src = v;
-                });
-                // Toggle active button
-                document.querySelectorAll('.lang button').forEach(function (b) {
-                    b.classList.toggle('active', b.getAttribute('data-lang') === lang);
-                });
-            }
-            document.querySelectorAll('.lang button').forEach(function (b) {
-                b.addEventListener('click', function () {
-                    var lang = b.getAttribute('data-lang');
-                    save(lang);
-                    apply(lang);
-                });
-            });
-            apply(get());
-
-            // ---- Audience tabs ----
-            var TAB = 'ipz-tab';
-            function getTab() {
-                try { return localStorage.getItem(TAB) || 'teacher'; } catch (e) { return 'teacher'; }
-            }
-            function saveTab(v) {
-                try { localStorage.setItem(TAB, v); } catch (e) { }
-            }
-            function applyTab(tab) {
-                document.querySelectorAll('.tab-btn').forEach(function (b) {
-                    b.classList.toggle('active', b.getAttribute('data-tab') === tab);
-                });
-                document.querySelectorAll('.tab-panel').forEach(function (p) {
-                    p.classList.toggle('active', p.getAttribute('data-panel') === tab);
-                });
-            }
-            document.querySelectorAll('.tab-btn').forEach(function (b) {
-                b.addEventListener('click', function () {
-                    var t = b.getAttribute('data-tab');
-                    saveTab(t);
-                    applyTab(t);
-                });
-            });
-            applyTab(getTab());
-        })();
-    </script>
 </body>
 
 </html>
