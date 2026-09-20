@@ -4,7 +4,8 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Роман Савіцький — презентації та виступи</title>
+    <title data-ua="Роман Савіцький — презентації та виступи"
+        data-en="Roman Savitskyi — talks & presentations">Роман Савіцький — презентації та виступи</title>
     <meta name="description"
         content="Презентації та публічні виступи Романа Савіцького: AI, вебдоступність, DevTools, кар'єра в ІТ.">
 
@@ -34,7 +35,45 @@
         .wrap {
             max-width: 900px;
             margin: 0 auto;
-            padding: 40px 20px 72px;
+            padding: 28px 20px 72px;
+        }
+
+        /* ---- Language switch ---- */
+        .topbar {
+            display: flex;
+            justify-content: flex-end;
+            margin-bottom: 14px;
+        }
+
+        .lang {
+            display: inline-flex;
+            border: 1px solid var(--line);
+            background: #fff;
+            border-radius: 999px;
+            overflow: hidden;
+            box-shadow: 0 1px 2px rgba(16, 24, 40, 0.04);
+        }
+
+        .lang button {
+            border: 0;
+            background: transparent;
+            color: var(--muted);
+            font: inherit;
+            font-size: 0.82em;
+            font-weight: 600;
+            letter-spacing: .03em;
+            padding: 6px 14px;
+            cursor: pointer;
+            transition: background .15s, color .15s;
+        }
+
+        .lang button.active {
+            background: var(--ztu-blue);
+            color: #fff;
+        }
+
+        .lang button:not(.active):hover {
+            color: var(--ztu-blue);
         }
 
         /* ---- Logo row ---- */
@@ -48,7 +87,7 @@
         }
 
         .logos img {
-            height: 46px;
+            height: 40px;
             width: auto;
             display: block;
             object-fit: contain;
@@ -57,7 +96,7 @@
         .logos .sep {
             width: 1px;
             align-self: stretch;
-            min-height: 40px;
+            min-height: 36px;
             background: var(--line);
         }
 
@@ -198,30 +237,44 @@
 <body>
     <div class="wrap">
 
+        <div class="topbar">
+            <div class="lang" role="group" aria-label="Language">
+                <button type="button" data-lang="ua" class="active">UA</button>
+                <button type="button" data-lang="en">EN</button>
+            </div>
+        </div>
+
         <div class="logos">
-            <img src="examples/assets/ztu_logo_ua.png"
-                alt="Державний університет «Житомирська політехніка»">
+            <img data-src-ua="examples/assets/ztu_logo_ua.png" data-src-en="examples/assets/ztu_logo_en.png"
+                src="examples/assets/ztu_logo_ua.png" alt="Державний університет «Житомирська політехніка»">
             <span class="sep"></span>
-            <img src="examples/assets/TIETO.HE_BIG.D.png" alt="TietoEVRY">
+            <img src="examples/assets/tietoevry_logo.svg" alt="Tietoevry" style="height:26px;">
             <span class="sep"></span>
             <img src="examples/assets/beerjs.jpg" alt="BeerJS Zhytomyr">
         </div>
 
         <header>
             <h1>Роман <span class="accent">Савіцький</span></h1>
-            <p class="tagline">Презентації та публічні виступи — AI, вебтехнології, кар'єра в ІТ</p>
+            <p class="tagline" data-ua="Презентації та публічні виступи — AI, вебтехнології, кар'єра в ІТ"
+                data-en="Talks &amp; public presentations — AI, web technologies and careers in IT">Презентації та
+                публічні виступи — AI, вебтехнології, кар'єра в ІТ</p>
         </header>
 
-        <h2 class="section-title">Презентації та виступи</h2>
+        <h2 class="section-title" data-ua="Презентації та виступи" data-en="Talks &amp; presentations">Презентації
+            та виступи</h2>
         <ul class="cards">
 
             <li>
                 <a class="card" href="feature-digital-oms/">
                     <div class="card-head">
-                        <h3>Цифрові технології в органах місцевого самоврядування</h3>
+                        <h3 data-ua="Цифрові технології в органах місцевого самоврядування"
+                            data-en="Digital technologies in local government">Цифрові технології в органах
+                            місцевого самоврядування</h3>
                         <span class="badge">2026 · AI</span>
                     </div>
-                    <p>Практичні AI-інструменти для співробітників ОМС: ChatGPT, Gemini, NotebookLM — від проблеми
+                    <p data-ua="Практичні AI-інструменти для співробітників ОМС: ChatGPT, Gemini, NotebookLM — від проблеми до готового результату."
+                        data-en="Practical AI tools for local government staff: ChatGPT, Gemini, NotebookLM — from problem to ready result.">
+                        Практичні AI-інструменти для співробітників ОМС: ChatGPT, Gemini, NotebookLM — від проблеми
                         до готового результату.</p>
                     <span class="arrow">→</span>
                 </a>
@@ -230,10 +283,14 @@
             <li>
                 <a class="card" href="feature-km-ai/">
                     <div class="card-head">
-                        <h3>AI Prompting — як отримувати кращий результат</h3>
+                        <h3 data-ua="AI Prompting — як отримувати кращий результат"
+                            data-en="AI Prompting — getting better results">AI Prompting — як отримувати кращий
+                            результат</h3>
                         <span class="badge">AI</span>
                     </div>
-                    <p>Як формулювати запити до штучного інтелекту, щоб відповіді були точними й корисними.</p>
+                    <p data-ua="Як формулювати запити до штучного інтелекту, щоб відповіді були точними й корисними."
+                        data-en="How to phrase prompts so AI answers are accurate and useful.">Як формулювати
+                        запити до штучного інтелекту, щоб відповіді були точними й корисними.</p>
                     <span class="arrow">→</span>
                 </a>
             </li>
@@ -241,10 +298,13 @@
             <li>
                 <a class="card" href="feature-cognitive-webaccessibility/">
                     <div class="card-head">
-                        <h3>Когнітивна вебдоступність</h3>
+                        <h3 data-ua="Когнітивна вебдоступність" data-en="Cognitive web accessibility">Когнітивна
+                            вебдоступність</h3>
                         <span class="badge">A11y</span>
                     </div>
-                    <p>Від проблеми до рішення: як робити вебпродукти зрозумілими для всіх користувачів.</p>
+                    <p data-ua="Від проблеми до рішення: як робити вебпродукти зрозумілими для всіх користувачів."
+                        data-en="From problem to solution: making web products understandable for everyone.">Від
+                        проблеми до рішення: як робити вебпродукти зрозумілими для всіх користувачів.</p>
                     <span class="arrow">→</span>
                 </a>
             </li>
@@ -252,10 +312,13 @@
             <li>
                 <a class="card" href="feature-fw-days-chrome-dev-tools/">
                     <div class="card-head">
-                        <h3>Chrome DevTools 2024–2025</h3>
+                        <h3 data-ua="Chrome DevTools 2024–2025" data-en="Chrome DevTools 2024–2025">Chrome DevTools
+                            2024–2025</h3>
                         <span class="badge">fwdays · DevTools</span>
                     </div>
-                    <p>Що нового в інструментах розробника Chrome і як це прискорює роботу.</p>
+                    <p data-ua="Що нового в інструментах розробника Chrome і як це прискорює роботу."
+                        data-en="What's new in Chrome DevTools and how it speeds up your work.">Що нового в
+                        інструментах розробника Chrome і як це прискорює роботу.</p>
                     <span class="arrow">→</span>
                 </a>
             </li>
@@ -263,10 +326,12 @@
             <li>
                 <a class="card" href="feature-path-to-it/">
                     <div class="card-head">
-                        <h3>Шлях в ІТ</h3>
-                        <span class="badge">Кар'єра</span>
+                        <h3 data-ua="Шлях в ІТ" data-en="Path into IT">Шлях в ІТ</h3>
+                        <span class="badge" data-ua="Кар'єра" data-en="Career">Кар'єра</span>
                     </div>
-                    <p>З чого почати кар'єру в ІТ: орієнтири, ролі та перші кроки.</p>
+                    <p data-ua="З чого почати кар'єру в ІТ: орієнтири, ролі та перші кроки."
+                        data-en="How to start a career in IT: directions, roles and first steps.">З чого почати
+                        кар'єру в ІТ: орієнтири, ролі та перші кроки.</p>
                     <span class="arrow">→</span>
                 </a>
             </li>
@@ -274,10 +339,12 @@
             <li>
                 <a class="card" href="feature-speach-phd/">
                     <div class="card-head">
-                        <h3>Передзахист дисертації</h3>
-                        <span class="badge">Наука</span>
+                        <h3 data-ua="Передзахист дисертації" data-en="PhD pre-defense">Передзахист дисертації</h3>
+                        <span class="badge" data-ua="Наука" data-en="Research">Наука</span>
                     </div>
-                    <p>Доповідь за результатами дисертаційного дослідження.</p>
+                    <p data-ua="Доповідь за результатами дисертаційного дослідження."
+                        data-en="A talk on the results of the doctoral research.">Доповідь за результатами
+                        дисертаційного дослідження.</p>
                     <span class="arrow">→</span>
                 </a>
             </li>
@@ -285,13 +352,40 @@
         </ul>
 
         <footer>
-            © 2026 Роман Савіцький ·
-            <a href="https://ztu.edu.ua" target="_blank" rel="noopener">Житомирська політехніка</a> ·
-            <a href="https://tietoevry.com" target="_blank" rel="noopener">TietoEVRY</a> ·
+            <span data-ua="© 2026 Роман Савіцький" data-en="© 2026 Roman Savitskyi">© 2026 Роман Савіцький</span> ·
+            <a href="https://ztu.edu.ua" target="_blank" rel="noopener" data-ua="Житомирська політехніка"
+                data-en="Zhytomyr Polytechnic">Житомирська політехніка</a> ·
+            <a href="https://tietoevry.com" target="_blank" rel="noopener">Tietoevry</a> ·
             BeerJS Zhytomyr
         </footer>
 
     </div>
+
+    <script>
+        (function () {
+            function apply(lang) {
+                document.documentElement.lang = (lang === 'en') ? 'en' : 'uk';
+                document.querySelectorAll('[data-ua]').forEach(function (el) {
+                    var v = el.getAttribute('data-' + lang);
+                    if (v !== null) el.textContent = v;
+                });
+                document.querySelectorAll('[data-src-ua]').forEach(function (el) {
+                    var v = el.getAttribute('data-src-' + lang);
+                    if (v) el.setAttribute('src', v);
+                });
+                document.querySelectorAll('.lang button').forEach(function (b) {
+                    b.classList.toggle('active', b.getAttribute('data-lang') === lang);
+                });
+                try { localStorage.setItem('lang', lang); } catch (e) { }
+            }
+            document.querySelectorAll('.lang button').forEach(function (b) {
+                b.addEventListener('click', function () { apply(b.getAttribute('data-lang')); });
+            });
+            var saved = 'ua';
+            try { saved = localStorage.getItem('lang') || 'ua'; } catch (e) { }
+            apply(saved);
+        })();
+    </script>
 </body>
 
 </html>
