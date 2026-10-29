@@ -625,6 +625,7 @@
 
 		.metric {
 			flex: 1;
+			min-width: 0;
 			background: #fff;
 			border: 1px solid #d3dcec;
 			border-top: 4px solid var(--ztu-green);
@@ -643,7 +644,7 @@
 		}
 
 		.metric .val {
-			font-size: 0.78em;
+			font-size: 0.64em;
 			font-weight: 700;
 			color: var(--ztu-blue);
 			margin: 8px 0 4px;
@@ -762,8 +763,8 @@
 				<p class="small-text fragment fade-up" style="text-align:center; margin:22px 0 8px;">Конвеєр курсу:
 					п'ять етапів, на кожному ШІ робить свою частину роботи</p>
 				<div class="pipeline fragment fade-up">
-					<div class="stage"><span class="num">1</span><b>Контент</b>відеолекції → база знань<span
-							class="tool">NotebookLM</span></div>
+					<div class="stage"><span class="num">1</span><b>Контент</b>лекції → сайт + база знань<span
+							class="tool">Claude · NotebookLM</span></div>
 					<span class="chev">›</span>
 					<div class="stage"><span class="num">2</span><b>Тести</b>лекція → банк питань<span
 							class="tool">Claude / Gemini → Moodle</span></div>
@@ -807,7 +808,44 @@
 				</aside>
 			</section>
 
-			<!-- 6. Етап 1. Контент: відеолекції → NotebookLM -->
+			<!-- 6. Етап 1. Контент: лекції як код -->
+			<section>
+				<span class="stage-tag">Етап 1 · Контент</span>
+				<h2 style="text-align: center; margin-bottom: 12px;">Лекції як код: 12 презентацій з Claude</h2>
+				<div class="flow">
+					<div class="step"><b>Старі слайди</b>конспект, нотатки</div>
+					<span class="arr">→</span>
+					<div class="step hub"><b>Claude</b>пише й оновлює</div>
+					<span class="arr">→</span>
+					<div class="step"><b>Презентація</b>у стилі ЗВО</div>
+					<span class="arr">→</span>
+					<div class="step"><b>git push</b>автодеплой</div>
+					<span class="arr">→</span>
+					<div class="step"><b>Сайт курсу</b>усі лекції</div>
+				</div>
+				<div style="display:flex; gap:22px; max-width:1080px; margin:16px auto 0; align-items:flex-start;">
+					<img class="shot" src="examples/assets/kop-lectures-site.png" alt="Сайт лекцій курсу КОП"
+						style="height:300px;">
+					<div style="flex:1; text-align:left;">
+						<div class="highlight-box fragment fade-up" style="font-size:0.48em;"><strong>Єдиний
+								стиль</strong> для всіх 12 лекцій - як у брендбуку університету.</div>
+						<div class="highlight-box fragment fade-up" style="font-size:0.48em;"><strong>Оновити лекцію =
+								один коміт.</strong> Вийшов React Router v7 - Claude переписує слайди, сайт оновлюється
+							сам.</div>
+						<div class="highlight-box fragment fade-up" style="font-size:0.48em;"><strong>Студентам - усе за
+								одним посиланням</strong>, з англійською версією.</div>
+						<div class="highlight-box-orange fragment fade-up" style="font-size:0.46em;"><strong>Не
+								програмуєте?</strong> Той самий підхід - Gamma або Google Slides + Gemini.</div>
+					</div>
+				</div>
+				<aside class="notes">
+					Усі презентації курсу я зробив разом із Claude: він пише слайди за моїм планом і в стилі
+					Політехніки, я редагую. Кожна лекція - окрема гілка в git, сайт збирається автоматично.
+					До речі, ця презентація зроблена так само. Посилання на сайт - у кінці.
+				</aside>
+			</section>
+
+			<!-- 6b. Етап 1. Контент: відеолекції → NotebookLM -->
 			<section>
 				<span class="stage-tag">Етап 1 · Контент</span>
 				<h2 style="text-align: center; margin-bottom: 14px;">Відеолекції → база знань курсу</h2>
@@ -994,6 +1032,11 @@
 				<h2 style="text-align: center; margin-bottom: 16px;">Що це дало</h2>
 				<div class="metrics">
 					<div class="metric fragment fade-up">
+						<div class="what">Лекції</div>
+						<div class="val">12 → 1 сайт</div>
+						<div class="note">оновлення лекції - один коміт</div>
+					</div>
+					<div class="metric fragment fade-up">
 						<div class="what">Тест на 20 питань</div>
 						<div class="val"><span class="was"><span class="ph">~X год</span></span> → <span
 								class="ph">~Y хв</span></div>
@@ -1066,6 +1109,11 @@
 					</thead>
 					<tbody>
 						<tr>
+							<td>Презентації лекцій</td>
+							<td>Gamma / Google Slides + Gemini</td>
+							<td>Claude (платний)</td>
+						</tr>
+						<tr>
 							<td>Відеолекції → база знань</td>
 							<td>NotebookLM</td>
 							<td>NotebookLM</td>
@@ -1091,12 +1139,8 @@
 						</tr>
 					</tbody>
 				</table>
-				<div class="two-columns fragment fade-up" style="max-width:1000px; margin:18px auto 0;">
-					<div class="highlight-box-green" style="font-size:0.5em;"><strong>Щоб почати</strong> -
-						безкоштовних інструментів достатньо.</div>
-					<div class="highlight-box" style="font-size:0.5em;"><strong>Платний тариф</strong> - коли обсяг
-						великий: довгі лекції, банк на сотні питань, багато варіантів.</div>
-				</div>
+				<p class="big-question" style="font-size:0.62em; margin-top:18px;">Щоб почати - безкоштовних
+					інструментів достатньо.</p>
 				<aside class="notes">
 					Важливе повідомлення для залу: все, що я показав, можна відтворити безкоштовно.
 					Я використовую платний Claude, бо так швидше на великих обсягах, - але це не обов'язково.
@@ -1128,8 +1172,20 @@
 				<h1 style="font-size: 1.6em; line-height: 1.25; text-align: center; margin: 18px 0 0;">
 					<span class="ztu-blue">Дякую за увагу!</span>
 				</h1>
-				<p style="font-size: 0.5em; color: #333; text-align: center; margin: 30px 0 0;">
+				<p style="font-size: 0.5em; color: #333; text-align: center; margin: 16px 0 0;">
 					Савіцький Роман Святославович</p>
+				<div style="display:flex; gap:60px; justify-content:center; margin-top:24px;">
+					<div style="text-align:center;">
+						<img src="examples/assets/qr-kop-lectures.svg" alt="QR: лекції курсу КОП"
+							style="width:170px; height:170px; margin:0;">
+						<div class="small-text" style="font-size:0.42em;">Лекції курсу КОП<br>roman-savitskyi.github.io/KOP</div>
+					</div>
+					<div style="text-align:center;">
+						<img src="examples/assets/qr-course-automation.svg" alt="QR: ця презентація"
+							style="width:170px; height:170px; margin:0;">
+						<div class="small-text" style="font-size:0.42em;">Ця презентація</div>
+					</div>
+				</div>
 			</section>
 
 		</div>
