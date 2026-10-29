@@ -578,6 +578,89 @@
 			list-style: none;
 		}
 
+		/* ---- Research citation ---- */
+		.source {
+			display: flex;
+			gap: 12px;
+			align-items: flex-start;
+			max-width: 1060px;
+			width: 100%;
+			box-sizing: border-box;
+			margin: 14px auto 0;
+			padding: 8px 14px;
+			background: #f6f7fa;
+			border: 1px dashed #c7cedb;
+			border-radius: 10px;
+			text-align: left;
+			font-size: 0.42em;
+			line-height: 1.45;
+			color: #3a3f47;
+		}
+
+		.source .src-tag {
+			flex: 0 0 auto;
+			background: #6b7280;
+			color: #fff;
+			font-size: 0.85em;
+			font-weight: 700;
+			letter-spacing: 0.06em;
+			text-transform: uppercase;
+			padding: 2px 8px;
+			border-radius: 999px;
+			margin-top: 1px;
+		}
+
+		.source .ref {
+			color: #8a909a;
+			white-space: nowrap;
+		}
+
+		/* ---- Metric cards: before → after ---- */
+		.metrics {
+			display: flex;
+			gap: 14px;
+			max-width: 1080px;
+			margin: 0 auto;
+		}
+
+		.metric {
+			flex: 1;
+			background: #fff;
+			border: 1px solid #d3dcec;
+			border-top: 4px solid var(--ztu-green);
+			border-radius: 10px;
+			padding: 12px 14px;
+			text-align: center;
+			box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+		}
+
+		.metric .what {
+			font-size: 0.44em;
+			font-weight: 700;
+			color: #555;
+			text-transform: uppercase;
+			letter-spacing: 0.04em;
+		}
+
+		.metric .val {
+			font-size: 0.78em;
+			font-weight: 700;
+			color: var(--ztu-blue);
+			margin: 8px 0 4px;
+			line-height: 1.2;
+		}
+
+		.metric .val .was {
+			color: #9aa1ad;
+			font-weight: 600;
+		}
+
+		.metric .note {
+			font-size: 0.4em;
+			color: #777;
+			line-height: 1.35;
+		}
+
 		.col-label {
 			font-size: 0.44em;
 			font-weight: 700;
@@ -651,6 +734,10 @@
 					</div>
 				</div>
 				<p class="big-question fragment fade-up">Чого ми тепер навчаємо — і що оцінюємо?</p>
+				<div class="source fragment fade-up" style="max-width:1000px;"><span class="src-tag">Дані</span>
+					<span>Викладачі вже тут: <strong>57%</strong> із 74 000 розмов викладачів ВНЗ із Claude —
+						розробка курсів і матеріалів, лише 7% — оцінювання. <span class="ref">Anthropic Education
+							Report, 2025</span></span></div>
 				<aside class="notes">
 					Почати з питання до залу: «Хто отримував цього семестру лабораторну, явно зроблену ChatGPT?»
 					Дві проблеми — це одна проблема: курс спроєктований для світу без ШІ.
@@ -787,7 +874,14 @@
 				<div class="highlight-box-orange fragment fade-up" style="max-width:1080px; width:100%; box-sizing:border-box; margin:14px auto 0; font-size:0.48em;">
 					<strong>Кожне питання перевіряє викладач.</strong> ШІ пише чернетку банку, а за правильність
 					відповідає людина.</div>
+				<div class="source fragment fade-up" style="max-width:1080px;"><span class="src-tag">Дослідження</span>
+					<span>ШІ-тести vs тести від викладачів: розрізняльна здатність — <strong>на рівні</strong>
+						(0,22 vs 0,26), час — <strong>24,5 vs 96 людино-годин</strong>. Але ШІ-питання легші, у 14% —
+						невідповідна складність. <span class="ref">Law et al., BMC Medical Education, 2025</span></span>
+				</div>
 				<aside class="notes">
+					Дослідження з медичного ВНЗ: ШІ в 4 рази швидший, якість порівнянна — але саме тому
+					перевірка обов'язкова: легкі питання й помилки ловить тільки викладач.
 					GIFT — простий текстовий формат, Moodle імпортує його «з коробки».
 					Банк на 20–30 питань + випадкова вибірка = у кожного студента свій набір.
 					Працює і з безкоштовним Gemini.
@@ -856,6 +950,10 @@
 						<li>«ШІ запропонував таке рішення — що з ним не так?»</li>
 					</ul>
 				</div>
+				<div class="source fragment fade-up"><span class="src-tag">Дослідження</span>
+					<span>Усні іспити на курсі з 500+ студентів: <strong>542 іспити — 0 порушень
+							доброчесності</strong>; формат схвалили і викладачі, і студенти. <span class="ref">UNSW,
+							ASCILITE 2024</span></span></div>
 				<aside class="notes">
 					Не боротьба з ШІ, а зміна того, що оцінюємо. Написати код ШІ може — пояснити рішення
 					замість студента він не може. Чесно: це спроба, ідеального рішення ще немає.
@@ -888,6 +986,46 @@
 				</div>
 				<aside class="notes">
 					Зібрати відгуки — пів справи. Цінність — у швидкості реакції та в тому, що студенти бачать зміни.
+				</aside>
+			</section>
+
+			<!-- 11. Що це дало -->
+			<section>
+				<h2 style="text-align: center; margin-bottom: 16px;">Що це дало</h2>
+				<div class="metrics">
+					<div class="metric fragment fade-up">
+						<div class="what">Тест на 20 питань</div>
+						<div class="val"><span class="was"><span class="ph">~X год</span></span> → <span
+								class="ph">~Y хв</span></div>
+						<div class="note"><span class="ph">N%</span> питань — без правок</div>
+					</div>
+					<div class="metric fragment fade-up">
+						<div class="what">Варіанти</div>
+						<div class="val"><span class="was">1</span> → 11 тематик</div>
+						<div class="note">на одному каркасі, критерії однакові</div>
+					</div>
+					<div class="metric fragment fade-up">
+						<div class="what">Оцінювання</div>
+						<div class="val">захист + git</div>
+						<div class="note">кожен студент пояснює свої рішення усно</div>
+					</div>
+					<div class="metric fragment fade-up">
+						<div class="what">Відгуки</div>
+						<div class="val"><span class="ph">K</span> змін</div>
+						<div class="note">«ви сказали → я змінив»</div>
+					</div>
+				</div>
+				<div class="source fragment fade-up" style="max-width:1080px; margin-top:18px;"><span
+						class="src-tag">Для порівняння</span>
+					<span>Рандомізоване дослідження, 259 вчителів: ChatGPT скоротив підготовку до уроків на
+						<strong>31%</strong>, якість матеріалів за оцінкою експертів — не гірша. <span
+							class="ref">EEF / NFER, 2024 · школа</span></span></div>
+				<p class="small-text" style="text-align:center; margin-top:16px; font-size:0.42em;">Час — моя оцінка,
+					не вимір. З наступного семестру міряю системно: лог часу · статистика тестів Moodle
+					(discrimination index) · рубрика захисту.</p>
+				<aside class="notes">
+					Чесно: цифри — мої оцінки, а не експеримент. Одна група, мала вибірка.
+					Але напрям збігається з дослідженнями.
 				</aside>
 			</section>
 
