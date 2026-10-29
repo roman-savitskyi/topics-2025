@@ -913,12 +913,12 @@
 					<strong>Кожне питання перевіряє викладач.</strong> ШІ пише чернетку банку, а за правильність
 					відповідає людина.</div>
 				<div class="source fragment fade-up" style="max-width:1080px;"><span class="src-tag">Дослідження</span>
-					<span>ШІ-тести vs тести від викладачів: розрізняльна здатність - <strong>на рівні</strong>
+					<span>ШІ-тести vs тести від викладачів: розрізняльна здатність - <strong>порівнянна, трохи нижча</strong>
 						(0,22 vs 0,26), час - <strong>24,5 vs 96 людино-годин</strong>. Але ШІ-питання легші, у 14% -
 						невідповідна складність. <span class="ref">Law et al., BMC Medical Education, 2025</span></span>
 				</div>
 				<aside class="notes">
-					Дослідження з медичного ЗВО: ШІ в 4 рази швидший, якість порівнянна - але саме тому
+					Дослідження з медичного ЗВО: ШІ в 4 рази швидший, якість порівнянна, хоч і трохи нижча, - але саме тому
 					перевірка обов'язкова: легкі питання й помилки ловить тільки викладач.
 					GIFT - простий текстовий формат, Moodle імпортує його «з коробки».
 					Банк на 20–30 питань + випадкова вибірка = у кожного студента свій набір.
@@ -972,7 +972,7 @@
 				<p class="small-text" style="text-align:center; margin:0 0 14px;">Моя спроба зробити завдання
 					ШІ-резистентними</p>
 				<div class="principles">
-					<div class="fragment fade-up"><b>Захист</b>Пояснити, чому зроблено саме так. Код, який не
+					<div class="fragment fade-up"><b>Захист і розбір</b>Пояснити, чому зроблено саме так. Разом аналізуємо роботу. Код, який не
 						можеш пояснити, - не твій.</div>
 					<div class="fragment fade-up"><b>Git-коміти</b>Видно процес, а не лише результат. Один коміт
 						«final» за ніч - привід для розмови.</div>
@@ -989,12 +989,13 @@
 					</ul>
 				</div>
 				<div class="source fragment fade-up"><span class="src-tag">Дослідження</span>
-					<span>Усні іспити на курсі з 500+ студентів: <strong>542 іспити - 0 порушень
-							доброчесності</strong>; формат схвалили і викладачі, і студенти. <span class="ref">UNSW,
+					<span>Усні іспити на курсі з 500+ студентів: <strong>542 іспити - порушень
+							доброчесності не виявлено</strong>; формат схвалили і викладачі, і студенти. <span class="ref">UNSW,
 							ASCILITE 2024</span></span></div>
 				<aside class="notes">
 					Не боротьба з ШІ, а зміна того, що оцінюємо. Написати код ШІ може - пояснити рішення
-					замість студента він не може. Чесно: це спроба, ідеального рішення ще немає.
+					замість студента він не може. На захисті й розборі ми разом аналізуємо роботу: що
+					вдалося, що ні, де ШІ підвів. Чесно: це спроба, ідеального рішення ще немає.
 				</aside>
 			</section>
 
@@ -1004,18 +1005,18 @@
 				<h2 style="text-align: center; margin-bottom: 14px;">Відгуки → зміни в курсі</h2>
 				<div style="display:flex; gap:20px; max-width:1080px; margin:0 auto; align-items:stretch;">
 					<div style="flex:0 0 300px;">
-						<div class="col-label" style="color:#777;">Зараз</div>
+						<div class="col-label" style="color:#777;">Основа</div>
 						<div class="highlight-box" style="font-size:0.5em; margin:0;">Відгуки з форми та чату →
 							ШІ групує за темами й тональністю</div>
 					</div>
 					<div style="flex:1;">
-						<div class="col-label" style="color:var(--ztu-green);">Покращення</div>
+						<div class="col-label" style="color:var(--ztu-green);">Що додав</div>
 						<div class="highlight-box-green fragment fade-up" style="font-size:0.5em;">
 							<strong>1. Хвилинна анкета після лекції.</strong> Три питання: що зрозуміло, що ні, що
-							змінити. Gemini у Google Sheets групує відповіді - проблему видно за тиждень, а не в
+							змінити. Gemini у Google Sheets (Gemini for Education) групує відповіді - проблему видно за тиждень, а не в
 							кінці семестру.</div>
 						<div class="highlight-box-green fragment fade-up" style="font-size:0.5em;">
-							<strong>2. Питання з Telegram-чату → NotebookLM.</strong> Стають FAQ курсу. Питання, що
+							<strong>2. Питання з Telegram-чату → NotebookLM.</strong> Без імен - лише текст питань. Стають FAQ курсу. Питання, що
 							повторюються, підказують, яку лекцію переписати.</div>
 						<div class="highlight-box-green fragment fade-up" style="font-size:0.5em;">
 							<strong>3. Закрити петлю.</strong> На початку пари - слайд «Ви сказали → я змінив».
@@ -1063,13 +1064,14 @@
 						<strong>31%</strong>, якість матеріалів за оцінкою експертів - не гірша. <span
 							class="ref">EEF / NFER, 2024 · школа</span></span></div>
 				<p class="small-text" style="text-align:center; margin-top:16px; font-size:0.42em;">Час - моя оцінка,
-					не вимір. З наступного семестру міряю системно: лог часу · статистика тестів Moodle
-					(discrimination index) · рубрика захисту.</p>
+					не вимір. Результати навчання ще не міряв. З наступного семестру - системно: лог часу ·
+					статистика тестів Moodle (discrimination index) · рубрика захисту · бали студентів.</p>
 				<aside class="notes">
 					Тест: 30 питань від ШІ - 17 пішли як є, 8 я виправив, 5 викинув. Тобто перевірка обов'язкова,
 					але навіть з нею - 20 хвилин замість трьох годин.
 					Чесно: цифри - мої оцінки, а не експеримент. Одна група, мала вибірка.
 					Але напрям збігається з дослідженнями.
+					Що це дало студентам - чесно, поки не знаю: це наступний крок вимірювань.
 				</aside>
 			</section>
 
@@ -1077,23 +1079,26 @@
 			<section>
 				<h2 style="text-align: center; margin-bottom: 16px;">Що може піти не так</h2>
 				<div class="pain-grid" style="max-width:1080px;">
-					<div class="pain-card fragment fade-up" style="max-width:340px; font-size:0.52em;">
+					<div class="pain-card fragment fade-up" style="flex:1 1 220px; max-width:260px; font-size:0.46em;">
 						<strong>Галюцинації.</strong> ШІ впевнено пише неправильну відповідь у тесті або вигадує
 						API.<br><br><em>→ Кожне питання й кожну умову перевіряє викладач.</em></div>
-					<div class="pain-card fragment fade-up" style="max-width:340px; font-size:0.52em;">
-						<strong>Персональні дані.</strong> ПІБ + оцінки студентів не завантажуємо в ШІ.<br><br>
+					<div class="pain-card fragment fade-up" style="flex:1 1 220px; max-width:260px; font-size:0.46em;">
+						<strong>Дані й права.</strong> ПІБ + оцінки студентів не завантажуємо в ШІ. Чужі підручники - теж.<br><br>
 						<em>→ Знеособлюємо: номер варіанта замість прізвища. Перевіряємо налаштування приватності
-							сервісу.</em></div>
-					<div class="pain-card fragment fade-up" style="max-width:340px; font-size:0.52em;">
+							сервісу. Вантажимо лише власні матеріали.</em></div>
+					<div class="pain-card fragment fade-up" style="flex:1 1 220px; max-width:260px; font-size:0.46em;">
 						<strong>Застарілі знання.</strong> Модель могла не бачити нову версію бібліотеки - наприклад,
 						React Router v7.<br><br><em>→ Даємо актуальну документацію як джерело, а не покладаємося на
 							пам'ять моделі.</em></div>
+					<div class="pain-card fragment fade-up" style="flex:1 1 220px; max-width:260px; font-size:0.46em;">
+						<strong>Студент перестає думати.</strong> ШІ пише код - навичка не формується.<br><br>
+						<em>→ Тому оцінюємо пояснення: захист, розбір, завдання на парі.</em></div>
 				</div>
 				<p class="big-question fragment fade-up" style="font-size:0.7em;">ШІ пише чернетку. Відповідальність -
 					на викладачеві.</p>
 				<aside class="notes">
-					Три ризики, з якими я реально стикався. Загальне правило: результат ШІ - чернетка, яку
-					викладач перевіряє.
+					Чотири ризики, з якими я реально стикався. Останній - головний для студентів, і саме тому етап 4.
+					Загальне правило: результат ШІ - чернетка, яку викладач перевіряє.
 				</aside>
 			</section>
 
@@ -1131,7 +1136,7 @@
 						</tr>
 						<tr>
 							<td>Аналіз відгуків</td>
-							<td>Google Forms + Gemini</td>
+							<td>Google Forms + Gemini for Education</td>
 							<td>Claude (платний)</td>
 						</tr>
 						<tr>
@@ -1145,6 +1150,7 @@
 				<aside class="notes">
 					Важливе повідомлення для залу: все, що я показав, можна відтворити безкоштовно.
 					Я використовую платний Claude, бо так швидше на великих обсягах, - але це не обов'язково.
+					Gemini у Google Sheets / Forms - через Gemini for Education на акаунті університету.
 				</aside>
 			</section>
 
@@ -1161,7 +1167,9 @@
 				</ul>
 				<p class="big-question fragment fade-up" style="font-size:0.7em;">Не весь курс одразу - одна лекція,
 					один тест, одне завдання.</p>
+				<p class="small-text fragment fade-up" style="text-align:center; margin-top:10px;">Чого навчаємо? <strong>Приймати рішення.</strong> Що оцінюємо? <strong>Пояснення.</strong></p>
 				<aside class="notes">
+					Повертаємось до питання з початку: навчаємо приймати рішення, оцінюємо пояснення.
 					Три кроки, кожен - на один вечір і безкоштовно. Після першого семестру видно, що масштабувати.
 				</aside>
 			</section>
