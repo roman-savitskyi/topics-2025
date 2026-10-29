@@ -1,0 +1,1154 @@
+<!doctype html>
+<html lang="uk">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+	<title>Автоматизація курсу в еру ШІ</title>
+
+	<link rel="stylesheet" href="dist/reveal.css">
+	<link rel="stylesheet" href="dist/theme/ztu.css">
+
+	<style>
+		.reveal .slides section {
+			display: flex !important;
+			flex-direction: column;
+			justify-content: flex-start;
+			padding-top: 20px;
+		}
+
+		.reveal .footer-conference-logo,
+		.reveal .footer-beerjs-logo {
+			display: none !important;
+		}
+
+		/* ---- Reusable helpers ---- */
+		.small-text {
+			font-size: 0.6em;
+			color: #555;
+			line-height: 1.5;
+		}
+
+		.highlight-box {
+			background: rgba(34, 74, 152, 0.08);
+			padding: 14px 20px;
+			border-radius: 10px;
+			border-left: 4px solid var(--ztu-blue);
+			margin: 6px 0;
+			text-align: left;
+		}
+
+		.highlight-box-orange {
+			background: rgba(238, 120, 28, 0.08);
+			padding: 14px 20px;
+			border-radius: 10px;
+			border-left: 4px solid var(--ztu-orange);
+			margin: 6px 0;
+			text-align: left;
+		}
+
+		.highlight-box-green {
+			background: rgba(76, 173, 59, 0.08);
+			padding: 14px 20px;
+			border-radius: 10px;
+			border-left: 4px solid var(--ztu-green);
+			margin: 6px 0;
+			text-align: left;
+		}
+
+		.two-columns {
+			display: flex;
+			gap: 26px;
+			margin-top: 16px;
+		}
+
+		.two-columns>div {
+			flex: 1;
+		}
+
+		/* ---- Placeholder marker (draft only) ---- */
+		.ph {
+			background: rgba(238, 120, 28, 0.16);
+			border-radius: 4px;
+			padding: 0 4px;
+			color: #b45710;
+			font-style: italic;
+		}
+
+		/* ---- Agenda list ---- */
+		.agenda {
+			text-align: left;
+			font-size: 0.68em;
+			line-height: 1.55;
+			max-width: 860px;
+			margin: 0 auto;
+			counter-reset: ag;
+			list-style: none;
+			padding: 0;
+		}
+
+		.agenda li {
+			position: relative;
+			padding: 6px 0 6px 44px;
+			border-bottom: 1px solid #edeef2;
+		}
+
+		.agenda li::before {
+			counter-increment: ag;
+			content: counter(ag);
+			position: absolute;
+			left: 0;
+			top: 6px;
+			width: 28px;
+			height: 28px;
+			background: var(--ztu-blue);
+			color: #fff;
+			border-radius: 50%;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			font-size: 0.85em;
+			font-weight: 700;
+		}
+
+		/* ---- Escalation / steps list ---- */
+		.esc {
+			list-style: none;
+			max-width: 700px;
+			margin: 4px auto 0;
+			padding: 0;
+			counter-reset: st;
+		}
+
+		.esc li {
+			display: flex;
+			align-items: center;
+			gap: 12px;
+			padding: 6px 0;
+			font-size: 0.62em;
+			text-align: left;
+		}
+
+		.esc li::before {
+			counter-increment: st;
+			content: counter(st);
+			flex: 0 0 auto;
+			width: 26px;
+			height: 26px;
+			background: var(--ztu-blue);
+			color: #fff;
+			border-radius: 50%;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			font-weight: 700;
+			font-size: 0.9em;
+		}
+
+		/* ---- Info table ---- */
+		.info-table {
+			width: 100%;
+			border-collapse: collapse;
+			font-size: 0.5em;
+			line-height: 1.3;
+		}
+
+		.info-table th {
+			background: var(--ztu-blue);
+			color: #fff;
+			text-align: left;
+			padding: 6px 10px;
+			font-weight: 700;
+		}
+
+		.info-table td {
+			padding: 5px 10px;
+			border-bottom: 1px solid #e2e2e2;
+			vertical-align: top;
+		}
+
+		.info-table tr:nth-child(even) td {
+			background: rgba(34, 74, 152, 0.04);
+		}
+
+		/* ---- Pain cards (problem block) ---- */
+		.pain-grid {
+			display: flex;
+			flex-wrap: wrap;
+			gap: 12px;
+			justify-content: center;
+			max-width: 980px;
+			margin: 6px auto 0;
+		}
+
+		.pain-card {
+			flex: 1 1 280px;
+			max-width: 320px;
+			background: rgba(238, 120, 28, 0.08);
+			border-left: 4px solid var(--ztu-orange);
+			border-radius: 10px;
+			padding: 12px 16px;
+			text-align: left;
+			font-size: 0.56em;
+			line-height: 1.35;
+		}
+
+		/* ---- Landscape cards (big picture) ---- */
+		.land-card {
+			flex: 1 1 220px;
+			max-width: 240px;
+			background: rgba(34, 74, 152, 0.06);
+			border-top: 3px solid var(--ztu-blue);
+			border-radius: 10px;
+			padding: 12px 14px;
+			text-align: center;
+			font-size: 0.54em;
+			line-height: 1.4;
+		}
+
+		.land-card b {
+			color: var(--ztu-blue);
+			display: block;
+			margin-bottom: 4px;
+			font-size: 1.08em;
+		}
+
+		/* ---- Copyable prompt box (for live demos) ---- */
+		.prompt-wrap {
+			max-width: 960px;
+			margin: 10px auto 0;
+			text-align: left;
+		}
+
+		.prompt-wrap .plabel {
+			font-size: 0.42em;
+			font-weight: 700;
+			color: var(--ztu-orange);
+			text-transform: uppercase;
+			letter-spacing: 0.06em;
+			margin-bottom: 4px;
+		}
+
+		.prompt-box {
+			background: #f5f2ea;
+			border: 1px solid #dccfb2;
+			border-left: 4px solid var(--ztu-orange);
+			border-radius: 8px;
+			padding: 10px 14px;
+			font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+			font-size: 0.4em;
+			line-height: 1.5;
+			color: #2f333a;
+			white-space: pre-wrap;
+			user-select: all;
+			/* один клік/потрійний клік виділяє весь промпт */
+			cursor: text;
+		}
+
+		/* ---- Result card (real AI output / fallback) ---- */
+		.result-wrap {
+			max-width: 960px;
+			margin: 8px auto 0;
+			text-align: left;
+		}
+
+		.result-wrap .rlabel {
+			font-size: 0.42em;
+			font-weight: 700;
+			color: var(--ztu-green);
+			text-transform: uppercase;
+			letter-spacing: 0.06em;
+			margin-bottom: 4px;
+		}
+
+		.result-card {
+			background: #fff;
+			border: 1px solid #cfe0cf;
+			border-left: 4px solid var(--ztu-green);
+			border-radius: 8px;
+			padding: 10px 14px;
+			font-size: 0.44em;
+			line-height: 1.5;
+			color: #2f333a;
+			white-space: pre-wrap;
+			box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+		}
+
+		/* Prompt anatomy chips */
+		.anatomy {
+			display: flex;
+			flex-wrap: wrap;
+			gap: 6px;
+			justify-content: center;
+			margin: 6px auto 0;
+			max-width: 960px;
+		}
+
+		.anatomy span {
+			background: rgba(34, 74, 152, 0.08);
+			border: 1px solid #d3dcec;
+			border-radius: 999px;
+			padding: 3px 10px;
+			font-size: 0.4em;
+			color: var(--ztu-blue);
+			font-weight: 600;
+		}
+
+		/* ---- Hook: two sides of the same problem ---- */
+		.side-card {
+			flex: 1;
+			border-radius: 12px;
+			padding: 16px 20px;
+			text-align: left;
+			font-size: 0.56em;
+			line-height: 1.45;
+		}
+
+		.side-card .who {
+			font-weight: 700;
+			font-size: 1.15em;
+			margin-bottom: 8px;
+		}
+
+		.side-card.student {
+			background: rgba(238, 120, 28, 0.08);
+			border-top: 4px solid var(--ztu-orange);
+		}
+
+		.side-card.student .who {
+			color: var(--ztu-orange);
+		}
+
+		.side-card.teacher {
+			background: rgba(34, 74, 152, 0.06);
+			border-top: 4px solid var(--ztu-blue);
+		}
+
+		.side-card.teacher .who {
+			color: var(--ztu-blue);
+		}
+
+		.big-question {
+			font-size: 0.9em;
+			font-weight: 700;
+			color: var(--ztu-blue);
+			text-align: center;
+			margin-top: 26px;
+		}
+
+		/* ---- Role shift: from → to ---- */
+		.role-row {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			gap: 14px;
+			font-size: 0.56em;
+			margin: 6px auto;
+			max-width: 980px;
+		}
+
+		.role-row::after {
+			content: '';
+			width: 110px;
+		}
+
+		.role-row .role {
+			width: 110px;
+			font-weight: 700;
+			color: #555;
+			text-align: right;
+		}
+
+		.role-row .from,
+		.role-row .to {
+			flex: 0 0 330px;
+			box-sizing: border-box;
+			border-radius: 10px;
+			padding: 8px 14px;
+			text-align: center;
+		}
+
+		.role-row .from {
+			background: #f1f2f5;
+			color: #777;
+			text-decoration: line-through;
+			text-decoration-color: rgba(0, 0, 0, 0.25);
+		}
+
+		.role-row .to {
+			background: rgba(76, 173, 59, 0.1);
+			border: 2px solid var(--ztu-green);
+			color: #2c6b22;
+			font-weight: 700;
+		}
+
+		.role-row .arrow {
+			color: var(--ztu-orange);
+			font-weight: 700;
+			font-size: 1.3em;
+		}
+
+		/* ---- Course pipeline (stages) ---- */
+		.pipeline {
+			display: flex;
+			align-items: stretch;
+			justify-content: center;
+			gap: 6px;
+			max-width: 1100px;
+			margin: 0 auto;
+		}
+
+		.pipeline .stage {
+			flex: 1;
+			background: #fff;
+			border: 1px solid #d3dcec;
+			border-top: 4px solid var(--ztu-blue);
+			border-radius: 10px;
+			padding: 10px 8px;
+			text-align: center;
+			font-size: 0.46em;
+			line-height: 1.35;
+			box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+		}
+
+		.pipeline .stage .num {
+			display: inline-flex;
+			width: 26px;
+			height: 26px;
+			border-radius: 50%;
+			background: var(--ztu-blue);
+			color: #fff;
+			align-items: center;
+			justify-content: center;
+			font-weight: 700;
+			margin-bottom: 4px;
+		}
+
+		.pipeline .stage b {
+			display: block;
+			color: var(--ztu-blue);
+			font-size: 1.1em;
+			margin-bottom: 4px;
+		}
+
+		.pipeline .stage .tool {
+			display: block;
+			color: #777;
+			font-size: 0.9em;
+			margin-top: 4px;
+		}
+
+		.pipeline .stage.accent {
+			border-top-color: var(--ztu-orange);
+			background: rgba(238, 120, 28, 0.05);
+		}
+
+		.pipeline .stage.accent .num {
+			background: var(--ztu-orange);
+		}
+
+		.pipeline .chev {
+			align-self: center;
+			color: #b8c2d6;
+			font-weight: 700;
+			font-size: 0.8em;
+		}
+
+		/* ---- Stage label above stage slides ---- */
+		.stage-tag {
+			align-self: center;
+			background: var(--ztu-blue);
+			color: #fff;
+			font-size: 0.38em;
+			font-weight: 700;
+			letter-spacing: 0.08em;
+			text-transform: uppercase;
+			padding: 4px 14px;
+			border-radius: 999px;
+			margin-bottom: 6px;
+		}
+
+		.stage-tag.accent {
+			background: var(--ztu-orange);
+		}
+
+		/* ---- Screenshot frame ---- */
+		.shot {
+			border: 1px solid #d9dde6;
+			border-radius: 10px;
+			box-shadow: 0 4px 14px rgba(0, 0, 0, 0.1);
+			margin: 0 !important;
+			display: block;
+		}
+
+		/* ---- Compact horizontal flow (steps) ---- */
+		.flow {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			gap: 8px;
+			max-width: 1100px;
+			margin: 4px auto 0;
+		}
+
+		.flow .step {
+			background: rgba(34, 74, 152, 0.06);
+			border: 1px solid #d3dcec;
+			border-radius: 10px;
+			padding: 8px 12px;
+			font-size: 0.46em;
+			line-height: 1.3;
+			text-align: center;
+			color: #2f333a;
+		}
+
+		.flow .step b {
+			display: block;
+			color: var(--ztu-blue);
+		}
+
+		.flow .step.hub {
+			background: var(--ztu-blue);
+			border-color: var(--ztu-blue);
+			color: #fff;
+		}
+
+		.flow .step.hub b {
+			color: #fff;
+		}
+
+		.flow .arr {
+			color: var(--ztu-orange);
+			font-weight: 700;
+			font-size: 0.7em;
+		}
+
+		/* ---- Chips (outputs, topics) ---- */
+		.chips {
+			display: flex;
+			flex-wrap: wrap;
+			gap: 8px;
+			justify-content: center;
+		}
+
+		.chips span {
+			background: #fff;
+			border: 1px solid #d3dcec;
+			border-radius: 999px;
+			padding: 4px 12px;
+			font-size: 0.44em;
+			color: #2f333a;
+		}
+
+		.chips.green span {
+			background: rgba(76, 173, 59, 0.08);
+			border-color: #bfe0b8;
+			color: #2c6b22;
+			font-weight: 600;
+		}
+
+		/* ---- Principle cards (assessment) ---- */
+		.principles {
+			display: flex;
+			gap: 14px;
+			max-width: 1060px;
+			margin: 0 auto;
+		}
+
+		.principles>div {
+			flex: 1;
+			background: rgba(34, 74, 152, 0.06);
+			border-top: 4px solid var(--ztu-blue);
+			border-radius: 10px;
+			padding: 12px 16px;
+			text-align: left;
+			font-size: 0.5em;
+			line-height: 1.4;
+		}
+
+		.principles b {
+			display: block;
+			color: var(--ztu-blue);
+			font-size: 1.15em;
+			margin-bottom: 4px;
+		}
+
+		.reveal ul.agenda li {
+			list-style: none;
+		}
+
+		/* ---- Research citation ---- */
+		.source {
+			display: flex;
+			gap: 12px;
+			align-items: flex-start;
+			max-width: 1060px;
+			width: 100%;
+			box-sizing: border-box;
+			margin: 14px auto 0;
+			padding: 8px 14px;
+			background: #f6f7fa;
+			border: 1px dashed #c7cedb;
+			border-radius: 10px;
+			text-align: left;
+			font-size: 0.42em;
+			line-height: 1.45;
+			color: #3a3f47;
+		}
+
+		.source .src-tag {
+			flex: 0 0 auto;
+			background: #6b7280;
+			color: #fff;
+			font-size: 0.85em;
+			font-weight: 700;
+			letter-spacing: 0.06em;
+			text-transform: uppercase;
+			padding: 2px 8px;
+			border-radius: 999px;
+			margin-top: 1px;
+		}
+
+		.source .ref {
+			color: #8a909a;
+			white-space: nowrap;
+		}
+
+		/* ---- Metric cards: before → after ---- */
+		.metrics {
+			display: flex;
+			gap: 14px;
+			max-width: 1080px;
+			margin: 0 auto;
+		}
+
+		.metric {
+			flex: 1;
+			background: #fff;
+			border: 1px solid #d3dcec;
+			border-top: 4px solid var(--ztu-green);
+			border-radius: 10px;
+			padding: 12px 14px;
+			text-align: center;
+			box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+		}
+
+		.metric .what {
+			font-size: 0.44em;
+			font-weight: 700;
+			color: #555;
+			text-transform: uppercase;
+			letter-spacing: 0.04em;
+		}
+
+		.metric .val {
+			font-size: 0.78em;
+			font-weight: 700;
+			color: var(--ztu-blue);
+			margin: 8px 0 4px;
+			line-height: 1.2;
+		}
+
+		.metric .val .was {
+			color: #9aa1ad;
+			font-weight: 600;
+		}
+
+		.metric .note {
+			font-size: 0.4em;
+			color: #777;
+			line-height: 1.35;
+		}
+
+		.col-label {
+			font-size: 0.44em;
+			font-weight: 700;
+			text-transform: uppercase;
+			letter-spacing: 0.06em;
+			margin-bottom: 6px;
+			text-align: left;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="reveal">
+		<div class="footer-ztu-logo"></div>
+		<div class="footer-conference-logo"></div>
+		<div class="footer-beerjs-logo"></div>
+		<div class="slides">
+
+			<!-- ============ ВСТУП ============ -->
+
+			<!-- 1. Титулка -->
+			<section>
+				<p style="font-size: 0.5em; color: #777; text-align: center; margin: 30px 0 0 0;">Державний
+					університет «Житомирська політехніка»</p>
+				<p style="font-size: 0.5em; color: #777; text-align: center; margin: 6px 0 40px 0;">Факультет
+					інформаційно-комп'ютерних технологій</p>
+				<h1 style="font-size: 1.5em; line-height: 1.25; text-align: center; margin: 0;">Автоматизація
+					курсу <br>в <span class="ztu-blue">еру ШІ</span>
+				</h1>
+				<p
+					style="font-size: 0.5em; color: var(--ztu-blue); font-weight: 700; text-align: center; margin: 26px 0 0 0;">
+					Досвід однієї дисципліни: від лекції до тесту в Moodle</p>
+				<p style="font-size: 0.5em; color: #333; text-align: center; margin: 10px 0 0;">
+					Савіцький Роман Святославович — програміст, викладач</p>
+			</section>
+
+			<!-- 2. Про мене -->
+			<section>
+				<h2 style="text-align: center; margin-bottom: 18px;">Про мене</h2>
+				<div
+					style="display:flex; gap:30px; align-items:center; max-width:860px; margin:0 auto; background:rgba(34,74,152,0.05); border-left:5px solid var(--ztu-blue); border-radius:14px; padding:22px 28px; text-align:left;">
+					<img src="examples/assets/kaf_savitsky.png" alt="Савіцький Роман Святославович"
+						style="width:150px; height:200px; object-fit:cover; object-position:top center; border-radius:10px; box-shadow:0 4px 14px rgba(0,0,0,0.18); flex:0 0 auto; margin:0;">
+					<div>
+						<p style="font-weight:700; font-size:0.9em; color:var(--ztu-blue); line-height:1.2;">Савіцький
+							Роман Святославович</p>
+						<p style="font-size:0.62em; color:#555; margin-top:6px;">Digital Experience Practice Lead ·
+							<strong>TietoEVRY Create</strong></p>
+						<ul style="font-size:0.58em; line-height:1.6; margin:14px 0 0; padding-left:18px;">
+							<li>15+ років досвіду в ІТ</li>
+							<li>Викладач ДУ «Житомирська політехніка», курс <strong>«Компонентно-орієнтоване програмування»</strong></li>
+							<li>Співзасновник BeerJS Zhytomyr</li>
+						</ul>
+					</div>
+				</div>
+			</section>
+
+			<!-- 3. Хук: дві сторони однієї проблеми -->
+			<section>
+				<h2 style="text-align: center; margin-bottom: 18px;">Що змінилося за два роки</h2>
+				<div style="display:flex; gap:24px; max-width:1000px; margin:0 auto;">
+					<div class="side-card student fragment fade-up">
+						<div class="who">Студент</div>
+						Типова лабораторна → вставити умову в ChatGPT → <strong>30 секунд</strong> → «зроблено».
+						<br><br>Робочий код є. Розуміння — не факт.
+					</div>
+					<div class="side-card teacher fragment fade-up">
+						<div class="who">Викладач</div>
+						Ті самі години на тести, варіанти, конспекти, перевірку однакових робіт.
+						<br><br>У студента ШІ вже є. У курсі — ще ні.
+					</div>
+				</div>
+				<p class="big-question fragment fade-up">Чого ми тепер навчаємо — і що оцінюємо?</p>
+				<div class="source fragment fade-up" style="max-width:1000px;"><span class="src-tag">Дані</span>
+					<span>Викладачі вже тут: <strong>57%</strong> із 74 000 розмов викладачів ВНЗ із Claude —
+						розробка курсів і матеріалів, лише 7% — оцінювання. <span class="ref">Anthropic Education
+							Report, 2025</span></span></div>
+				<aside class="notes">
+					Почати з питання до залу: «Хто отримував цього семестру лабораторну, явно зроблену ChatGPT?»
+					Дві проблеми — це одна проблема: курс спроєктований для світу без ШІ.
+				</aside>
+			</section>
+
+			<!-- 4. Теза + конвеєр курсу -->
+			<section>
+				<h2 style="text-align: center; margin-bottom: 10px;">ШІ забирає рутину. Людям — рішення.</h2>
+				<div class="role-row">
+					<span class="role">Викладач</span>
+					<span class="from">виробник контенту</span>
+					<span class="arrow">→</span>
+					<span class="to">архітектор курсу</span>
+				</div>
+				<div class="role-row fragment fade-up">
+					<span class="role">Студент</span>
+					<span class="from">виконавець коду</span>
+					<span class="arrow">→</span>
+					<span class="to">приймає рішення й аналізує</span>
+				</div>
+				<p class="small-text fragment fade-up" style="text-align:center; margin:22px 0 8px;">Конвеєр курсу:
+					п'ять етапів, на кожному ШІ робить свою частину роботи</p>
+				<div class="pipeline fragment fade-up">
+					<div class="stage"><span class="num">1</span><b>Контент</b>відеолекції → база знань<span
+							class="tool">NotebookLM</span></div>
+					<span class="chev">›</span>
+					<div class="stage"><span class="num">2</span><b>Тести</b>лекція → банк питань<span
+							class="tool">Claude / Gemini → Moodle</span></div>
+					<span class="chev">›</span>
+					<div class="stage"><span class="num">3</span><b>Варіанти</b>один каркас — різні тематики<span
+							class="tool">персоналізація</span></div>
+					<span class="chev">›</span>
+					<div class="stage accent"><span class="num">4</span><b>Оцінювання</b>рішення, а не код<span
+							class="tool">ШІ-резистентні завдання</span></div>
+					<span class="chev">›</span>
+					<div class="stage"><span class="num">5</span><b>Зворотний зв'язок</b>відгуки → зміни<span
+							class="tool">аналіз відгуків</span></div>
+				</div>
+				<aside class="notes">
+					Головна теза. Рутину (контент, тести, варіанти) віддаємо ШІ.
+					Звільнений час іде на те, що ШІ не замінить: проєктування курсу та живу перевірку розуміння.
+					Далі йдемо по конвеєру — кожен етап на прикладі мого курсу.
+				</aside>
+			</section>
+
+			<!-- 5. Мій курс -->
+			<section>
+				<h2 style="text-align: center; margin-bottom: 14px;">Мій курс у Moodle</h2>
+				<div style="display:flex; gap:22px; align-items:flex-start; justify-content:center;">
+					<img class="shot" src="examples/assets/kop-moodle-menu.png" alt="Структура курсу в Moodle"
+						style="height:430px;">
+					<img class="shot" src="examples/assets/kop-moodle-project.png"
+						alt="Проєкт курсу: аналітичний дашборд, 11 тематик" style="height:430px;">
+					<div style="flex:0 0 250px; text-align:left;">
+						<div class="highlight-box" style="font-size:0.48em;"><strong>React</strong>, 10+ лекцій,
+							очно + дистанційно під час тривог</div>
+						<div class="highlight-box-orange" style="font-size:0.48em;"><strong>Проєкт на весь
+								курс:</strong> аналітичний дашборд — 11 тематик, вимоги однакові</div>
+						<div class="highlight-box-green" style="font-size:0.48em;"><strong>Moodle:</strong>
+							варіант — у журналі оцінювання, тести — з банку питань</div>
+					</div>
+				</div>
+				<aside class="notes">
+					Коротко: звичайний курс у Moodle. Лекції, практичні, проєкт.
+					Не важливо, що це React — далі все переноситься на будь-яку дисципліну.
+				</aside>
+			</section>
+
+			<!-- 6. Етап 1. Контент: відеолекції → NotebookLM -->
+			<section>
+				<span class="stage-tag">Етап 1 · Контент</span>
+				<h2 style="text-align: center; margin-bottom: 14px;">Відеолекції → база знань курсу</h2>
+				<div class="flow">
+					<div class="step"><b>Запис лекції</b>відео / YouTube</div>
+					<span class="arr">→</span>
+					<div class="step"><b>+ матеріали</b>слайди, програма, лаби</div>
+					<span class="arr">→</span>
+					<div class="step hub"><b>NotebookLM</b>блокнот курсу</div>
+					<span class="arr">→</span>
+					<div class="step"><b>Студенти</b>питають блокнот</div>
+				</div>
+				<p class="small-text" style="text-align:center; margin:22px 0 8px;">Що генерує з однієї лекції:</p>
+				<div class="chips green fragment fade-up">
+					<span>Конспект</span><span>Глосарій</span><span>FAQ</span><span>Mind map</span>
+					<span>Аудіоогляд</span><span>Питання для самоперевірки</span>
+				</div>
+				<div class="two-columns fragment fade-up" style="max-width:1000px; margin:22px auto 0;">
+					<div class="highlight-box" style="font-size:0.5em;"><strong>Відповідає лише з ваших
+							джерел</strong> — з посиланням на місце в лекції. Менше вигадок, ніж у «голого» чату.</div>
+					<div class="highlight-box-green" style="font-size:0.5em;"><strong>Безкоштовно</strong> з
+						Google-акаунтом. Блокнотом можна поділитися зі студентами.</div>
+				</div>
+				<aside class="notes">
+					Я записував лекції — і сам запис мало що дає: годину відео ніхто не передивляється.
+					NotebookLM перетворює записи на базу знань: студент питає «як працює useEffect» — отримує відповідь
+					з моєї лекції, а не з інтернету.
+				</aside>
+			</section>
+
+			<!-- 7. Етап 2. Тести: лекція → GIFT → Moodle -->
+			<section>
+				<span class="stage-tag">Етап 2 · Тести</span>
+				<h2 style="text-align: center; margin-bottom: 12px;">Лекція → банк питань у Moodle</h2>
+				<div class="flow">
+					<div class="step"><b>1. Лекція</b>слайди / транскрипт</div>
+					<span class="arr">→</span>
+					<div class="step hub"><b>2. Claude / Gemini</b>промт із вимогами</div>
+					<span class="arr">→</span>
+					<div class="step"><b>3. Файл GIFT</b>текстовий формат Moodle</div>
+					<span class="arr">→</span>
+					<div class="step"><b>4. Moodle</b>Банк питань → Імпорт</div>
+				</div>
+				<div class="two-columns" style="max-width:1080px; margin:14px auto 0; gap:16px;">
+					<div class="prompt-wrap fragment fade-up" style="margin:0;">
+						<div class="plabel">Промт</div>
+						<div class="prompt-box">Ти — викладач курсу «Компонентно-орієнтоване програмування».
+За лекцією нижче створи 20 тестових питань у форматі Moodle GIFT.
+— 40% розуміння, 40% застосування, 20% аналіз коду
+— неправильні варіанти = типові помилки студентів
+— до кожної відповіді — короткий фідбек (#)
+— назви питань: ::Л5-Q01::
+Виведи лише GIFT, без пояснень.</div>
+					</div>
+					<div class="result-wrap fragment fade-up" style="margin:0;">
+						<div class="rlabel">Результат → імпорт у Moodle</div>
+						<div class="result-card" style="font-family: ui-monospace, Menlo, monospace; font-size:0.4em;">::Л5-Q01:: Що станеться, якщо в useEffect не передати масив залежностей? {
+  =Ефект виконається після кожного рендеру#Так, без масиву — після кожного.
+  ~Ефект виконається один раз#Це поведінка з порожнім масивом [].
+  ~React видасть помилку компіляції#Ні, це валідний код.
+}</div>
+					</div>
+				</div>
+				<div class="highlight-box-orange fragment fade-up" style="max-width:1080px; width:100%; box-sizing:border-box; margin:14px auto 0; font-size:0.48em;">
+					<strong>Кожне питання перевіряє викладач.</strong> ШІ пише чернетку банку, а за правильність
+					відповідає людина.</div>
+				<div class="source fragment fade-up" style="max-width:1080px;"><span class="src-tag">Дослідження</span>
+					<span>ШІ-тести vs тести від викладачів: розрізняльна здатність — <strong>на рівні</strong>
+						(0,22 vs 0,26), час — <strong>24,5 vs 96 людино-годин</strong>. Але ШІ-питання легші, у 14% —
+						невідповідна складність. <span class="ref">Law et al., BMC Medical Education, 2025</span></span>
+				</div>
+				<aside class="notes">
+					Дослідження з медичного ВНЗ: ШІ в 4 рази швидший, якість порівнянна — але саме тому
+					перевірка обов'язкова: легкі питання й помилки ловить тільки викладач.
+					GIFT — простий текстовий формат, Moodle імпортує його «з коробки».
+					Банк на 20–30 питань + випадкова вибірка = у кожного студента свій набір.
+					Працює і з безкоштовним Gemini.
+				</aside>
+			</section>
+
+			<!-- 8. Етап 3. Персоналізовані варіанти -->
+			<section>
+				<span class="stage-tag">Етап 3 · Варіанти</span>
+				<h2 style="text-align: center; margin-bottom: 14px;">Один каркас — різні тематики</h2>
+				<div style="display:flex; gap:22px; max-width:1080px; margin:0 auto; align-items:stretch;">
+					<div style="flex:0 0 330px;">
+						<div class="col-label" style="color:var(--ztu-blue);">Каркас — однаковий для всіх</div>
+						<ul class="agenda" style="font-size:0.52em; max-width:none;">
+							<li>KPI-картки</li>
+							<li>Таблиця з фільтром</li>
+							<li>Графік</li>
+							<li>Drilldown: деталі запису</li>
+						</ul>
+					</div>
+					<div style="flex:1;" class="fragment fade-up">
+						<div class="col-label" style="color:var(--ztu-orange);">Тематика — своя в кожного</div>
+						<div class="chips" style="justify-content:flex-start;">
+							<span>Крипторинок</span><span>Країни світу</span><span>Музичні треки</span>
+							<span>Землетруси</span><span>Космічні запуски</span><span>Покедекс</span>
+							<span>Аніме</span><span>Епідемстатистика</span><span>Кіно</span><span>GitHub</span>
+							<span>Світова економіка</span>
+						</div>
+						<div class="highlight-box" style="font-size:0.48em; margin-top:16px;"><strong>Що робить
+								ШІ:</strong> підбирає відкриті API під каркас, перевіряє, що вони працюють без
+							ключа, і пише умови однакової складності.</div>
+					</div>
+				</div>
+				<div class="two-columns fragment fade-up" style="max-width:1080px; margin:16px auto 0;">
+					<div class="highlight-box-green" style="font-size:0.5em;"><strong>Справедливо:</strong> критерії
+						оцінювання однакові.</div>
+					<div class="highlight-box-orange" style="font-size:0.5em;"><strong>Не спишеш:</strong> дані,
+						API і рішення у кожного свої.</div>
+				</div>
+				<aside class="notes">
+					Раніше 11 різних завдань рівної складності = кілька вечорів роботи. Тепер каркас пишу я,
+					а ШІ розгортає його на тематики. Варіант студента — в журналі оцінювання Moodle.
+				</aside>
+			</section>
+
+			<!-- 9. Етап 4. Оцінювання: рішення, а не код -->
+			<section>
+				<span class="stage-tag accent">Етап 4 · Оцінювання</span>
+				<h2 style="text-align: center; margin-bottom: 6px;">Оцінюємо рішення, а не код</h2>
+				<p class="small-text" style="text-align:center; margin:0 0 14px;">Моя спроба зробити завдання
+					ШІ-резистентними</p>
+				<div class="principles">
+					<div class="fragment fade-up"><b>Захист</b>Пояснити, чому зроблено саме так. Код, який не
+						можеш пояснити, — не твій.</div>
+					<div class="fragment fade-up"><b>Git-коміти</b>Видно процес, а не лише результат. Один коміт
+						«final» за ніч — привід для розмови.</div>
+					<div class="fragment fade-up"><b>Завдання на парі</b>Одне із завдань виконується прямо в
+						аудиторії — на своєму проєкті.</div>
+				</div>
+				<div class="highlight-box-orange fragment fade-up" style="max-width:1060px; width:100%; box-sizing:border-box; margin:18px auto 0;">
+					<div class="col-label" style="color:var(--ztu-orange); font-size:0.44em;">Фокус студента —
+						рішення й аналіз</div>
+					<ul style="font-size:0.5em; line-height:1.55; margin:0; padding-left:20px;">
+						<li>«Чому для графіків обрав саме цю бібліотеку?»</li>
+						<li>«Що станеться, якщо API поверне помилку чи порожню відповідь?»</li>
+						<li>«ШІ запропонував таке рішення — що з ним не так?»</li>
+					</ul>
+				</div>
+				<div class="source fragment fade-up"><span class="src-tag">Дослідження</span>
+					<span>Усні іспити на курсі з 500+ студентів: <strong>542 іспити — 0 порушень
+							доброчесності</strong>; формат схвалили і викладачі, і студенти. <span class="ref">UNSW,
+							ASCILITE 2024</span></span></div>
+				<aside class="notes">
+					Не боротьба з ШІ, а зміна того, що оцінюємо. Написати код ШІ може — пояснити рішення
+					замість студента він не може. Чесно: це спроба, ідеального рішення ще немає.
+				</aside>
+			</section>
+
+			<!-- 10. Етап 5. Зворотний зв'язок → покращення -->
+			<section>
+				<span class="stage-tag">Етап 5 · Зворотний зв'язок</span>
+				<h2 style="text-align: center; margin-bottom: 14px;">Відгуки → зміни в курсі</h2>
+				<div style="display:flex; gap:20px; max-width:1080px; margin:0 auto; align-items:stretch;">
+					<div style="flex:0 0 300px;">
+						<div class="col-label" style="color:#777;">Зараз</div>
+						<div class="highlight-box" style="font-size:0.5em; margin:0;">Відгуки з форми та чату →
+							ШІ групує за темами й тональністю</div>
+					</div>
+					<div style="flex:1;">
+						<div class="col-label" style="color:var(--ztu-green);">Покращення</div>
+						<div class="highlight-box-green fragment fade-up" style="font-size:0.5em;">
+							<strong>1. Хвилинна анкета після лекції.</strong> Три питання: що зрозуміло, що ні, що
+							змінити. Gemini у Google Sheets групує відповіді — проблему видно за тиждень, а не в
+							кінці семестру.</div>
+						<div class="highlight-box-green fragment fade-up" style="font-size:0.5em;">
+							<strong>2. Питання з Telegram-чату → NotebookLM.</strong> Стають FAQ курсу. Питання, що
+							повторюються, підказують, яку лекцію переписати.</div>
+						<div class="highlight-box-green fragment fade-up" style="font-size:0.5em;">
+							<strong>3. Закрити петлю.</strong> На початку пари — слайд «Ви сказали → я змінив».
+							Студенти бачать, що відгук працює, і пишуть більше.</div>
+					</div>
+				</div>
+				<aside class="notes">
+					Зібрати відгуки — пів справи. Цінність — у швидкості реакції та в тому, що студенти бачать зміни.
+				</aside>
+			</section>
+
+			<!-- 11. Що це дало -->
+			<section>
+				<h2 style="text-align: center; margin-bottom: 16px;">Що це дало</h2>
+				<div class="metrics">
+					<div class="metric fragment fade-up">
+						<div class="what">Тест на 20 питань</div>
+						<div class="val"><span class="was"><span class="ph">~X год</span></span> → <span
+								class="ph">~Y хв</span></div>
+						<div class="note"><span class="ph">N%</span> питань — без правок</div>
+					</div>
+					<div class="metric fragment fade-up">
+						<div class="what">Варіанти</div>
+						<div class="val"><span class="was">1</span> → 11 тематик</div>
+						<div class="note">на одному каркасі, критерії однакові</div>
+					</div>
+					<div class="metric fragment fade-up">
+						<div class="what">Оцінювання</div>
+						<div class="val">захист + git</div>
+						<div class="note">кожен студент пояснює свої рішення усно</div>
+					</div>
+					<div class="metric fragment fade-up">
+						<div class="what">Відгуки</div>
+						<div class="val"><span class="ph">K</span> змін</div>
+						<div class="note">«ви сказали → я змінив»</div>
+					</div>
+				</div>
+				<div class="source fragment fade-up" style="max-width:1080px; margin-top:18px;"><span
+						class="src-tag">Для порівняння</span>
+					<span>Рандомізоване дослідження, 259 вчителів: ChatGPT скоротив підготовку до уроків на
+						<strong>31%</strong>, якість матеріалів за оцінкою експертів — не гірша. <span
+							class="ref">EEF / NFER, 2024 · школа</span></span></div>
+				<p class="small-text" style="text-align:center; margin-top:16px; font-size:0.42em;">Час — моя оцінка,
+					не вимір. З наступного семестру міряю системно: лог часу · статистика тестів Moodle
+					(discrimination index) · рубрика захисту.</p>
+				<aside class="notes">
+					Чесно: цифри — мої оцінки, а не експеримент. Одна група, мала вибірка.
+					Але напрям збігається з дослідженнями.
+				</aside>
+			</section>
+
+			<!-- 11. Ризики -->
+			<section>
+				<h2 style="text-align: center; margin-bottom: 16px;">Що може піти не так</h2>
+				<div class="pain-grid" style="max-width:1080px;">
+					<div class="pain-card fragment fade-up" style="max-width:340px; font-size:0.52em;">
+						<strong>Галюцинації.</strong> ШІ впевнено пише неправильну відповідь у тесті або вигадує
+						API.<br><br><em>→ Кожне питання й кожну умову перевіряє викладач.</em></div>
+					<div class="pain-card fragment fade-up" style="max-width:340px; font-size:0.52em;">
+						<strong>Персональні дані.</strong> ПІБ + оцінки студентів не завантажуємо в ШІ.<br><br>
+						<em>→ Знеособлюємо: номер варіанта замість прізвища. Перевіряємо налаштування приватності
+							сервісу.</em></div>
+					<div class="pain-card fragment fade-up" style="max-width:340px; font-size:0.52em;">
+						<strong>Застарілі знання.</strong> Модель могла не бачити нову версію бібліотеки — наприклад,
+						React Router v7.<br><br><em>→ Даємо актуальну документацію як джерело, а не покладаємося на
+							пам'ять моделі.</em></div>
+				</div>
+				<p class="big-question fragment fade-up" style="font-size:0.7em;">ШІ пише чернетку. Відповідальність —
+					на викладачеві.</p>
+				<aside class="notes">
+					Три ризики, з якими я реально стикався. Загальне правило: результат ШІ — чернетка, яку
+					викладач перевіряє.
+				</aside>
+			</section>
+
+			<!-- 12. Безкоштовний vs мій стек -->
+			<section>
+				<h2 style="text-align: center; margin-bottom: 14px;">Чи потрібні гроші?</h2>
+				<table class="info-table" style="max-width:1000px; margin:0 auto; font-size:0.52em;">
+					<thead>
+						<tr>
+							<th>Задача</th>
+							<th>Безкоштовно</th>
+							<th>Мій стек</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>Відеолекції → база знань</td>
+							<td>NotebookLM</td>
+							<td>NotebookLM</td>
+						</tr>
+						<tr>
+							<td>Тести → GIFT → Moodle</td>
+							<td>Gemini</td>
+							<td>Claude (платний)</td>
+						</tr>
+						<tr>
+							<td>Персоналізовані варіанти</td>
+							<td>Gemini</td>
+							<td>Claude (платний)</td>
+						</tr>
+						<tr>
+							<td>Аналіз відгуків</td>
+							<td>Google Forms + Gemini</td>
+							<td>Claude (платний)</td>
+						</tr>
+						<tr>
+							<td>Платформа</td>
+							<td colspan="2">Moodle + Google Workspace</td>
+						</tr>
+					</tbody>
+				</table>
+				<div class="two-columns fragment fade-up" style="max-width:1000px; margin:18px auto 0;">
+					<div class="highlight-box-green" style="font-size:0.5em;"><strong>Щоб почати</strong> —
+						безкоштовних інструментів достатньо.</div>
+					<div class="highlight-box" style="font-size:0.5em;"><strong>Платний тариф</strong> — коли обсяг
+						великий: довгі лекції, банк на сотні питань, багато варіантів.</div>
+				</div>
+				<aside class="notes">
+					Важливе повідомлення для залу: все, що я показав, можна відтворити безкоштовно.
+					Я використовую платний Claude, бо так швидше на великих обсягах, — але це не обов'язково.
+				</aside>
+			</section>
+
+			<!-- 13. З чого почати завтра -->
+			<section>
+				<h2 style="text-align: center; margin-bottom: 18px;">З чого почати завтра</h2>
+				<ul class="agenda" style="font-size:0.62em; max-width:900px; width:100%; display:block; margin:0 auto;">
+					<li class="fragment fade-up"><strong>Одна лекція → NotebookLM.</strong> Завантажте запис і
+						слайди, згенеруйте конспект і FAQ, поділіться блокнотом зі студентами.</li>
+					<li class="fragment fade-up"><strong>Один тест → Moodle.</strong> Попросіть Gemini 20 питань
+						у форматі GIFT, перевірте кожне, імпортуйте в банк питань.</li>
+					<li class="fragment fade-up"><strong>Одне завдання → рішення, а не код.</strong> Розгорніть
+						його на кілька тематик і додайте на захисті питання «чому саме так?».</li>
+				</ul>
+				<p class="big-question fragment fade-up" style="font-size:0.7em;">Не весь курс одразу — одна лекція,
+					один тест, одне завдання.</p>
+				<aside class="notes">
+					Три кроки, кожен — на один вечір і безкоштовно. Після першого семестру видно, що масштабувати.
+				</aside>
+			</section>
+
+			<!-- 14. Дякую + Q&A -->
+			<section>
+				<p style="font-size: 0.5em; color: #777; text-align: center; margin: 50px 0 0 0;">Запитання та
+					відповіді</p>
+				<h1 style="font-size: 1.6em; line-height: 1.25; text-align: center; margin: 18px 0 0;">
+					<span class="ztu-blue">Дякую за увагу!</span>
+				</h1>
+				<p style="font-size: 0.5em; color: #333; text-align: center; margin: 30px 0 0;">
+					Савіцький Роман Святославович</p>
+			</section>
+
+		</div>
+	</div>
+
+	<script src="dist/reveal.js"></script>
+	<script src="plugin/highlight/highlight.js"></script>
+	<script src="plugin/notes/notes.js"></script>
+	<script src="plugin/zoom/zoom.js"></script>
+	<script>
+		Reveal.initialize({
+			hash: true,
+			slideNumber: 'c',
+			center: false,
+			width: 1200,
+			height: 700,
+			plugins: [RevealHighlight, RevealNotes, RevealZoom]
+		});
+	</script>
+</body>
+
+</html>
